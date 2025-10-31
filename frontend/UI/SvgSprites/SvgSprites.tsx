@@ -23,7 +23,7 @@ export default function SvgSprites() {
             </symbol>
 
             <symbol
-                id='sidebar-icon'
+                id='sidebar-toggle-icon'
                 width='20'
                 height='20'
                 viewBox='0 0 20 20'

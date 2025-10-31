@@ -1,0 +1,26 @@
+@use '@/mixins.scss' as *;
+
+.primary-button {
+    @include flex-y-center;
+    gap: 0.5em;
+
+    padding: 0.375em 0.625em;
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+}
+
+.title {
+    font-size: var(--m-font-size);
+    color: var(--font-color);
+    white-space: nowrap;
+}
+
+.subtitle {
+    margin-left: auto;
+
+    font-size: var(--m-font-size);
+    color: var(--secondary-font-color);
+    white-space: nowrap;
+}

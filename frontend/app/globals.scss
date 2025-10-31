@@ -1,0 +1,18 @@
+body {
+    background-color: var(--background-color);
+
+    color: var(--font-color);
+}
+
+:root {
+    --background-color: #212121;
+    --foreground-color: #181818;
+
+    --font-color: #ffffff;
+    --secondary-font-color: #afafaf;
+
+    --hover-color: #303030;
+
+    --d-font-size: 1rem;
+    --m-font-size: 0.9rem;
+}
