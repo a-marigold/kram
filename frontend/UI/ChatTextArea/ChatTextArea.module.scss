@@ -1,0 +1,82 @@
+@use '@/styles/mixins.scss' as *;
+
+.chat-input-block {
+    position: relative;
+
+    width: 100%;
+
+    border-radius: 28px;
+
+    background-color: var(--input-bg-color);
+
+    padding: 0.5em;
+    padding-left: 1em;
+
+    padding-right: 1em;
+
+    box-sizing: border-box;
+}
+
+.chat-input {
+    background-color: transparent;
+
+    border: none;
+    outline: none;
+
+    color: var(--font-color);
+    font-size: 1rem;
+
+    resize: none;
+
+    overflow: hidden;
+}
+
+.buttons-block {
+    // position: absolute;
+    bottom: 0;
+
+    @include flex-y-center;
+    justify-content: flex-end;
+    gap: 0.25em;
+
+    width: 100%;
+}
+
+.empty-filled-button {
+    @include flex-center;
+
+    width: 36px;
+    height: 36px;
+
+    background-color: transparent;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--light-hover-bg-color);
+    }
+}
+.send-button {
+    @include flex-center;
+
+    width: 36px;
+    height: 36px;
+
+    background-color: var(--font-color);
+
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    &:disabled {
+        color: initial;
+        opacity: 0.6;
+
+        cursor: default;
+    }
+}

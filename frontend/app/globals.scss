@@ -21,11 +21,13 @@ body * {
 :root {
     --background-color: #212121;
     --foreground-color: #181818;
+    --dark-foreground-color: #000000;
 
     --font-color: #ffffff;
     --secondary-font-color: #afafaf;
 
     --hover-bg-color: #303030;
+    --light-hover-bg-color: #434343;
     --dim-hover-bg-color: #3a3a3a;
     --scrollbar-hover-bg-color: #c0c0c1;
 
@@ -34,6 +36,8 @@ body * {
     --active-btn-dim-bg: #2c2c2c;
 
     --light-border-color: #ffffff0d;
+
+    --input-bg-color: #303030;
 
     // sizes
     // prefix "d" means "default"

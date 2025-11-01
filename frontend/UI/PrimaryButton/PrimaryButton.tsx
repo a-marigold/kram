@@ -16,11 +16,16 @@ export default function PrimaryButton({
     subtitle,
 
     icon,
+    ariaLabel,
 
     ...attributes
 }: PrimaryButtonProps) {
     return (
-        <button className={buttonStyles['primary-button']} {...attributes}>
+        <button
+            className={buttonStyles['primary-button']}
+            {...attributes}
+            aria-label={ariaLabel}
+        >
             <span className={buttonStyles['title-block']}>
                 {icon}
 
