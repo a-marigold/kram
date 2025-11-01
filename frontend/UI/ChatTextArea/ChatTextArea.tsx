@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import type { TextareaHTMLAttributes } from 'react';
+import type { ReactNode, TextareaHTMLAttributes } from 'react';
 
 import { resizeTextarea } from '@/utils/ResizeTextarea';
 
@@ -13,11 +13,14 @@ interface ChatTextAreaProps
     extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     state?: string;
     ariaLabel: string;
+    chatName?: string;
 }
 export default function ChatTextArea({
     state,
 
     ariaLabel,
+
+    chatName,
 
     ...attributes
 }: ChatTextAreaProps) {
@@ -49,26 +52,35 @@ export default function ChatTextArea({
                 }}
             />
 
-            <div className={textStyles['buttons-block']}>
-                <button
-                    className={textStyles['empty-filled-button']}
-                    aria-label='Enable the microphone'
-                >
-                    <svg width={20} height={20} color='var(--font-color)'>
-                        <use href='#microphone-icon' />
-                    </svg>
-                </button>
+            <div className={textStyles['tools-block']}>
+                {chatName && (
+                    <div className={textStyles['chatname-block']}>
+                        <span className={textStyles['chatname']}>
+                            {chatName}
+                        </span>
+                    </div>
+                )}
 
-                <button
-                    className={textStyles['send-button']}
-                    color='var(--dark-foreground-color)'
-                    disabled={!state?.length}
-                    aria-label='Send message'
-                >
-                    <svg width={20} height={20}>
-                        <use href='#send-arrow-icon' />
-                    </svg>
-                </button>
+                <div className={textStyles['buttons-group']}>
+                    <button
+                        className={textStyles['empty-filled-button']}
+                        aria-label='Enable the microphone'
+                    >
+                        <svg width={20} height={20} color='var(--font-color)'>
+                            <use href='#microphone-icon' />
+                        </svg>
+                    </button>
+                    <button
+                        className={textStyles['send-button']}
+                        color='var(--dark-foreground-color)'
+                        disabled={!state?.length}
+                        aria-label='Send message'
+                    >
+                        <svg width={20} height={20}>
+                            <use href='#send-arrow-icon' />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     );

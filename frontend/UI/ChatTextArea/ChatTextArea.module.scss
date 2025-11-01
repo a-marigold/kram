@@ -1,13 +1,14 @@
 @use '@/styles/mixins.scss' as *;
 
 .chat-input-block {
+    position: relative;
+
     @include flex-column;
     gap: 1em;
 
-    position: relative;
-
     width: 100%;
 
+    box-shadow: 0 0 20px #0000001c;
     border-radius: 28px;
 
     background-color: var(--input-bg-color);
@@ -42,14 +43,32 @@
     }
 }
 
-.buttons-block {
+.tools-block {
     @include flex-y-center;
-    justify-content: flex-end;
-    gap: 0.25em;
+    justify-content: space-between;
+
+    gap: 2em;
 
     width: 100%;
 }
 
+.chatname {
+    background-color: yellowgreen;
+
+    border-radius: 50px;
+
+    padding: 0.25em;
+    box-sizing: border-box;
+
+    color: black;
+}
+
+.buttons-group {
+    @include flex-y-center;
+    gap: 0.25em;
+
+    margin-left: auto;
+}
 .empty-filled-button {
     @include flex-center;
 
