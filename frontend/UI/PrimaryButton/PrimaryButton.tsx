@@ -5,10 +5,14 @@ import buttonStyles from './PrimaryButton.module.scss';
 interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
     subtitle?: string;
+
+    ariaLabel: string;
+
     icon?: ReactNode;
 }
 export default function PrimaryButton({
     title,
+
     subtitle,
 
     icon,

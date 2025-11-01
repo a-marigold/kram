@@ -39,12 +39,17 @@
     border: none;
     border-radius: 8px;
 
-    padding: 0.5em;
-    box-sizing: border-box;
+    cursor: pointer;
 
     &:hover {
         background-color: var(--hover-bg-color);
     }
+    &:active {
+        background-color: var(--active-btn-dim-bg);
+    }
+}
 
-    cursor: pointer;
+.profile-block {
+    margin-top: auto;
+    padding-bottom: 0.5em;
 }

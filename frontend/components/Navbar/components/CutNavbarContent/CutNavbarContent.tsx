@@ -1,21 +1,13 @@
 import type { Dispatch } from 'react';
 
+import Image from 'next/image';
+
 import { AnimatePresence, motion } from 'framer-motion';
+
+import { navButtonList } from '../../navButtonList';
 
 import navStyles from '../../Navbar.module.scss';
 import cutnavStyles from './CutNavbarContent.module.scss';
-
-const buttonList = [
-    {
-        iconHref: '#chat-icon',
-
-        ariaLabel: 'Open a new chat',
-    },
-    {
-        iconHref: '#search-icon',
-        ariaLabel: 'Search in chats',
-    },
-];
 
 interface CutNavbarContentProps {
     setShowFullNavbar: Dispatch<boolean>;
@@ -42,21 +34,29 @@ export default function CutNavbarContent({
                         </svg>
                     </button>
                     <div className={cutnavStyles['nav-buttons-block']}>
-                        {buttonList.map((button) => (
+                        {navButtonList.map((button) => (
                             <button
                                 className={cutnavStyles['nav-button']}
                                 aria-label={button.ariaLabel}
                             >
-                                <svg width={20} height={20}>
-                                    <use href={button.iconHref} />
-                                </svg>
+                                {button.icon}
                             </button>
                         ))}
                     </div>
                 </div>
 
                 <div className={cutnavStyles['profile-block']}>
-                    <button className={cutnavStyles['profile-button']}></button>
+                    <button
+                        className={cutnavStyles['nav-button']}
+                        aria-label='Open profile'
+                    >
+                        <Image
+                            src={'/globe.svg'}
+                            alt=''
+                            width={24}
+                            height={24}
+                        />
+                    </button>
                 </div>
             </motion.div>
         </AnimatePresence>

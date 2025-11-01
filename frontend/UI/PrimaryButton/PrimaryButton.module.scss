@@ -27,7 +27,7 @@
     }
 
     &:active {
-        background-color: transparent;
+        background-color: var(--active-btn-bg);
     }
 }
 .title-block {
