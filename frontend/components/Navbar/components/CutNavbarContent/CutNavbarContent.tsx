@@ -33,6 +33,7 @@ export default function CutNavbarContent({
                             <use href='#sidebar-toggle-icon' />
                         </svg>
                     </button>
+
                     <div className={cutnavStyles['nav-buttons-block']}>
                         {navButtonList.map((button) => (
                             <button
