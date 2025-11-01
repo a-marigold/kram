@@ -1,3 +1,9 @@
+import ChatTextArea from './chat/components/ChatTextArea';
+
 export default function Home() {
-    return <div> </div>;
+    return (
+        <div>
+            <ChatTextArea />
+        </div>
+    );
 }
