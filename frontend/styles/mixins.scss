@@ -31,7 +31,8 @@
     $scrollbar-width: 'auto',
     $scrollbar-thumb-color: var(--hover-bg-color),
     $scrollbar-track-color: transparent,
-    $scrollbar-hover-color: var(--scrollbar-hover-bg-color)
+    $scrollbar-hover-color: var(--scrollbar-hover-bg-color),
+    $scrollbar-button-display: 'block'
 ) {
     overflow-y: auto;
 
@@ -48,7 +49,7 @@
         scrollbar-width: $scrollbar-track-color;
     }
     ::-webkit-scrollbar-button {
-        display: none;
+        display: $scrollbar-button-display;
     }
     &::-webkit-scrollbar:hover {
         background-color: $scrollbar-hover-color;

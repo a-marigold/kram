@@ -1,4 +1,9 @@
-export function resizeTextarea(textarea: HTMLTextAreaElement) {
-    textarea.style.height = 'auto';
-    textarea.style.height = `${textarea.scrollHeight}px`;
+/**
+ *
+ * @param textareaElement
+ */
+
+export function resizeTextarea(textareaElement: HTMLTextAreaElement) {
+    textareaElement.style.height = 'auto';
+    textareaElement.style.height = `${textareaElement.scrollHeight}px`;
 }

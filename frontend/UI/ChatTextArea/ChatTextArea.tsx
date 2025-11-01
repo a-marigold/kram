@@ -1,8 +1,12 @@
 'use client';
 
+import { useRef } from 'react';
 import type { TextareaHTMLAttributes } from 'react';
 
+import { resizeTextarea } from '@/utils/ResizeTextarea';
+
 import clsx from 'clsx';
+
 import textStyles from './ChatTextArea.module.scss';
 
 interface ChatTextAreaProps
@@ -17,14 +21,29 @@ export default function ChatTextArea({
 
     ...attributes
 }: ChatTextAreaProps) {
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
     return (
-        <div className={textStyles['chat-input-block']} aria-label={ariaLabel}>
+        <div
+            className={textStyles['chat-input-block']}
+            aria-label={ariaLabel}
+            onClick={() => {
+                textAreaRef.current?.focus();
+            }}
+        >
             <textarea
-                className={textStyles['chat-input']}
+                ref={textAreaRef}
+                className={clsx(
+                    textStyles['chat-input'],
+                    textAreaRef.current &&
+                        textAreaRef.current.scrollHeight >= 320 &&
+                        textStyles['bounded']
+                )}
+                placeholder='Message'
                 {...attributes}
                 value={state}
                 onChange={(event) => {
-                    event.target.style.height = `${event.target.scroll}px`;
+                    resizeTextarea(event.target);
 
                     attributes.onChange?.(event);
                 }}

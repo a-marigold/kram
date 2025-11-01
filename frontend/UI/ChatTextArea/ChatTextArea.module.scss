@@ -1,6 +1,9 @@
 @use '@/styles/mixins.scss' as *;
 
 .chat-input-block {
+    @include flex-column;
+    gap: 1em;
+
     position: relative;
 
     width: 100%;
@@ -9,15 +12,19 @@
 
     background-color: var(--input-bg-color);
 
-    padding: 0.5em;
+    padding: 1em;
     padding-left: 1em;
 
     padding-right: 1em;
-
     box-sizing: border-box;
+
+    cursor: text;
 }
 
 .chat-input {
+    width: 100%;
+    max-height: 320px;
+
     background-color: transparent;
 
     border: none;
@@ -29,12 +36,13 @@
     resize: none;
 
     overflow: hidden;
+
+    &.bounded {
+        @include scrollableY('thin', var(--light-hover-bg-color));
+    }
 }
 
 .buttons-block {
-    // position: absolute;
-    bottom: 0;
-
     @include flex-y-center;
     justify-content: flex-end;
     gap: 0.25em;

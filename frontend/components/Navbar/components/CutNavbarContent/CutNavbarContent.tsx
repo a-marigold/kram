@@ -12,6 +12,7 @@ import cutnavStyles from './CutNavbarContent.module.scss';
 interface CutNavbarContentProps {
     setShowFullNavbar: Dispatch<boolean>;
 }
+
 export default function CutNavbarContent({
     setShowFullNavbar,
 }: CutNavbarContentProps) {
