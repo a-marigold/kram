@@ -13,7 +13,7 @@
     border: none;
     border-radius: 10px;
 
-    padding: 0.375em 0.625em;
+    padding: var(--d-btn-padding);
     box-sizing: border-box;
 
     cursor: pointer;
@@ -32,9 +32,11 @@
 }
 
 .title {
-    font-size: var(--m-font-size);
     color: var(--font-color);
+    font-size: var(--m-font-size);
+    font-weight: 300;
     white-space: nowrap;
+    text-transform: ellipsis;
 }
 
 .subtitle {

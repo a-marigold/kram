@@ -1,0 +1,33 @@
+@use '@/styles/mixins.scss' as *;
+
+.chats-box {
+    @include flex-column;
+
+    cursor: pointer;
+
+    &:hover .arrow-icon {
+        display: block;
+    }
+}
+.title-block {
+    @include flex-y-center;
+    gap: 0.25em;
+
+    padding: var(--d-btn-padding);
+}
+.title {
+    @include text-wo-margin(0.775rem, 400);
+    color: var(--secondary-font-color);
+}
+
+.chat-list {
+    @include flex-column;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+.chat-link {
+    list-style: none;
+}

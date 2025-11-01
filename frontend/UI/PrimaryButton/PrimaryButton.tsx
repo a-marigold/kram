@@ -16,13 +16,11 @@ export default function PrimaryButton({
     ...attributes
 }: PrimaryButtonProps) {
     return (
-        <button className={buttonStyles['primary-button']}>
+        <button className={buttonStyles['primary-button']} {...attributes}>
             <span className={buttonStyles['title-block']}>
                 {icon}
 
-                <span className={buttonStyles['title']} {...attributes}>
-                    {title}
-                </span>
+                <span className={buttonStyles['title']}>{title}</span>
             </span>
 
             {subtitle && (
