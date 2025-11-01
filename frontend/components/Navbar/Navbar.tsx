@@ -1,25 +1,23 @@
-import NavButtons from './components/NavButtons';
-import ChatList from './components/ChatList';
-import ProfileBlock from './components/ProfileBlock';
+'use client';
+
+import { useState } from 'react';
+
+import FullNavbarContent from './components/FullNavbarContent/FullNavbarContent';
+
+import CutNavbarContent from './components/CutNavbarContent';
 
 import navStyles from './Navbar.module.scss';
 
 export default function Navbar() {
+    const [showFullNavbar, setShowFullNavbar] = useState(true);
+
     return (
         <div className={navStyles['navbar']}>
-            <div className={navStyles['head']}>
-                <button className={navStyles['sidebar-button']}>
-                    <svg width={20} height={20}>
-                        <use href='#sidebar-toggle-icon' />
-                    </svg>
-                </button>
-
-                <NavButtons />
-            </div>
-
-            <ChatList />
-
-            <ProfileBlock />
+            {showFullNavbar ? (
+                <FullNavbarContent setShowFullNavbar={setShowFullNavbar} />
+            ) : (
+                <CutNavbarContent setShowFullNavbar={setShowFullNavbar} />
+            )}
         </div>
     );
 }
