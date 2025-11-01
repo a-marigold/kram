@@ -7,7 +7,7 @@ export default function Navbar() {
     return (
         <div className={navStyles['navbar']}>
             <div className={navStyles['head']}>
-                <button>
+                <button className={navStyles['sidebar-button']}>
                     <svg width={20} height={20}>
                         <use href='#sidebar-toggle-icon' />
                     </svg>

@@ -40,9 +40,9 @@
 .subtitle {
     display: none;
 
+    color: var(--secondary-font-color);
+    font-family: var(--font-geist-sans);
     font-size: var(--m-font-size);
     font-size: 0.75rem;
-
-    color: var(--secondary-font-color);
     white-space: nowrap;
 }

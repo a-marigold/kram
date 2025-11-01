@@ -1,9 +1,10 @@
 html,
 body {
     margin: 0;
-
     height: 100%;
+}
 
+body {
     background-color: var(--background-color);
 
     color: var(--font-color);
@@ -23,6 +24,7 @@ body * {
     --secondary-font-color: #afafaf;
 
     --hover-color: #303030;
+    --dim-hover-color: #3a3a3a;
 
     --d-font-size: 1rem;
     --m-font-size: 0.825rem;
