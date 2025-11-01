@@ -1,14 +1,34 @@
-@use '@/mixins.scss' as *;
+@use '@/styles/mixins.scss' as *;
 
 .primary-button {
     @include flex-y-center;
+    justify-content: space-between;
     gap: 0.5em;
 
+    width: 100%;
+    height: 2.5em;
+
+    background-color: transparent;
+
+    border: none;
+    border-radius: 10px;
+
     padding: 0.375em 0.625em;
+    box-sizing: border-box;
+
+    cursor: pointer;
 
     &:hover {
         background-color: var(--hover-color);
+
+        & > .subtitle {
+            display: block;
+        }
     }
+}
+.title-block {
+    @include flex-y-center;
+    gap: 0.5em;
 }
 
 .title {
@@ -18,9 +38,11 @@
 }
 
 .subtitle {
-    margin-left: auto;
+    display: none;
 
     font-size: var(--m-font-size);
+    font-size: 0.75rem;
+
     color: var(--secondary-font-color);
     white-space: nowrap;
 }

@@ -1,0 +1,11 @@
+@use '@/styles/mixins.scss' as *;
+
+.navbar {
+    max-width: 230px;
+    height: 100%;
+
+    background-color: var(--foreground-color);
+
+    padding: 0.375em;
+    box-sizing: border-box;
+}

@@ -1,7 +1,18 @@
+html,
 body {
+    margin: 0;
+
+    height: 100%;
+
     background-color: var(--background-color);
 
     color: var(--font-color);
+
+    font-family: var(--font-inter-variable);
+}
+
+body * {
+    font-family: var(--font-inter-variable);
 }
 
 :root {
@@ -14,5 +25,5 @@ body {
     --hover-color: #303030;
 
     --d-font-size: 1rem;
-    --m-font-size: 0.9rem;
+    --m-font-size: 0.825rem;
 }

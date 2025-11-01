@@ -9,7 +9,7 @@ export default function Navbar() {
             <div className={navStyles['head']}>
                 <button>
                     <svg width={20} height={20}>
-                        <use xlinkHref='#sidebar-toggle-icon' />
+                        <use href='#sidebar-toggle-icon' />
                     </svg>
                 </button>
             </div>

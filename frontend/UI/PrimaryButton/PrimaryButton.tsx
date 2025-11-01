@@ -4,8 +4,8 @@ import buttonStyles from './PrimaryButton.module.scss';
 
 interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
-    subtitle: string;
-    icon: ReactNode;
+    subtitle?: string;
+    icon?: ReactNode;
 }
 export default function PrimaryButton({
     title,
@@ -17,13 +17,17 @@ export default function PrimaryButton({
 }: PrimaryButtonProps) {
     return (
         <button className={buttonStyles['primary-button']}>
-            {icon}
+            <span className={buttonStyles['title-block']}>
+                {icon}
 
-            <span className={buttonStyles['title']} {...attributes}>
-                {title}
+                <span className={buttonStyles['title']} {...attributes}>
+                    {title}
+                </span>
             </span>
 
-            <kbd className={buttonStyles['subtitle']}></kbd>
+            {subtitle && (
+                <kbd className={buttonStyles['subtitle']}>{subtitle}</kbd>
+            )}
         </button>
     );
 }
