@@ -21,7 +21,7 @@ export default function FullNavbarContent({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.59 }}
                 className={navStyles['navbar-content']}
             >
                 <div className={fullnavStyles['head']}>
