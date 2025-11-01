@@ -10,9 +10,9 @@ export default function Home() {
     const [message, setMessage] = useState('');
 
     function getChatName(message: string) {
-        const firstWord = message.split(' ')[0];
+        const firstWord = message.split(' ').filter(Boolean)[0];
 
-        const lastWord = message.split(' ').at(-1);
+        const lastWord = message.split(' ').filter(Boolean).at(-1);
         if (firstWord?.startsWith('#') && firstWord.length > 1) {
             return firstWord;
         } else if (lastWord?.startsWith('#') && lastWord.length > 1) {
