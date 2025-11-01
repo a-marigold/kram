@@ -26,3 +26,31 @@
     font-size: $font-size;
     font-weight: $font-weight;
 }
+
+@mixin scrollableY(
+    $scrollbar-width: 'auto',
+    $scrollbar-thumb-color: var(--hover-bg-color),
+    $scrollbar-track-color: transparent,
+    $scrollbar-hover-color: var(--scrollbar-hover-bg-color)
+) {
+    overflow-y: auto;
+
+    scrollbar-width: $scrollbar-width;
+    scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
+
+    ::-webkit-scrollbar {
+        scrollbar-width: $scrollbar-width;
+    }
+    ::-webkit-scrollbar-thumb {
+        scrollbar-width: $scrollbar-thumb-color;
+    }
+    ::-webkit-scrollbar-track {
+        scrollbar-width: $scrollbar-track-color;
+    }
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+    &::-webkit-scrollbar:hover {
+        background-color: $scrollbar-hover-color;
+    }
+}
