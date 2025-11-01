@@ -1,19 +1,21 @@
 @use '@/styles/mixins.scss' as *;
 
 .navbar {
-    @include flex-column;
-    gap: 0.8em;
-
-    max-width: 230px;
-
     height: 100%;
 
     max-height: 100%;
 
-    background-color: var(--foreground-color);
-
     padding: 0 0.5em;
+
     box-sizing: border-box;
+
+    transition: max-width 0.2s ease;
+}
+
+.full-navbar {
+    max-width: 230px;
+
+    background-color: var(--foreground-color);
 
     overflow-y: auto;
 
@@ -23,48 +25,31 @@
     &::-webkit-scrollbar {
         width: auto;
     }
+
     &::-webkit-scrollbar-thumb {
         background-color: var(--hover-bg-color);
     }
+
     &::-webkit-scrollbar-track {
         background-color: transparent;
     }
+
     &::-webkit-scrollbar-button {
         display: none;
     }
+
     &::-webkit-scrollbar:hover {
         background-color: var(--scrollbar-hover-bg-color);
     }
 }
 
-.head {
-    position: sticky;
-    top: 0;
+.cut-navbar {
+    max-width: 52px;
 
-    @include flex-column;
-
-    gap: 0.75em;
-
-    background-color: var(--foreground-color);
-
-    padding-top: 0.5em;
+    border-right: 1px var(--light-border-color) solid;
 }
 
-.sidebar-button {
-    margin-left: auto;
-
-    @include flex-center;
-
-    background-color: transparent;
-    border: none;
-    border-radius: 8px;
-
-    width: 36px;
-    height: 36px;
-
-    cursor: ew-resize;
-
-    &:hover {
-        background-color: var(--dim-hover-bg-color);
-    }
+.navbar-content {
+    @include flex-column;
+    gap: 0.8em;
 }

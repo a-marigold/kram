@@ -1,7 +1,9 @@
 import type { Dispatch } from 'react';
 
-import cutnavStyles from './CutNavbarContent.module.scss';
+import { AnimatePresence, motion } from 'framer-motion';
+
 import navStyles from '../../Navbar.module.scss';
+import cutnavStyles from './CutNavbarContent.module.scss';
 
 interface CutNavbarContentProps {
     setShowFullNavbar: Dispatch<boolean>;
@@ -11,9 +13,9 @@ export default function CutNavbarContent({
 }: CutNavbarContentProps) {
     return (
         <>
-            <div className={navStyles['head']}>
+            <div className={cutnavStyles['head']}>
                 <button
-                    className={navStyles['sidebar-button']}
+                    className={cutnavStyles['sidebar-button']}
                     onClick={() => setShowFullNavbar(true)}
                 >
                     <svg width={20} height={20} color='var(--font-color)'>
