@@ -1,0 +1,38 @@
+@use '@/styles/mixins.scss' as *;
+
+.primary-link {
+    @include flex-y-center;
+    justify-content: space-between;
+    gap: 0.5em;
+
+    width: 100%;
+    height: 2.5em;
+
+    background-color: transparent;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: var(--d-btn-padding);
+    box-sizing: border-box;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+}
+.title-block {
+    @include flex-y-center;
+    gap: 0.5em;
+
+    text-transform: ellipsis;
+}
+
+.title {
+    font-size: var(--m-font-size);
+    color: var(--font-color);
+    white-space: nowrap;
+}
