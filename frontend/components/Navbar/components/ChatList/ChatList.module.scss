@@ -36,35 +36,10 @@
     @include flex-column;
 
     flex: 1;
-    max-height: 360px;
-
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-        var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 
     margin: 0;
     padding: 0;
     padding-right: 0.375em;
-
-    overflow: auto;
-
-    scrollbar-width: auto;
-    scrollbar-color: var(--hover-bg-color) transparent;
-
-    &::-webkit-scrollbar {
-        width: auto;
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--hover-bg-color);
-    }
-    &::-webkit-scrollbar-track {
-        background-color: transparent;
-    }
-    &::-webkit-scrollbar-button {
-        display: none;
-    }
-    &::-webkit-scrollbar:hover {
-        background-color: var(--scrollbar-hover-bg-color);
-    }
 }
 
 .chat-link {

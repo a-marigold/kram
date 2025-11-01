@@ -1,13 +1,19 @@
 @use '@/styles/mixins.scss' as *;
 
 .profile-block {
+    position: sticky;
+    bottom: 0;
     margin-top: auto;
 
+    flex-shrink: 0;
     width: 100%;
+
+    background-color: var(--foreground-color);
 
     border-top: 1px var(--hover-bg-color) solid;
 
     padding-top: 0.375em;
+    padding-bottom: 0.5em;
 }
 .profile-button {
     @include flex-y-center;

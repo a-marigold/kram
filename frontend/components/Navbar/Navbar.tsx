@@ -13,9 +13,9 @@ export default function Navbar() {
                         <use href='#sidebar-toggle-icon' />
                     </svg>
                 </button>
-            </div>
 
-            <NavButtons />
+                <NavButtons />
+            </div>
 
             <ChatList />
 
