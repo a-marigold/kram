@@ -6,10 +6,11 @@
 
     max-width: 230px;
     height: 100%;
+    max-height: 100%;
 
     background-color: var(--foreground-color);
 
-    padding: 0.375em;
+    padding: 0.5em;
 
     box-sizing: border-box;
 }

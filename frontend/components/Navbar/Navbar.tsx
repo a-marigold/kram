@@ -1,5 +1,6 @@
 import NavButtons from './components/NavButtons';
 import ChatList from './components/ChatList';
+import ProfileBlock from './components/ProfileBlock';
 
 import navStyles from './Navbar.module.scss';
 
@@ -17,6 +18,8 @@ export default function Navbar() {
             <NavButtons />
 
             <ChatList />
+
+            <ProfileBlock />
         </div>
     );
 }
