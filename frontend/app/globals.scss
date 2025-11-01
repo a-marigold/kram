@@ -16,7 +16,6 @@ body * {
     font-family: var(--font-inter-variable);
 }
 
-// prefix "d" means "default"
 :root {
     --background-color: #212121;
     --foreground-color: #181818;
@@ -24,11 +23,13 @@ body * {
     --font-color: #ffffff;
     --secondary-font-color: #afafaf;
 
-    --hover-color: #303030;
-    --dim-hover-color: #3a3a3a;
+    --hover-bg-color: #303030;
+    --dim-hover-bg-color: #3a3a3a;
+
+    --active-bg-color: #ffffff0d;
 
     // sizes
-
+    // prefix "d" means "default"
     --d-btn-padding: 0.375em 0.625em;
 
     --d-font-size: 1rem;

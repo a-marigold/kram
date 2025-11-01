@@ -1,6 +1,9 @@
 @use '@/styles/mixins.scss' as *;
 
 .navbar {
+    @include flex-column;
+    gap: 0.75em;
+
     max-width: 230px;
     height: 100%;
 
@@ -24,6 +27,6 @@
     cursor: ew-resize;
 
     &:hover {
-        background-color: var(--dim-hover-color);
+        background-color: var(--dim-hover-bg-color);
     }
 }

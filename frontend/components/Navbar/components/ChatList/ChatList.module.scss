@@ -2,6 +2,7 @@
 
 .chats-box {
     @include flex-column;
+    gap: 0.25em;
 
     cursor: pointer;
 
