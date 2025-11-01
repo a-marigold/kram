@@ -20,11 +20,13 @@
 
     cursor: pointer;
 
+    &.active {
+        background-color: var(--hover-bg-color);
+    }
     &:hover {
         background-color: var(--hover-bg-color);
     }
-
-    &.active {
+    &:active {
         background-color: var(--active-bg-color);
     }
 }

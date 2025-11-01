@@ -1,0 +1,35 @@
+@use '@/styles/mixins.scss' as *;
+
+.head {
+    position: sticky;
+
+    top: 0;
+
+    @include flex-column;
+
+    gap: 0.75em;
+
+    background-color: var(--foreground-color);
+
+    padding-top: 0.5em;
+
+    padding-bottom: 0.25em;
+}
+.sidebar-button {
+    margin-left: auto;
+
+    @include flex-center;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+
+    width: 36px;
+    height: 36px;
+
+    cursor: ew-resize;
+
+    &:hover {
+        background-color: var(--dim-hover-bg-color);
+    }
+}
