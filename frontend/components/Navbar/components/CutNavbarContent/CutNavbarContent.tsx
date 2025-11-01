@@ -35,8 +35,9 @@ export default function CutNavbarContent({
                     </button>
 
                     <div className={cutnavStyles['nav-buttons-block']}>
-                        {navButtonList.map((button) => (
+                        {navButtonList.map((button, index) => (
                             <button
+                                key={index}
                                 className={cutnavStyles['nav-button']}
                                 aria-label={button.ariaLabel}
                             >
