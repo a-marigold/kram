@@ -1,10 +1,9 @@
 import type { Dispatch } from 'react';
 
+import Link from 'next/link';
 import Image from 'next/image';
 
 import { AnimatePresence, motion } from 'framer-motion';
-
-import { navButtonList } from '../../navButtonList';
 
 import navStyles from '../../Navbar.module.scss';
 import cutnavStyles from './CutNavbarContent.module.scss';
@@ -36,15 +35,33 @@ export default function CutNavbarContent({
                     </button>
 
                     <div className={cutnavStyles['nav-buttons-block']}>
-                        {navButtonList.map((button, index) => (
-                            <button
-                                key={index}
-                                className={cutnavStyles['nav-button']}
-                                aria-label={button.ariaLabel}
+                        <Link
+                            href='/'
+                            prefetch
+                            className={cutnavStyles['nav-button']}
+                            aria-label='Open new chat'
+                        >
+                            <svg
+                                width={20}
+                                height={20}
+                                color='var(--font-color)'
                             >
-                                {button.icon}
-                            </button>
-                        ))}
+                                <use href='#chat-icon' />
+                            </svg>
+                        </Link>
+
+                        <button
+                            className={cutnavStyles['nav-button']}
+                            aria-label='Search'
+                        >
+                            <svg
+                                width={20}
+                                height={20}
+                                color='var(--font-color)'
+                            >
+                                <use href='#search-icon' />
+                            </svg>
+                        </button>
                     </div>
                 </div>
 

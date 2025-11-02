@@ -38,7 +38,10 @@ export default function Chat() {
                 <MessageList />
             </div>
 
-            <ChatTextArea className={chatStyles['message-input']} />
+            <ChatTextArea
+                className={chatStyles['message-input']}
+                ariaLabel='Input a message'
+            />
         </>
     );
 }

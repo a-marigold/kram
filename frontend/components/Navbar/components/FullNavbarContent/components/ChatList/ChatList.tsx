@@ -58,6 +58,9 @@ export default function ChatList() {
                     {chatList.map((chat, index) => (
                         <li key={index} className={navStyles['chat-link']}>
                             <PrimaryLink
+                                prefetch={false}
+                                replace
+                                shallow
                                 title={chat.name}
                                 href={`/chat/${chat.id}`}
                                 isActive={currentChatId === chat.id}
