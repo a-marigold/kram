@@ -2,25 +2,14 @@
 
 import { useState } from 'react';
 
+import { findBySymbol } from '@/utils/FindBySymbol';
+
 import ChatTextArea from '@/UI/ChatTextArea';
 
 import homeStyles from './Home.module.scss';
 
 export default function Home() {
     const [message, setMessage] = useState('');
-
-    function getChatName(message: string) {
-        const firstWord = message.split(' ').filter(Boolean)[0];
-
-        const lastWord = message.split(' ').filter(Boolean).at(-1);
-        if (firstWord?.startsWith('#') && firstWord.length > 1) {
-            return firstWord;
-        } else if (lastWord?.startsWith('#') && lastWord.length > 1) {
-            return lastWord;
-        }
-
-        console.log(firstWord, lastWord);
-    }
 
     return (
         <main className={homeStyles['home']}>
@@ -29,7 +18,7 @@ export default function Home() {
                     ariaLabel='Input a message'
                     state={message}
                     onChange={(event) => setMessage(event.target.value)}
-                    chatName={getChatName(message)}
+                    chatName={findBySymbol(message, '@')}
                 />
             </div>
         </main>
