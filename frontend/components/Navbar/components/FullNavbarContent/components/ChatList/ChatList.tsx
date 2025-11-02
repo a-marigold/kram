@@ -12,112 +12,12 @@ const chatList = [
     {
         id: '96697d9d-2749-4ced-9162-0701abf4337a',
 
-        name: 'Initial chat initial initial initial initial',
+        name: 'Elik',
     },
     {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
+        id: '96697d9d-2749-4ced-9162-0701abf4337b',
 
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial hat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial chat initial initial initial initial',
-    },
-    {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
-
-        name: 'Initial hat initial initial initial initial',
+        name: '10 "Г"',
     },
 ];
 

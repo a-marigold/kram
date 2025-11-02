@@ -3,61 +3,152 @@ import MessageOther from './components/MessageOther';
 
 import messageStyles from './MessageList.module.scss';
 
-const __MESSAGE_LIST__ = [
+const __MESSAGE1_LIST__ = [
     {
         type: 'mine',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
+
+        text: 'Hello',
     },
+
     {
         type: 'other',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
+
+        text: '2',
     },
     {
         type: 'mine',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
+
+        text: 'Hello',
     },
-    {
-        type: 'mine',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
-    },
+
     {
         type: 'other',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
+
+        text: '2',
     },
     {
         type: 'mine',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
+
+        text: 'Hello',
     },
-    {
-        type: 'mine',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
-    },
-    {
-        type: 'mine',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
-    },
+
     {
         type: 'other',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
+
+        text: '2',
     },
     {
         type: 'mine',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
     },
     {
         type: 'mine',
-        text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsum ipsa, neque aliquid explicabo repudiandae molestias praesentium, placeat tenetur mollitia eum! Ab laudantium, architecto nihil minima atque corporis. Officiis, repellat.',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
+    },
+    {
+        type: 'mine',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
+    },
+    {
+        type: 'mine',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
+    },
+    {
+        type: 'mine',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
+    },
+    {
+        type: 'mine',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
+    },
+    {
+        type: 'mine',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
+    },
+    {
+        type: 'mine',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
+    },
+];
+
+const __MESSAGE2_LIST__ = [
+    {
+        type: 'mine',
+
+        text: 'Hello',
+    },
+
+    {
+        type: 'other',
+
+        text: '2',
     },
 ];
 
 export default function MessageList() {
     return (
         <div className={messageStyles['message-list']}>
-            {__MESSAGE_LIST__.map((message, __INDEX__) =>
+            {__MESSAGE1_LIST__.map((message, __INDEX__) =>
                 message.type === 'mine' ? (
-                    <MessageMine>{message.text}</MessageMine>
+                    <MessageMine key={__INDEX__}>{message.text}</MessageMine>
                 ) : (
-                    <MessageOther>{message.text}</MessageOther>
+                    <MessageOther key={__INDEX__}>{message.text}</MessageOther>
                 )
             )}
         </div>

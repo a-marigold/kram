@@ -19,9 +19,9 @@ export default function Chat() {
         <div className={chatStyles['chat-page']}>
             <div className={chatStyles['chat-box']}>
                 <MessageList />
-
-                <ChatTextArea />
             </div>
+
+            <ChatTextArea className={chatStyles['message-input']} />
         </div>
     );
 }

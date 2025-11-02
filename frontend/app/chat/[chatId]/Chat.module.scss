@@ -1,15 +1,17 @@
 @use '@/styles/mixins.scss' as *;
 
 .chat-page {
-    @include flex-center;
+    @include flex-column;
+
+    align-items: center;
 
     width: 100%;
+
+    height: 100%;
 
     padding: 0 1em;
 
     box-sizing: border-box;
-
-    overflow: auto;
 }
 
 .chat-box {
@@ -17,6 +19,19 @@
     align-items: center;
 
     width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    padding-bottom: 3em;
+
+    overflow: auto;
+
+    @include scrollableY;
+}
+
+.message-input {
+    bottom: 1.25em;
+
     max-width: var(--chat-max-width);
-    max-height: 100%;
 }
