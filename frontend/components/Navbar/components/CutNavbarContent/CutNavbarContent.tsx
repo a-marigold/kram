@@ -1,9 +1,10 @@
 import type { Dispatch } from 'react';
 
-import Link from 'next/link';
 import Image from 'next/image';
 
 import { AnimatePresence, motion } from 'framer-motion';
+
+import CutNavButtons from './CutNavButtons';
 
 import navStyles from '../../Navbar.module.scss';
 import cutnavStyles from './CutNavbarContent.module.scss';
@@ -34,35 +35,7 @@ export default function CutNavbarContent({
                         </svg>
                     </button>
 
-                    <div className={cutnavStyles['nav-buttons-block']}>
-                        <Link
-                            href='/'
-                            prefetch
-                            className={cutnavStyles['nav-button']}
-                            aria-label='Open new chat'
-                        >
-                            <svg
-                                width={20}
-                                height={20}
-                                color='var(--font-color)'
-                            >
-                                <use href='#chat-icon' />
-                            </svg>
-                        </Link>
-
-                        <button
-                            className={cutnavStyles['nav-button']}
-                            aria-label='Search'
-                        >
-                            <svg
-                                width={20}
-                                height={20}
-                                color='var(--font-color)'
-                            >
-                                <use href='#search-icon' />
-                            </svg>
-                        </button>
-                    </div>
+                    <CutNavButtons />
                 </div>
 
                 <div className={cutnavStyles['profile-block']}>
