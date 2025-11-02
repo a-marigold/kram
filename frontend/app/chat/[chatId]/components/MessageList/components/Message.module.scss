@@ -2,10 +2,13 @@
 
 .message-block {
     @include flex-column;
-}
+    gap: 0.25em;
 
-// .message {
-// }
+    &:hover .tool-buttons-block {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
 
 .message-other {
     align-self: flex-start;
@@ -25,4 +28,36 @@
 
     padding: 0.75em 1em;
     box-sizing: border-box;
+}
+
+.tool-buttons-block {
+    align-self: flex-end;
+
+    display: flex;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.1s ease-in-out;
+}
+
+.tool-button {
+    @include flex-center;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: transparent;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--hover-bg-color);
+    }
 }
