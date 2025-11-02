@@ -11,5 +11,7 @@ export type ToolButtonType = {
 
     ariaLabel: string;
 
+    labelId: string;
+
     handler: ToolHandlerType;
 };

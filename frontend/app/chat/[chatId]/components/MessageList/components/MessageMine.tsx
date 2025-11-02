@@ -6,6 +6,8 @@ import type { MessagePropsType, ToolButtonType } from './MessageTypes';
 
 import { toolButtonHandler } from './toolButtonHandler';
 
+import LabelledElement from '@/UI/LabelledElement';
+
 import messageStyles from './Message.module.scss';
 
 export const toolButtonlist: ToolButtonType[] = [
@@ -16,6 +18,8 @@ export const toolButtonlist: ToolButtonType[] = [
             </svg>
         ),
         ariaLabel: 'Copy message',
+        labelId: 'copy-mine',
+
         handler: 'copy',
     },
 
@@ -25,8 +29,8 @@ export const toolButtonlist: ToolButtonType[] = [
                 <use href='#edit-icon' />
             </svg>
         ),
-
         ariaLabel: 'Edit message',
+        labelId: 'edit-mine',
 
         handler: 'edit',
     },
@@ -44,19 +48,25 @@ export function MessageMine({ children }: MessagePropsType) {
 
             <div className={messageStyles['tool-buttons-block']}>
                 {toolButtonlist.map((button, index) => (
-                    <button
-                        key={index}
-                        className={messageStyles['tool-button']}
-                        aria-label={button.ariaLabel}
-                        onClick={() => {
-                            toolButtonHandler(
-                                button.handler,
-                                messageRef.current
-                            );
-                        }}
+                    <LabelledElement
+                        title={button.ariaLabel}
+                        labelId={button.labelId}
+                        position='bottom'
                     >
-                        {button.icon}
-                    </button>
+                        <button
+                            key={index}
+                            className={messageStyles['tool-button']}
+                            aria-labelledby={button.ariaLabel}
+                            onClick={() => {
+                                toolButtonHandler(
+                                    button.handler,
+                                    messageRef.current
+                                );
+                            }}
+                        >
+                            {button.icon}
+                        </button>
+                    </LabelledElement>
                 ))}
             </div>
         </div>

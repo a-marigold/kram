@@ -6,11 +6,11 @@ export function calculateLabelPosition(
     position: LabelPositionType
 ) {
     const {
-        offsetTop: wrapperTop,
-        offsetLeft: wrapperLeft,
-        offsetWidth: wrapperWidth,
-        offsetHeight: wrapperHeight,
-    } = wrapperElement;
+        top: wrapperTop,
+        left: wrapperLeft,
+        width: wrapperWidth,
+        height: wrapperHeight,
+    } = wrapperElement.getBoundingClientRect();
 
     const { offsetWidth: labelWidth, offsetHeight: labelHeight } = labelElement;
 
@@ -24,14 +24,16 @@ export function calculateLabelPosition(
     function calculateRight() {
         const labelTop = wrapperTop + wrapperHeight / 2 - labelHeight / 2;
 
-        const labelLeft = wrapperLeft + wrapperWidth + 20;
+        const labelLeft = wrapperLeft + wrapperWidth + 10;
 
         labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
     }
 
     function calculateBottom() {
-        const labelTop = wrapperTop + wrapperHeight + 20;
+        const labelTop = wrapperTop + wrapperHeight + 10;
         const labelLeft = wrapperLeft + wrapperWidth / 2 - labelWidth / 2;
+
+        console.log(wrapperTop);
 
         labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
     }

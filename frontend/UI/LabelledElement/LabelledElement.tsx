@@ -62,9 +62,11 @@ export default function LabelledElement({
                     >
                         <span className={elementStyles['title']}> {title}</span>
 
-                        <kbd className={elementStyles['subtitle']}>
-                            {subtitle}
-                        </kbd>
+                        {subtitle && (
+                            <kbd className={elementStyles['subtitle']}>
+                                {subtitle}
+                            </kbd>
+                        )}
                     </div>,
 
                     document.body

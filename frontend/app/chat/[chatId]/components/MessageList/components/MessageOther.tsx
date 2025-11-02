@@ -6,6 +6,8 @@ import type { MessagePropsType, ToolButtonType } from './MessageTypes';
 
 import { toolButtonHandler } from './toolButtonHandler';
 
+import LabelledElement from '@/UI/LabelledElement';
+
 import messageStyles from './Message.module.scss';
 
 export const toolButtonList: ToolButtonType[] = [
@@ -17,6 +19,7 @@ export const toolButtonList: ToolButtonType[] = [
         ),
         handler: 'copy',
         ariaLabel: 'Copy message',
+        labelId: 'copy-other',
     },
 
     {
@@ -26,7 +29,8 @@ export const toolButtonList: ToolButtonType[] = [
             </svg>
         ),
         handler: 'like',
-        ariaLabel: 'EditMessage',
+        ariaLabel: 'Like message',
+        labelId: 'copy-other',
     },
 
     {
@@ -36,7 +40,8 @@ export const toolButtonList: ToolButtonType[] = [
             </svg>
         ),
         handler: 'dislike',
-        ariaLabel: 'EditMessage',
+        ariaLabel: 'Dislike message',
+        labelId: 'copy-other',
     },
 ];
 
@@ -53,18 +58,25 @@ export function MessageOther({ children }: MessagePropsType) {
 
             <div className={messageStyles['tool-buttons-block']}>
                 {toolButtonList.map((button, index) => (
-                    <button
-                        key={index}
-                        className={messageStyles['tool-button']}
-                        onClick={() => {
-                            toolButtonHandler(
-                                button.handler,
-                                messageRef.current
-                            );
-                        }}
+                    <LabelledElement
+                        title={button.ariaLabel}
+                        labelId={button.labelId}
+                        position='bottom'
                     >
-                        {button.icon}
-                    </button>
+                        <button
+                            key={index}
+                            className={messageStyles['tool-button']}
+                            aria-labelledby={button.labelId}
+                            onClick={() => {
+                                toolButtonHandler(
+                                    button.handler,
+                                    messageRef.current
+                                );
+                            }}
+                        >
+                            {button.icon}
+                        </button>
+                    </LabelledElement>
                 ))}
             </div>
         </div>

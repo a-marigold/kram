@@ -7,10 +7,9 @@ export default function ProfileBlock() {
         <div className={navStyles['profile-block']}>
             <button
                 className={navStyles['profile-button']}
-                aria-label='Open profile'
+                aria-labelledby='profile-button'
             >
                 <Image src='/globe.svg' alt='' width={24} height={24} />
-
                 <div className={navStyles['name-block']}>
                     <span className={navStyles['name']}> Profile name </span>
                 </div>

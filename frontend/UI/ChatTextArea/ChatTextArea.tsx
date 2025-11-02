@@ -5,6 +5,8 @@ import type { TextareaHTMLAttributes } from 'react';
 
 import { resizeTextarea } from '@/utils/ResizeTextarea';
 
+import LabelledElement from '@/UI/LabelledElement';
+
 import clsx from 'clsx';
 import textStyles from './ChatTextArea.module.scss';
 
@@ -73,24 +75,41 @@ export default function ChatTextArea({
                 )}
 
                 <div className={textStyles['buttons-group']}>
-                    <button
-                        className={textStyles['empty-filled-button']}
-                        aria-label='Enable the microphone'
+                    <LabelledElement
+                        title='Enable the microphone'
+                        labelId='microphone-button'
+                        position='top'
                     >
-                        <svg width={20} height={20} color='var(--font-color)'>
-                            <use href='#microphone-icon' />
-                        </svg>
-                    </button>
-                    <button
-                        className={textStyles['send-button']}
-                        color='var(--dark-foreground-color)'
-                        disabled={!state?.length}
-                        aria-label='Send message'
+                        <button
+                            className={textStyles['empty-filled-button']}
+                            aria-labelledby='microphone-button'
+                        >
+                            <svg
+                                width={20}
+                                height={20}
+                                color='var(--font-color)'
+                            >
+                                <use href='#microphone-icon' />
+                            </svg>
+                        </button>
+                    </LabelledElement>
+
+                    <LabelledElement
+                        title='Enable the microphone'
+                        labelId='send-message-button'
+                        position='top'
                     >
-                        <svg width={20} height={20}>
-                            <use href='#send-arrow-icon' />
-                        </svg>
-                    </button>
+                        <button
+                            className={textStyles['send-button']}
+                            color='var(--dark-foreground-color)'
+                            disabled={!state?.length}
+                            aria-labelledby='send-message-button'
+                        >
+                            <svg width={20} height={20}>
+                                <use href='#send-arrow-icon' />
+                            </svg>
+                        </button>
+                    </LabelledElement>
                 </div>
             </div>
         </div>

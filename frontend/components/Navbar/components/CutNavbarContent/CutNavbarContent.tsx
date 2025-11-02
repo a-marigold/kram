@@ -1,10 +1,9 @@
 import type { Dispatch } from 'react';
 
-import Image from 'next/image';
-
 import { AnimatePresence, motion } from 'framer-motion';
 
 import CutNavButtons from './CutNavButtons';
+import CutProfileBlock from './CutProfileBlock';
 
 import LabelledElement from '@/UI/LabelledElement';
 
@@ -52,19 +51,7 @@ export default function CutNavbarContent({
                     <CutNavButtons />
                 </div>
 
-                <div className={cutnavStyles['profile-block']}>
-                    <button
-                        className={cutnavStyles['nav-button']}
-                        aria-label='Open profile'
-                    >
-                        <Image
-                            src={'/globe.svg'}
-                            alt=''
-                            width={24}
-                            height={24}
-                        />
-                    </button>
-                </div>
+                <CutProfileBlock />
             </motion.div>
         </AnimatePresence>
     );
