@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { getElementScrollbarWidth } from '@/utils/GetElementScrollbarWidth';
 
@@ -32,6 +32,8 @@ export default function Chat() {
         };
     }, []);
 
+    const [message, setMessage] = useState('');
+
     return (
         <>
             <div ref={chatBoxRef} className={chatStyles['chat-box']}>
@@ -41,6 +43,8 @@ export default function Chat() {
             <ChatTextArea
                 className={chatStyles['message-input']}
                 ariaLabel='Input a message'
+                state={message}
+                onChange={(event) => setMessage(event.target.value)}
             />
         </>
     );
