@@ -1,18 +1,9 @@
 @use '@/styles/mixins.scss' as *;
 
-.labelled-wrapper {
-    position: relative;
-
-    &:hover > .label {
-        visibility: visible;
-    }
-}
-
 .label {
-    visibility: hidden;
-
     position: absolute;
     top: 0;
+    left: 0;
 
     @include flex-y-center;
     gap: 0.75em;
@@ -30,30 +21,7 @@
     letter-spacing: -0.75px;
     white-space: nowrap;
 
-    &.position-top {
-        bottom: 120%;
-        left: 50%;
-
-        transform: translateX(-50%);
-    }
-    &.position-right {
-        top: 50%;
-        left: 120%;
-
-        transform: translateY(-50%);
-    }
-    &.position-bottom {
-        top: 100%;
-        left: 50%;
-
-        transform: translateY(-50%);
-    }
-    &.position-left {
-        top: 50%;
-        right: 120%;
-
-        transform: translateY(-50%);
-    }
+    z-index: 10;
 }
 
 .title {

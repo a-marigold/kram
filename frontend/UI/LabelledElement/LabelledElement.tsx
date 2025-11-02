@@ -1,4 +1,12 @@
-import type { ReactNode, ButtonHTMLAttributes } from 'react';
+'use client';
+
+import { useState, useRef, useLayoutEffect } from 'react';
+import { createPortal } from 'react-dom';
+
+import type { ReactNode } from 'react';
+
+import { calculateLabelPosition } from './calculateLabelPosition';
+import type { LabelPositionType } from './calculateLabelPosition';
 
 import elementStyles from './LabelledElement.module.scss';
 
@@ -21,19 +29,46 @@ export default function LabelledElement({
 
     children,
 }: LabelledButtonProps) {
-    return (
-        <div className={elementStyles['labelled-wrapper']}>
-            {children}
+    const [showLabel, setShowLabel] = useState(false);
 
+    const labelRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        if (!labelRef.current || !wrapperRef.current || !showLabel) return;
+
+        calculateLabelPosition(labelRef.current, wrapperRef.current, position);
+    }, [showLabel]);
+
+    return (
+        <>
             <div
-                id={labelId}
-                className={`${elementStyles['label']} ${
-                    elementStyles[`position-${position}`]
-                }`}
+                ref={wrapperRef}
+                className={elementStyles['labelled-wrapper']}
+                onMouseEnter={() => {
+                    setShowLabel(true);
+                }}
+                onMouseLeave={() => setShowLabel(false)}
             >
-                <span className={elementStyles['title']}> {title}</span>
-                <kbd className={elementStyles['subtitle']}> {subtitle}</kbd>
+                {children}
             </div>
-        </div>
+
+            {showLabel &&
+                createPortal(
+                    <div
+                        ref={labelRef}
+                        id={labelId}
+                        className={elementStyles['label']}
+                    >
+                        <span className={elementStyles['title']}> {title}</span>
+
+                        <kbd className={elementStyles['subtitle']}>
+                            {subtitle}
+                        </kbd>
+                    </div>,
+
+                    document.body
+                )}
+        </>
     );
 }

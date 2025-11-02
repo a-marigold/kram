@@ -17,7 +17,6 @@ export default function CutNavButtons() {
                     href='/'
                     prefetch
                     className={cutnavStyles['nav-button']}
-                    aria-label='Open new chat'
                     aria-labelledby='new-chat-button'
                 >
                     <svg width={20} height={20} color='var(--font-color)'>
@@ -26,11 +25,21 @@ export default function CutNavButtons() {
                 </Link>
             </LabelledElement>
 
-            <button className={cutnavStyles['nav-button']} aria-label='Search'>
-                <svg width={20} height={20} color='var(--font-color)'>
-                    <use href='#search-icon' />
-                </svg>
-            </button>
+            <LabelledElement
+                labelId='new-chat-button'
+                title='Search'
+                subtitle='Ctrl + K'
+                position='right'
+            >
+                <button
+                    className={cutnavStyles['nav-button']}
+                    aria-label='Search'
+                >
+                    <svg width={20} height={20} color='var(--font-color)'>
+                        <use href='#search-icon' />
+                    </svg>
+                </button>
+            </LabelledElement>
         </div>
     );
 }
