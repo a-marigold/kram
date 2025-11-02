@@ -2,7 +2,6 @@
 
 .primary-link {
     @include flex-y-center;
-    justify-content: space-between;
     gap: 0.5em;
 
     width: 100%;
@@ -21,10 +20,13 @@
     cursor: pointer;
 
     &.active {
-        background-color: var(--hover-bg-color);
+        background-color: var(--active-btn-bg);
     }
     &:hover {
         background-color: var(--hover-bg-color);
+        & .subtitle {
+            display: block;
+        }
     }
     &:active {
         background-color: var(--active-bg-color);
@@ -36,8 +38,21 @@
 }
 
 .title {
-    font-size: var(--m-font-size);
     color: var(--font-color);
+    font-size: var(--m-font-size);
+    white-space: nowrap;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.subtitle {
+    display: none;
+    margin-left: auto;
+
+    color: var(--secondary-font-color);
+    font-size: var(--m-font-size);
+    font-family: var(--font-geist-sans);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

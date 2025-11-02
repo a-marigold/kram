@@ -16,6 +16,8 @@
     padding: var(--d-btn-padding);
     box-sizing: border-box;
 
+    font-size: 1rem;
+
     cursor: pointer;
 
     &:hover {
@@ -48,8 +50,8 @@
     display: none;
 
     color: var(--secondary-font-color);
-    font-family: var(--font-geist-sans);
     font-size: var(--m-font-size);
+    font-family: var(--font-geist-sans);
     font-size: 0.75rem;
     white-space: nowrap;
 }
