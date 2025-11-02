@@ -1,0 +1,51 @@
+@use '@/styles/mixins.scss' as *;
+
+.labelled-wrapper {
+    position: relative;
+
+    &:hover > .label {
+        visibility: visible;
+    }
+}
+
+.label {
+    visibility: hidden;
+
+    position: absolute;
+    top: 0;
+
+    @include flex-y-center;
+
+    height: 12px;
+
+    background-color: var(--dark-foreground-color);
+
+    border-radius: 6px;
+
+    padding: 0.75em 0.5em;
+    box-sizing: border-box;
+
+    font-size: 0.8rem;
+    white-space: nowrap;
+
+    &.position-top {
+        bottom: 100%;
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+    &.position-left {
+        top: 50%;
+        left: 100%;
+
+        transform: translateY(-50%);
+    }
+}
+
+.title {
+    color: var(--font-color);
+}
+.subtitle {
+    color: var(--sub-font-color);
+    font-family: var(--font-geist-sans);
+}
