@@ -1,15 +1,17 @@
 @use '@/styles/mixins.scss' as *;
 
-.home {
+.home-page {
     @include flex-center;
 
     width: 100%;
 
     padding: 0 2em;
+
     box-sizing: border-box;
 }
 
 .main-content {
     width: 100%;
+
     max-width: var(--chat-max-width);
 }

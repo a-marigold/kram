@@ -1,0 +1,28 @@
+@use '@/styles/mixins.scss' as *;
+
+.message-block {
+    @include flex-column;
+}
+
+// .message {
+// }
+
+.message-other {
+    align-self: flex-start;
+
+    width: 100%;
+}
+
+.message-mine {
+    align-self: flex-end;
+
+    background-color: var(--message-mine-bg-color);
+
+    width: fit-content;
+    max-width: 450px;
+
+    border-radius: 18px;
+
+    padding: 0.75em 1em;
+    box-sizing: border-box;
+}

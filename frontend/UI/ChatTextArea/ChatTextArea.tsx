@@ -3,20 +3,20 @@
 import { useRef } from 'react';
 import type { TextareaHTMLAttributes } from 'react';
 
-import { getRandomArrayElement } from '@/utils/GetRandomArrayElement';
 import { resizeTextarea } from '@/utils/ResizeTextarea';
 
-import { badgeColorList } from './badgeColorList';
-
 import clsx from 'clsx';
-
 import textStyles from './ChatTextArea.module.scss';
 
 interface ChatTextAreaProps
     extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     state?: string;
     ariaLabel: string;
-    badge?: string;
+    badge?: {
+        text: string;
+        bgColor: string;
+        fontColor: string;
+    };
 }
 export default function ChatTextArea({
     state,
@@ -25,15 +25,15 @@ export default function ChatTextArea({
 
     badge,
 
+    className,
+
     ...attributes
 }: ChatTextAreaProps) {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-    const currentBadgeColors = getRandomArrayElement(badgeColorList);
-
     return (
         <div
-            className={textStyles['chat-input-block']}
+            className={clsx(textStyles['chat-input-block'], className)}
             aria-label={ariaLabel}
             onClick={() => {
                 textAreaRef.current?.focus();
@@ -41,14 +41,14 @@ export default function ChatTextArea({
         >
             <textarea
                 ref={textAreaRef}
+                placeholder='Message'
+                {...attributes}
                 className={clsx(
                     textStyles['chat-input'],
                     textAreaRef.current &&
                         textAreaRef.current.scrollHeight >= 320 &&
                         textStyles['bounded']
                 )}
-                placeholder='Message'
-                {...attributes}
                 value={state}
                 onChange={(event) => {
                     resizeTextarea(event.target);
@@ -58,16 +58,16 @@ export default function ChatTextArea({
             />
 
             <div className={textStyles['tools-block']}>
-                {badge && (
+                {badge?.text && (
                     <div className={textStyles['badge-block']}>
                         <span
                             className={textStyles['badge']}
                             style={{
-                                backgroundColor: currentBadgeColors.bgColor,
-                                color: currentBadgeColors.fontColor,
+                                backgroundColor: badge.bgColor,
+                                color: badge.fontColor,
                             }}
                         >
-                            {badge}
+                            {badge.text}
                         </span>
                     </div>
                 )}

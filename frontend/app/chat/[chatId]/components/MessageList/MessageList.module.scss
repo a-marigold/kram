@@ -1,0 +1,12 @@
+@use '@/styles/mixins.scss' as *;
+
+.message-list {
+    @include flex-column;
+    gap: 1em;
+
+    width: 100%;
+
+    padding-bottom: 2em;
+
+    overflow: auto;
+}
