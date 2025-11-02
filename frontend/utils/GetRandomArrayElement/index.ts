@@ -1,1 +1,1 @@
-export * from './resizeTextarea';
+export * from './getRandomArrayElement';

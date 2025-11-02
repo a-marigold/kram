@@ -40,6 +40,19 @@ body * {
 
     --input-bg-color: #303030;
 
+    // badge colors (for ChatTextArea UI component)
+    --badge-purple-bg: #9162c025;
+    --badge-purple-font-color: #9162c0;
+
+    --badge-green-bg: #459d5d25;
+    --badge-green-font-color: #459d5d;
+
+    --badge-orange-bg: #d1802425;
+    --badge-orange-font-color: #d18024;
+
+    --badge-blue-bg: #3b88e925;
+    --badge-blue-font-color: #3b88e9;
+
     // sizes
     // prefix "d" means "default"
     --d-btn-padding: 0.375em 0.625em;

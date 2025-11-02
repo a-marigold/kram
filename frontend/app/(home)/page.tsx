@@ -18,7 +18,7 @@ export default function Home() {
                     ariaLabel='Input a message'
                     state={message}
                     onChange={(event) => setMessage(event.target.value)}
-                    chatName={findBySymbol(message, '@')}
+                    badge={findBySymbol(message, '@')}
                 />
             </div>
         </main>

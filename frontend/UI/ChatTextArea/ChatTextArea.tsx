@@ -1,9 +1,12 @@
 'use client';
 
 import { useRef } from 'react';
-import type { ReactNode, TextareaHTMLAttributes } from 'react';
+import type { TextareaHTMLAttributes } from 'react';
 
+import { getRandomArrayElement } from '@/utils/GetRandomArrayElement';
 import { resizeTextarea } from '@/utils/ResizeTextarea';
+
+import { badgeColorList } from './badgeColorList';
 
 import clsx from 'clsx';
 
@@ -13,18 +16,20 @@ interface ChatTextAreaProps
     extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     state?: string;
     ariaLabel: string;
-    chatName?: string;
+    badge?: string;
 }
 export default function ChatTextArea({
     state,
 
     ariaLabel,
 
-    chatName,
+    badge,
 
     ...attributes
 }: ChatTextAreaProps) {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+    const currentBadgeColors = getRandomArrayElement(badgeColorList);
 
     return (
         <div
@@ -53,10 +58,16 @@ export default function ChatTextArea({
             />
 
             <div className={textStyles['tools-block']}>
-                {chatName && (
-                    <div className={textStyles['chatname-block']}>
-                        <span className={textStyles['chatname']}>
-                            {chatName}
+                {badge && (
+                    <div className={textStyles['badge-block']}>
+                        <span
+                            className={textStyles['badge']}
+                            style={{
+                                backgroundColor: currentBadgeColors.bgColor,
+                                color: currentBadgeColors.fontColor,
+                            }}
+                        >
+                            {badge}
                         </span>
                     </div>
                 )}
