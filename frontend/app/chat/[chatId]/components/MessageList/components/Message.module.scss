@@ -8,17 +8,21 @@
         opacity: 1;
         pointer-events: all;
     }
+
+    &.mine {
+        align-items: flex-end;
+    }
+
+    &.other {
+        align-items: flex-start;
+    }
 }
 
 .message-other {
-    align-self: flex-start;
-
     width: 100%;
 }
 
 .message-mine {
-    align-self: flex-end;
-
     background-color: var(--message-mine-bg-color);
 
     width: fit-content;
@@ -31,8 +35,6 @@
 }
 
 .tool-buttons-block {
-    align-self: flex-end;
-
     display: flex;
 
     opacity: 0;

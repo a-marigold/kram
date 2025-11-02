@@ -1,16 +1,22 @@
-import type { MessagePropsType } from './MessagePropsType';
+'use client';
+
+import { useRef } from 'react';
+
+import type { MessagePropsType, ToolButtonType } from './MessageTypes';
+
+import { toolButtonHandler } from './toolButtonHandler';
 
 import messageStyles from './Message.module.scss';
 
-export const toolButtonlist = [
+export const toolButtonlist: ToolButtonType[] = [
     {
         icon: (
             <svg width={20} height={20}>
                 <use href='#clipboard-icon' />
             </svg>
         ),
-
         ariaLabel: 'Copy message',
+        handler: 'copy',
     },
 
     {
@@ -21,15 +27,18 @@ export const toolButtonlist = [
         ),
 
         ariaLabel: 'Edit message',
+
+        handler: 'edit',
     },
 ];
-
 export function MessageMine({ children }: MessagePropsType) {
+    const messageRef = useRef<HTMLDivElement>(null);
+
     return (
-        <div className={messageStyles['message-block']}>
-            <div
-                className={`${messageStyles['message-mine']} ${messageStyles['message']}`}
-            >
+        <div
+            className={`${messageStyles['message-block']} ${messageStyles['mine']}`}
+        >
+            <div ref={messageRef} className={messageStyles['message-mine']}>
                 {children}
             </div>
 
@@ -39,6 +48,12 @@ export function MessageMine({ children }: MessagePropsType) {
                         key={index}
                         className={messageStyles['tool-button']}
                         aria-label={button.ariaLabel}
+                        onClick={() => {
+                            toolButtonHandler(
+                                button.handler,
+                                messageRef.current
+                            );
+                        }}
                     >
                         {button.icon}
                     </button>
