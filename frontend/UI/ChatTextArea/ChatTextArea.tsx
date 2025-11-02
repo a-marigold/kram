@@ -46,7 +46,7 @@ export default function ChatTextArea({
                 className={clsx(
                     textStyles['chat-input'],
                     textAreaRef.current &&
-                        textAreaRef.current.scrollHeight >= 320 &&
+                        textAreaRef.current.scrollHeight >= 319 &&
                         textStyles['bounded']
                 )}
                 value={state}

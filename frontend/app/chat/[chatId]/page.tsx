@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 
-import MessageList from './components/MessageList/MessageList';
-
-import ChatTextArea from '@/UI/ChatTextArea';
+import Chat from './components/Chat/Chat';
 
 import chatStyles from './Chat.module.scss';
 
@@ -14,14 +12,10 @@ export const metadata: Metadata = {
     },
 };
 
-export default function Chat() {
+export default function ChatPage() {
     return (
         <div className={chatStyles['chat-page']}>
-            <div className={chatStyles['chat-box']}>
-                <MessageList />
-            </div>
-
-            <ChatTextArea className={chatStyles['message-input']} />
+            <Chat />
         </div>
     );
 }

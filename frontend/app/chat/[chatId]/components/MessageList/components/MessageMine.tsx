@@ -2,7 +2,7 @@ import type { MessagePropsType } from './MessagePropsType';
 
 import messageStyles from './Message.module.scss';
 
-export default function MessageMine({ children }: MessagePropsType) {
+export function MessageMine({ children }: MessagePropsType) {
     return (
         <div className={messageStyles['message-block']}>
             <div

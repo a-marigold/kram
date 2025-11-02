@@ -1,5 +1,4 @@
-import MessageMine from './components/MessageMine';
-import MessageOther from './components/MessageOther';
+import { MessageMine, MessageOther } from './components';
 
 import messageStyles from './MessageList.module.scss';
 
@@ -144,7 +143,7 @@ const __MESSAGE2_LIST__ = [
 export default function MessageList() {
     return (
         <div className={messageStyles['message-list']}>
-            {__MESSAGE1_LIST__.map((message, __INDEX__) =>
+            {__MESSAGE2_LIST__.map((message, __INDEX__) =>
                 message.type === 'mine' ? (
                     <MessageMine key={__INDEX__}>{message.text}</MessageMine>
                 ) : (

@@ -26,12 +26,10 @@
     padding-bottom: 3em;
 
     overflow: auto;
-
     @include scrollableY;
 }
 
 .message-input {
     bottom: 1.25em;
-
     max-width: var(--chat-max-width);
 }
