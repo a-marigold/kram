@@ -4,7 +4,7 @@
     @include flex-column;
     gap: 0.25em;
 
-    &:hover .tool-buttons-block {
+    &:hover > .tool-buttons-block {
         opacity: 1;
         pointer-events: all;
     }

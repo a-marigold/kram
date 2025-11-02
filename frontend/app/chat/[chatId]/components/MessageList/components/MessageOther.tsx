@@ -54,6 +54,7 @@ export function MessageOther({ children }: MessagePropsType) {
             <div className={messageStyles['tool-buttons-block']}>
                 {toolButtonList.map((button, index) => (
                     <button
+                        key={index}
                         className={messageStyles['tool-button']}
                         onClick={() => {
                             toolButtonHandler(

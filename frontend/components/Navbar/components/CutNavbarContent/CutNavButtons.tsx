@@ -10,7 +10,8 @@ export default function CutNavButtons() {
             <LabelledElement
                 labelId='new-chat-button'
                 title='Open new chat'
-                position='left'
+                subtitle='Ctrl + Shift + O'
+                position='right'
             >
                 <Link
                     href='/'
