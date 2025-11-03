@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Inter } from 'next/font/google';
+import { Geist, Inter } from 'next/font/google';
 
 import Navbar from './(root-layout)/components/Navbar';
+import ModalRoot from './(root-layout)/components/ModalRoot';
 
 import SvgSprites from '@/UI/SvgSprites';
 
@@ -17,15 +18,10 @@ const interVariable = Inter({
     subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-    variable: '--font-geist-mono',
-    subsets: ['latin'],
-});
-
 export const metadata: Metadata = {
-    title: 'Kram',
+    title: 'kramm',
     openGraph: {
-        title: 'Kram',
+        title: 'kramm',
     },
 };
 
@@ -37,12 +33,14 @@ export default function RootLayout({
     return (
         <html
             lang='en'
-            className={`${geistSans.variable} ${geistMono.variable} ${interVariable.variable}`}
+            className={`${geistSans.variable} ${interVariable.variable}`}
         >
             <body>
                 <SvgSprites />
 
                 <Navbar />
+
+                <ModalRoot />
 
                 {children}
             </body>

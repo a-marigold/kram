@@ -1,1 +1,1 @@
-export type ModalWindow = 'search' | 'settings' | null;
+export type ModalWindow = 'search' | 'settings';

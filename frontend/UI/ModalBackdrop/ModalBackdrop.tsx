@@ -2,13 +2,10 @@
 
 import type { ReactNode } from 'react';
 
-import LabelledElement from '@/UI/LabelledElement';
-
-import clsx from 'clsx';
 import modalStyles from './ModalBackdrop.module.scss';
 
 interface ModalBackdropProps {
-    backdropType: 'empty' | 'blur';
+    backdropType?: 'empty' | 'blur';
 
     closeModal: () => void;
 
@@ -16,7 +13,7 @@ interface ModalBackdropProps {
 }
 
 export default function ModalBackdrop({
-    backdropType,
+    backdropType = 'blur',
     closeModal,
     children,
 }: ModalBackdropProps) {
