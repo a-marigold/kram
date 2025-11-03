@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
 
 import { getElementScrollbarWidth } from '@/utils/GetElementScrollbarWidth';
 
@@ -18,7 +18,7 @@ export default function Chat() {
         element.style.paddingLeft = `${getElementScrollbarWidth(element)}px`;
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!chatBoxRef.current) return;
 
         const resizeObserver = new ResizeObserver(() => {
