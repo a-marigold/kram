@@ -1,18 +1,18 @@
 import type { ReactNode } from 'react';
-import type { ModalWindow } from '@/types/ModalTypes';
+import type { ModalList, ModalId } from '@/types/ModalTypes';
 
 import SearchModal from '../SearchModal/SearchModal';
-import type { SearchModalProps } from '../SearchModal/SearchModal';
 
-interface Modal {
-    id: ModalWindow;
-    component: (props: SearchModalProps) => ReactNode;
+interface ModalComponent {
+    id: ModalId;
+
+    component: (props: ModalList[ModalId]) => ReactNode;
 }
 
-export const modalList: Modal[] = [
+export const modalList: ModalComponent[] = [
     {
         id: 'search',
 
-        component: (props: { text: string }) => <SearchModal {...props} />,
+        component: (props) => <SearchModal {...props} />,
     },
 ];

@@ -1,17 +1,16 @@
-import _COMPONENT_Styles from './_COMPONENT_.module.scss';
+import type { BaseModalProps } from '@/types/ModalTypes';
 
 import ModalBackdrop from '@/UI/ModalBackdrop';
 
-export interface SearchModalProps {
+import _COMPONENT_Styles from './_COMPONENT_.module.scss';
+
+export interface SearchModalProps extends BaseModalProps {
     text: string;
 }
-export default function SearchModal({ text }: SearchModalProps) {
+export default function SearchModal({ text, closeModal }: SearchModalProps) {
     return (
-        <ModalBackdrop
-            closeModal={() => alert('Temporary!')}
-            backdropType='empty'
-        >
-            <div style={{ width: 200, height: 800, background: 'red' }}>
+        <ModalBackdrop onClose={closeModal} backdropType='empty'>
+            <div style={{ width: 200, height: 200, background: 'red' }}>
                 Hello
             </div>
         </ModalBackdrop>

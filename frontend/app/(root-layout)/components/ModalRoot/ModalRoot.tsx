@@ -17,7 +17,6 @@ export default function ModalRoot() {
 
     const currentModal = modalList.find((modal) => modal.id === currentModalId);
 
-    console.log(currentModalProps);
     useEffect(() => {
         if (currentModalId) {
             lockElementScroll(document.body);

@@ -1,5 +1,10 @@
+import type { ModalStore } from '@/store/ModalStore/useModalStore';
+
 import type { SearchModalProps } from '@/app/(root-layout)/components/SearchModal';
 
-export type ModalProps = SearchModalProps;
+export type BaseModalProps = Pick<ModalStore, 'closeModal'>;
 
-export type ModalWindow = 'search' | 'settings';
+export interface ModalList {
+    search: SearchModalProps;
+}
+export type ModalId = keyof ModalList;

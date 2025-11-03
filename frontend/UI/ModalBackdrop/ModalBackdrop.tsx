@@ -7,14 +7,14 @@ import modalStyles from './ModalBackdrop.module.scss';
 interface ModalBackdropProps {
     backdropType?: 'empty' | 'blur';
 
-    closeModal: () => void;
+    onClose: () => void;
 
     children: ReactNode;
 }
 
 export default function ModalBackdrop({
     backdropType = 'blur',
-    closeModal,
+    onClose,
     children,
 }: ModalBackdropProps) {
     return (
@@ -23,7 +23,7 @@ export default function ModalBackdrop({
                 modalStyles[`type-${backdropType}`]
             }`}
             onClick={() => {
-                closeModal();
+                onClose();
             }}
         >
             {children}

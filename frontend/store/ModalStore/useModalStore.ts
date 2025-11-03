@@ -2,13 +2,14 @@
 
 import { create } from 'zustand';
 
-import type { ModalWindow, ModalProps } from '@/types/ModalTypes';
+import type { ModalList, ModalId } from '@/types/ModalTypes';
 
-interface ModalStore {
-    currentModalId: ModalWindow | null;
-    props: ModalProps | null;
+export interface ModalStore {
+    currentModalId: ModalId | null;
+    props: ModalList[ModalId] | null;
 
-    openModal: (modalId: ModalWindow, props?: ModalProps) => void;
+    openModal: (modalId: ModalId, props: ModalList[ModalId]) => void;
+
     closeModal: () => void;
 }
 
