@@ -59,12 +59,12 @@ export function MessageOther({ children }: MessagePropsType) {
             <div className={messageStyles['tool-buttons-block']}>
                 {toolButtonList.map((button, index) => (
                     <LabelledElement
+                        key={index}
                         title={button.ariaLabel}
                         labelId={button.labelId}
                         position='bottom'
                     >
                         <button
-                            key={index}
                             className={messageStyles['tool-button']}
                             aria-labelledby={button.labelId}
                             onClick={() => {

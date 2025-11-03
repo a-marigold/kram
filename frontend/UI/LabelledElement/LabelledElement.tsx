@@ -16,7 +16,7 @@ interface LabelledButtonProps {
     subtitle?: string;
 
     children: ReactNode;
-    position?: 'top' | 'right' | 'bottom' | 'left';
+    position?: LabelPositionType;
 }
 
 export default function LabelledElement({
@@ -38,7 +38,7 @@ export default function LabelledElement({
         if (!labelRef.current || !wrapperRef.current || !showLabel) return;
 
         calculateLabelPosition(labelRef.current, wrapperRef.current, position);
-    }, [showLabel]);
+    }, [showLabel, position]);
 
     return (
         <>
