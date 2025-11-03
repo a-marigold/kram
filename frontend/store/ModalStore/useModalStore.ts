@@ -2,17 +2,17 @@
 
 import { create } from 'zustand';
 
-import type { ModalWindow } from '@/types/ModalWindow';
+import type { ModalWindow, ModalProps } from '@/types/ModalTypes';
 
-interface ModalStore<TProps> {
+interface ModalStore {
     currentModalId: ModalWindow | null;
-    props: TProps | null;
+    props: ModalProps | null;
 
-    openModal: (modalId: ModalWindow, props?: TProps) => void;
+    openModal: (modalId: ModalWindow, props?: ModalProps) => void;
     closeModal: () => void;
 }
 
-export const useModalStore = create<ModalStore<null>>()((set) => ({
+export const useModalStore = create<ModalStore>()((set) => ({
     currentModalId: null,
 
     props: null,

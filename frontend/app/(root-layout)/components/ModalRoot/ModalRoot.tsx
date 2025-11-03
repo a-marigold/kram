@@ -11,15 +11,13 @@ import {
 
 import { modalList } from './modalList';
 
-// __
-import ModalBackdrop from '@/UI/ModalBackdrop';
-// __
-
 export default function ModalRoot() {
     const currentModalId = useModalStore((state) => state.currentModalId);
+    const currentModalProps = useModalStore((state) => state.props);
 
     const currentModal = modalList.find((modal) => modal.id === currentModalId);
 
+    console.log(currentModalProps);
     useEffect(() => {
         if (currentModalId) {
             lockElementScroll(document.body);
@@ -29,9 +27,6 @@ export default function ModalRoot() {
             unlockElementScroll(document.body);
         };
     }, [currentModalId]);
-    return (
-        <ModalBackdrop closeModal={() => alert('a')}>
-            {currentModal?.component}
-        </ModalBackdrop>
-    );
+
+    return currentModalProps && currentModal?.component(currentModalProps);
 }
