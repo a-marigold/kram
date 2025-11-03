@@ -30,13 +30,12 @@ export default function CutNavbarContent({
                     <LabelledElement
                         title='Open navigation panel'
                         subtitle='Ctrl + N + P'
-                        labelId='navbar-toggle-button'
                         position='right'
                     >
                         <button
                             className={cutnavStyles['sidebar-button']}
                             onClick={() => setShowFullNavbar(true)}
-                            aria-labelledby='navbar-toggle-button'
+                            aria-label='Open navigation panel Ctrl + N + P'
                         >
                             <svg
                                 width={20}

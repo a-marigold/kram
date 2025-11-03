@@ -8,10 +8,6 @@ export type ToolHandlerType = 'copy' | 'edit' | 'like' | 'dislike';
 
 export type ToolButtonType = {
     icon: ReactNode;
-
     ariaLabel: string;
-
-    labelId: string;
-
     handler: ToolHandlerType;
 };

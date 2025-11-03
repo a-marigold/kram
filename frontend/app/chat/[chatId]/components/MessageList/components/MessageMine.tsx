@@ -18,7 +18,6 @@ export const toolButtonlist: ToolButtonType[] = [
             </svg>
         ),
         ariaLabel: 'Copy message',
-        labelId: 'copy-mine',
 
         handler: 'copy',
     },
@@ -30,7 +29,6 @@ export const toolButtonlist: ToolButtonType[] = [
             </svg>
         ),
         ariaLabel: 'Edit message',
-        labelId: 'edit-mine',
 
         handler: 'edit',
     },
@@ -51,12 +49,11 @@ export function MessageMine({ children }: MessagePropsType) {
                     <LabelledElement
                         key={index}
                         title={button.ariaLabel}
-                        labelId={button.labelId}
                         position='bottom'
                     >
                         <button
                             className={messageStyles['tool-button']}
-                            aria-labelledby={button.ariaLabel}
+                            aria-label={button.ariaLabel}
                             onClick={() => {
                                 toolButtonHandler(
                                     button.handler,

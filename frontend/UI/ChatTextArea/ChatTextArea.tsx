@@ -81,12 +81,11 @@ export default function ChatTextArea({
                 <div className={textStyles['buttons-group']}>
                     <LabelledElement
                         title='Enable the microphone'
-                        labelId='microphone-button'
                         position='top'
                     >
                         <button
                             className={textStyles['empty-filled-button']}
-                            aria-labelledby='microphone-button'
+                            aria-label='Enable the microphone'
                         >
                             <svg
                                 width={20}
@@ -98,16 +97,12 @@ export default function ChatTextArea({
                         </button>
                     </LabelledElement>
 
-                    <LabelledElement
-                        title='Enable the microphone'
-                        labelId='send-message-button'
-                        position='top'
-                    >
+                    <LabelledElement title='Send message' position='top'>
                         <button
                             className={textStyles['send-button']}
                             color='var(--dark-foreground-color)'
                             disabled={!state?.length}
-                            aria-labelledby='send-message-button'
+                            aria-label='Send message'
                         >
                             <svg width={20} height={20}>
                                 <use href='#send-arrow-icon' />

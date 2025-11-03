@@ -12,12 +12,12 @@ const chatList = [
     {
         id: '96697d9d-2749-4ced-9162-0701abf4337a',
 
-        name: 'Elik',
+        name: 'example',
     },
     {
         id: '96697d9d-2749-4ced-9162-0701abf4337b',
 
-        name: '10 "Г"',
+        name: 'example2',
     },
 ];
 
@@ -58,7 +58,6 @@ export default function ChatList() {
                     {chatList.map((chat, index) => (
                         <li key={index} className={navStyles['chat-link']}>
                             <PrimaryLink
-                                prefetch={false}
                                 replace
                                 shallow
                                 title={chat.name}

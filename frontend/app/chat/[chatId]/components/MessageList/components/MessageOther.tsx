@@ -19,7 +19,6 @@ export const toolButtonList: ToolButtonType[] = [
         ),
         handler: 'copy',
         ariaLabel: 'Copy message',
-        labelId: 'copy-other',
     },
 
     {
@@ -30,7 +29,6 @@ export const toolButtonList: ToolButtonType[] = [
         ),
         handler: 'like',
         ariaLabel: 'Like message',
-        labelId: 'copy-other',
     },
 
     {
@@ -41,7 +39,6 @@ export const toolButtonList: ToolButtonType[] = [
         ),
         handler: 'dislike',
         ariaLabel: 'Dislike message',
-        labelId: 'copy-other',
     },
 ];
 
@@ -61,12 +58,11 @@ export function MessageOther({ children }: MessagePropsType) {
                     <LabelledElement
                         key={index}
                         title={button.ariaLabel}
-                        labelId={button.labelId}
                         position='bottom'
                     >
                         <button
                             className={messageStyles['tool-button']}
-                            aria-labelledby={button.labelId}
+                            aria-labelledby={button.ariaLabel}
                             onClick={() => {
                                 toolButtonHandler(
                                     button.handler,

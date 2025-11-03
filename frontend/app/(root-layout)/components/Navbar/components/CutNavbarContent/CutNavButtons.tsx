@@ -8,7 +8,6 @@ export default function CutNavButtons() {
     return (
         <div className={cutnavStyles['nav-buttons-block']}>
             <LabelledElement
-                labelId='new-chat-button'
                 title='Open new chat'
                 subtitle='Ctrl + Shift + O'
                 position='right'
@@ -17,7 +16,7 @@ export default function CutNavButtons() {
                     href='/'
                     prefetch
                     className={cutnavStyles['nav-button']}
-                    aria-labelledby='new-chat-button'
+                    aria-label='Open new chat Ctrl + Shift + O'
                 >
                     <svg width={20} height={20} color='var(--font-color)'>
                         <use href='#chat-icon' />
@@ -26,14 +25,13 @@ export default function CutNavButtons() {
             </LabelledElement>
 
             <LabelledElement
-                labelId='new-chat-button'
                 title='Search'
                 subtitle='Ctrl + K'
                 position='right'
             >
                 <button
                     className={cutnavStyles['nav-button']}
-                    aria-label='Search'
+                    aria-label='Search Ctrl + K'
                 >
                     <svg width={20} height={20} color='var(--font-color)'>
                         <use href='#search-icon' />

@@ -7,11 +7,7 @@ import cutnavStyles from './CutNavbarContent.module.scss';
 export default function CutProfileBlock() {
     return (
         <div className={cutnavStyles['profile-block']}>
-            <LabelledElement
-                title='Open profile'
-                labelId='profile-button'
-                position='right'
-            >
+            <LabelledElement title='Open profile' position='right'>
                 <button
                     className={cutnavStyles['nav-button']}
                     aria-label='Open profile'
