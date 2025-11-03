@@ -1,17 +1,18 @@
 'use client';
 
 import { useState, useRef, useLayoutEffect } from 'react';
+
 import { createPortal } from 'react-dom';
 
 import type { ReactNode } from 'react';
 
 import { calculateLabelPosition } from './calculateLabelPosition';
+
 import type { LabelPositionType } from './calculateLabelPosition';
 
 import elementStyles from './LabelledElement.module.scss';
 
 interface LabelledButtonProps {
-    labelId: string;
     title: string;
     subtitle?: string;
 
@@ -20,8 +21,6 @@ interface LabelledButtonProps {
 }
 
 export default function LabelledElement({
-    labelId,
-
     title,
     subtitle,
 
@@ -55,11 +54,7 @@ export default function LabelledElement({
 
             {showLabel &&
                 createPortal(
-                    <div
-                        ref={labelRef}
-                        id={labelId}
-                        className={elementStyles['label']}
-                    >
+                    <div ref={labelRef} className={elementStyles['label']}>
                         <span className={elementStyles['title']}> {title}</span>
 
                         {subtitle && (
