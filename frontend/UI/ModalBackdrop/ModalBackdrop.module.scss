@@ -1,0 +1,16 @@
+@use '@/styles/mixins.scss' as *;
+
+.modal-bakdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    @include flex-center;
+
+    &.blur {
+        background-color: oklab(0 none none/.5);
+    }
+}
