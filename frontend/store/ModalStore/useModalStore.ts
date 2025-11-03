@@ -2,18 +2,18 @@
 
 import { create } from 'zustand';
 
-type ModalWindow = 'search' | 'settings' | null;
+import type { ModalWindow } from '@/types/ModalWindow';
 
 interface ModalStore {
-    currentModal: ModalWindow;
+    currentModalId: ModalWindow;
 
     setCurrentModal: (
-        modal: ModalWindow,
+        modalId: ModalWindow,
         props?: { [key: string]: any }
     ) => void;
 }
 
-const useModalStore = create<ModalStore>()((set) => ({
-    currentModal: null,
-    setCurrentModal: (modal) => set((state) => ({ currentModal: modal })),
+export const useModalStore = create<ModalStore>()((set) => ({
+    currentModalId: null,
+    setCurrentModal: (modalId) => set({ currentModalId: modalId }),
 }));

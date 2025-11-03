@@ -51,6 +51,7 @@ export default function ChatTextArea({
                     textStyles['chat-input'],
                     isBounded && textStyles['bounded']
                 )}
+                rows={1}
                 value={state}
                 onChange={(event) => {
                     resizeTextarea(event.target);
