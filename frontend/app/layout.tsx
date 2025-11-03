@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Inter } from 'next/font/google';
 
-import Navbar from '@/components/Navbar';
+import Navbar from './(root-layout)/components/Navbar';
 
 import SvgSprites from '@/UI/SvgSprites';
 

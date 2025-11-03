@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import FullNavbarContent from './components/FullNavbarContent/FullNavbarContent';
+import FullNavbarContent from './components/FullNavbarContent';
 
 import CutNavbarContent from './components/CutNavbarContent';
 
