@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import type { TextareaHTMLAttributes } from 'react';
 
 import { resizeTextarea } from '@/utils/ResizeTextarea';
@@ -33,6 +33,8 @@ export default function ChatTextArea({
 }: ChatTextAreaProps) {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
+    const [isBounded, setIsBounded] = useState(false);
+
     return (
         <div
             className={clsx(textStyles['chat-input-block'], className)}
@@ -47,13 +49,15 @@ export default function ChatTextArea({
                 {...attributes}
                 className={clsx(
                     textStyles['chat-input'],
-                    textAreaRef.current &&
-                        textAreaRef.current.scrollHeight >= 319 &&
-                        textStyles['bounded']
+                    isBounded && textStyles['bounded']
                 )}
                 value={state}
                 onChange={(event) => {
                     resizeTextarea(event.target);
+
+                    if (event.target.scrollHeight >= 319) {
+                        setIsBounded(true);
+                    }
 
                     attributes.onChange?.(event);
                 }}
