@@ -4,16 +4,15 @@ import ModalBackdrop from '@/UI/ModalBackdrop';
 
 import searchStyles from './SearchModal.module.scss';
 
-export interface SearchModalProps extends BaseModalProps {
-    text: string;
-}
+export interface SearchModalProps extends BaseModalProps {}
 
-export default function SearchModal({ text, closeModal }: SearchModalProps) {
+export default function SearchModal({ closeModal }: SearchModalProps) {
     return (
         <ModalBackdrop onClose={closeModal} backdropType='empty'>
             <div
                 className={searchStyles['search-modal']}
                 onClick={(event) => event.stopPropagation()}
+                // tabIndex={-1}
             >
                 <div className={searchStyles['input-block']}>
                     <input
@@ -22,7 +21,10 @@ export default function SearchModal({ text, closeModal }: SearchModalProps) {
                         className={searchStyles['search-input']}
                     />
 
-                    <button className={searchStyles['close-button']}>
+                    <button
+                        className={searchStyles['close-button']}
+                        onClick={closeModal}
+                    >
                         <svg
                             className={searchStyles['cross-icon']}
                             width={20}

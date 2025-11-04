@@ -18,6 +18,14 @@ body * {
     font-family: var(--font-inter-variable);
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline-color: var(--outline-color);
+    outline-width: 0.5px;
+    outline-offset: -1px;
+}
+
 // &&;
 :root {
     --background-color: #212121;
@@ -42,6 +50,8 @@ body * {
 
     --input-bg-color: #303030;
     --input-box-shadow-color: #0000001c;
+
+    --outline-color: #1a73e8;
 
     // MODAL WINDOWS
     --modal-bg-color: #2f2f2f;

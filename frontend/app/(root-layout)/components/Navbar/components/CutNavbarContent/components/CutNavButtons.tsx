@@ -1,3 +1,7 @@
+'use client';
+
+import { useModalStore } from '@/store/ModalStore/useModalStore';
+
 import Link from 'next/link';
 
 import LabelledElement from '@/UI/LabelledElement';
@@ -5,6 +9,9 @@ import LabelledElement from '@/UI/LabelledElement';
 import cutnavStyles from '../CutNavbarContent.module.scss';
 
 export default function CutNavButtons() {
+    const openModal = useModalStore((state) => state.openModal);
+    const closeModal = useModalStore((state) => state.closeModal);
+
     return (
         <div className={cutnavStyles['nav-buttons-block']}>
             <LabelledElement
@@ -32,6 +39,7 @@ export default function CutNavButtons() {
                 <button
                     className={cutnavStyles['nav-button']}
                     aria-label='Search Ctrl + K'
+                    onClick={() => openModal('search', { closeModal })}
                 >
                     <svg width={20} height={20} color='var(--font-color)'>
                         <use href='#search-icon' />

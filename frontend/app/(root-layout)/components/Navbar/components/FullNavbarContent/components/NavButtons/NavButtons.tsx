@@ -35,7 +35,7 @@ export default function NavButtons() {
                         <use href='#search-icon' />
                     </svg>
                 }
-                onClick={() => openModal('search', { closeModal, text: 's' })}
+                onClick={() => openModal('search', { closeModal })}
             />
         </ul>
     );
