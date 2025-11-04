@@ -1,0 +1,83 @@
+@use '@/styles/mixins.scss' as *;
+
+.search-modal {
+    @include flex-column;
+
+    width: 100%;
+    max-width: 680px;
+
+    height: 100%;
+    max-height: 440px;
+
+    background-color: var(--modal-bg-color);
+
+    border: 1px var(--border-color) solid;
+    border-radius: 16px;
+    background-clip: padding-box;
+
+    box-shadow: 0 16px 62px 0 var(--modal-box-shadow-color);
+
+    --search-modal-x-padding: 0.75em;
+    --search-modal-y-padding: 0.5em;
+}
+
+.input-block {
+    @include flex-center;
+    justify-content: space-between;
+    gap: 1em;
+
+    height: 100%;
+    max-height: 64px;
+
+    border-bottom: 1px var(--border-color) solid;
+
+    padding: var(--search-modal-y-padding) var(--search-modal-x-padding);
+    box-sizing: border-box;
+}
+.search-input {
+    width: 100%;
+
+    background-color: transparent;
+
+    border: none;
+    outline: none;
+
+    padding: 0.5em 0.75em;
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    color: var(--font-color);
+
+    &:placeholder-shown {
+        color: var(--secondary-font-color);
+    }
+}
+
+.close-button {
+    @include flex-center;
+
+    width: 28px;
+    height: 28px;
+
+    background-color: transparent;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--light-hover-bg-color);
+    }
+
+    &:hover .cross-icon {
+        color: var(--font-color);
+    }
+}
+.cross-icon {
+    color: var(--secondary-font-color);
+}
+
+.chat-box {
+    padding: var(--search-modal-y-padding) var(--search-modal-y-padding);
+}
