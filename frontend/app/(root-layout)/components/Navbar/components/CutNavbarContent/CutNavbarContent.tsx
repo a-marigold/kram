@@ -2,8 +2,8 @@ import type { Dispatch } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
-import CutNavButtons from './CutNavButtons';
-import CutProfileBlock from './CutProfileBlock';
+import CutNavButtons from './components/CutNavButtons';
+import CutProfileBlock from './components/CutProfileBlock';
 
 import LabelledElement from '@/UI/LabelledElement';
 
@@ -33,7 +33,7 @@ export default function CutNavbarContent({
                         position='right'
                     >
                         <button
-                            className={cutnavStyles['sidebar-button']}
+                            className={navStyles['sidebar-button']}
                             onClick={() => setShowFullNavbar(true)}
                             aria-label='Open navigation panel Ctrl + N + P'
                         >

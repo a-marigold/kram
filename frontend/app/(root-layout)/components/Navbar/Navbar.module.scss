@@ -34,3 +34,25 @@
 
     height: 100%;
 }
+
+.sidebar-button {
+    margin-left: auto;
+
+    @include flex-center;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+
+    width: 36px;
+    height: 36px;
+
+    cursor: ew-resize;
+
+    &:hover {
+        background-color: var(--dim-hover-bg-color);
+    }
+    &:active {
+        background-color: var(--active-btn-dim-bg);
+    }
+}

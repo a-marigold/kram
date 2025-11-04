@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import LabelledElement from '@/UI/LabelledElement';
 
-import cutnavStyles from './CutNavbarContent.module.scss';
+import cutnavStyles from '../CutNavbarContent.module.scss';
 
 export default function CutNavButtons() {
     return (

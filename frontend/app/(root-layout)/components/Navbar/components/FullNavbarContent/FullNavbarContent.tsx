@@ -36,11 +36,15 @@ export default function FullNavbarContent({
                             position='right'
                         >
                             <button
-                                className={fullnavStyles['sidebar-button']}
+                                className={navStyles['sidebar-button']}
                                 onClick={() => setShowFullNavbar(false)}
                                 aria-label='Close navigation panel Ctrl + N + P'
                             >
-                                <svg width={20} height={20}>
+                                <svg
+                                    width={20}
+                                    height={20}
+                                    color='var(--secondary-font-color)'
+                                >
                                     <use href='#sidebar-toggle-icon' />
                                 </svg>
                             </button>

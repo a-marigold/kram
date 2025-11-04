@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import LabelledElement from '@/UI/LabelledElement';
 
-import cutnavStyles from './CutNavbarContent.module.scss';
+import cutnavStyles from '../CutNavbarContent.module.scss';
 
 export default function CutProfileBlock() {
     return (
