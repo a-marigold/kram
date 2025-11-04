@@ -33,8 +33,6 @@ export function calculateLabelPosition(
         const labelTop = wrapperTop + wrapperHeight + 10;
         const labelLeft = wrapperLeft + wrapperWidth / 2 - labelWidth / 2;
 
-        console.log(wrapperTop);
-
         labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
     }
 
