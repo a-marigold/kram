@@ -25,6 +25,9 @@
     &:hover {
         background-color: var(--light-hover-bg-color);
     }
+    &:active {
+        background-color: var(--active-bg-color);
+    }
 }
 
 .title {

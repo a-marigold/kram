@@ -29,7 +29,7 @@ export default function NavButtons() {
             <PrimaryButton
                 title='Search'
                 subtitle='Ctrl + K'
-                ariaLabel='Search chats'
+                aria-label='Search chats'
                 icon={
                     <svg width={20} height={20} color='var(--font-color)'>
                         <use href='#search-icon' />

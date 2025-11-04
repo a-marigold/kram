@@ -63,6 +63,7 @@ export default function ChatList() {
                                 title={chat.name}
                                 href={`/chat/${chat.id}`}
                                 isActive={currentChatId === chat.id}
+                                aria-label={`Open ${chat.name} chat`}
                             />
                         </li>
                     ))}

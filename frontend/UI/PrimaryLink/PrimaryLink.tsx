@@ -13,6 +13,8 @@ interface PrimaryLinkProps extends LinkProps {
 
     icon?: ReactNode;
 
+    'aria-label': string;
+
     isActive: boolean;
 }
 export default function PrimaryLink({

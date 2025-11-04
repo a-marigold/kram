@@ -1,12 +1,11 @@
 import type { BaseModalProps } from '@/types/ModalTypes';
 
 import ModalBackdrop from '@/UI/ModalBackdrop';
+import LargeButton from '@/UI/LargeButton/LargeButton';
 
 import searchStyles from './SearchModal.module.scss';
 
-export interface SearchModalProps extends BaseModalProps {}
-
-export default function SearchModal({ closeModal }: SearchModalProps) {
+export default function SearchModal({ closeModal }: BaseModalProps) {
     return (
         <ModalBackdrop onClose={closeModal} backdropType='empty'>
             <div
@@ -36,6 +35,16 @@ export default function SearchModal({ closeModal }: SearchModalProps) {
                 </div>
 
                 <div className={searchStyles['chat-box']}>
+                    <LargeButton
+                        title='New chat'
+                        icon={
+                            <svg width={20} height={20}>
+                                <use href='#chat-icon' />
+                            </svg>
+                        }
+                        aria-label='Open new chat'
+                    />
+
                     <div className={searchStyles['chat-list']}></div>
                 </div>
             </div>

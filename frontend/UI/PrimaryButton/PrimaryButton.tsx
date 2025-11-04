@@ -6,7 +6,7 @@ interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
     subtitle?: string;
 
-    ariaLabel: string;
+    'aria-label': string;
 
     icon?: ReactNode;
 }
@@ -16,16 +16,11 @@ export default function PrimaryButton({
     subtitle,
 
     icon,
-    ariaLabel,
 
     ...attributes
 }: PrimaryButtonProps) {
     return (
-        <button
-            className={buttonStyles['primary-button']}
-            {...attributes}
-            aria-label={ariaLabel}
-        >
+        <button {...attributes} className={buttonStyles['primary-button']}>
             <span className={buttonStyles['title-block']}>
                 {icon}
 

@@ -17,7 +17,8 @@
 
     box-shadow: 0 16px 62px 0 var(--modal-box-shadow-color);
 
-    --search-modal-padding: 0.75em;
+    --search-modal-x-padding: 0.75em;
+    --search-modal-y-padding: 0.5em;
 }
 
 .input-block {
@@ -30,7 +31,7 @@
 
     border-bottom: 1px var(--border-color) solid;
 
-    padding: var(--search-modal-padding);
+    padding: var(--search-modal-y-padding) var(--search-modal-x-padding);
     box-sizing: border-box;
 }
 .search-input {
@@ -75,4 +76,8 @@
 }
 .cross-icon {
     color: var(--secondary-font-color);
+}
+
+.chat-box {
+    padding: var(--search-modal-y-padding) var(--search-modal-y-padding);
 }

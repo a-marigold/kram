@@ -14,8 +14,10 @@ interface ChatTextAreaProps
     extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     state?: string;
     ariaLabel: string;
+
     badge?: {
         text: string;
+
         bgColor: string;
         fontColor: string;
     };
@@ -45,13 +47,13 @@ export default function ChatTextArea({
         >
             <textarea
                 ref={textAreaRef}
+                rows={1}
                 placeholder='Message'
                 {...attributes}
                 className={clsx(
                     textStyles['chat-input'],
                     isBounded && textStyles['bounded']
                 )}
-                rows={1}
                 value={state}
                 onChange={(event) => {
                     resizeTextarea(event.target);
