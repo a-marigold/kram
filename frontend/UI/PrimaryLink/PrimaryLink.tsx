@@ -16,6 +16,8 @@ interface PrimaryLinkProps extends LinkProps {
     'aria-label': string;
 
     isActive: boolean;
+
+    className?: string;
 }
 export default function PrimaryLink({
     title,
@@ -24,6 +26,8 @@ export default function PrimaryLink({
 
     icon,
 
+    className,
+
     ...attributes
 }: PrimaryLinkProps) {
     return (
@@ -31,7 +35,8 @@ export default function PrimaryLink({
             {...attributes}
             className={clsx(
                 linkStyles['primary-link'],
-                isActive && linkStyles['active']
+                isActive && linkStyles['active'],
+                className
             )}
         >
             {icon}

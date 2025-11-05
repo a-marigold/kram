@@ -13,10 +13,16 @@ interface LargeButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export default function LargeButton({
     title,
     icon,
+
+    className,
+
     ...attributes
 }: LargeButtonProps) {
     return (
-        <button {...attributes} className={buttonStyles['large-button']}>
+        <button
+            {...attributes}
+            className={`${buttonStyles['large-button']} ${className}`}
+        >
             {icon}
 
             <span className={buttonStyles['title']}>{title}</span>
