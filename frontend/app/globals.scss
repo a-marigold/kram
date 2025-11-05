@@ -30,6 +30,7 @@ input:focus-visible {
 
 // &&;
 :root {
+    // prefix "fg" means "foreground"
     --background-color: #212121;
     --foreground-color: #181818;
     --dark-foreground-color: #000000;
@@ -57,6 +58,7 @@ input:focus-visible {
 
     // MODAL WINDOWS
     --modal-bg-color: #2f2f2f;
+    --modal-fg-color: #1e1e1e;
 
     --modal-box-shadow-color: #00000040;
 
