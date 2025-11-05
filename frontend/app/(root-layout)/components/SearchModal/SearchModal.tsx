@@ -1,7 +1,9 @@
 import type { BaseModalProps } from '@/types/ModalTypes';
 
 import ModalBackdrop from '@/UI/ModalBackdrop';
+
 import LargeLink from '@/UI/LargeLink/LargeLink';
+import LabelledElement from '@/UI/LabelledElement';
 
 import searchStyles from './SearchModal.module.scss';
 
@@ -20,18 +22,25 @@ export default function SearchModal({ closeModal }: BaseModalProps) {
                         className={searchStyles['search-input']}
                     />
 
-                    <button
-                        className={searchStyles['close-button']}
-                        onClick={closeModal}
+                    <LabelledElement
+                        title='Close search window'
+                        subtitle='Esc'
+                        position='right'
                     >
-                        <svg
-                            className={searchStyles['cross-icon']}
-                            width={20}
-                            height={20}
+                        <button
+                            className={searchStyles['close-button']}
+                            onClick={closeModal}
+                            aria-label='Close search window'
                         >
-                            <use href='#cross-icon' />
-                        </svg>
-                    </button>
+                            <svg
+                                className={searchStyles['cross-icon']}
+                                width={20}
+                                height={20}
+                            >
+                                <use href='#cross-icon' />
+                            </svg>
+                        </button>
+                    </LabelledElement>
                 </div>
 
                 <div className={searchStyles['chat-box']}>

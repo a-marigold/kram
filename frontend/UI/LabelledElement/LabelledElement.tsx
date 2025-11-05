@@ -44,10 +44,10 @@ export default function LabelledElement({
             <div
                 ref={wrapperRef}
                 className={elementStyles['labelled-wrapper']}
-                onMouseEnter={() => {
+                onPointerEnter={() => {
                     setShowLabel(true);
                 }}
-                onMouseLeave={() => setShowLabel(false)}
+                onPointerLeave={() => setShowLabel(false)}
             >
                 {children}
             </div>

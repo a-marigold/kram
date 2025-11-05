@@ -10,7 +10,7 @@
 
     @include flex-center;
 
-    z-index: 1000;
+    z-index: 100;
 
     &.type-blur {
         background-color: oklab(0 none none/.5);
