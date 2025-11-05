@@ -36,7 +36,7 @@ export default function DropDownModal({
 }: DropDownModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    function handleCalculateModalPosition() {
         if (modalRef.current) {
             calculateModalPosition(
                 relativeElement,
@@ -46,11 +46,31 @@ export default function DropDownModal({
                 shiftY
             );
         }
+    }
+
+    useEffect(() => {
+        if (modalRef.current) {
+            handleCalculateModalPosition();
+        }
+
+        window.addEventListener('scroll', handleCalculateModalPosition);
+        window.addEventListener('resize', handleCalculateModalPosition);
+
+        return () => {
+            window.removeEventListener('scroll', handleCalculateModalPosition);
+            window.removeEventListener('resize', handleCalculateModalPosition);
+        };
     }, [position]);
 
     return (
         <div className={modalStyles['modal-backdrop']} onClick={onClose}>
-            <div ref={modalRef} className={modalStyles['drop-down-modal']}>
+            <div
+                ref={modalRef}
+                className={modalStyles['drop-down-modal']}
+                onClick={(event) => {
+                    event.stopPropagation();
+                }}
+            >
                 <div className={modalStyles['top-list']}>{topList}</div>
 
                 {bottomList && (
