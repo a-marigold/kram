@@ -16,6 +16,7 @@ export const modalList: ModalComponent[] = [
 
         component: (props) => <SearchModal {...props} />,
     },
+
     {
         id: 'settings',
 

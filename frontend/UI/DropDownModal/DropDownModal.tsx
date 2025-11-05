@@ -2,10 +2,12 @@ import type { ReactNode } from 'react';
 
 import modalStyles from './DropDownModal.module.scss';
 
-interface DropDownModalProps {
+export interface DropDownModalProps {
     topList: ReactNode;
 
     bottomList?: ReactNode;
+
+    // position:
 
     onClose: () => void;
 }

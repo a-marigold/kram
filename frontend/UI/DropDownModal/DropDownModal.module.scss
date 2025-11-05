@@ -9,6 +9,9 @@
 }
 
 .drop-down-modal {
+    @include flex-column;
+    gap: 0.125em;
+
     background-color: var(--light-modal-bg);
 
     border-radius: 16px;
