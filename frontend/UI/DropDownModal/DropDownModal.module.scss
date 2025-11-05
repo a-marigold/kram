@@ -1,0 +1,34 @@
+@use '@/styles/mixins.scss' as *;
+
+.modal-backdrop {
+    width: 100vw;
+
+    height: 100vh;
+
+    z-index: 1000;
+}
+
+.drop-down-modal {
+    background-color: var(--light-modal-bg);
+
+    border-radius: 16px;
+    padding: 0.375em;
+    box-sizing: border-box;
+}
+
+.top-children,
+.bottom-children {
+    position: relative;
+
+    @include flex-column;
+}
+
+.divider {
+    background-color: var(--border-color);
+
+    width: 100%;
+    height: 1px;
+
+    padding: 1em;
+    box-sizing: border-box;
+}

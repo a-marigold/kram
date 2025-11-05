@@ -22,9 +22,7 @@ export default function ModalBackdrop({
             className={`${modalStyles['modal-backdrop']} ${
                 modalStyles[`type-${backdropType}`]
             }`}
-            onClick={() => {
-                onClose();
-            }}
+            onClick={onClose}
         >
             {children}
         </div>
