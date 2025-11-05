@@ -1,6 +1,8 @@
 @use '@/styles/mixins.scss' as *;
 
 .modal-backdrop {
+    position: absolute;
+
     width: 100vw;
 
     height: 100vh;
@@ -9,8 +11,14 @@
 }
 
 .drop-down-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+
     @include flex-column;
-    gap: 0.125em;
+    gap: 0.25em;
+
+    min-width: 200px;
 
     background-color: var(--light-modal-bg);
 
@@ -26,12 +34,14 @@
     @include flex-column;
 }
 
+.divider-block {
+    padding: 0 0.75em;
+    box-sizing: border-box;
+}
+
 .divider {
     background-color: var(--border-color);
 
     width: 100%;
     height: 1px;
-
-    padding: 1em;
-    box-sizing: border-box;
 }

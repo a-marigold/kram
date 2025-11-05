@@ -1,32 +1,63 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
+
+import { calculateModalPosition } from './calculateModalPosition';
+import type { ModalPosition } from './calculateModalPosition';
 
 import modalStyles from './DropDownModal.module.scss';
 
 export interface DropDownModalProps {
+    relativeElement: HTMLElement;
+
     topList: ReactNode;
 
     bottomList?: ReactNode;
 
-    // position:
+    position?: ModalPosition;
+    shiftX?: number;
+    shiftY?: number;
 
     onClose: () => void;
 }
 
 export default function DropDownModal({
-    topList,
+    relativeElement,
 
+    topList,
     bottomList,
+
+    position = 'bottom',
+    shiftX,
+    shiftY,
 
     onClose,
 }: DropDownModalProps) {
+    const modalRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (modalRef.current) {
+            calculateModalPosition(
+                relativeElement,
+                modalRef.current,
+                position,
+                shiftX,
+                shiftY
+            );
+        }
+    }, [position]);
+
     return (
         <div className={modalStyles['modal-backdrop']} onClick={onClose}>
-            <div className={modalStyles['drop-down-modal']}>
+            <div ref={modalRef} className={modalStyles['drop-down-modal']}>
                 <div className={modalStyles['top-list']}>{topList}</div>
 
                 {bottomList && (
                     <>
-                        <div className={modalStyles['divider']} />
+                        <div className={modalStyles['divider-block']}>
+                            <div className={modalStyles['divider']} />
+                        </div>
 
                         <div className={modalStyles['bottom-list']}>
                             {bottomList}

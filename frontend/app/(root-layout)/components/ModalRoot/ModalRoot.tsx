@@ -1,3 +1,5 @@
+// TODO: Delete this component. Render modal windows with createPortal
+
 'use client';
 
 import { useEffect } from 'react';
@@ -12,20 +14,19 @@ import {
 import { modalList } from './modalList';
 
 export default function ModalRoot() {
-    const currentModalId = useModalStore((state) => state.currentModalId);
-    const currentModalProps = useModalStore((state) => state.props);
-
-    const currentModal = modalList.find((modal) => modal.id === currentModalId);
+    const currentModal = useModalStore((state) => state.currentModal);
 
     useEffect(() => {
-        if (currentModalId) {
+        if (currentModal) {
             lockElementScroll(document.body);
         }
 
         return () => {
             unlockElementScroll(document.body);
         };
-    }, [currentModalId]);
+    }, [currentModal]);
 
-    return currentModalProps && currentModal?.component(currentModalProps);
+    return (
+        currentModal && modalList[currentModal.id].component(currentModal.props)
+    );
 }

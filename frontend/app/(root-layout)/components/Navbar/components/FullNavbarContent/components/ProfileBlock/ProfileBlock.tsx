@@ -15,7 +15,13 @@ export default function ProfileBlock() {
             <button
                 className={navStyles['profile-button']}
                 aria-label='Open profile'
-                onClick={() => openModal('profileModal', { closeModal })}
+                onClick={(event) => {
+                    openModal('profileModal', {
+                        closeModal,
+                        relativeElement: event.currentTarget,
+                        position: 'top',
+                    });
+                }}
             >
                 <Image src='/globe.svg' alt='' width={24} height={24} />
 

@@ -4,15 +4,27 @@ import { useModalStore } from '@/store/ModalStore/useModalStore';
 
 import type { BaseModalProps } from '@/types/ModalTypes';
 
+import type { DropDownModalProps } from '@/UI/DropDownModal';
 import DropDownModal from '@/UI/DropDownModal';
 
 import PrimaryButton from '@/UI/PrimaryButton';
 
-export default function ProfileModal({ closeModal }: BaseModalProps) {
+export type ProfileModalProps = Pick<
+    DropDownModalProps,
+    'relativeElement' | 'position' | 'shiftX' | 'shiftY'
+> &
+    BaseModalProps;
+
+export default function ProfileModal({
+    closeModal,
+
+    ...dropDownProps
+}: ProfileModalProps) {
     const openModal = useModalStore((state) => state.openModal);
 
     return (
         <DropDownModal
+            {...dropDownProps}
             onClose={closeModal}
             topList={
                 <>
@@ -45,7 +57,7 @@ export default function ProfileModal({ closeModal }: BaseModalProps) {
                                 height={20}
                                 color='var(--secondary-font-color)'
                             >
-                                <use href='#settings-icon' />
+                                <use href='#gear-icon' />
                             </svg>
                         }
                     />
