@@ -1,5 +1,9 @@
 @use '@/styles/mixins.scss' as *;
 
+.labelled-wrapper {
+    width: fit-content;
+}
+
 .label {
     position: fixed;
     top: 0;

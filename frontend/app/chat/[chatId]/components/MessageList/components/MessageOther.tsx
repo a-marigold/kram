@@ -62,7 +62,7 @@ export function MessageOther({ children }: MessagePropsType) {
                     >
                         <button
                             className={messageStyles['tool-button']}
-                            aria-labelledby={button.ariaLabel}
+                            aria-label={button.ariaLabel}
                             onClick={() => {
                                 toolButtonHandler(
                                     button.handler,

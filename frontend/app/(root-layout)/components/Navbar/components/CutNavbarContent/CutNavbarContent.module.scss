@@ -10,13 +10,14 @@
 
 .nav-buttons-block {
     @include flex-column;
+    width: 100%;
 }
 .nav-button {
     @include flex-center;
 
     background-color: transparent;
 
-    width: 100%;
+    width: 36px;
     height: 36px;
 
     border: none;

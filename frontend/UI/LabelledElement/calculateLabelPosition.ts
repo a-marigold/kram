@@ -1,3 +1,5 @@
+// TODO: Rewrite this
+
 export type LabelPositionType = 'top' | 'right' | 'bottom' | 'left';
 
 export function calculateLabelPosition(
@@ -38,7 +40,7 @@ export function calculateLabelPosition(
 
     function calculateLeft() {
         const labelTop = wrapperTop + wrapperHeight / 2 - labelHeight / 2;
-        const labelLeft = wrapperLeft - labelWidth;
+        const labelLeft = wrapperLeft - labelWidth - 10;
 
         labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
     }
