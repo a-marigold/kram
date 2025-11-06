@@ -1,4 +1,4 @@
-import type { BaseModalProps } from '@/types/ModalTypes';
+import type { BasicModalProps } from '@/types/ModalProps';
 
 import ModalBackdrop from '@/UI/ModalBackdrop';
 
@@ -7,7 +7,7 @@ import LabelledElement from '@/UI/LabelledElement';
 
 import searchStyles from './SearchModal.module.scss';
 
-export default function SearchModal({ closeModal }: BaseModalProps) {
+export default function SearchModal({ closeModal }: BasicModalProps) {
     return (
         <ModalBackdrop onClose={closeModal} backdropType='empty'>
             <div
@@ -23,14 +23,14 @@ export default function SearchModal({ closeModal }: BaseModalProps) {
                     />
 
                     <LabelledElement
-                        title='Close search window'
+                        title='Close the search window'
                         subtitle='Esc'
                         position='right'
                     >
                         <button
                             className={searchStyles['close-button']}
                             onClick={closeModal}
-                            aria-label='Close search window'
+                            aria-label='Close the search window'
                         >
                             <svg
                                 className={searchStyles['cross-icon']}

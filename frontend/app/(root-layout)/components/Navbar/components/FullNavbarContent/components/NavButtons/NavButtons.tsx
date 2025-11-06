@@ -2,6 +2,8 @@
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
+import SearchModal from '@modals/SearchModal';
+
 import PrimaryLink from '@/UI/PrimaryLink';
 import PrimaryButton from '@/UI/PrimaryButton';
 
@@ -9,8 +11,8 @@ import navStyles from './NavButtons.module.scss';
 
 export default function NavButtons() {
     const closeModal = useModalStore((state) => state.closeModal);
-    const openModal = useModalStore((state) => state.openModal);
 
+    const openModal = useModalStore((state) => state.openModal);
     return (
         <ul className={navStyles['nav-buttons']}>
             <PrimaryLink
@@ -35,7 +37,9 @@ export default function NavButtons() {
                         <use href='#search-icon' />
                     </svg>
                 }
-                onClick={() => openModal('search', { closeModal })}
+                onClick={() =>
+                    openModal(<SearchModal closeModal={closeModal} />)
+                }
             />
         </ul>
     );

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 
-import type { BaseModalProps } from '@/types/ModalTypes';
+import type { BasicModalProps } from '@/types/ModalProps';
 
 import type { SettingTab } from './SettingsTypes';
 
@@ -43,7 +43,7 @@ const settingButtonList: {
     },
 ];
 
-export default function SettingsModal({ closeModal }: BaseModalProps) {
+export default function SettingsModal({ closeModal }: BasicModalProps) {
     const [currentTab, setCurrentTab] = useState<SettingTab>('General');
 
     return (

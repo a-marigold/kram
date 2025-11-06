@@ -2,25 +2,18 @@
 
 import { create } from 'zustand';
 
-import type { ModalList, ModalId } from '@/types/ModalTypes';
-
-interface ModalState<K extends ModalId> {
-    id: K;
-    props: ModalList[K];
-}
+import type { ReactNode } from 'react';
 
 export interface ModalStore {
-    currentModal: ModalState<ModalId> | null;
+    currentModal: ReactNode | null;
 
-    openModal: (modalId: ModalId, props: ModalList[ModalId]) => void;
+    openModal: (modalComponent: ReactNode) => void;
+
     closeModal: () => void;
 }
 
 export const useModalStore = create<ModalStore>()((set) => ({
     currentModal: null,
-
-    openModal: (modalId, props) =>
-        set({ currentModal: { id: modalId, props: props } }),
-
+    openModal: (modalComponent) => set({ currentModal: modalComponent }),
     closeModal: () => set({ currentModal: null }),
 }));

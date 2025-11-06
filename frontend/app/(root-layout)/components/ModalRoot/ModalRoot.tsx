@@ -1,4 +1,4 @@
-// TODO: Delete this component. Render modal windows with createPortal
+// TODO: Render modal windows via straight component in store
 
 'use client';
 
@@ -11,11 +11,8 @@ import {
     unlockElementScroll,
 } from '@/utils/LockElementScroll';
 
-import { modalList } from './modalList';
-
 export default function ModalRoot() {
     const currentModal = useModalStore((state) => state.currentModal);
-
     useEffect(() => {
         if (currentModal) {
             lockElementScroll(document.body);
@@ -26,7 +23,5 @@ export default function ModalRoot() {
         };
     }, [currentModal]);
 
-    return (
-        currentModal && modalList[currentModal.id].component(currentModal.props)
-    );
+    return currentModal;
 }

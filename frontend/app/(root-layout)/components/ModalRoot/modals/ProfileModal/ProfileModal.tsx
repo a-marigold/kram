@@ -2,10 +2,12 @@
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
-import type { BaseModalProps } from '@/types/ModalTypes';
+import type { BasicModalProps } from '@/types/ModalProps';
 
-import type { DropDownModalProps } from '@/UI/DropDownModal';
+import SettingsModal from '../SettingsModal';
+
 import DropDownModal from '@/UI/DropDownModal';
+import type { DropDownModalProps } from '@/UI/DropDownModal';
 
 import PrimaryButton from '@/UI/PrimaryButton';
 
@@ -13,7 +15,7 @@ export type ProfileModalProps = Pick<
     DropDownModalProps,
     'relativeElement' | 'position' | 'shiftX' | 'shiftY'
 > &
-    BaseModalProps;
+    BasicModalProps;
 
 export default function ProfileModal({
     closeModal,
@@ -49,7 +51,9 @@ export default function ProfileModal({
                         title='Settings'
                         aria-label='Open settings window'
                         onClick={() => {
-                            openModal('settings', { closeModal });
+                            openModal(
+                                <SettingsModal closeModal={closeModal} />
+                            );
                         }}
                         icon={
                             <svg

@@ -19,7 +19,8 @@
             }
         ],
         "paths": {
-            "@/*": ["./*"]
+            "@/*": ["./*"],
+            "@modals/*": ["./app/(root-layout)/components/ModalRoot/modals/*"]
         }
     },
     "include": [
