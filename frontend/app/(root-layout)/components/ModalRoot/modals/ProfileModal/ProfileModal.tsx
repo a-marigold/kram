@@ -4,7 +4,7 @@ import { useModalStore } from '@/store/ModalStore/useModalStore';
 
 import type { BasicModalProps } from '@/types/ModalProps';
 
-import SettingsModal from '../SettingsModal';
+import SettingsModal from '@modals/SettingsModal';
 
 import DropDownModal from '@/UI/DropDownModal';
 import type { DropDownModalProps } from '@/UI/DropDownModal';
