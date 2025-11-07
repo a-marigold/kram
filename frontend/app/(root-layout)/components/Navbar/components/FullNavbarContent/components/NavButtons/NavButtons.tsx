@@ -14,7 +14,7 @@ export default function NavButtons() {
 
     const openModal = useModalStore((state) => state.openModal);
     return (
-        <ul className={navStyles['nav-buttons']}>
+        <div className={navStyles['nav-buttons-block']}>
             <PrimaryLink
                 href='/'
                 title='New chat'
@@ -41,6 +41,6 @@ export default function NavButtons() {
                     openModal(<SearchModal closeModal={closeModal} />)
                 }
             />
-        </ul>
+        </div>
     );
 }

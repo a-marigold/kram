@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Inter } from 'next/font/google';
 
+import HotkeyRunner from './(root-layout)/components/HotkeyRunner';
 import Navbar from './(root-layout)/components/Navbar';
 import ModalRoot from './(root-layout)/components/ModalRoot';
 
@@ -37,6 +38,8 @@ export default function RootLayout({
         >
             <body>
                 <SvgSprites />
+
+                <HotkeyRunner />
 
                 <Navbar />
 

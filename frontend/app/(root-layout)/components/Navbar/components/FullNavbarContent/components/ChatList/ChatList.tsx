@@ -10,12 +10,12 @@ import navStyles from './ChatList.module.scss';
 
 const chatList = [
     {
-        id: '96697d9d-2749-4ced-9162-0701abf4337a',
+        id: 'CHAT-ID10',
 
         name: 'example',
     },
     {
-        id: '96697d9d-2749-4ced-9162-0701abf4337b',
+        id: 'CHAT-ID16',
 
         name: 'example2',
     },
