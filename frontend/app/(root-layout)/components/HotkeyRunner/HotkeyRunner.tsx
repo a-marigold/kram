@@ -6,7 +6,7 @@ import { useHotkeys } from '@/hooks/useHotkeys';
 
 import { useHotkeyStore } from '@/store/HotkeyStore';
 
-import { hotkeyConfig } from './hotkeyConfig';
+import { useHotkeyConfig } from './useHotkeyConfig';
 
 export default function HotkeyRunner() {
     const registerHotkey = useHotkeyStore((state) => state.registerHotkey);
@@ -14,11 +14,12 @@ export default function HotkeyRunner() {
 
     useHotkeys();
 
-    const config = hotkeyConfig();
+    const config = useHotkeyConfig();
 
     useEffect(() => {
         config.forEach(({ name, key, callback }) => {
             registerHotkey(name, key, callback);
+            console.log(name);
         });
 
         return () => {

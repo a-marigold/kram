@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 
 import { useHotkeyStore } from '@/store/HotkeyStore';
 
@@ -24,7 +24,12 @@ function hotkeyMatches(key: string, event: KeyboardEvent) {
 
     const plainKeysMatches = plainKeys.map((part) => part === event.key);
 
+    console.log(plainKeysMatches);
+
+    if (!specialKeys.length) return plainKeysMatches;
+
     return (
+        specialKeys &&
         specialKeys.includes('ctrl') &&
         event.ctrlKey &&
         specialKeys.includes('alt') &&
@@ -38,17 +43,22 @@ function hotkeyMatches(key: string, event: KeyboardEvent) {
 export function useHotkeys() {
     const hotkeys = useHotkeyStore((state) => state.hotkeys);
 
-    function listenHotkeys(event: KeyboardEvent) {
-        hotkeys.forEach(({ key, callback }) => {
-            const keys = key.split('+').filter(Boolean);
+    const listenHotkeys = useCallback(
+        (event: KeyboardEvent) => {
+            hotkeys.forEach(({ key, callback }) => {
+                const keys = key.split('+').filter(Boolean);
 
-            keys.forEach((key) => {
-                if (hotkeyMatches(key, event)) {
-                    callback();
-                }
+                keys.forEach((key) => {
+                    if (hotkeyMatches(key, event)) {
+                        callback();
+                    }
+
+                    console.log(hotkeyMatches(key, event));
+                });
             });
-        });
-    }
+        },
+        [hotkeys]
+    );
 
     useEffect(() => {
         document.addEventListener('keydown', listenHotkeys);
@@ -56,5 +66,5 @@ export function useHotkeys() {
         return () => {
             document.removeEventListener('keydown', listenHotkeys);
         };
-    }, []);
+    }, [listenHotkeys]);
 }
