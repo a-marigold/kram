@@ -2,9 +2,11 @@
 
 'use client';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-import { useModalStore } from '@/store/ModalStore/useModalStore';
+import { createPortal } from 'react-dom';
+
+import { useModalStore } from '@/store/ModalStore';
 
 import {
     lockElementScroll,
@@ -13,6 +15,17 @@ import {
 
 export default function ModalRoot() {
     const currentModal = useModalStore((state) => state.currentModal);
+
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        console.log('ModalRoot render', currentModal);
+    }, [currentModal]);
+
     useEffect(() => {
         if (currentModal) {
             lockElementScroll(document.body);
@@ -23,5 +36,7 @@ export default function ModalRoot() {
         };
     }, [currentModal]);
 
-    return currentModal;
+    if (!mounted || !currentModal) return null;
+
+    return createPortal(currentModal, document.body);
 }

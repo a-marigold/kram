@@ -37,9 +37,9 @@ export default function RootLayout({
             className={`${geistSans.variable} ${interVariable.variable}`}
         >
             <body>
-                <SvgSprites />
-
                 <HotkeyRunner />
+
+                <SvgSprites />
 
                 <Navbar />
 

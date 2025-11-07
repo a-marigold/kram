@@ -58,7 +58,7 @@ export function useHotkeys() {
 
                 keys.forEach((key) => {
                     if (hotkeyMatches(key, event)) {
-                        callback();
+                        callback(event);
                     }
                 });
             });
