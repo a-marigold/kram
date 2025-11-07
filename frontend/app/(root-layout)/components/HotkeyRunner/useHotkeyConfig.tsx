@@ -17,6 +17,19 @@ export function useHotkeyConfig() {
             key: 'O',
             callback: () => openModal(<SearchModal closeModal={closeModal} />),
         },
+        {
+            name: 'settings',
+            key: 'l',
+            callback: () => {
+                console.log(<SettingsModal closeModal={closeModal} />);
+                openModal(<SettingsModal closeModal={closeModal} />);
+            },
+        },
+        {
+            name: 'closeModal',
+            key: 'Esc',
+            callback: closeModal,
+        },
     ];
 
     return config;

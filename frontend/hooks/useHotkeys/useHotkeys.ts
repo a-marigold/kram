@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { useHotkeyStore } from '@/store/HotkeyStore';
 
@@ -11,20 +11,22 @@ function hotkeyMatches(key: string, event: KeyboardEvent) {
         .toLowerCase()
 
         .split('+')
+
         .filter(
             (part) => part === 'ctrl' || part === 'shift' || part === 'alt'
         );
 
     const plainKeys = key
         .toLowerCase()
+
         .split('+')
         .filter(
             (part) => part !== 'ctrl' && part !== 'shift' && part !== 'alt'
         );
 
-    const plainKeysMatches = plainKeys.map((part) => part === event.key);
-
-    console.log(plainKeysMatches);
+    const plainKeysMatches = plainKeys.map(
+        (part) => part === event.key.toLowerCase()
+    );
 
     if (!specialKeys.length) return plainKeysMatches;
 
@@ -43,28 +45,29 @@ function hotkeyMatches(key: string, event: KeyboardEvent) {
 export function useHotkeys() {
     const hotkeys = useHotkeyStore((state) => state.hotkeys);
 
-    const listenHotkeys = useCallback(
-        (event: KeyboardEvent) => {
-            hotkeys.forEach(({ key, callback }) => {
+    const hotkeysRef = useRef<typeof hotkeys>(hotkeys);
+
+    useEffect(() => {
+        hotkeysRef.current = hotkeys;
+    }, [hotkeys]);
+
+    useEffect(() => {
+        function listenHotkeys(event: KeyboardEvent) {
+            hotkeysRef.current.forEach(({ key, callback }) => {
                 const keys = key.split('+').filter(Boolean);
 
                 keys.forEach((key) => {
                     if (hotkeyMatches(key, event)) {
                         callback();
                     }
-
-                    console.log(hotkeyMatches(key, event));
                 });
             });
-        },
-        [hotkeys]
-    );
+        }
 
-    useEffect(() => {
         document.addEventListener('keydown', listenHotkeys);
 
         return () => {
             document.removeEventListener('keydown', listenHotkeys);
         };
-    }, [listenHotkeys]);
+    }, []);
 }
