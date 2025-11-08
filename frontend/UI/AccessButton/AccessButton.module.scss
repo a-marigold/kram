@@ -1,0 +1,39 @@
+@use '@/styles/mixins.scss' as *;
+
+.access-button {
+    @include flex-center;
+
+    background-color: var(--access-bg-color);
+
+    background-clip: padding-box;
+
+    border: none;
+
+    border-radius: 3.40282e38px;
+
+    padding: 0.75em;
+
+    box-sizing: border-box;
+
+    color: var(--access-font-color);
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: opacity 0.16s ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &.size-large {
+        width: 100%;
+        height: 52px;
+
+        font-size: 1rem;
+    }
+    &.size-small {
+        height: 36px;
+        font-size: var(--m-font-size);
+    }
+}
