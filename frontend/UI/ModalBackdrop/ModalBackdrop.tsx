@@ -7,7 +7,7 @@ import modalStyles from './ModalBackdrop.module.scss';
 interface ModalBackdropProps {
     backdropType?: 'empty' | 'blur';
 
-    onClose: () => void;
+    onClose?: () => void;
 
     children: ReactNode;
 }
