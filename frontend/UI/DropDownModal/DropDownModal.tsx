@@ -37,18 +37,21 @@ export default function DropDownModal({
 }: DropDownModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
-    const handleCalculateModalPosition = useCallback(() => {
-        if (modalRef.current) {
-            calculateModalPosition(
-                relativeElement,
-                modalRef.current,
+    const handleCalculateModalPosition =
+        // useCallback(
+        () => {
+            if (modalRef.current) {
+                calculateModalPosition(
+                    relativeElement,
+                    modalRef.current,
 
-                position,
-                shiftX,
-                shiftY
-            );
-        }
-    }, [position]);
+                    position,
+                    shiftX,
+                    shiftY
+                );
+            }
+        };
+    // [position]);
 
     useEffect(() => {
         handleCalculateModalPosition();

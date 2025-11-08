@@ -9,8 +9,6 @@ import CutNavbarContent from './components/CutNavbarContent';
 import clsx from 'clsx';
 import navStyles from './Navbar.module.scss';
 
-import AccessButton from '@/UI/AccessButton';
-
 export default function Navbar() {
     const [showFullNavbar, setShowFullNavbar] = useState(true);
 
