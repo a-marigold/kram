@@ -1,8 +1,6 @@
 'use client';
 
-import { createElement, useEffect } from 'react';
-
-import { startTransition } from 'react';
+import { useEffect } from 'react';
 
 import { useModalStore } from '@/store/ModalStore';
 
@@ -26,18 +24,14 @@ export function useHotkeyConfig() {
                 name: 'search',
                 key: 'Alt+K',
                 callback: () => {
-                    startTransition(() => {
-                        openModal('<SearchModal closeModal={closeModal} />');
-                    });
+                    openModal(<SearchModal closeModal={closeModal} />);
                 },
             },
             {
                 name: 'settings',
                 key: 'L',
                 callback: () => {
-                    startTransition(() => {
-                        openModal(createElement(SettingsModal, { closeModal }));
-                    });
+                    openModal(<SettingsModal closeModal={closeModal} />);
                 },
             },
             {
