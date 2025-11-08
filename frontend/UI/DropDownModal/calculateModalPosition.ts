@@ -9,8 +9,6 @@ export function calculateModalPosition(
 ) {
     const {
         top: elemTop,
-        right: elemRight,
-        bottom: elemBottom,
         left: elemLeft,
         width: elemWidth,
         height: elemHeight,

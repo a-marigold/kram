@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+
 import type { ReactNode } from 'react';
 
 import { calculateModalPosition } from './calculateModalPosition';
@@ -36,31 +37,36 @@ export default function DropDownModal({
 }: DropDownModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
-    function handleCalculateModalPosition() {
+    const calculateModalPositionRef = useRef<() => void>(null);
+
+    calculateModalPositionRef.current = () => {
         if (modalRef.current) {
             calculateModalPosition(
                 relativeElement,
                 modalRef.current,
+
                 position,
                 shiftX,
                 shiftY
             );
         }
-    }
+    };
 
     useEffect(() => {
-        if (modalRef.current) {
-            handleCalculateModalPosition();
-        }
+        if (!calculateModalPositionRef.current) return;
 
-        window.addEventListener('scroll', handleCalculateModalPosition);
-        window.addEventListener('resize', handleCalculateModalPosition);
+        const handler = calculateModalPositionRef.current;
+
+        calculateModalPositionRef.current();
+
+        window.addEventListener('scroll', handler);
+        window.addEventListener('resize', handler);
 
         return () => {
-            window.removeEventListener('scroll', handleCalculateModalPosition);
-            window.removeEventListener('resize', handleCalculateModalPosition);
+            window.removeEventListener('scroll', handler);
+            window.removeEventListener('resize', handler);
         };
-    }, [position]);
+    }, []);
 
     return (
         <div className={modalStyles['modal-backdrop']} onClick={onClose}>

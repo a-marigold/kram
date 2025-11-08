@@ -13,7 +13,6 @@ export default function AccessButton({
     title,
 
     className,
-
     size = 'large',
 
     ...attributes

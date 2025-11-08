@@ -12,9 +12,9 @@ export async function registerWithEmail(email: string, password: string) {
     });
 
     if (!response.ok) {
-        const errorData = await response.json();
+        const errorData: ApiResponse = await response.json();
 
-        throw new Error(errorData);
+        throw new Error(errorData.message);
     }
 
     const data = await response.json();

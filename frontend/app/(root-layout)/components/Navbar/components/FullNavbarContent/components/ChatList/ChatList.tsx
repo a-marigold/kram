@@ -36,7 +36,7 @@ export default function ChatList() {
             }}
         >
             <div className={navStyles['title-block']}>
-                <h1 className={navStyles['title']}>Your chats</h1>
+                <p className={navStyles['title']}>Your chats</p>
 
                 <svg
                     width={12}
