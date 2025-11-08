@@ -1,4 +1,5 @@
 import type { ApiResponse } from 'shared';
+
 import { apiOrigin } from '@/utils/GetApiOrigin';
 
 export async function registerWithEmail(email: string, password: string) {

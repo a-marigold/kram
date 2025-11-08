@@ -16,7 +16,7 @@
         "react-dom": "19.2.0",
         "sass": "^1.93.3",
         "zustand": "^5.0.8",
-        "shared": "*"
+        "shared": "file:../shared"
     },
     "devDependencies": {
         "@types/node": "^20",
