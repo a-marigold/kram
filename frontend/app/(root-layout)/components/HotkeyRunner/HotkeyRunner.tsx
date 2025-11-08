@@ -10,12 +10,12 @@ import { useHotkeyConfig } from './useHotkeyConfig';
 
 export default function HotkeyRunner() {
     const registerHotkey = useHotkeyStore((state) => state.registerHotkey);
+
     const unregisterHotkey = useHotkeyStore((state) => state.unregisterHotkey);
 
     useHotkeys();
 
     const config = useHotkeyConfig();
-
     useEffect(() => {
         config.forEach(({ name, key, callback }) => {
             registerHotkey(name, key, callback);

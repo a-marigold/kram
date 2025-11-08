@@ -1,10 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
-
 import { useModalStore } from '@/store/ModalStore';
-
-import { useHotkeyStore } from '@/store/HotkeyStore';
 
 import type { Hotkey } from '@/types/Hotkey';
 
@@ -25,7 +21,7 @@ export function useHotkeyConfig() {
         },
         {
             name: 'settings',
-            key: 'Ctrl+Shift+,',
+            key: 'Ctrl+Shift+S',
             callback: () => {
                 openModal(<SettingsModal closeModal={closeModal} />);
             },
@@ -35,7 +31,17 @@ export function useHotkeyConfig() {
             key: 'Escape',
             callback: closeModal,
         },
+
+        //! TODO: TEST:
+        {
+            name: 'closeModal',
+            key: 'O',
+            callback: () => openModal(<AuthModal closeModal={closeModal} />),
+        },
     ];
 
     return config;
 }
+
+//! TODO: TEST:
+import AuthModal from '../ModalRoot/modals/AuthModal';
