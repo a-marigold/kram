@@ -24,7 +24,7 @@ export default function PrimaryButton({
     return (
         <button
             {...attributes}
-            className={`${buttonStyles['primary-button']} ${className}`}
+            className={`${buttonStyles['primary-button']} ${className ?? ''}`}
         >
             <span className={buttonStyles['title-block']}>
                 {icon}

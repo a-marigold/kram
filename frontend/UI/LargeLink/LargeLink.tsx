@@ -6,7 +6,7 @@ import type { LinkProps } from 'next/link';
 
 import buttonStyles from './LargeLInk.module.scss';
 
-interface LargeButtonProps extends LinkProps {
+interface LargeLinkProps extends LinkProps {
     title: `${string}`;
 
     icon?: ReactNode;
@@ -23,7 +23,7 @@ export default function LargeLink({
     className,
 
     ...attributes
-}: LargeButtonProps) {
+}: LargeLinkProps) {
     return (
         <Link
             {...attributes}

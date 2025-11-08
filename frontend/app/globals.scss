@@ -32,6 +32,7 @@ input:focus-visible {
 :root {
     // prefix "fg" means "foreground"
     --background-color: #212121;
+    --tretiary-background-color: #2f2f2f;
     --foreground-color: #181818;
     --dark-foreground-color: #000000;
 
@@ -54,6 +55,8 @@ input:focus-visible {
     --border-color: #ffffff26;
     --light-border-color: #ffffff0d;
     --dim-secondary-border-color: #252525;
+
+    --button-border-radius: 3.40282e38px;
 
     --input-bg-color: #303030;
     --input-box-shadow-color: #0000001c;

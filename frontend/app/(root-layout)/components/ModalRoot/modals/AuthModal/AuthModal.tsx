@@ -8,6 +8,8 @@ import ModalBackdrop from '@/UI/ModalBackdrop';
 
 import AccessButton from '@/UI/AccessButton';
 
+import SecondaryButton from '@/UI/SecondaryButton/SecondaryButton';
+
 import authStyles from './AuthModal.module.scss';
 
 export default function AuthModal({ closeModal }: BasicModalProps) {
@@ -34,8 +36,19 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
 
                 <div className={authStyles['auth-content']}>
                     <div className={authStyles['oauth-list']}>
-                        {/* {authVariantList.map((variant) => )} */}
+                        {authVariantList.map((variant) => (
+                            <SecondaryButton
+                                key={variant.type}
+                                title={variant.title}
+                                icon={variant.icon}
+                                aria-label={variant.title}
+                                onClick={() => {
+                                    authVariantHandler(variant.type);
+                                }}
+                            />
+                        ))}
                     </div>
+
                     <div className={authStyles['divider-block ']}>
                         <div className={authStyles['divider']} />
                         <span className={authStyles['divider-text']}>OR</span>

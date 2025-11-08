@@ -20,6 +20,7 @@ export default function SecondaryButton({
 }: SecondaryButtonProps) {
     return (
         <button
+            {...attributes}
             className={`${buttonStyles['secondary-button']} ${className ?? ''}`}
         >
             {icon}
