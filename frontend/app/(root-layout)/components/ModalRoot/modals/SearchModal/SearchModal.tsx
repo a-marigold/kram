@@ -11,9 +11,10 @@ export default function SearchModal({ closeModal }: BasicModalProps) {
     return (
         <ModalBackdrop onClose={closeModal} backdropType='empty'>
             <div
+                role='dialog'
+                aria-modal='true'
                 className={searchStyles['search-modal']}
                 onClick={(event) => event.stopPropagation()}
-                // tabIndex={-1}
             >
                 <div className={searchStyles['input-block']}>
                     <input

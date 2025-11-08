@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 
 import type { ReactNode } from 'react';
 
@@ -66,7 +66,11 @@ export default function DropDownModal({
     }, []);
 
     return (
-        <div className={modalStyles['modal-backdrop']} onClick={onClose}>
+        <div
+            role='menu'
+            className={modalStyles['modal-backdrop']}
+            onClick={onClose}
+        >
             <div
                 ref={modalRef}
                 className={modalStyles['drop-down-modal']}

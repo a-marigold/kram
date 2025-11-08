@@ -54,7 +54,11 @@ export default function LabelledElement({
 
             {showLabel &&
                 createPortal(
-                    <div ref={labelRef} className={elementStyles['label']}>
+                    <div
+                        ref={labelRef}
+                        role='tooltip'
+                        className={elementStyles['label']}
+                    >
                         <span className={elementStyles['title']}> {title}</span>
 
                         {subtitle && (

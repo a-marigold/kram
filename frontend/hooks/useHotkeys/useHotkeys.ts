@@ -24,20 +24,33 @@ function hotkeyMatches(key: string, event: KeyboardEvent) {
             (part) => part !== 'ctrl' && part !== 'shift' && part !== 'alt'
         );
 
-    const plainKeysMatches = plainKeys.map(
-        (part) => part === event.key.toLowerCase()
-    );
+    const plainKeysMatches = plainKeys
+        .map((part) => part === event.key.toLowerCase())
+        .some((partMatches) => partMatches && true);
 
     if (!specialKeys.length) return plainKeysMatches;
 
+    console.log(
+        `special keys: ${
+            (specialKeys.includes('ctrl') && event.ctrlKey) ||
+            (specialKeys.includes('alt') && event.altKey) ||
+            (specialKeys.includes('shift') && event.shiftKey)
+        }
+        plain keys: ${plainKeysMatches}
+
+        both: ${
+            (specialKeys.includes('ctrl') && event.ctrlKey) ||
+            (specialKeys.includes('alt') && event.altKey) ||
+            (specialKeys.includes('shift') && event.shiftKey) ||
+            plainKeysMatches
+        }
+        `
+    );
+
     return (
-        specialKeys &&
-        specialKeys.includes('ctrl') &&
-        event.ctrlKey &&
-        specialKeys.includes('alt') &&
-        event.altKey &&
-        specialKeys.includes('shift') &&
-        event.shiftKey &&
+        ((specialKeys.includes('ctrl') && event.ctrlKey) ||
+            (specialKeys.includes('alt') && event.altKey) ||
+            (specialKeys.includes('shift') && event.shiftKey)) &&
         plainKeysMatches
     );
 }

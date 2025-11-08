@@ -1,13 +1,32 @@
 'use client';
 
+import { useEffect } from 'react';
+
+import { useHotkeyStore } from '@/store/HotkeyStore';
+
 import { useHotkeys } from '@/hooks/useHotkeys';
 
 import { useHotkeyConfig } from './useHotkeyConfig';
 
 export default function HotkeyRunner() {
+    const registerHotkey = useHotkeyStore((state) => state.registerHotkey);
+    const unregisterHotkey = useHotkeyStore((state) => state.unregisterHotkey);
+
     useHotkeys();
 
-    useHotkeyConfig();
+    const config = useHotkeyConfig();
+
+    useEffect(() => {
+        config.forEach(({ name, key, callback }) => {
+            registerHotkey(name, key, callback);
+        });
+
+        return () => {
+            config.forEach(({ name }) => {
+                unregisterHotkey(name);
+            });
+        };
+    }, []);
 
     return null;
 }

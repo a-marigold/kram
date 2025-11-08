@@ -49,6 +49,8 @@ export default function SettingsModal({ closeModal }: BasicModalProps) {
     return (
         <ModalBackdrop onClose={closeModal} backdropType='blur'>
             <div
+                role='dialog'
+                aria-modal='true'
                 className={settingStyles['settings-modal']}
                 onClick={(event) => event.stopPropagation()}
             >
