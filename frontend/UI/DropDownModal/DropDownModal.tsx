@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 import type { ReactNode } from 'react';
 
@@ -37,9 +37,7 @@ export default function DropDownModal({
 }: DropDownModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
-    const calculateModalPositionRef = useRef<() => void>(null);
-
-    calculateModalPositionRef.current = () => {
+    const handleCalculateModalPosition = useCallback(() => {
         if (modalRef.current) {
             calculateModalPosition(
                 relativeElement,
@@ -50,21 +48,17 @@ export default function DropDownModal({
                 shiftY
             );
         }
-    };
+    }, [position]);
 
     useEffect(() => {
-        if (!calculateModalPositionRef.current) return;
+        handleCalculateModalPosition();
 
-        const handler = calculateModalPositionRef.current;
-
-        calculateModalPositionRef.current();
-
-        window.addEventListener('scroll', handler);
-        window.addEventListener('resize', handler);
+        window.addEventListener('scroll', handleCalculateModalPosition);
+        window.addEventListener('resize', handleCalculateModalPosition);
 
         return () => {
-            window.removeEventListener('scroll', handler);
-            window.removeEventListener('resize', handler);
+            window.removeEventListener('scroll', handleCalculateModalPosition);
+            window.removeEventListener('resize', handleCalculateModalPosition);
         };
     }, []);
 
