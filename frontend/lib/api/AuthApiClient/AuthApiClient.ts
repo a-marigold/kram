@@ -36,4 +36,18 @@ export async function registerWithEmail(email: string, password: string) {
     return data;
 }
 
-export async function loginWithEmail(email: string, password: string) {}
+export async function loginWithEmail(email: string, password: string) {
+    const prepareUser = JSON.stringify({ email, password });
+
+    const response = await fetch(`${apiOrigin}/auth/login`, {
+        method: 'POST',
+        credentials: 'include',
+        body: prepareUser,
+    });
+
+    handleApiError(response);
+
+    const data = await response.json();
+
+    return data;
+}

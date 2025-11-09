@@ -1,0 +1,8 @@
+@use '@/styles/mixins.scss' as *;
+
+.main-content {
+    background-color: var(--access-font-color);
+
+    width: 100%;
+    height: 100%;
+}

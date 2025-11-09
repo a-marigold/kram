@@ -1,0 +1,8 @@
+@use '@/styles/mixins.scss' as *;
+
+.registration-page {
+    @include flex-center;
+
+    width: 100%;
+    height: 100%;
+}
