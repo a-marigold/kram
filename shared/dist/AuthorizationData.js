@@ -1,12 +1,12 @@
 import { object, email, string } from 'zod';
 export const RegisterDataSchema = object({
-    email: email('Invalid email address').min(2, 'Email address is required'),
+    email: email('Invalid email address').min(1, 'Email address is required'),
     password: string()
         .min(8, 'Password should be at least 8 characters')
         .max(40, 'Password is too long'),
 });
 export const LoginDataSchema = object({
-    email: email().min(1, 'Email address is required'),
+    email: email('Invalid email address').min(1, 'Email address is required'),
     password: string().min(1, 'Password is required'),
 });
 export const AboutYouDataSchema = object({

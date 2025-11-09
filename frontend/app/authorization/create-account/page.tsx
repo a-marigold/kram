@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 
 import CreateAccountForm from './components/CreateAccountForm/CreateAccountForm';
 
-import createStyles from './CreateAccount.module.scss';
-
 export const metadata: Metadata = {
     title: 'Create your account - None',
 

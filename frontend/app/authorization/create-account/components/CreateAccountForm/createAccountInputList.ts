@@ -1,4 +1,4 @@
-import type { RegisterData } from '@none/shared/src/types/AuthorizationData';
+import type { RegisterData } from '@none/shared/AuthorizationData';
 import type { AuthInput } from '@/app/authorization/types/AuthInput';
 
 type CreateAccountInputName = keyof RegisterData;

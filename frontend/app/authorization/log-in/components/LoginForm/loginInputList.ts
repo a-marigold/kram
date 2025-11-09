@@ -1,4 +1,4 @@
-import type { LoginData } from '@none/shared/src/types/AuthorizationData';
+import type { LoginData } from '@none/shared/AuthorizationData';
 import type { AuthInput } from '@/app/authorization/types/AuthInput';
 
 type LoginInputName = keyof LoginData;
