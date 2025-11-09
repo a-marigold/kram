@@ -1,5 +1,3 @@
-import type { ApiResponse } from 'shared';
-
 import { apiOrigin } from '@/utils/GetApiOrigin';
 
 import { handleApiError } from '@/utils/HandleApiError';

@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 
-import LoginForm from './components/LoginForm';
+import LoginForm from './components/AboutYouForm';
 
 export const metadata: Metadata = {
-    title: 'Log in with password - None',
+    title: 'Tell about yourself - None',
 
-    description: 'Log in',
+    description: '',
 
     openGraph: {
-        title: 'Log in with password - None',
+        title: 'Tell about yourself - None',
     },
 };
 

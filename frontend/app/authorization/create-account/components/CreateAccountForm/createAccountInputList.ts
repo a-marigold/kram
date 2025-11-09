@@ -1,4 +1,4 @@
-import type { AuthInput } from '@/app/authorization/AuthInput';
+import type { AuthInput } from '@/app/authorization/types/AuthInput';
 
 type CreateAccountInputName = 'email-create' | 'password-create';
 
