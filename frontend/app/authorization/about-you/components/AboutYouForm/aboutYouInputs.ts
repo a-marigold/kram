@@ -1,6 +1,6 @@
 import type { AuthInput } from '@/app/authorization/types/AuthInput';
 
-import { AboutYouData } from '@none/shared/AuthorizationData';
+import type { AboutYouData } from 'shared';
 
 type AboutYouInputName = keyof AboutYouData;
 

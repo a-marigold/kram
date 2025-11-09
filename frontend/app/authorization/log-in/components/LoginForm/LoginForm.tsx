@@ -3,8 +3,8 @@
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { LoginDataSchema } from '@none/shared/AuthorizationData';
-import type { LoginData } from '@none/shared/AuthorizationData';
+import { LoginDataSchema } from 'shared';
+import type { LoginData } from 'shared';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
