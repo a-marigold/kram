@@ -1,0 +1,46 @@
+@use '@/styles/mixins.scss' as *;
+
+.primary-input-block {
+    @include flex-column;
+    gap: 0.25em;
+
+    width: 100%;
+}
+.primary-input {
+    height: 52px;
+
+    background-color: var(--tretiary-background-color);
+
+    border: 1px var(--light-hover-bg-color) solid;
+
+    border-radius: var(--button-border-radius);
+
+    padding: 0.75em 1.25em;
+    box-sizing: border-box;
+
+    color: var(--secondary-font-color);
+    font-size: 1rem;
+
+    &:focus {
+        outline: 2px var(--font-color) solid;
+        outline-offset: -1px;
+        color: var(--font-color);
+    }
+    &:-webkit-autofill {
+        box-shadow: 0 0 0 1000px var(--light-modal-bg) inset !important;
+        -webkit-text-fill-color: var(--font-color) !important;
+        border-color: var(--light-hover-bg-color) !important;
+    }
+    &[aria-invalid='true'] {
+        border-color: var(--error-color);
+    }
+}
+
+.error-label {
+    @include flex-y-center;
+    gap: 0.25em;
+}
+.error-text {
+    @include text-wo-margin(0.75rem);
+    color: var(--error-color);
+}

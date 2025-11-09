@@ -7,8 +7,8 @@ import { authVariantList, authVariantHandler } from './authVariantList';
 import ModalBackdrop from '@/UI/ModalBackdrop';
 
 import AccessButton from '@/UI/AccessButton';
-
-import SecondaryButton from '@/UI/SecondaryButton/SecondaryButton';
+import SecondaryButton from '@/UI/SecondaryButton';
+import PrimaryInput from '@/UI/PrimaryInput';
 
 import authStyles from './AuthModal.module.scss';
 
@@ -56,7 +56,13 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                     </div>
 
                     <form className={authStyles['email-form']}>
-                        <input type='text' />
+                        <PrimaryInput
+                            htmlId='email-input'
+                            placeholder='Email address'
+                            aria-label='Input your email address'
+                            isValid={false}
+                            errorText='Email address required.'
+                        />
 
                         <AccessButton
                             title='Continue'
