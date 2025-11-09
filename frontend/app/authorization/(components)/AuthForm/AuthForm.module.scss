@@ -1,0 +1,27 @@
+@use '@/styles/mixins.scss' as *;
+
+.auth-form-box {
+    @include flex-column;
+    gap: 2em;
+}
+
+.title-block {
+    @include flex-column;
+    align-items: center;
+    gap: 1em;
+}
+.title {
+    @include text-wo-margin(2rem, 500);
+
+    text-align: center;
+}
+.hint {
+    @include text-wo-margin(1rem);
+
+    color: var(--secondary-font-color);
+}
+
+.auth-form {
+    @include flex-column;
+    gap: 1.25em;
+}

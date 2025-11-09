@@ -1,0 +1,18 @@
+@use '@/styles/mixins.scss' as *;
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @include flex-y-center;
+
+    width: 100%;
+    max-height: 4em;
+
+    padding: 1.25em;
+    box-sizing: border-box;
+}
+.home-link {
+    text-decoration: none;
+}
