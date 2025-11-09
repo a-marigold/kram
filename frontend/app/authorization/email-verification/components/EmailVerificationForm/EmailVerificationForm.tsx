@@ -2,6 +2,8 @@
 
 import { Controller, useForm } from 'react-hook-form';
 
+import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { EmailVerificationDataSchema } from 'shared';
@@ -14,10 +16,12 @@ import { createAccountInputList } from './emailVerificationInputList';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function EmailVerificationForm() {
+    const email = useAuthStore((state) => state.email);
+
     const { control, handleSubmit } = useForm<EmailVerificationData>({
         resolver: zodResolver(EmailVerificationDataSchema),
         defaultValues: {
-            email: '__EMAIL__@example.com',
+            email: email,
 
             code: '',
         },
