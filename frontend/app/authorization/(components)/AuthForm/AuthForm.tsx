@@ -13,13 +13,17 @@ interface AuthFormProps {
     hint?: string;
 
     onSubmit: FormHTMLAttributes<HTMLFormElement>['onSubmit'];
+    noValidate?: boolean;
 
     children: ReactNode;
 }
 export default function AuthForm({
     title,
     hint,
+
     onSubmit,
+    noValidate = false,
+
     children,
 }: AuthFormProps) {
     return (
@@ -29,7 +33,11 @@ export default function AuthForm({
                 {hint && <p className={authStyles['hint']}>{hint}</p>}
             </div>
 
-            <form onSubmit={onSubmit} className={authStyles['auth-form']}>
+            <form
+                noValidate={noValidate}
+                onSubmit={onSubmit}
+                className={authStyles['auth-form']}
+            >
                 {children}
 
                 <AccessButton

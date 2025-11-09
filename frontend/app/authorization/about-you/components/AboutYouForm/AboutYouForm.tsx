@@ -41,7 +41,7 @@ export default function LoginForm() {
                             aria-label={input.ariaLabel}
                             errorText={fieldState.error?.message}
                             isValid={!fieldState.error?.message}
-                            value={field.value || ''}
+                            value={field.value}
                             onChange={(event) =>
                                 field.onChange(event.target.value)
                             }

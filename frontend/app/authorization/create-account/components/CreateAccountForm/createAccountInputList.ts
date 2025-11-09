@@ -1,24 +1,21 @@
+import type { RegisterData } from '@none/shared/dist/AuthorizationData';
 import type { AuthInput } from '@/app/authorization/types/AuthInput';
 
-type CreateAccountInputName = 'email-create' | 'password-create';
+type CreateAccountInputName = keyof RegisterData;
 
 export const createAccountInputList: AuthInput<CreateAccountInputName>[] = [
     {
-        name: 'email-create',
+        name: 'email',
         placeholder: 'Email address',
         ariaLabel: 'Email address input field',
 
-        errorText: 'Email address is required',
         type: 'email',
-
-        autoComplete: 'email',
     },
     {
-        name: 'password-create',
+        name: 'password',
         placeholder: 'Password',
         ariaLabel: 'Password input field',
 
-        errorText: 'Password is required',
         type: 'password',
 
         autoComplete: 'new-password',
