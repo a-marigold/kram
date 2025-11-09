@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 
-import registerStyles from './CreateAccount.module.scss';
+import CreateAccountForm from './components/CreateAccountForm/CreateAccountForm';
+
+import createStyles from './CreateAccount.module.scss';
 
 export const metadata: Metadata = {
     title: 'Create your account - None',
@@ -13,5 +15,9 @@ export const metadata: Metadata = {
 };
 
 export default function CreateAccountPage() {
-    return <div className={registerStyles['create-account-page']}></div>;
+    return (
+        <div className={createStyles['create-account-page']}>
+            <CreateAccountForm />
+        </div>
+    );
 }
