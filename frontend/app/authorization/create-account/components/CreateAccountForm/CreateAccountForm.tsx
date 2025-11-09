@@ -29,6 +29,7 @@ export default function CreateAccountForm() {
                             type={input.type}
                             placeholder={input.placeholder}
                             aria-label={input.ariaLabel}
+                            autoComplete={input.autoComplete}
                             errorText={fieldState.error?.message}
                             isValid={!fieldState.error?.message}
                             onChange={field.onChange}

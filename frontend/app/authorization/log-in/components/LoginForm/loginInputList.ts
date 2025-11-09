@@ -1,14 +1,10 @@
-type LoginInputName = 'email' | 'password';
+import type { AuthInput } from '@/app/authorization/AuthInput';
 
-export const loginInputList: {
-    name: LoginInputName;
-    placeholder: string;
-    errorText: string;
-    ariaLabel: string;
-    type: 'email' | 'password';
-}[] = [
+type LoginInputName = 'email-login' | 'password-login';
+
+export const loginInputList: AuthInput<LoginInputName>[] = [
     {
-        name: 'email',
+        name: 'email-login',
         placeholder: 'Email address',
         ariaLabel: 'Email address input field',
 
@@ -16,7 +12,7 @@ export const loginInputList: {
         type: 'email',
     },
     {
-        name: 'password',
+        name: 'password-login',
         placeholder: 'Password',
         errorText: 'Password is required',
 

@@ -1,26 +1,26 @@
-type CreateAccountInput = 'email' | 'password';
+import type { AuthInput } from '@/app/authorization/AuthInput';
 
-export const createAccountInputList: {
-    name: CreateAccountInput;
-    placeholder: string;
-    errorText: string;
-    ariaLabel: string;
-    type: 'email' | 'password';
-}[] = [
+type CreateAccountInputName = 'email-create' | 'password-create';
+
+export const createAccountInputList: AuthInput<CreateAccountInputName>[] = [
     {
-        name: 'email',
+        name: 'email-create',
         placeholder: 'Email address',
         ariaLabel: 'Email address input field',
 
         errorText: 'Email address is required',
         type: 'email',
+
+        autoComplete: 'email',
     },
     {
-        name: 'password',
+        name: 'password-create',
         placeholder: 'Password',
         ariaLabel: 'Password input field',
 
         errorText: 'Password is required',
         type: 'password',
+
+        autoComplete: 'new-password',
     },
 ];

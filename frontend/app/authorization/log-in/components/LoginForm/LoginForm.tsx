@@ -27,6 +27,7 @@ export default function LoginForm() {
                             htmlId={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
+                            autoComplete=''
                             aria-label={input.ariaLabel}
                             errorText={fieldState.error?.message}
                             isValid={!fieldState.error?.message}
