@@ -49,13 +49,13 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                         ))}
                     </div>
 
-                    <div className={authStyles['divider-block ']}>
+                    <div className={authStyles['divider-block']}>
                         <div className={authStyles['divider']} />
                         <span className={authStyles['divider-text']}>OR</span>
                         <div className={authStyles['divider']} />
                     </div>
 
-                    <form>
+                    <form className={authStyles['email-form']}>
                         <input type='text' />
 
                         <AccessButton
