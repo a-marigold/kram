@@ -20,6 +20,7 @@
         ],
         "paths": {
             "@/*": ["./*"],
+            "@root-components/*": ["./app/(root-layout)/components/*"],
             "@modals/*": ["./app/(root-layout)/components/ModalRoot/modals/*"]
         }
     },
