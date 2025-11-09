@@ -7,13 +7,11 @@ export const RegisterDataSchema = object({
         .min(8, 'Password should be at least 8 characters')
         .max(40, 'Password is too long'),
 });
-export type RegisterData = zinfer<typeof RegisterDataSchema>;
 
 export const LoginDataSchema = object({
-    email: email().min(1, 'Email address is required'),
+    email: email('Invalid email address').min(1, 'Email address is required'),
     password: string().min(1, 'Password is required'),
 });
-export type LoginData = zinfer<typeof LoginDataSchema>;
 
 export const AboutYouDataSchema = object({
     fullName: string().min(1, 'Name is required'),
@@ -21,4 +19,7 @@ export const AboutYouDataSchema = object({
         .min(1, 'User name is required')
         .lowercase('User name must not contain capital letters'),
 });
+
+export type RegisterData = zinfer<typeof RegisterDataSchema>;
+export type LoginData = zinfer<typeof LoginDataSchema>;
 export type AboutYouData = zinfer<typeof AboutYouDataSchema>;

@@ -1,6 +1,10 @@
 'use client';
 
 import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import { LoginDataSchema } from '@none/shared/src/types/AuthorizationData';
+import type { LoginData } from '@none/shared/src/types/AuthorizationData';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
@@ -9,11 +13,18 @@ import { loginInputList } from './loginInputList';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function LoginForm() {
-    const { control, handleSubmit } = useForm();
+    const { control, handleSubmit } = useForm<LoginData>({
+        resolver: zodResolver(LoginDataSchema),
+        defaultValues: {
+            email: '',
+            password: '',
+        },
+    });
 
     return (
         <AuthForm
             title='Enter your password'
+            noValidate
             onSubmit={handleSubmit(() => alert('logged in success!'))}
         >
             {loginInputList.map((input) => (
@@ -21,17 +32,19 @@ export default function LoginForm() {
                     key={input.name}
                     control={control}
                     name={input.name}
-                    rules={{ required: input.errorText }}
                     render={({ field, fieldState }) => (
                         <PrimaryInput
                             htmlId={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
-                            autoComplete=''
+                            autoComplete={input.autoComplete}
                             aria-label={input.ariaLabel}
                             errorText={fieldState.error?.message}
                             isValid={!fieldState.error?.message}
-                            onChange={field.onChange}
+                            onChange={(event) =>
+                                field.onChange(event.target.value)
+                            }
+                            value={field.value}
                         />
                     )}
                 />

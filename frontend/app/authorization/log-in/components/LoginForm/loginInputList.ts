@@ -1,22 +1,23 @@
+import type { LoginData } from '@none/shared/src/types/AuthorizationData';
 import type { AuthInput } from '@/app/authorization/types/AuthInput';
 
-type LoginInputName = 'email-login' | 'password-login';
+type LoginInputName = keyof LoginData;
 
 export const loginInputList: AuthInput<LoginInputName>[] = [
     {
-        name: 'email-login',
+        name: 'email',
         placeholder: 'Email address',
         ariaLabel: 'Email address input field',
-
-        errorText: 'Email address is required',
+        autoComplete: 'email',
         type: 'email',
     },
     {
-        name: 'password-login',
+        name: 'password',
         placeholder: 'Password',
-        errorText: 'Password is required',
 
         ariaLabel: 'Password input field',
+
+        autoComplete: 'current-password',
         type: 'password',
     },
 ];

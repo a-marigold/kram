@@ -1,4 +1,4 @@
-import type { RegisterData } from '@none/shared/dist/AuthorizationData';
+import type { RegisterData } from '@none/shared/src/types/AuthorizationData';
 import type { AuthInput } from '@/app/authorization/types/AuthInput';
 
 type CreateAccountInputName = keyof RegisterData;
@@ -9,6 +9,7 @@ export const createAccountInputList: AuthInput<CreateAccountInputName>[] = [
         placeholder: 'Email address',
         ariaLabel: 'Email address input field',
 
+        autoComplete: 'email',
         type: 'email',
     },
     {
@@ -16,8 +17,7 @@ export const createAccountInputList: AuthInput<CreateAccountInputName>[] = [
         placeholder: 'Password',
         ariaLabel: 'Password input field',
 
+        autoComplete: 'new-pasword',
         type: 'password',
-
-        autoComplete: 'new-password',
     },
 ];
