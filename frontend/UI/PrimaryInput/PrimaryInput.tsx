@@ -26,10 +26,10 @@ export default function PrimaryInput({
     return (
         <div className={inputStyles['primary-input-block']}>
             <input
+                type='text'
                 {...attributes}
                 id={htmlId}
                 aria-invalid={!isValid}
-                type='text'
                 className={`${inputStyles['primary-input']} ${className ?? ''}`}
             />
 

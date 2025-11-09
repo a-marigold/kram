@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import Header from './(layout)/components/Header/Header';
+import Header from './(components)/Header';
 
 import authStyles from './Auth.module.scss';
 

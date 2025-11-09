@@ -1,7 +1,7 @@
-type CreateAccountInput = 'email' | 'password';
+type LoginInputName = 'email' | 'password';
 
-export const createAccountInputList: {
-    name: CreateAccountInput;
+export const loginInputList: {
+    name: LoginInputName;
     placeholder: string;
     errorText: string;
     ariaLabel: string;
@@ -18,9 +18,9 @@ export const createAccountInputList: {
     {
         name: 'password',
         placeholder: 'Password',
-        ariaLabel: 'Password input field',
-
         errorText: 'Password is required',
+
+        ariaLabel: 'Password input field',
         type: 'password',
     },
 ];

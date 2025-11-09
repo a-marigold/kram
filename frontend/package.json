@@ -14,9 +14,10 @@
         "next": "16.0.1",
         "react": "19.2.0",
         "react-dom": "19.2.0",
+        "react-hook-form": "^7.66.0",
         "sass": "^1.93.3",
-        "zustand": "^5.0.8",
-        "shared": "file:../shared"
+        "shared": "file:../shared",
+        "zustand": "^5.0.8"
     },
     "devDependencies": {
         "@types/node": "^20",

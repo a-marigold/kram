@@ -61,7 +61,7 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                             placeholder='Email address'
                             aria-label='Input your email address'
                             isValid={false}
-                            errorText='Email address required.'
+                            errorText='Email address is required.'
                         />
 
                         <AccessButton

@@ -4,20 +4,19 @@ import { Controller, useForm } from 'react-hook-form';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
-import { createAccountInputList } from './createAccountInputList';
+import { loginInputList } from './loginInputList';
 
 import PrimaryInput from '@/UI/PrimaryInput';
 
-export default function CreateAccountForm() {
+export default function LoginForm() {
     const { control, handleSubmit } = useForm();
 
     return (
         <AuthForm
-            title='Create your account'
-            hint='Create a password to conitnue'
-            onSubmit={handleSubmit(() => alert('Submitted!'))}
+            title='Enter your password'
+            onSubmit={handleSubmit(() => alert('logged in success!'))}
         >
-            {createAccountInputList.map((input) => (
+            {loginInputList.map((input) => (
                 <Controller
                     key={input.name}
                     control={control}

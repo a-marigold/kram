@@ -3,6 +3,9 @@
 .auth-form-box {
     @include flex-column;
     gap: 2em;
+
+    width: 100%;
+    max-width: 340px;
 }
 
 .title-block {

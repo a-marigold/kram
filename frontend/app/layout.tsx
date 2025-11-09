@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { Geist, Inter } from 'next/font/google';
 
 import HotkeyRunner from '@root-components/HotkeyRunner';
-import Navbar from '@root-components/Navbar';
-import ModalRoot from '@root-components/ModalRoot';
 
 import SvgSprites from '@/UI/SvgSprites';
 

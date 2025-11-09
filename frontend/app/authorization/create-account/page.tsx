@@ -15,9 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function CreateAccountPage() {
-    return (
-        <div className={createStyles['create-account-page']}>
-            <CreateAccountForm />
-        </div>
-    );
+    return <CreateAccountForm />;
 }
