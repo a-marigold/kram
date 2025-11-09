@@ -20,8 +20,8 @@
 }
 .hint {
     @include text-wo-margin(1rem);
-
     color: var(--secondary-font-color);
+    text-align: center;
 }
 
 .auth-form {

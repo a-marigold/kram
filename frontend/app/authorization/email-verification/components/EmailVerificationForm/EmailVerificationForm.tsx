@@ -17,7 +17,8 @@ export default function EmailVerificationForm() {
     const { control, handleSubmit } = useForm<EmailVerificationData>({
         resolver: zodResolver(EmailVerificationDataSchema),
         defaultValues: {
-            email: '__EMAIL__',
+            email: '__EMAIL__@example.com',
+
             code: '',
         },
     });
@@ -25,7 +26,7 @@ export default function EmailVerificationForm() {
     return (
         <AuthForm
             title='Check your inbox'
-            hint='Enter a verification code we sent to __EMAIL__.'
+            hint='Enter the verification code just sent to __EMAIL__@example.com'
             noValidate
             onSubmit={handleSubmit(() => alert('Submitted!'))}
         >
@@ -47,6 +48,7 @@ export default function EmailVerificationForm() {
                                 field.onChange(event.target.value)
                             }
                             value={field.value}
+                            maxLength={input.name === 'code' ? 4 : undefined}
                         />
                     )}
                 />
