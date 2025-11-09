@@ -14,7 +14,7 @@ import { aboutYouInputs } from './aboutYouInputs';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function LoginForm() {
-    const { control, handleSubmit, formState, watch } = useForm<AboutYouData>({
+    const { control, handleSubmit } = useForm<AboutYouData>({
         resolver: zodResolver(AboutYouDataSchema),
         defaultValues: {
             fullName: '',

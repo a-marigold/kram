@@ -4,28 +4,28 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { RegisterDataSchema } from 'shared';
-import type { RegisterData } from 'shared';
+import { EmailVerificationDataSchema } from 'shared';
+import type { EmailVerificationData } from 'shared';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
-import { createAccountInputList } from './createAccountInputList';
+import { createAccountInputList } from './emailVerificationInputList';
 
 import PrimaryInput from '@/UI/PrimaryInput';
 
-export default function CreateAccountForm() {
-    const { control, handleSubmit } = useForm<RegisterData>({
-        resolver: zodResolver(RegisterDataSchema),
+export default function EmailVerificationForm() {
+    const { control, handleSubmit } = useForm<EmailVerificationData>({
+        resolver: zodResolver(EmailVerificationDataSchema),
         defaultValues: {
-            email: '',
-            password: '',
+            email: '__EMAIL__',
+            code: '',
         },
     });
 
     return (
         <AuthForm
-            title='Create your account'
-            hint='Create a password to conitnue'
+            title='Check your inbox'
+            hint='Enter a verification code we sent to __EMAIL__.'
             noValidate
             onSubmit={handleSubmit(() => alert('Submitted!'))}
         >

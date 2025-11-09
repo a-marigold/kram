@@ -15,3 +15,7 @@ export const AboutYouDataSchema = object({
         .min(1, 'User name is required')
         .lowercase('User name must not contain capital letters'),
 });
+export const EmailVerificationDataSchema = object({
+    email: email('Invalid email address'),
+    code: string('Verification code is incorrect').min(4, 'Verfication code is incorrect'),
+});

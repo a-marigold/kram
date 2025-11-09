@@ -20,6 +20,15 @@ export const AboutYouDataSchema = object({
         .lowercase('User name must not contain capital letters'),
 });
 
+export const EmailVerificationDataSchema = object({
+    email: email('Invalid email address'),
+    code: string('Verification code is incorrect').min(
+        4,
+        'Verfication code is incorrect'
+    ),
+});
+
 export type RegisterData = zinfer<typeof RegisterDataSchema>;
 export type LoginData = zinfer<typeof LoginDataSchema>;
 export type AboutYouData = zinfer<typeof AboutYouDataSchema>;
+export type EmailVerificationData = zinfer<typeof EmailVerificationDataSchema>;
