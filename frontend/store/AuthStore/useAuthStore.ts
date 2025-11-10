@@ -1,11 +1,21 @@
 import { create } from 'zustand';
 
-interface AuthStore {
+// TODO: Temporary User is in useAuthStore. In the future move user to shared
+type User = {
+    fullName: string;
+    userName: string;
+
     email: string;
-    setEmail: (newEmail: string) => void;
+};
+interface AuthStore {
+    user: User | null;
+    setUser: (userData: User) => void;
 }
 
 export const useAuthStore = create<AuthStore>()((set) => ({
-    email: '',
-    setEmail: (newEmail) => ({ email: newEmail }),
+    user: null,
+    setUser: (userData) =>
+        set((state) => ({
+            user: state.user && { ...state.user, ...userData },
+        })),
 }));

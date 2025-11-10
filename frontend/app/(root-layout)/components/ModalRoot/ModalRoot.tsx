@@ -1,5 +1,3 @@
-// TODO: Render modal windows via straight component in store
-
 'use client';
 
 import { useEffect } from 'react';
