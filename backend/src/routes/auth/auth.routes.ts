@@ -1,3 +1,3 @@
-import type { FastifyInstance } from 'fastify';
+// import type { FastifyInstance } from 'fastify';
 
-export function authRoutes(app: FastifyInstance) {}
+export function authRoutes() {}

@@ -2,8 +2,20 @@
     "name": "backend",
     "module": "index.ts",
     "type": "module",
+    "scripts": {
+        "lint": "bunx eslint ./src"
+    },
     "devDependencies": {
-        "@types/bun": "latest"
+        "@eslint/js": "^9.39.1",
+        "@types/bun": "latest",
+        "@typescript-eslint/eslint-plugin": "^8.46.3",
+        "@typescript-eslint/parser": "^8.46.3",
+        "eslint": "^9.39.1",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-n": "^17.23.1",
+        "globals": "^16.5.0",
+        "typescript-eslint": "^8.46.3"
     },
     "peerDependencies": {
         "typescript": "^5.9.3"

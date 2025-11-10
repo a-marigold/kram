@@ -48,4 +48,8 @@ jobs:
         working-directory: ./backend
         
         run: bun install
+
+      - name: Run Linter
+        working-directory: ./backend
+        run: bun exec eslint ./src
   

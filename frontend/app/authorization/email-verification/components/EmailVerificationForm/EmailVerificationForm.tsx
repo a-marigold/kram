@@ -8,7 +8,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { EmailVerificationDataSchema } from 'shared';
 import type { EmailVerificationData } from 'shared';
-import { UserSchema } from 'shared';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
