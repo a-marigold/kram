@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint"
+        "lint": "eslint",
+        "reinstall": "rimraf node_modules .next pnpm-lock.yaml && pnpm install"
     },
     "dependencies": {
         "@hookform/resolvers": "^5.2.2",
@@ -28,6 +29,7 @@
         "babel-plugin-react-compiler": "1.0.0",
         "eslint": "^9",
         "eslint-config-next": "16.0.1",
+        "rimraf": "^6.1.0",
         "typescript": "^5"
     }
 }

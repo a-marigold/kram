@@ -17,5 +17,5 @@ export const AboutYouDataSchema = object({
 });
 export const EmailVerificationDataSchema = object({
     email: email('Invalid email address'),
-    code: string('Verification code is incorrect').min(4, 'Verfication code is incorrect'),
+    code: string('Verification code is incorrect').min(4, 'Verification code is required'),
 });

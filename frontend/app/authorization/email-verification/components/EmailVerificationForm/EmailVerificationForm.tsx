@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { EmailVerificationDataSchema } from 'shared';
 import type { EmailVerificationData } from 'shared';
+import { UserSchema } from 'shared';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
@@ -16,12 +17,12 @@ import { createAccountInputList } from './emailVerificationInputList';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function EmailVerificationForm() {
-    const email = useAuthStore((state) => state.email);
+    const email = useAuthStore((state) => state.user?.email);
 
     const { control, handleSubmit } = useForm<EmailVerificationData>({
         resolver: zodResolver(EmailVerificationDataSchema),
         defaultValues: {
-            email: email,
+            email: email || '',
 
             code: '',
         },
