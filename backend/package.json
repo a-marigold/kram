@@ -1,0 +1,19 @@
+{
+    "name": "backend",
+    "module": "index.ts",
+    "type": "module",
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5.9.3"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.19.0",
+        "fastify": "^5.6.2",
+        "fastify-type-provider-zod": "^6.1.0",
+        "prisma": "^6.19.0",
+        "shared": "../shared/shared-1.0.0.tgz",
+        "zod": "^4.1.12"
+    }
+}

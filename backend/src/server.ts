@@ -1,0 +1,16 @@
+import { buildApp } from './app';
+
+const PORT = Number(process.env.PORT) || 3000;
+
+function start() {
+    const app = buildApp();
+
+    try {
+        app.listen({ port: PORT });
+    } catch (error) {
+        app.log.error(error);
+        process.exit(1);
+    }
+}
+
+start();
