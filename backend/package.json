@@ -3,7 +3,8 @@
     "module": "index.ts",
     "type": "module",
     "scripts": {
-        "lint": "bunx eslint ./src"
+        "lint": "bunx eslint ./src",
+        "dev": "bun --watch src/server.ts"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.1",

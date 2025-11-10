@@ -6,7 +6,9 @@ import {
 } from 'fastify-type-provider-zod';
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 
-const app = Fastify({ logger: true }).withTypeProvider<ZodTypeProvider>();
+const app = Fastify({
+    logger: Boolean(process.env.PRODUCTION) || false,
+}).withTypeProvider<ZodTypeProvider>();
 
 export function buildApp() {
     app.setValidatorCompiler(validatorCompiler);

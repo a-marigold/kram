@@ -1,6 +1,6 @@
 import { buildApp } from './app';
 
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT) || 1000;
 
 function start() {
     const app = buildApp();

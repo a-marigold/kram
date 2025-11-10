@@ -14,6 +14,7 @@ export default defineConfig([
 
         rules: {
             '@typescript-eslint/no-unused-vars': ['warn'],
+            '@typescript-eslint/explicit-function-return-type': ['off'],
             '@typescript-eslint/no-explicit-any': ['warn'],
         },
     },

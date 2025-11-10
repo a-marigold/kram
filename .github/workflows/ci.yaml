@@ -51,5 +51,5 @@ jobs:
 
       - name: Run Linter
         working-directory: ./backend
-        run: bun exec eslint ./src
+        run: bun run lint
   
