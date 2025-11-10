@@ -17,6 +17,10 @@ jobs:
       with:
         node-version: 20
 
+    - name: Build shared
+      working-directory: ./shared
+      run: pnpm pack
+
     - name: Install dependencies
       working-directory: ./frontend
       run: npm install
@@ -43,6 +47,10 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with: 
           bun-version: latest
+
+      - name: Build shared
+        working-directory: ./shared
+        run: pnpm pack
 
       - name: Install dependencies
         working-directory: ./backend

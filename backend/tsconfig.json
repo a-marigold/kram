@@ -20,6 +20,10 @@
 
         "noUnusedLocals": false,
         "noUnusedParameters": true,
-        "noPropertyAccessFromIndexSignature": false
-    }
+        "noPropertyAccessFromIndexSignature": false,
+
+        "typeRoots": ["./src/types"]
+    },
+    "include": ["./src", "src/types", "fastify.d.ts", "./src/generated/prisma"],
+    "exclude": ["node_modules"]
 }

@@ -22,8 +22,11 @@
         "typescript": "^5.9.3"
     },
     "dependencies": {
+        "@fastify/jwt": "10.0.0",
         "@prisma/client": "^6.19.0",
+        "dotenv": "^17.2.3",
         "fastify": "^5.6.2",
+        "fastify-plugin": "^5.1.0",
         "fastify-type-provider-zod": "^6.1.0",
         "prisma": "^6.19.0",
         "shared": "../shared/shared-1.0.0.tgz",
