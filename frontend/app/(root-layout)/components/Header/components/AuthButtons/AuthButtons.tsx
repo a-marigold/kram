@@ -42,6 +42,7 @@ export default function AuthButtons() {
         <div role='group' className={headerStyles['auth-button-group']}>
             {authButtonList.map((button) => (
                 <AccessButton
+                    key={button.title}
                     title={button.title}
                     variant={button.variant}
                     size={button.size}
