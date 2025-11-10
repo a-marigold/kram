@@ -34,13 +34,6 @@ export function useHotkeyConfig() {
             key: 'Escape',
             callback: closeModal,
         },
-
-        //! TODO: TEST:
-        {
-            name: 'closeModal',
-            key: 'O',
-            callback: () => openModal(<AuthModal closeModal={closeModal} />),
-        },
     ];
 
     return config;

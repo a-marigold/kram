@@ -5,26 +5,18 @@
 
     background-clip: padding-box;
 
-    border: none;
-
     border-radius: var(--button-border-radius);
 
     padding: 0.75em;
 
     box-sizing: border-box;
 
+    font-size: 1rem;
     font-weight: 500;
 
     cursor: pointer;
 
     transition: opacity 0.16s ease;
-
-    &:hover {
-        opacity: 0.84;
-    }
-    &:active {
-        opacity: 0.7;
-    }
 
     &.size-large {
         width: 100%;
@@ -39,10 +31,29 @@
 
     &.variant-filled {
         background-color: var(--access-bg-color);
+
+        border: none;
+
         color: var(--access-font-color);
+
+        &:hover {
+            opacity: 0.84;
+        }
+        &:active {
+            opacity: 0.7;
+        }
     }
     &.variant-empty-filled {
         background-color: transparent;
         color: var(--font-color);
+
+        border: 1px var(--border-color) solid;
+
+        &:hover {
+            background-color: var(--tretiary-background-color);
+        }
+        &:active {
+            opacity: 0.8;
+        }
     }
 }
