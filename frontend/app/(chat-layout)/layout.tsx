@@ -1,5 +1,8 @@
 import Navbar from '@root-components/Navbar';
+
 import ModalRoot from '@root-components/ModalRoot';
+
+import Header from '@root-components/Header';
 
 export default function ChatLayout({
     children,
@@ -12,7 +15,11 @@ export default function ChatLayout({
 
             <ModalRoot />
 
-            {children}
+            <div className='main-content'>
+                <Header />
+
+                {children}
+            </div>
         </>
     );
 }

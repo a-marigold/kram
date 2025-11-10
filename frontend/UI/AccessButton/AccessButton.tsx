@@ -2,10 +2,13 @@ import type { ButtonHTMLAttributes } from 'react';
 
 import buttonStyles from './AccessButton.module.scss';
 
-interface AccessButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface AccessButtonProps
+    extends ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
 
     size?: 'small' | 'large';
+
+    variant?: 'filled' | 'empty-filled';
 
     'aria-label': string;
 }
@@ -15,6 +18,8 @@ export default function AccessButton({
     className,
     size = 'large',
 
+    variant = 'filled',
+
     ...attributes
 }: AccessButtonProps) {
     return (
@@ -22,7 +27,9 @@ export default function AccessButton({
             {...attributes}
             className={`${buttonStyles['access-button']} ${className} ${
                 buttonStyles[`size-${size}`]
-            }`}
+            }
+            ${buttonStyles[`variant-${variant}`]}
+            `}
         >
             {title}
         </button>

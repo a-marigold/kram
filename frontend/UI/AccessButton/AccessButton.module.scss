@@ -3,8 +3,6 @@
 .access-button {
     @include flex-center;
 
-    background-color: var(--access-bg-color);
-
     background-clip: padding-box;
 
     border: none;
@@ -15,7 +13,6 @@
 
     box-sizing: border-box;
 
-    color: var(--access-font-color);
     font-weight: 500;
 
     cursor: pointer;
@@ -38,5 +35,14 @@
     &.size-small {
         height: 36px;
         font-size: var(--m-font-size);
+    }
+
+    &.variant-filled {
+        background-color: var(--access-bg-color);
+        color: var(--access-font-color);
+    }
+    &.variant-empty-filled {
+        background-color: transparent;
+        color: var(--font-color);
     }
 }

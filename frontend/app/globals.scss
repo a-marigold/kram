@@ -1,3 +1,5 @@
+@use '@/styles/mixins.scss' as *;
+
 html,
 body {
     margin: 0;
@@ -18,6 +20,15 @@ body {
 
 body * {
     font-family: var(--font-inter-variable);
+}
+
+.main-content {
+    position: relative;
+
+    @include flex-column;
+
+    width: 100%;
+    height: 100%;
 }
 
 a:focus-visible,

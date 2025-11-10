@@ -1,0 +1,13 @@
+@use '@/styles/mixins.scss' as *;
+
+.header {
+    position: absolute;
+    top: 0;
+
+    display: flex;
+
+    width: 100%;
+
+    padding: 0.5em;
+    box-sizing: border-box;
+}

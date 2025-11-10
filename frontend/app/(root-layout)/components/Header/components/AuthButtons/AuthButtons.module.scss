@@ -1,0 +1,8 @@
+@use '@/styles/mixins.scss' as *;
+
+.auth-button-group {
+    display: flex;
+    gap: 0.5em;
+
+    margin-left: auto;
+}
