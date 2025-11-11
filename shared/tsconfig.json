@@ -7,7 +7,11 @@
         "outDir": ".dist",
         "skipLibCheck": true,
         "moduleResolution": "Node",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+
+        "paths": {
+            "@/*": ["./src/*"]
+        }
     },
     "include": ["src"]
 }

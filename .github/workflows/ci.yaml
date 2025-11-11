@@ -19,7 +19,7 @@ jobs:
 
     - name: Build shared
       working-directory: ./shared
-      run: pnpm pack
+      run: npm pack
 
     - name: Install dependencies
       working-directory: ./frontend

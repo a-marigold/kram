@@ -1,4 +1,7 @@
 import { object, email, string } from 'zod';
+export const CheckEmailDataSchema = object({
+    email: email('Invalid email address').min(1, 'Email address is required'),
+});
 export const RegisterDataSchema = object({
     email: email('Invalid email address').min(1, 'Email address is required'),
     password: string()

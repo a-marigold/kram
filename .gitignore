@@ -9,6 +9,11 @@ node_modules
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+bun.lock
+
+
+
+pnpm-lock.yaml
 
 
 

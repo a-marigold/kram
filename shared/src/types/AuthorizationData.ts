@@ -1,5 +1,9 @@
 import { object, email, string, infer as zinfer } from 'zod';
 
+export const CheckEmailDataSchema = object({
+    email: email('Invalid email address').min(1, 'Email address is required'),
+});
+
 export const RegisterDataSchema = object({
     email: email('Invalid email address').min(1, 'Email address is required'),
 
@@ -28,6 +32,7 @@ export const EmailVerificationDataSchema = object({
     ),
 });
 
+export type CheckEmailData = zinfer<typeof CheckEmailDataSchema>;
 export type RegisterData = zinfer<typeof RegisterDataSchema>;
 export type LoginData = zinfer<typeof LoginDataSchema>;
 export type AboutYouData = zinfer<typeof AboutYouDataSchema>;
