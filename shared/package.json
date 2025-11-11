@@ -1,7 +1,7 @@
 {
     "name": "@none/shared",
     "version": "1.1.0",
-    "private": true,
+    "private": false,
     "type": "module",
     "scripts": {
         "build": "tsc && pnpm pack"
