@@ -1,0 +1,11 @@
+# git
+.git
+
+# next
+.next
+
+# js 
+node_modules
+
+# env
+.env
