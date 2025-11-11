@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY . .
 
+RUN npm install @none/shared --registry http://host.docker.internal:4873 
 RUN npm install
 
 EXPOSE 3000

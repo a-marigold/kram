@@ -6,13 +6,13 @@
       "name": "backend",
       "dependencies": {
         "@fastify/jwt": "10.0.0",
+        "@none/shared": "1.2.0",
         "@prisma/client": "^6.19.0",
         "dotenv": "^17.2.3",
         "fastify": "^5.6.2",
         "fastify-plugin": "^5.1.0",
         "fastify-type-provider-zod": "^6.1.0",
         "prisma": "^6.19.0",
-        "shared": "../shared/shared-1.1.0.tgz",
         "zod": "^4.1.12",
       },
       "devDependencies": {
@@ -82,6 +82,8 @@
     "@nodelib/fs.stat": ["@nodelib/fs.stat@2.0.5", "", {}, "sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A=="],
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
+
+    "@none/shared": ["@none/shared@1.2.0", "http://localhost:4873/@none/shared/-/shared-1.2.0.tgz", { "dependencies": { "zod": "^4.1.12" } }, "sha512-PNUkzc/PIqmokyLmLzT8fZKlT8aBqpW87z56bX84ED92XFPMxfCC/pQkvORNoGJYtx1tZ6xYA+8howyIyfqgnQ=="],
 
     "@pinojs/redact": ["@pinojs/redact@0.4.0", "", {}, "sha512-k2ENnmBugE/rzQfEcdWHcCY+/FM3VLzH9cYEsbdsoqrvzAKRhUZeRNhAZvB8OitQJ1TBed3yqWtdjzS6wJKBwg=="],
 
@@ -624,8 +626,6 @@
     "set-function-name": ["set-function-name@2.0.2", "", { "dependencies": { "define-data-property": "^1.1.4", "es-errors": "^1.3.0", "functions-have-names": "^1.2.3", "has-property-descriptors": "^1.0.2" } }, "sha512-7PGFlmtwsEADb0WYyvCMa1t+yke6daIG4Wirafur5kcf+MhUnPms1UeR0CKQdTZD81yESwMHbtn+TR+dMviakQ=="],
 
     "set-proto": ["set-proto@1.0.0", "", { "dependencies": { "dunder-proto": "^1.0.1", "es-errors": "^1.3.0", "es-object-atoms": "^1.0.0" } }, "sha512-RJRdvCo6IAnPdsvP/7m6bsQqNnn1FCBX5ZNtFL98MmFF/4xAIJTIg1YbHW5DC2W5SKZanrC6i4HsJqlajw/dZw=="],
-
-    "shared": ["shared@../shared/shared-1.1.0.tgz", { "dependencies": { "zod": "^4.1.12" } }],
 
     "shebang-command": ["shebang-command@2.0.0", "", { "dependencies": { "shebang-regex": "^3.0.0" } }, "sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA=="],
 

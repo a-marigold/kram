@@ -22,7 +22,11 @@
         "noUnusedParameters": true,
         "noPropertyAccessFromIndexSignature": false,
 
-        "typeRoots": ["./src/types"]
+        "typeRoots": ["./src/types"],
+
+        "paths": {
+            "@/*": ["./src/*"]
+        }
     },
     "include": ["./src", "src/types", "fastify.d.ts", "./src/generated/prisma"],
     "exclude": ["node_modules"]

@@ -29,7 +29,7 @@
         "fastify-plugin": "^5.1.0",
         "fastify-type-provider-zod": "^6.1.0",
         "prisma": "^6.19.0",
-        "shared": "@none/shared",
+        "@none/shared": "1.2.0",
         "zod": "^4.1.12"
     }
 }

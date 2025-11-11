@@ -10,7 +10,7 @@ export default function Header() {
     const userName = useAuthStore((state) => state.user?.userName);
 
     return (
-        email && (
+        !userName && (
             <header className={headerStyles['header']}>
                 <AuthButtons />
             </header>
