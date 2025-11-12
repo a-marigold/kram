@@ -4,13 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-
-
-
-
-RUN bun install --registry=http://host.docker.internal:4873
-RUN bun install
-
 EXPOSE 1000
 
 CMD [ "bun", "run", "dev" ]

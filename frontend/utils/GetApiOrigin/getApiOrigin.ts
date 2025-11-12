@@ -13,5 +13,5 @@ export function getApiOrigin(
 export const apiOrigin = getApiOrigin(
     process.env.NEXT_PUBLIC_API_ORIGIN,
 
-    'http://localhost:3000'
+    'http://localhost:1000'
 );
