@@ -50,7 +50,7 @@ jobs:
 
       - name: Build shared
         working-directory: ./shared
-        run: pnpm pack
+        run: bun pm pack
 
       - name: Install dependencies
         working-directory: ./backend
