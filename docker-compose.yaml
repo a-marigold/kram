@@ -34,7 +34,7 @@ services:
       - "./frontend:/app"
 
       - "/app/node_modules"
-    command: sh -c "npm install --registry=http://verdaccio:4873 && npm run dev"
+    command: sh -c "npm install --registry=http://verdaccio:4873 && next dev -H 0.0.0.0 -p 3000"
 
   backend: 
     build:
@@ -52,7 +52,7 @@ services:
       - "./backend:/app"
     
       - "/app/node_modules"
-    command: sh -c "bun install --registry=http://verdaccio:4873 && bun run dev"
+    command: sh -c "bun install --registry=http://verdaccio:4873 && bun run dev -host 0.0.0.0"
 
 
 

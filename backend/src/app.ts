@@ -8,6 +8,7 @@ import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 
 import fastifyJwt from '@fastify/jwt';
 import prismaPlugin from './plugins/prisma';
+import redisPlugin from './plugins/redis';
 
 const app = Fastify({
     logger: process.env.PRODUCTION === 'false',
@@ -23,6 +24,7 @@ export function buildApp() {
     });
 
     app.register(prismaPlugin);
+    app.register(redisPlugin);
 
     return app;
 }
