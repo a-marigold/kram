@@ -1,5 +1,11 @@
 import { object, email, string, infer as zinfer } from 'zod';
 
+export const CheckUserDataSchema = object({
+    userName: string()
+        .min(1, 'User name is required')
+        .lowercase('User name must not contain captial letters'),
+});
+
 export const RegisterDataSchema = object({
     userName: string()
         .min(1, 'User name is required')
@@ -12,9 +18,13 @@ export const RegisterDataSchema = object({
 });
 
 export const LoginDataSchema = object({
-    userName: string().min(1, 'User name  is required'),
+    userName: string()
+        .min(1, 'User name  is required')
+        .lowercase('User name must not contain capital letters'),
+
     password: string().min(1, 'Password is required'),
 });
 
+export type CheckUserData = zinfer<typeof CheckUserDataSchema>;
 export type RegisterData = zinfer<typeof RegisterDataSchema>;
 export type LoginData = zinfer<typeof LoginDataSchema>;

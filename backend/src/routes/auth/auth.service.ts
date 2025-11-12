@@ -2,7 +2,7 @@ import type { PrismaClient } from '@prisma/client';
 
 import type { RegisterData } from '@none/shared';
 
-export async function checkUser(
+export async function checkUserExistance(
     prisma: PrismaClient,
 
     userName: string

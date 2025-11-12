@@ -1,18 +1,31 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 
-import type { RegisterData } from '@none/shared';
+import type { CheckUserData, RegisterData } from '@none/shared';
 import type { ApiResponse } from '@none/shared';
 
 import type { User } from '@prisma/client';
 
-import { checkUser, saveUserInDB } from './auth.service';
+import { checkUserExistance, saveUserInDB } from './auth.service';
+
+export async function checkUser(
+    request: FastifyRequest<{ Body: CheckUserData }>,
+    reply: FastifyReply<{ Reply: ApiResponse }>
+) {
+    try {
+        await checkUserExistance(request.server.prisma, request.body.userName);
+    } catch (error) {
+        if (error instanceof Error) {
+            return reply.code(409).send({ code: 409, message: error.message });
+        }
+    }
+}
 
 export async function register(
     request: FastifyRequest<{ Body: RegisterData }>,
     reply: FastifyReply<{ Reply: ApiResponse | User }>
 ) {
     try {
-        await checkUser(request.server.prisma, request.body.userName);
+        await checkUserExistance(request.server.prisma, request.body.userName);
     } catch (error) {
         if (error instanceof Error) {
             return reply.code(409).send({ code: 409, message: error.message });
