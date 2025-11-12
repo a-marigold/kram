@@ -6,7 +6,7 @@ import type { User } from '@none/shared';
 
 interface AuthStore {
     user: User | null;
-    setUser: (userData: User) => void;
+    setUser: (userData: Partial<User>) => void;
 }
 
 export const useAuthStore = create<AuthStore>()((set) => ({

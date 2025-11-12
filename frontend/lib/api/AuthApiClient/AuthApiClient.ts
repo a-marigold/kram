@@ -2,6 +2,8 @@ import { apiOrigin } from '@/utils/GetApiOrigin';
 
 import { handleApiError } from '@/utils/HandleApiError';
 
+import type { RegisterData } from '@none/shared';
+
 export async function checkEmail(email: string) {
     const prepareEmail = JSON.stringify({ email });
 
@@ -18,10 +20,10 @@ export async function checkEmail(email: string) {
     return data;
 }
 
-export async function registerWithEmail(email: string, password: string) {
-    const prepareUser = JSON.stringify({ email, password });
+export async function register(userData: RegisterData) {
+    const prepareUser = JSON.stringify(userData);
 
-    const response = await fetch(`${apiOrigin}/auth/register-email`, {
+    const response = await fetch(`${apiOrigin}/auth/register`, {
         method: 'POST',
         credentials: 'include',
         body: prepareUser,

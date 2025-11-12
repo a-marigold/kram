@@ -443,7 +443,7 @@ packages:
     engines: {node: '>=12.4.0'}
 
   '@none/shared@file:../shared/none-shared-2.1.0.tgz':
-    resolution: {integrity: sha512-8sxeL9NQsEp34H5bWTx9ZSfGJ6sNpETA5LS5MhsNDKHUJRvBFq6t1xp2TAs2y4sDTOLr4r/eKRj5uhVG3HiMww==, tarball: file:../shared/none-shared-2.1.0.tgz}
+    resolution: {integrity: sha512-WtMT3dvLzEkw2ZmOU5HYOgOgTIigSi9fDsZ8Bakt8h3QmKIzETYUXfgs6L8HCWkSsRfCuTh5lGx6WgM6HpqFpg==, tarball: file:../shared/none-shared-2.1.0.tgz}
     version: 2.1.0
 
   '@parcel/watcher-android-arm64@2.5.1':
