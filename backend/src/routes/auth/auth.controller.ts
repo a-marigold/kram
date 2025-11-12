@@ -9,3 +9,8 @@ export async function checkEmail(
 ) {
     return reply.code(200).send();
 }
+
+export async function register(
+    request: FastifyRequest<>,
+    reply: FastifyReply
+) {}
