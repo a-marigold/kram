@@ -1,12 +1,9 @@
 import { create } from 'zustand';
 
-// TODO: Temporary User is in useAuthStore. In the future move user to shared
-type User = {
-    fullName: string;
-    userName: string;
+import type { User } from '@none/shared';
 
-    email: string;
-};
+// TODO: Temporary User is in useAuthStore. In the future move user to shared
+
 interface AuthStore {
     user: User | null;
     setUser: (userData: User) => void;

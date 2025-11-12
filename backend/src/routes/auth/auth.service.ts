@@ -1,31 +1,30 @@
 import type { PrismaClient } from '@prisma/client';
-import type Redis from 'ioredis';
 
-import { generateFourDigitNumber } from '@/utils/GenerateFourDigitNumber';
+import type { RegisterData } from '@none/shared';
 
 export async function userExists(
     prisma: PrismaClient,
 
-    email: string
+    userName: string
 ) {
     const userExist = await prisma.user.findUnique({
-        where: { email: email },
+        where: { userName: userName },
     });
 
-    if (userExist?.email.split('@')[1] === 'gmail') {
-        return 'oauth';
-    }
     if (userExist) {
-        throw new Error('This email is already taken.');
+        throw new Error('This user already exists.');
     }
 
     return false;
 }
 
-export async function saveOpt(redis: Redis, email: string) {
-    const code = generateFourDigitNumber();
+export async function saveUserInDB(
+    prisma: PrismaClient,
+    userData: RegisterData
+) {
+    const { userName, fullName, password } = userData;
 
-    await redis.set(`email:${email}`, String(code));
-
-    return code;
+    const newUser = await prisma.user.create({
+        data: { userName, fullName, password },
+    });
 }

@@ -2,7 +2,7 @@ import type { RouteHandlerMethod } from 'fastify';
 import type { ProvideredFastifyInstance } from '@/app';
 
 import { ApiResponseSchema } from '@none/shared';
-import { CheckEmailDataSchema } from '@none/shared';
+import { RegisterDataSchema } from '@none/shared';
 
 import { checkEmail } from './auth.controller';
 
@@ -11,7 +11,7 @@ export function authRoutes(app: ProvideredFastifyInstance) {
         method: 'POST',
         url: '/auth/check-email',
         schema: {
-            body: CheckEmailDataSchema,
+            body: RegisterDataSchema,
             response: {
                 200: ApiResponseSchema,
             },

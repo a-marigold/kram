@@ -5,11 +5,11 @@ type LoginInputName = keyof LoginData;
 
 export const loginInputList: AuthInput<LoginInputName>[] = [
     {
-        name: 'email',
-        placeholder: 'Email address',
-        ariaLabel: 'Email address input field',
-        autoComplete: 'email',
-        type: 'email',
+        name: 'userName',
+        placeholder: 'User name',
+        ariaLabel: 'User name input field',
+        autoComplete: 'username',
+        type: 'text',
     },
     {
         name: 'password',

@@ -4,8 +4,9 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { AboutYouDataSchema } from '@none/shared';
-import type { AboutYouData } from '@none/shared';
+import { pick } from 'zod/v4-mini';
+import { RegisterDataSchema } from '@none/shared';
+import type { RegisterData } from '@none/shared';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
@@ -14,11 +15,10 @@ import { aboutYouInputs } from './aboutYouInputs';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function LoginForm() {
-    const { control, handleSubmit } = useForm<AboutYouData>({
-        resolver: zodResolver(AboutYouDataSchema),
+    const { control, handleSubmit } = useForm<Pick<RegisterData, 'fullName'>>({
+        resolver: zodResolver(pick(RegisterDataSchema, { fullName: true })),
         defaultValues: {
             fullName: '',
-            userName: '',
         },
     });
 

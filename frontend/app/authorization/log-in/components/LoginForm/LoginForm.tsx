@@ -3,8 +3,8 @@
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { LoginDataSchema } from @none/shared;
-import type { LoginData } from @none/shared;
+import { LoginDataSchema } from '@none/shared';
+import type { LoginData } from '@none/shared';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
@@ -16,7 +16,7 @@ export default function LoginForm() {
     const { control, handleSubmit } = useForm<LoginData>({
         resolver: zodResolver(LoginDataSchema),
         defaultValues: {
-            email: '',
+            userName: '',
             password: '',
         },
     });
