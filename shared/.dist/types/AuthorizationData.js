@@ -1,4 +1,9 @@
 import { object, string } from 'zod';
+export const CheckUserDataSchema = object({
+    userName: string()
+        .min(1, 'User name is required')
+        .lowercase('User name must not contain captial letters'),
+});
 export const RegisterDataSchema = object({
     userName: string()
         .min(1, 'User name is required')
@@ -9,6 +14,8 @@ export const RegisterDataSchema = object({
     fullName: string().min(1, 'Name is required'),
 });
 export const LoginDataSchema = object({
-    userName: string().min(1, 'User name  is required'),
+    userName: string()
+        .min(1, 'User name  is required')
+        .lowercase('User name must not contain capital letters'),
     password: string().min(1, 'Password is required'),
 });

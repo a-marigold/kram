@@ -8,25 +8,58 @@ import { pick } from 'zod/v4-mini';
 import { RegisterDataSchema } from '@none/shared';
 import type { RegisterData } from '@none/shared';
 
-import AuthForm from '@/app/authorization/(components)/AuthForm';
+import { ApiError } from '@/utils/errors/ApiError';
+import { register } from '@/lib/api/AuthApiClient';
 
+import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+
+import AuthForm from '@/app/authorization/(components)/AuthForm';
 import { aboutYouInputs } from './aboutYouInputs';
 
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function LoginForm() {
-    const { control, handleSubmit } = useForm<Pick<RegisterData, 'fullName'>>({
-        resolver: zodResolver(pick(RegisterDataSchema, { fullName: true })),
-        defaultValues: {
-            fullName: '',
-        },
-    });
+    type LoginFormData = Pick<RegisterData, 'fullName'>;
+
+    const { control, handleSubmit, setError, clearErrors } =
+        useForm<LoginFormData>({
+            resolver: zodResolver(pick(RegisterDataSchema, { fullName: true })),
+            defaultValues: {
+                fullName: '',
+            },
+        });
+
+    const user = useAuthStore((state) => state.user);
+    async function submit(userData: LoginFormData) {
+        if (!user?.userName || !user.password) {
+            return setError('fullName', {
+                message: 'User name and password are required!',
+            });
+        }
+
+        const prepareUser: RegisterData = {
+            fullName: userData.fullName,
+            userName: user.userName,
+            password: user.password,
+        };
+
+        try {
+            await register(prepareUser);
+        } catch (error) {
+            if (error instanceof ApiError) {
+                if (error.code === 409) {
+                    setError('fullName', { message: error.message });
+                } else {
+                    setError('fullName', {
+                        message: 'Unexcepted server error. Try again',
+                    });
+                }
+            }
+        }
+    }
 
     return (
-        <AuthForm
-            title='Tell about yourself'
-            onSubmit={handleSubmit(() => alert('logged in success!'))}
-        >
+        <AuthForm title='Tell about yourself' onSubmit={handleSubmit(submit)}>
             {aboutYouInputs.map((input) => (
                 <Controller
                     key={input.name}

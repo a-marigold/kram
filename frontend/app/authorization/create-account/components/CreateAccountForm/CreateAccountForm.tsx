@@ -12,6 +12,9 @@ import type { RegisterData } from '@none/shared';
 
 import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 
+import { ApiError } from '@/utils/errors/ApiError';
+import { checkUser } from '@/lib/api/AuthApiClient';
+
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 
 import { createAccountInputList } from './createAccountInputList';
@@ -19,9 +22,9 @@ import { createAccountInputList } from './createAccountInputList';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function CreateAccountForm() {
-    type CreateAccountPayload = Pick<RegisterData, 'userName' | 'password'>;
+    type CreateAccountFormData = Pick<RegisterData, 'userName' | 'password'>;
 
-    const { control, handleSubmit } = useForm<CreateAccountPayload>({
+    const { control, handleSubmit, setError } = useForm<CreateAccountFormData>({
         resolver: zodResolver(
             pick(RegisterDataSchema, { userName: true, password: true })
         ),
@@ -33,9 +36,29 @@ export default function CreateAccountForm() {
 
     const setUser = useAuthStore((state) => state.setUser);
     const router = useRouter();
-    function submit(userData: CreateAccountPayload) {
-        setUser(userData);
-        router.replace('/authorization/about-you');
+    async function submit(userData: CreateAccountFormData) {
+        try {
+            console.log(userData);
+
+            await checkUser(userData.userName);
+            console.log(await checkUser(userData.userName));
+
+            setUser(userData);
+            router.replace('/authorization/about-you');
+        } catch (error) {
+            if (error instanceof ApiError) {
+                if (error.code == 409) {
+                    setError('userName', { message: error.message });
+                } else {
+                    setError('userName', {
+                        message: 'Unexcepted server error. Try again',
+                    });
+                    setError('password', {
+                        message: 'Unexcepted server error. Try again',
+                    });
+                }
+            }
+        }
     }
 
     return (

@@ -1,4 +1,7 @@
 import { infer as zinfer } from 'zod';
+export declare const CheckUserDataSchema: import("zod").ZodObject<{
+    userName: import("zod").ZodString;
+}, import("zod/v4/core").$strip>;
 export declare const RegisterDataSchema: import("zod").ZodObject<{
     userName: import("zod").ZodString;
     password: import("zod").ZodString;
@@ -8,6 +11,7 @@ export declare const LoginDataSchema: import("zod").ZodObject<{
     userName: import("zod").ZodString;
     password: import("zod").ZodString;
 }, import("zod/v4/core").$strip>;
+export type CheckUserData = zinfer<typeof CheckUserDataSchema>;
 export type RegisterData = zinfer<typeof RegisterDataSchema>;
 export type LoginData = zinfer<typeof LoginDataSchema>;
 //# sourceMappingURL=AuthorizationData.d.ts.map

@@ -2,19 +2,17 @@ import { apiOrigin } from '@/utils/GetApiOrigin';
 
 import { handleApiError } from '@/utils/HandleApiError';
 
-import type { RegisterData } from '@none/shared';
+import type { ApiResponse, RegisterData } from '@none/shared';
 
-export async function checkEmail(email: string) {
-    const prepareEmail = JSON.stringify({ email });
+export async function checkUser(userName: string) {
+    const prepareEmail = JSON.stringify({ userName });
 
-    const response = await fetch(`${apiOrigin}/auth/check-email`, {
-        method: 'POST',
-
+    const response = await fetch(`${apiOrigin}/auth/check-user`, {
+        method: 'GET',
         body: prepareEmail,
     });
 
     handleApiError(response);
-
     const data = await response.json();
 
     return data;
@@ -31,7 +29,7 @@ export async function register(userData: RegisterData) {
 
     handleApiError(response);
 
-    const data = await response.json();
+    const data: ApiResponse = await response.json();
 
     return data;
 }
