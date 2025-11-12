@@ -1,5 +1,5 @@
 {
-    "name": "'@none/shared'",
+    "name": "@none/shared",
     "version": "1.2.0",
     "private": false,
     "type": "module",
