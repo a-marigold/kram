@@ -4,4 +4,4 @@ import type { ZodObject } from 'zod';
 export const ApiResponseSchema = <T extends ZodObject>(dataSchema: T) =>
     object({ message: string(), code: number(), data: dataSchema.optional() });
 
-export type ApiResponse = zinfer<typeof ApiResponseSchema>;
+export type ApiResponse = zinfer<ReturnType<typeof ApiResponseSchema>>;

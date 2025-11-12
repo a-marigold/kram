@@ -2,7 +2,7 @@ import type { PrismaClient } from '@prisma/client';
 
 import type { RegisterData } from '@none/shared';
 
-export async function userExists(
+export async function checkUser(
     prisma: PrismaClient,
 
     userName: string
@@ -27,4 +27,6 @@ export async function saveUserInDB(
     const newUser = await prisma.user.create({
         data: { userName, fullName, password },
     });
+
+    return newUser;
 }

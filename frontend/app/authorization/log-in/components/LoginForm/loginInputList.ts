@@ -8,7 +8,7 @@ export const loginInputList: AuthInput<LoginInputName>[] = [
         name: 'userName',
         placeholder: 'User name',
         ariaLabel: 'User name input field',
-        autoComplete: 'username',
+        autoComplete: 'name',
         type: 'text',
     },
     {

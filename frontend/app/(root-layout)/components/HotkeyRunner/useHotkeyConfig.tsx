@@ -7,9 +7,6 @@ import type { Hotkey } from '@/types/Hotkey';
 import SearchModal from '@modals/SearchModal';
 import SettingsModal from '@modals/SettingsModal';
 
-//! TODO: TEST:
-import AuthModal from '../ModalRoot/modals/AuthModal';
-
 export function useHotkeyConfig() {
     const openModal = useModalStore((state) => state.openModal);
     const closeModal = useModalStore((state) => state.closeModal);

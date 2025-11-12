@@ -5,5 +5,5 @@ export declare const ApiResponseSchema: <T extends ZodObject>(dataSchema: T) => 
     code: import("zod").ZodNumber;
     data: import("zod").ZodOptional<T>;
 }, import("zod/v4/core").$strip>;
-export type ApiResponse = zinfer<typeof ApiResponseSchema>;
+export type ApiResponse = zinfer<ReturnType<typeof ApiResponseSchema>>;
 //# sourceMappingURL=ApiResponse.d.ts.map

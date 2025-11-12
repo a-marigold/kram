@@ -4,6 +4,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { pick } from 'zod/v4-mini';
 import { RegisterDataSchema } from '@none/shared';
 import type { RegisterData } from '@none/shared';
 
@@ -14,10 +15,14 @@ import { createAccountInputList } from './createAccountInputList';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function CreateAccountForm() {
-    const { control, handleSubmit } = useForm<RegisterData>({
-        resolver: zodResolver(RegisterDataSchema),
+    const { control, handleSubmit } = useForm<
+        Pick<RegisterData, 'userName' | 'password'>
+    >({
+        resolver: zodResolver(
+            pick(RegisterDataSchema, { userName: true, password: true })
+        ),
         defaultValues: {
-            email: '',
+            userName: '',
             password: '',
         },
     });
