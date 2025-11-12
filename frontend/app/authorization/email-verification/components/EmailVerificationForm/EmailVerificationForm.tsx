@@ -6,8 +6,8 @@ import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { EmailVerificationDataSchema } from 'shared';
-import type { EmailVerificationData } from 'shared';
+import { EmailVerificationDataSchema } from @none/shared;
+import type { EmailVerificationData } from @none/shared;
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 

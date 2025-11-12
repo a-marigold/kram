@@ -4,8 +4,8 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { RegisterDataSchema } from 'shared';
-import type { RegisterData } from 'shared';
+import { RegisterDataSchema } from '@none/shared';
+import type { RegisterData } from '@none/shared';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 

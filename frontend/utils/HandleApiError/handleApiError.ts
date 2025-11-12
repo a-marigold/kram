@@ -1,4 +1,4 @@
-import type { ApiResponse } from 'shared';
+import type { ApiResponse } from '@none/shared';
 
 export async function handleApiError(response: Response) {
     if (!response.ok) {

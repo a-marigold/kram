@@ -11,7 +11,7 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.66.0(react@19.2.0))
-      '@none/shared':
+      ''@none/shared'':
         specifier: 1.2.0
         version: 1.2.0
       clsx:
@@ -442,7 +442,7 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@none/shared@1.2.0':
+  ''@none/shared'@1.2.0':
     resolution: {integrity: sha512-PNUkzc/PIqmokyLmLzT8fZKlT8aBqpW87z56bX84ED92XFPMxfCC/pQkvORNoGJYtx1tZ6xYA+8howyIyfqgnQ==}
 
   '@parcel/watcher-android-arm64@2.5.1':
@@ -2377,7 +2377,7 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@none/shared@1.2.0':
+  ''@none/shared'@1.2.0':
     dependencies:
       zod: 4.1.12
 

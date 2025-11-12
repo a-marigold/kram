@@ -1,4 +1,4 @@
-import type { EmailVerificationData } from 'shared';
+import type { EmailVerificationData } from @none/shared;
 
 import type { AuthInput } from '@/app/authorization/types/AuthInput';
 
