@@ -5,12 +5,12 @@ import { handleApiError } from '@/utils/HandleApiError';
 import type { ApiResponse, RegisterData } from '@none/shared';
 
 export async function checkUser(userName: string) {
-    const prepareEmail = JSON.stringify({ userName });
-
-    const response = await fetch(`${apiOrigin}/auth/check-user`, {
-        method: 'GET',
-        body: prepareEmail,
-    });
+    const response = await fetch(
+        `${apiOrigin}/auth/check-user/?userName=${userName}`,
+        {
+            method: 'GET',
+        }
+    );
 
     handleApiError(response);
     const data = await response.json();

@@ -8,11 +8,11 @@ import type { User } from '@prisma/client';
 import { checkUserExistance, saveUserInDB } from './auth.service';
 
 export async function checkUser(
-    request: FastifyRequest<{ Body: CheckUserData }>,
+    request: FastifyRequest<{ Querystring: Pick<CheckUserData, 'userName'> }>,
     reply: FastifyReply<{ Reply: ApiResponse }>
 ) {
     try {
-        await checkUserExistance(request.server.prisma, request.body.userName);
+        await checkUserExistance(request.server.prisma, request.query.userName);
     } catch (error) {
         if (error instanceof Error) {
             return reply.code(409).send({ code: 409, message: error.message });

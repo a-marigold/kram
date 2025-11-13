@@ -38,15 +38,12 @@ export default function CreateAccountForm() {
     const router = useRouter();
     async function submit(userData: CreateAccountFormData) {
         try {
-            console.log(userData);
-
             await checkUser(userData.userName);
-            console.log(await checkUser(userData.userName));
-
             setUser(userData);
             router.replace('/authorization/about-you');
         } catch (error) {
             if (error instanceof ApiError) {
+                console.error(error.message);
                 if (error.code == 409) {
                     setError('userName', { message: error.message });
                 } else {

@@ -10,6 +10,8 @@ import fastifyJwt from '@fastify/jwt';
 import prismaPlugin from './plugins/prisma';
 import redisPlugin from './plugins/redis';
 
+import { routes } from './routes';
+
 const app = Fastify({
     logger: process.env.PRODUCTION === 'false',
 }).withTypeProvider<ZodTypeProvider>();
@@ -24,7 +26,9 @@ export function buildApp() {
     });
 
     app.register(prismaPlugin);
-    app.register(redisPlugin);
+    // app.register(redisPlugin);
+
+    app.register(routes);
 
     return app;
 }
