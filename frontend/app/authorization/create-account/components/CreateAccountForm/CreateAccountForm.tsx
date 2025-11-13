@@ -43,12 +43,10 @@ export default function CreateAccountForm() {
 
             setUser(userData);
 
-            console.log(user);
             router.replace('/authorization/about-you');
         } catch (error) {
             if (error instanceof ApiError) {
-                console.error(error.message);
-                if (error.code == 409) {
+                if (error.code === 409) {
                     setError('userName', { message: error.message });
                 } else {
                     setError('userName', {

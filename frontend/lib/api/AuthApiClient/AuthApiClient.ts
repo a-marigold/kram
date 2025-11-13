@@ -27,7 +27,7 @@ export async function register(userData: RegisterData) {
         body: prepareUser,
     });
 
-    handleApiError(response);
+    await handleApiError(response);
 
     const data: ApiResponse = await response.json();
 
@@ -45,7 +45,7 @@ export async function loginWithEmail(email: string, password: string) {
         body: prepareUser,
     });
 
-    handleApiError(response);
+    await handleApiError(response);
 
     const data = await response.json();
 

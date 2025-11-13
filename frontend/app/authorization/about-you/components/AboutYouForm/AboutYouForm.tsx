@@ -21,17 +21,15 @@ import PrimaryInput from '@/UI/PrimaryInput';
 export default function LoginForm() {
     type LoginFormData = Pick<RegisterData, 'fullName'>;
 
-    const { control, handleSubmit, setError, clearErrors } =
-        useForm<LoginFormData>({
-            resolver: zodResolver(pick(RegisterDataSchema, { fullName: true })),
-            defaultValues: {
-                fullName: '',
-            },
-        });
+    const { control, handleSubmit, setError } = useForm<LoginFormData>({
+        resolver: zodResolver(pick(RegisterDataSchema, { fullName: true })),
+        defaultValues: {
+            fullName: '',
+        },
+    });
 
     const user = useAuthStore((state) => state.user);
     async function submit(userData: LoginFormData) {
-        console.log(user);
         if (!user?.userName || !user.password) {
             return setError('fullName', {
                 message: 'User name and password are required!',
@@ -41,6 +39,7 @@ export default function LoginForm() {
         const prepareUser: RegisterData = {
             fullName: userData.fullName,
             userName: user.userName,
+
             password: user.password,
         };
 

@@ -13,7 +13,7 @@ export async function authRoutes(app: ProvideredFastifyInstance) {
         method: 'GET',
         url: '/auth/check-user/:userName',
         schema: {
-            querystring: pick(CheckUserDataSchema, { userName: true }),
+            querystring: CheckUserDataSchema,
             response: {
                 200: ApiResponseSchema,
                 409: ApiResponseSchema,
