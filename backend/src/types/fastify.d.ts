@@ -1,5 +1,3 @@
-import type { FastifyInstance } from 'fastify';
-
 import type { PrismaClient } from '@prisma/client';
 import type Redis from 'ioredis';
 

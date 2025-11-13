@@ -21,6 +21,8 @@ export async function register(userData: RegisterData) {
 
     const response = await fetch(`${apiOrigin}/auth/register`, {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+
         credentials: 'include',
         body: prepareUser,
     });
@@ -37,6 +39,8 @@ export async function loginWithEmail(email: string, password: string) {
 
     const response = await fetch(`${apiOrigin}/auth/login`, {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+
         credentials: 'include',
         body: prepareUser,
     });

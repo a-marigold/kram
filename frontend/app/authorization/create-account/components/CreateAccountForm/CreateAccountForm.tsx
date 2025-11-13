@@ -34,6 +34,7 @@ export default function CreateAccountForm() {
         },
     });
 
+    const user = useAuthStore((state) => state.user);
     const setUser = useAuthStore((state) => state.setUser);
     const router = useRouter();
     async function submit(userData: CreateAccountFormData) {
@@ -41,6 +42,8 @@ export default function CreateAccountForm() {
             await checkUser(userData.userName);
 
             setUser(userData);
+
+            console.log(user);
             router.replace('/authorization/about-you');
         } catch (error) {
             if (error instanceof ApiError) {

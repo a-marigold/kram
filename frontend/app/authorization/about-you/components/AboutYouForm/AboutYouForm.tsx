@@ -31,6 +31,7 @@ export default function LoginForm() {
 
     const user = useAuthStore((state) => state.user);
     async function submit(userData: LoginFormData) {
+        console.log(user);
         if (!user?.userName || !user.password) {
             return setError('fullName', {
                 message: 'User name and password are required!',
