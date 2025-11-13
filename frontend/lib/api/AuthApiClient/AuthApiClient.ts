@@ -7,15 +7,13 @@ import type { ApiResponse, RegisterData } from '@none/shared';
 export async function checkUser(userName: string) {
     const response = await fetch(
         `${apiOrigin}/auth/check-user/?userName=${userName}`,
+
         {
             method: 'GET',
         }
     );
 
-    handleApiError(response);
-    const data = await response.json();
-
-    return data;
+    await handleApiError(response);
 }
 
 export async function register(userData: RegisterData) {

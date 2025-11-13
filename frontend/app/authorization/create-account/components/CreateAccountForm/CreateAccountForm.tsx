@@ -39,6 +39,7 @@ export default function CreateAccountForm() {
     async function submit(userData: CreateAccountFormData) {
         try {
             await checkUser(userData.userName);
+
             setUser(userData);
             router.replace('/authorization/about-you');
         } catch (error) {

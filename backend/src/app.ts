@@ -4,12 +4,15 @@ import {
     validatorCompiler,
     serializerCompiler,
 } from 'fastify-type-provider-zod';
+
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 
 import fastifyJwt from '@fastify/jwt';
-import prismaPlugin from './plugins/prisma';
-import redisPlugin from './plugins/redis';
+import fastifyCors from '@fastify/cors';
 
+import prismaPlugin from './plugins/prisma';
+
+// import redisPlugin from './plugins/redis'; // TODO: delete redis connection and plugin
 import { routes } from './routes';
 
 const app = Fastify({
@@ -20,6 +23,12 @@ export function buildApp() {
     app.setValidatorCompiler(validatorCompiler);
 
     app.setSerializerCompiler(serializerCompiler);
+
+    app.register(fastifyCors, {
+        origin: ['https://none.vercel.app', 'http://localhost:3000'],
+        methods: ['GET', 'POST', 'PATCH'],
+        credentials: true,
+    });
 
     app.register(fastifyJwt, {
         secret: process.env.JWT_SECRET ?? '',
