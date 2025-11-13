@@ -5,7 +5,7 @@
     "scripts": {
         "lint": "bunx eslint ./src",
         "dev": "bun --watch src/server.ts",
-        "upshared": "bun rm @none/shared && bun install && bun add ../shared/none-shared-2.3.0.tgz"
+        "upshared": "bun rm @none/shared && bun install && bun add ../shared/none-shared-2.3.0.tgz && bun install"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.1",

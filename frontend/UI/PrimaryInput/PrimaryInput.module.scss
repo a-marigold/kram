@@ -39,6 +39,8 @@
 .error-label {
     @include flex-y-center;
     gap: 0.25em;
+
+    max-width: 300px;
 }
 .error-text {
     @include text-wo-margin(0.75rem);
