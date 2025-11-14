@@ -49,23 +49,25 @@ export async function register(
 
     const { accessToken, refreshToken } = generateAuthTokens(
         request.server.jwt,
-        userName
+
+        { userName }
     );
 
     reply.setCookie('access', accessToken, {
         httpOnly: true,
-        sameSite: 'lax',
+        sameSite: 'none',
+        secure: true,
         path: '/',
-        domain: '',
 
         maxAge: 12 * 60,
     });
 
     reply.setCookie('refresh', refreshToken, {
         httpOnly: true,
-        sameSite: 'lax',
+        sameSite: 'none',
+        secure: true,
+
         path: '/',
-        domain: '',
 
         maxAge: 12 * 3600,
     });
@@ -74,6 +76,8 @@ export async function register(
 }
 
 export async function me(
-    request: FastifyRequest,
+    request: FastifyRequest<{}>,
     reply: FastifyReply<{ Body: ApiResponse | User }>
-) {}
+) {
+    request.user;
+}
