@@ -1,8 +1,4 @@
-import type {
-    FastifyInstance,
-    preHandlerHookHandler,
-    RouteHandlerMethod,
-} from 'fastify';
+import type { FastifyInstance, RouteHandlerMethod } from 'fastify';
 
 import {
     CheckUserDataSchema,
@@ -11,7 +7,7 @@ import {
 } from '@none/shared';
 import { RegisterDataSchema } from '@none/shared';
 
-import { checkUser, register, me } from './auth.controller';
+import { checkUser, register, me, refresh } from './auth.controller';
 
 export async function authRoutes(app: FastifyInstance) {
     app.route({
@@ -50,5 +46,16 @@ export async function authRoutes(app: FastifyInstance) {
         },
         onRequest: app.auth,
         handler: me as RouteHandlerMethod,
+    });
+
+    app.route({
+        method: 'GET',
+        url: '/auth/refresh',
+        schema: {
+            response: {
+                401: ApiResponseSchema,
+            },
+        },
+        handler: refresh as RouteHandlerMethod,
     });
 }
