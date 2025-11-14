@@ -1,4 +1,5 @@
 import type { PrismaClient } from '@prisma/client';
+import type { JWT } from '@fastify/jwt';
 
 import type { RegisterData } from '@none/shared';
 
@@ -29,4 +30,14 @@ export async function saveUserInDB(
     });
 
     return newUser;
+}
+
+export function generateAuthTokens<T extends object | string>(
+    jwt: JWT,
+    jwtPayload: T
+): { accessToken: string; refreshToken: string } {
+    const accessToken = jwt.sign(jwtPayload);
+    const refreshToken = crypto.randomUUID();
+
+    return { accessToken, refreshToken };
 }

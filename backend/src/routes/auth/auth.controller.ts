@@ -1,12 +1,15 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 
-// import type { User } from '@prisma/client';
-
 // import { CheckUserDataSchema } from '@none/shared';
+import type { User } from '@prisma/client';
 import type { CheckUserData, RegisterData } from '@none/shared';
 import type { ApiResponse } from '@none/shared';
 
-import { checkUserExistance, saveUserInDB } from './auth.service';
+import {
+    checkUserExistance,
+    saveUserInDB,
+    generateAuthTokens,
+} from './auth.service';
 
 export async function checkUser(
     request: FastifyRequest<{ Params: CheckUserData }>,
@@ -27,6 +30,7 @@ export async function checkUser(
 
 export async function register(
     request: FastifyRequest<{ Body: RegisterData }>,
+
     reply: FastifyReply<{ Reply: ApiResponse }>
 ) {
     try {
@@ -37,5 +41,39 @@ export async function register(
         }
     }
 
-    await saveUserInDB(request.server.prisma, request.body);
+    const { userName } = await saveUserInDB(
+        request.server.prisma,
+
+        request.body
+    );
+
+    const { accessToken, refreshToken } = generateAuthTokens(
+        request.server.jwt,
+        userName
+    );
+
+    reply.setCookie('access', accessToken, {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        domain: '',
+
+        maxAge: 12 * 60,
+    });
+
+    reply.setCookie('refresh', refreshToken, {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        domain: '',
+
+        maxAge: 12 * 3600,
+    });
+
+    return reply.code(204).send();
 }
+
+export async function me(
+    request: FastifyRequest,
+    reply: FastifyReply<{ Body: ApiResponse | User }>
+) {}

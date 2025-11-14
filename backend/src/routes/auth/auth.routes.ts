@@ -3,7 +3,7 @@ import type { FastifyInstance, RouteHandlerMethod } from 'fastify';
 import { CheckUserDataSchema, ApiResponseSchema } from '@none/shared';
 import { RegisterDataSchema } from '@none/shared';
 
-import { checkUser, register } from './auth.controller';
+import { checkUser, register, me } from './auth.controller';
 
 export async function authRoutes(app: FastifyInstance) {
     app.route({
@@ -18,7 +18,7 @@ export async function authRoutes(app: FastifyInstance) {
         },
         handler: checkUser as RouteHandlerMethod,
     });
-    console.log(JSON.stringify(RegisterDataSchema, null, 2));
+
     app.route({
         method: 'POST',
         url: '/auth/register',
@@ -30,5 +30,17 @@ export async function authRoutes(app: FastifyInstance) {
             },
         },
         handler: register as RouteHandlerMethod,
+    });
+
+    app.route({
+        method: 'GET',
+        url: '/auth/me',
+        schema: {
+            // body: ,
+            response: {
+                // 200: _RESPONSE__SCHEMA_,
+            },
+        },
+        handler: me as RouteHandlerMethod,
     });
 }
