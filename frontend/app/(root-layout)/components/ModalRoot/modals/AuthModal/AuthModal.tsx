@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import type { BasicModalProps } from '@/types/ModalProps';
 
 import { authVariantList, authVariantHandler } from './authVariantList';
@@ -8,11 +10,12 @@ import ModalBackdrop from '@/UI/ModalBackdrop';
 
 import AccessButton from '@/UI/AccessButton';
 import SecondaryButton from '@/UI/SecondaryButton';
-import PrimaryInput from '@/UI/PrimaryInput';
 
 import authStyles from './AuthModal.module.scss';
 
 export default function AuthModal({ closeModal }: BasicModalProps) {
+    const router = useRouter();
+
     return (
         <ModalBackdrop>
             <div
@@ -55,20 +58,13 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                         <div className={authStyles['divider']} />
                     </div>
 
-                    <form className={authStyles['email-form']}>
-                        <PrimaryInput
-                            htmlId='email-input'
-                            placeholder='Email address'
-                            aria-label='Input your email address'
-                            isValid={false}
-                            errorText='Email address is required.'
-                        />
-
-                        <AccessButton
-                            title='Continue'
-                            aria-label='Continue with your email'
-                        />
-                    </form>
+                    <AccessButton
+                        title='Register'
+                        aria-label='Sign in with user name and password'
+                        onClick={() => {
+                            router.push('/authorization/create-account');
+                        }}
+                    />
                 </div>
             </div>
         </ModalBackdrop>
