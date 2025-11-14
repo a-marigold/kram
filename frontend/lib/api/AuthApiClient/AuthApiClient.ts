@@ -6,7 +6,7 @@ import type { ApiResponse, RegisterData } from '@none/shared';
 
 export async function checkUser(userName: string) {
     const response = await fetch(
-        `${apiOrigin}/auth/check-user/?userName=${userName}`,
+        `${apiOrigin}/auth/check-user/${userName}`,
 
         {
             method: 'GET',

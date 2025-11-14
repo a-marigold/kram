@@ -1,28 +1,19 @@
 import Fastify from 'fastify';
 
-import {
-    validatorCompiler,
-    serializerCompiler,
-} from 'fastify-type-provider-zod';
-
-import type { ZodTypeProvider } from 'fastify-type-provider-zod';
-
 import fastifyJwt from '@fastify/jwt';
+
 import fastifyCors from '@fastify/cors';
 
 import prismaPlugin from './plugins/prisma';
 
 // import redisPlugin from './plugins/redis'; // TODO: delete redis connection and plugin
+
 import { routes } from './routes';
 
-const app = Fastify({
-    logger: process.env.PRODUCTION === 'false',
-}).withTypeProvider<ZodTypeProvider>();
-
 export function buildApp() {
-    app.setValidatorCompiler(validatorCompiler);
-
-    app.setSerializerCompiler(serializerCompiler);
+    const app = Fastify({
+        logger: process.env.PRODUCTION === 'false',
+    });
 
     app.register(fastifyCors, {
         origin: ['https://none.vercel.app', 'http://localhost:3000'],
@@ -41,5 +32,3 @@ export function buildApp() {
 
     return app;
 }
-
-export type ProvideredFastifyInstance = typeof app;

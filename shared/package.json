@@ -15,10 +15,10 @@
     ],
     "main": ".dist/index.js",
     "types": ".dist/index.d.ts",
-    "dependencies": {
-        "zod": "^4.1.12"
-    },
     "devDependencies": {
         "typescript": "^5.9.3"
+    },
+    "dependencies": {
+        "zod": "^4.1.12"
     }
 }

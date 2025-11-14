@@ -3,7 +3,7 @@ import { object, email, string, infer as zinfer } from 'zod';
 const userNameSchema = string()
     .nonempty('User name is required.')
     .regex(
-        /^[A-Za-zА-Яа-я][A-Za-zА-Я-а-я0-9_@#]*$/,
+        /^[A-Za-zА-Яа-я][A-Za-zА-Яа-я0-9_@#]*$/,
         'User name must not begin with number, "@", "#" and contain spaces.'
     )
     .lowercase('User name must not contain captial letters');
