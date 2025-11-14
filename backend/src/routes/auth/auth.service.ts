@@ -1,19 +1,27 @@
 import type { PrismaClient } from '@prisma/client';
+
 import type { FastifyJWT, JWT } from '@fastify/jwt';
 
 import type { RegisterData } from '@none/shared';
 
-export async function checkUserExistance(
-    prisma: PrismaClient,
-
-    userName: string
-) {
-    const userExist = await prisma.user.findUnique({
-        where: { userName: userName },
+async function findByUserName(prisma: PrismaClient, userName: string) {
+    const user = await prisma.user.findUnique({
+        where: { userName },
     });
 
+    return user;
+}
+
+export async function checkUserNameTaken(
+    prisma: PrismaClient,
+    userName: string
+) {
+    const userExist = await findByUserName(prisma, userName);
+
     if (userExist) {
-        throw new Error('This user already exists.');
+        throw new Error(
+            `User name "${userExist.userName}" has already been taken.`
+        );
     }
 
     return false;
@@ -40,4 +48,17 @@ export function generateAuthTokens(
     const refreshToken = crypto.randomUUID();
 
     return { accessToken, refreshToken };
+}
+
+export async function checkUserExistence(
+    prisma: PrismaClient,
+    userName: string
+) {
+    const user = await findByUserName(prisma, userName);
+
+    if (!user) {
+        throw new Error('User is not found');
+    }
+
+    return user;
 }

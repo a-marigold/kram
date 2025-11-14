@@ -45,6 +45,7 @@ export async function authRoutes(app: FastifyInstance) {
         schema: {
             response: {
                 200: UserSchema.omit({ password: true }),
+                404: ApiResponseSchema,
             },
         },
         onRequest: app.auth,
