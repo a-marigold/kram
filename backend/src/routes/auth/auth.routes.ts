@@ -49,7 +49,7 @@ export async function authRoutes(app: FastifyInstance) {
     });
 
     app.route({
-        method: 'GET',
+        method: 'POST',
         url: '/auth/refresh',
         schema: {
             response: {

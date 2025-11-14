@@ -3,6 +3,7 @@ import { apiOrigin } from '@/utils/GetApiOrigin';
 import { handleApiError } from '@/utils/HandleApiError';
 
 import type { ApiResponse, RegisterData } from '@none/shared';
+import type { User } from '@none/shared';
 
 export async function checkUser(userName: string) {
     const response = await fetch(
@@ -32,6 +33,28 @@ export async function register(userData: RegisterData) {
     const data: ApiResponse = await response.json();
 
     return data;
+}
+
+export async function getUserData() {
+    const response = await fetch(`${apiOrigin}/auth/me`, {
+        method: 'GET',
+        credentials: 'include',
+    });
+
+    await handleApiError(response);
+
+    const data: Omit<User, 'password'> = await response.json();
+
+    return data;
+}
+
+export async function refreshAccessToken() {
+    const response = await fetch(`${apiOrigin}/auth/refresh`, {
+        method: 'POST',
+        credentials: 'include',
+    });
+
+    await handleApiError(response);
 }
 
 export async function loginWithEmail(email: string, password: string) {
