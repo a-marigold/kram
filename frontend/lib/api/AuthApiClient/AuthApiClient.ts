@@ -35,10 +35,10 @@ export async function register(userData: RegisterData) {
     return data;
 }
 
-export async function getUserData() {
+export async function serverGetUserData(cookieString: string) {
     const response = await fetch(`${apiOrigin}/auth/me`, {
         method: 'GET',
-        credentials: 'include',
+        headers: { Cookie: cookieString },
     });
 
     await handleApiError(response);
@@ -57,20 +57,20 @@ export async function refreshAccessToken() {
     await handleApiError(response);
 }
 
-export async function loginWithEmail(email: string, password: string) {
-    const prepareUser = JSON.stringify({ email, password });
+// export async function loginWithEmail(email: string, password: string) {
+//     const prepareUser = JSON.stringify({ email, password });
 
-    const response = await fetch(`${apiOrigin}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+//     const response = await fetch(`${apiOrigin}/auth/login`, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
 
-        credentials: 'include',
-        body: prepareUser,
-    });
+//         credentials: 'include',
+//         body: prepareUser,
+//     });
 
-    await handleApiError(response);
+//     await handleApiError(response);
 
-    const data = await response.json();
+//     const data = await response.json();
 
-    return data;
-}
+//     return data;
+// }
