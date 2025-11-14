@@ -2,6 +2,10 @@ import type { PrismaClient } from '@prisma/client';
 
 import type { FastifyJWT, JWT } from '@fastify/jwt';
 
+import type { CookieSerializeOptions } from '@fastify/cookie';
+
+import type { Cookie } from '@/types/Cookies';
+
 import type { RegisterData } from '@none/shared';
 
 async function findByUserName(prisma: PrismaClient, userName: string) {
@@ -57,8 +61,26 @@ export async function checkUserExistence(
     const user = await findByUserName(prisma, userName);
 
     if (!user) {
-        throw new Error('User is not found');
+        throw new Error('User not found');
     }
 
     return user;
+}
+
+export function generateAuthCookie(
+    name: Cookie,
+    value: string,
+    maxAge: number
+): { name: Cookie; value: string; options: CookieSerializeOptions } {
+    return {
+        name,
+        value,
+        options: {
+            httpOnly: true,
+            sameSite: 'none',
+            secure: true,
+            path: '/',
+            maxAge,
+        },
+    };
 }
