@@ -12,7 +12,6 @@ export async function authRoutes(app: FastifyInstance) {
         method: 'GET',
         url: '/auth/check-user/:userName',
         schema: {
-            params: zodToJsonSchema(CheckUserDataSchema),
             response: {
                 200: zodToJsonSchema(ApiResponseSchema),
                 409: zodToJsonSchema(ApiResponseSchema),
