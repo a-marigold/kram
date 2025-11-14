@@ -29,6 +29,7 @@ export default function LoginForm() {
     });
 
     const user = useAuthStore((state) => state.user);
+
     async function submit(userData: LoginFormData) {
         if (!user?.userName || !user.password) {
             return setError('fullName', {
@@ -38,6 +39,7 @@ export default function LoginForm() {
 
         const prepareUser: RegisterData = {
             fullName: userData.fullName,
+
             userName: user.userName,
 
             password: user.password,

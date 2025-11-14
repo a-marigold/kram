@@ -1,7 +1,5 @@
 import type { FastifyInstance, RouteHandlerMethod } from 'fastify';
 
-import zodToJsonSchema from 'zod-to-json-schema';
-
 import { CheckUserDataSchema, ApiResponseSchema } from '@none/shared';
 import { RegisterDataSchema } from '@none/shared';
 
@@ -12,22 +10,23 @@ export async function authRoutes(app: FastifyInstance) {
         method: 'GET',
         url: '/auth/check-user/:userName',
         schema: {
+            params: CheckUserDataSchema,
             response: {
-                200: zodToJsonSchema(ApiResponseSchema),
-                409: zodToJsonSchema(ApiResponseSchema),
+                200: ApiResponseSchema,
+                409: ApiResponseSchema,
             },
         },
         handler: checkUser as RouteHandlerMethod,
     });
-
+    console.log(JSON.stringify(RegisterDataSchema, null, 2));
     app.route({
         method: 'POST',
         url: '/auth/register',
         schema: {
-            body: zodToJsonSchema(RegisterDataSchema),
+            body: RegisterDataSchema,
             response: {
-                200: zodToJsonSchema(ApiResponseSchema),
-                409: zodToJsonSchema(ApiResponseSchema),
+                200: ApiResponseSchema,
+                409: ApiResponseSchema,
             },
         },
         handler: register as RouteHandlerMethod,
