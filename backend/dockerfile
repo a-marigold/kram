@@ -4,8 +4,14 @@ WORKDIR /app
 
 COPY . .
 
+WORKDIR /app/backend
+
 RUN bun install
 
 EXPOSE 1000
 
 CMD [ "bun", "run", "dev" ]
+
+
+
+

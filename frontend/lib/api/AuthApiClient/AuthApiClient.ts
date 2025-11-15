@@ -71,21 +71,3 @@ export async function loginWithUserName(userName: string, password: string) {
 
     await handleApiError(response);
 }
-
-// export async function loginWithEmail(email: string, password: string) {
-//     const prepareUser = JSON.stringify({ email, password });
-
-//     const response = await fetch(`${apiOrigin}/auth/login`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-
-//         credentials: 'include',
-//         body: prepareUser,
-//     });
-
-//     await handleApiError(response);
-
-//     const data = await response.json();
-
-//     return data;
-// }
