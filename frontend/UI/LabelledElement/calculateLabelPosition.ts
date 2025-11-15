@@ -1,5 +1,3 @@
-// TODO: Rewrite this
-
 export type LabelPositionType = 'top' | 'right' | 'bottom' | 'left';
 
 export function calculateLabelPosition(
@@ -16,42 +14,29 @@ export function calculateLabelPosition(
 
     const { offsetWidth: labelWidth, offsetHeight: labelHeight } = labelElement;
 
-    function calculateTop() {
-        const labelTop = wrapperTop - 30;
-        const labelLeft = wrapperLeft + wrapperWidth / 2 - labelWidth / 2;
-
-        labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
-    }
-
-    function calculateRight() {
-        const labelTop = wrapperTop + wrapperHeight / 2 - labelHeight / 2;
-
-        const labelLeft = wrapperLeft + wrapperWidth + 10;
-
-        labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
-    }
-
-    function calculateBottom() {
-        const labelTop = wrapperTop + wrapperHeight + 10;
-        const labelLeft = wrapperLeft + wrapperWidth / 2 - labelWidth / 2;
-
-        labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
-    }
-
-    function calculateLeft() {
-        const labelTop = wrapperTop + wrapperHeight / 2 - labelHeight / 2;
-        const labelLeft = wrapperLeft - labelWidth - 10;
-
-        labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
-    }
+    let labelTop = 0;
+    let labelLeft = 0;
 
     if (position === 'top') {
-        calculateTop();
-    } else if (position === 'right') {
-        calculateRight();
-    } else if (position === 'bottom') {
-        calculateBottom();
-    } else if (position === 'left') {
-        calculateLeft();
+        labelTop = wrapperTop - 30;
+        labelLeft = wrapperLeft + wrapperWidth / 2 - labelWidth / 2;
     }
+
+    if (position === 'right') {
+        labelTop = wrapperTop + wrapperHeight / 2 - labelHeight / 2;
+
+        labelLeft = wrapperLeft + wrapperWidth + 10;
+    }
+
+    if (position === 'bottom') {
+        labelTop = wrapperTop + wrapperHeight + 10;
+        labelLeft = wrapperLeft + wrapperWidth / 2 - labelWidth / 2;
+    }
+
+    if (position === 'left') {
+        labelTop = wrapperTop + wrapperHeight / 2 - labelHeight / 2;
+        labelLeft = wrapperLeft - labelWidth - 10;
+    }
+
+    labelElement.style.transform = `translate(${labelLeft}px, ${labelTop}px)`;
 }

@@ -31,6 +31,7 @@ export default function Navbar() {
             maxWidthQuery.removeEventListener('change', checkMediaQuery);
         };
     }, []);
+
     useEffect(() => {
         document.documentElement.classList.toggle(
             'navbar-opened',
