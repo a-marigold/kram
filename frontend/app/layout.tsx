@@ -27,6 +27,7 @@ const interVariable = Inter({
 
 export const metadata: Metadata = {
     title: 'None',
+
     openGraph: {
         title: 'None',
     },
