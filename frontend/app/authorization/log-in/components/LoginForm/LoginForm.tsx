@@ -3,6 +3,9 @@
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { ApiError } from '@none/shared';
+import { loginWithUserName } from '@/lib/api/AuthApiClient';
+
 import { LoginDataSchema } from '@none/shared';
 import type { LoginData } from '@none/shared';
 
@@ -13,7 +16,7 @@ import { loginInputList } from './loginInputList';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function LoginForm() {
-    const { control, handleSubmit } = useForm<LoginData>({
+    const { control, handleSubmit, setError } = useForm<LoginData>({
         resolver: zodResolver(LoginDataSchema),
         defaultValues: {
             userName: '',
@@ -21,11 +24,25 @@ export default function LoginForm() {
         },
     });
 
+    async function submit(userData: LoginData) {
+        try {
+            await loginWithUserName(userData.userName, userData.password);
+        } catch (error) {
+            if (error instanceof ApiError) {
+                if (error.code === 404) {
+                    setError('userName', { message: error.message });
+                } else if (error.code === 403) {
+                    setError('password', { message: error.message });
+                }
+            }
+        }
+    }
+
     return (
         <AuthForm
             title='Enter your password'
             noValidate
-            onSubmit={handleSubmit(() => alert('logged in success!'))}
+            onSubmit={handleSubmit(submit)}
         >
             {loginInputList.map((input) => (
                 <Controller

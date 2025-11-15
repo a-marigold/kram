@@ -57,6 +57,18 @@ export async function refreshAccessToken() {
     await handleApiError(response);
 }
 
+export async function loginWithUserName(userName: string, password: string) {
+    const prepareUser = JSON.stringify({ userName, password });
+
+    const response = await fetch(`${apiOrigin}/auth/log-in`, {
+        method: 'POST',
+        credentials: 'include',
+        body: prepareUser,
+    });
+
+    await handleApiError(response);
+}
+
 // export async function loginWithEmail(email: string, password: string) {
 //     const prepareUser = JSON.stringify({ email, password });
 
