@@ -27,9 +27,30 @@ const interVariable = Inter({
 
 export const metadata: Metadata = {
     title: 'None',
+    description: 'None messenger',
+
+    icons: {
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/icon0.svg', sizes: 'any' },
+            { url: '/icon1.png', sizes: 'any' },
+        ],
+        apple: '/apple-icon.png',
+    },
+
+    manifest: '/manifest.json',
 
     openGraph: {
         title: 'None',
+        description: 'None messenger',
+        images: [
+            {
+                url: '/opengraph-image.svg',
+                width: 1000,
+                height: 1000,
+                alt: 'None messenger',
+            },
+        ],
     },
 };
 

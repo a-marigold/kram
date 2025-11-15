@@ -32,12 +32,7 @@ export default function CutProfileBlock() {
                         )
                     }
                 >
-                    <Image
-                        src={'/images/globe.svg'}
-                        width={24}
-                        height={24}
-                        alt=''
-                    />
+                    <Image src={'/globe.svg'} width={24} height={24} alt='' />
                 </button>
             </LabelledElement>
         </div>
