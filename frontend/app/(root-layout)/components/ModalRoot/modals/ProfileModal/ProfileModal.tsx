@@ -1,5 +1,6 @@
 'use client';
 
+import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
 import type { BasicModalProps } from '@/types/ModalProps';
@@ -24,6 +25,8 @@ export default function ProfileModal({
 }: ProfileModalProps) {
     const openModal = useModalStore((state) => state.openModal);
 
+    const userName = useAuthStore((state) => state.user?.userName);
+
     return (
         <DropDownModal
             {...dropDownProps}
@@ -31,10 +34,10 @@ export default function ProfileModal({
             topList={
                 <>
                     <PrimaryButton
-                        title='example_ID'
+                        title={userName || ''}
                         aria-label='Copy your profile ID'
                         onClick={() => {
-                            navigator.clipboard.writeText('example_ID');
+                            navigator.clipboard.writeText(userName || '');
                         }}
                         icon={
                             <svg

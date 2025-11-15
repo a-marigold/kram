@@ -1,3 +1,7 @@
+'use client';
+
+import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+
 import Navbar from '@root-components/Navbar';
 
 import ModalRoot from '@root-components/ModalRoot';
@@ -9,14 +13,16 @@ export default function ChatLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const userName = useAuthStore((state) => state.user?.userName);
+
     return (
         <>
-            <Navbar />
+            {userName && <Navbar />}
 
             <ModalRoot />
 
             <div className='main-content'>
-                <Header />
+                {!userName && <Header />}
 
                 {children}
             </div>

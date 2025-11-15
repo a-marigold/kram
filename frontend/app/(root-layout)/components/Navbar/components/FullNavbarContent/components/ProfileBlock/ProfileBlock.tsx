@@ -1,5 +1,6 @@
 'use client';
 
+import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
 import ProfileModal from '@modals/ProfileModal';
@@ -11,6 +12,8 @@ import navStyles from './ProfileBlock.module.scss';
 export default function ProfileBlock() {
     const openModal = useModalStore((state) => state.openModal);
     const closeModal = useModalStore((state) => state.closeModal);
+
+    const userName = useAuthStore((state) => state.user?.userName);
 
     return (
         <div className={navStyles['profile-block']}>
@@ -29,7 +32,7 @@ export default function ProfileBlock() {
             >
                 <Image src='/images/globe.svg' alt='' width={24} height={24} />
                 <div className={navStyles['name-block']}>
-                    <span className={navStyles['name']}> Profile name </span>
+                    <span className={navStyles['name']}> {userName} </span>
                 </div>
             </button>
         </div>
