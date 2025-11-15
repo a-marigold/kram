@@ -4,6 +4,7 @@
     @include flex-column;
     align-items: center;
 
+    flex-shrink: 1;
     width: 100%;
     min-width: 280px;
     height: 100%;

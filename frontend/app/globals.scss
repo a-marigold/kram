@@ -1,5 +1,15 @@
 @use '@/styles/mixins.scss' as *;
 
+html {
+    &.navbar-opened {
+        overflow: hidden;
+
+        .main-content {
+            flex-shrink: 0;
+        }
+    }
+}
+
 html,
 body {
     margin: 0;
@@ -15,7 +25,7 @@ body {
 
     font-family: var(--font-inter-variable);
 
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 body * {

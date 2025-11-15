@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import FullNavbarContent from './components/FullNavbarContent';
 
@@ -11,6 +11,17 @@ import navStyles from './Navbar.module.scss';
 
 export default function Navbar() {
     const [showFullNavbar, setShowFullNavbar] = useState(true);
+
+    useEffect(() => {
+        document.documentElement.classList.toggle(
+            'navbar-opened',
+            showFullNavbar
+        );
+
+        return () => {
+            document.documentElement.classList.remove('navbar-opened');
+        };
+    }, [showFullNavbar]);
 
     return (
         <div
