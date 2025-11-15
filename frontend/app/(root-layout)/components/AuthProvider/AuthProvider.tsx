@@ -4,10 +4,10 @@ import type { ReactNode } from 'react';
 
 import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 
-import type { User } from '@none/shared';
+import type { SafeUser } from '@none/shared';
 
 interface AuthProviderProps {
-    user: Omit<User, 'password'> | null;
+    user: SafeUser | null;
     children: ReactNode;
 }
 export default function AuthProvider({ user, children }: AuthProviderProps) {

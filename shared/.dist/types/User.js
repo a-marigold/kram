@@ -6,3 +6,4 @@ export const UserSchema = object({
     email: string().optional(),
     password: string(),
 });
+export const SafeUserSchema = UserSchema.omit({ password: true });

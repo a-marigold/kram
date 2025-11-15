@@ -3,8 +3,8 @@ import type { FastifyInstance, RouteHandlerMethod } from 'fastify';
 import {
     CheckUserDataSchema,
     ApiResponseSchema,
-    UserSchema,
     LoginDataSchema,
+    SafeUserSchema,
 } from '@none/shared';
 import { RegisterDataSchema } from '@none/shared';
 
@@ -41,7 +41,7 @@ export async function authRoutes(app: FastifyInstance) {
         url: '/auth/me',
         schema: {
             response: {
-                200: UserSchema.omit({ password: true }),
+                200: SafeUserSchema,
                 404: ApiResponseSchema,
             },
         },

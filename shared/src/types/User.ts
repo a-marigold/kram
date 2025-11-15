@@ -8,4 +8,9 @@ export const UserSchema = object({
     email: string().optional(),
     password: string(),
 });
+
 export type User = zinfer<typeof UserSchema>;
+
+export const SafeUserSchema = UserSchema.omit({ password: true });
+
+export type SafeUser = zinfer<typeof SafeUserSchema>;

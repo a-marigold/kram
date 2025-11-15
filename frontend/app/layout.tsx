@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 
 import { ApiError } from '@none/shared';
 import { serverGetUserData } from '@/lib/api/AuthApiClient';
-import type { User } from '@none/shared';
+import type { SafeUser } from '@none/shared';
 
 import AuthProvider from './(root-layout)/components/AuthProvider';
 
@@ -37,7 +37,7 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    let user: Omit<User, 'password'> | null = null;
+    let user: SafeUser | null = null;
 
     const cookieStore = cookies();
 

@@ -3,7 +3,7 @@ import type { FastifyRequest, FastifyReply } from 'fastify';
 import type {
     CheckUserData,
     RegisterData,
-    User,
+    SafeUser,
     LoginData,
 } from '@none/shared';
 import type { ApiResponse } from '@none/shared';
@@ -106,7 +106,7 @@ export async function register(
 
 export async function me(
     request: FastifyRequest,
-    reply: FastifyReply<{ Reply: ApiResponse | Omit<User, 'password'> }>
+    reply: FastifyReply<{ Reply: ApiResponse | SafeUser }>
 ) {
     try {
         const { userName, fullName, email, avatar } = await checkUserExistence(
@@ -114,7 +114,7 @@ export async function me(
             request.user.userName
         );
 
-        const prepareUser: Omit<User, 'password'> = {
+        const prepareUser: SafeUser = {
             userName,
             fullName,
             email: email || undefined,

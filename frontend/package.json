@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "@hookform/resolvers": "^5.2.2",
-        "@none/shared": "file:../shared/none-shared-2.3.0.tgz",
+        "@none/shared": "file:..\\shared\\none-shared-2.3.0.tgz",
         "clsx": "^2.1.1",
         "framer-motion": "^12.23.24",
         "next": "16.0.1",

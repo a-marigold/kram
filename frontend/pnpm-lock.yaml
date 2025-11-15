@@ -12,7 +12,7 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.66.0(react@19.2.0))
       '@none/shared':
-        specifier: file:../shared/none-shared-2.3.0.tgz
+        specifier: file:..\shared\none-shared-2.3.0.tgz
         version: file:../shared/none-shared-2.3.0.tgz
       clsx:
         specifier: ^2.1.1
@@ -428,7 +428,7 @@ packages:
     engines: {node: '>=12.4.0'}
 
   '@none/shared@file:../shared/none-shared-2.3.0.tgz':
-    resolution: {integrity: sha512-zlz/luQaX39xMjEXU/kqYAaii+zYV9uQhnTf7t3fAFtN4xQbSnzZ/Z4pUrtinw9MrWiW4uFTdmtCt+ZCmghJvA==, tarball: file:../shared/none-shared-2.3.0.tgz}
+    resolution: {integrity: sha512-xSgGV5lnTa71g3PLwWV7rcoa+Nas+YNlFQ2YQudPcIzDFKxukBGjerxWJqloZ2yyb2QD9HaoWd1qvur1Y7b9vQ==, tarball: file:../shared/none-shared-2.3.0.tgz}
     version: 2.3.0
 
   '@parcel/watcher-android-arm64@2.5.1':

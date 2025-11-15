@@ -3,7 +3,7 @@ import { apiOrigin } from '@/utils/GetApiOrigin';
 import { handleApiError } from '@/utils/HandleApiError';
 
 import type { ApiResponse, RegisterData } from '@none/shared';
-import type { User } from '@none/shared';
+import type { SafeUser } from '@none/shared';
 
 export async function checkUser(userName: string) {
     const response = await fetch(
@@ -43,7 +43,7 @@ export async function serverGetUserData(cookieString: string) {
 
     await handleApiError(response);
 
-    const data: Omit<User, 'password'> = await response.json();
+    const data: SafeUser = await response.json();
 
     return data;
 }
