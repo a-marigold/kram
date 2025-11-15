@@ -1,6 +1,7 @@
 'use client';
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
+import { useHotkeyStore } from '@/store/HotkeyStore';
 
 import SearchModal from '@modals/SearchModal';
 
@@ -15,18 +16,26 @@ export default function CutNavButtons() {
 
     const closeModal = useModalStore((state) => state.closeModal);
 
+    const hotkeys = useHotkeyStore((state) => state.hotkeys);
+    const openNewChatHotkey = hotkeys.find(
+        (hotkey) => hotkey.name === 'openNewChat'
+    );
+    const searchHotkey = hotkeys.find((hotkey) => hotkey.name === 'search');
+
     return (
         <div className={cutnavStyles['nav-buttons-block']}>
             <LabelledElement
                 title='Open new chat'
-                subtitle='Ctrl + Shift + O'
+                subtitle={openNewChatHotkey?.key || 'Ctrl + Shift + O'}
                 position='right'
             >
                 <Link
                     href='/'
                     prefetch
                     className={cutnavStyles['nav-button']}
-                    aria-label='Open new chat Ctrl + Shift + O'
+                    aria-label={`Open new chat ${
+                        openNewChatHotkey?.key || 'Ctrl + Alt + N'
+                    }`}
                 >
                     <svg width={20} height={20} color='var(--font-color)'>
                         <use href='#chat-icon' />
@@ -36,12 +45,14 @@ export default function CutNavButtons() {
 
             <LabelledElement
                 title='Search'
-                subtitle='Ctrl + K'
+                subtitle={searchHotkey?.key || 'Ctrl + Shift + K'}
                 position='right'
             >
                 <button
                     className={cutnavStyles['nav-button']}
-                    aria-label='Search Ctrl + K'
+                    aria-label={`Search ${
+                        searchHotkey?.key || 'Ctrl + Shift + K'
+                    }`}
                     onClick={() =>
                         openModal(<SearchModal closeModal={closeModal} />)
                     }

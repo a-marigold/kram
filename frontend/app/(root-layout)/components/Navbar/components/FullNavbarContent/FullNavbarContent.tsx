@@ -1,3 +1,5 @@
+'use client';
+
 import type { Dispatch } from 'react';
 
 import Link from 'next/link';
@@ -46,13 +48,12 @@ export default function FullNavbarContent({
 
                         <LabelledElement
                             title='Close navigation panel'
-                            subtitle='Ctrl + N + P'
                             position='right'
                         >
                             <button
                                 className={navStyles['sidebar-button']}
                                 onClick={() => setShowFullNavbar(false)}
-                                aria-label='Close navigation panel Ctrl + N + P'
+                                aria-label='Close navigation panel'
                             >
                                 <svg
                                     width={20}

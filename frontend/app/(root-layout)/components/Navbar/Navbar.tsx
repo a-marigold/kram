@@ -17,6 +17,8 @@ export default function Navbar() {
     useEffect(() => {
         const maxWidthQuery = window.matchMedia('(max-width: 530px)');
 
+        setMaxWidthMathes(maxWidthQuery.matches);
+
         function checkMediaQuery(event: MediaQueryListEvent) {
             if (event.matches) {
                 setMaxWidthMathes(true);
