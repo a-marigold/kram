@@ -16,7 +16,12 @@ import { loginInputList } from './loginInputList';
 import PrimaryInput from '@/UI/PrimaryInput';
 
 export default function LoginForm() {
-    const { control, handleSubmit, setError } = useForm<LoginData>({
+    const {
+        control,
+        handleSubmit,
+        setError,
+        formState: { isSubmitting },
+    } = useForm<LoginData>({
         resolver: zodResolver(LoginDataSchema),
         defaultValues: {
             userName: '',
@@ -42,6 +47,7 @@ export default function LoginForm() {
         <AuthForm
             title='Enter your password'
             noValidate
+            isLoading={isSubmitting}
             onSubmit={handleSubmit(submit)}
         >
             {loginInputList.map((input) => (

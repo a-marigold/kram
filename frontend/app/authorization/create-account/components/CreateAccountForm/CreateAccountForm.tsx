@@ -24,7 +24,12 @@ import PrimaryInput from '@/UI/PrimaryInput';
 export default function CreateAccountForm() {
     type CreateAccountFormData = Pick<RegisterData, 'userName' | 'password'>;
 
-    const { control, handleSubmit, setError } = useForm<CreateAccountFormData>({
+    const {
+        control,
+        handleSubmit,
+        setError,
+        formState: { isSubmitting },
+    } = useForm<CreateAccountFormData>({
         resolver: zodResolver(
             pick(RegisterDataSchema, { userName: true, password: true })
         ),
@@ -64,6 +69,7 @@ export default function CreateAccountForm() {
             title='Create your account'
             hint='Create a password to conitnue'
             noValidate
+            isLoading={isSubmitting}
             onSubmit={handleSubmit(submit)}
         >
             {createAccountInputList.map((input) => (

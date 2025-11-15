@@ -180,7 +180,7 @@ export async function login(
         );
 
         if (password !== thruthyPassword) {
-            throw new ApiError('Password is incorrect', 404);
+            throw new ApiError('Password is incorrect', 403);
         }
     } catch (error) {
         if (error instanceof ApiError) {

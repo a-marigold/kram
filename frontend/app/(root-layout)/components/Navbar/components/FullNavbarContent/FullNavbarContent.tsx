@@ -30,7 +30,11 @@ export default function FullNavbarContent({
             >
                 <div className={fullnavStyles['head']}>
                     <div className={fullnavStyles['brand-block']}>
-                        <Link href='/' className={fullnavStyles['home-link']}>
+                        <Link
+                            href='/'
+                            aria-label='Go to home page'
+                            className={fullnavStyles['home-link']}
+                        >
                             <svg
                                 width={17}
                                 height={16}

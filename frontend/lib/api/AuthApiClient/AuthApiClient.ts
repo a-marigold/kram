@@ -60,8 +60,11 @@ export async function refreshAccessToken() {
 export async function loginWithUserName(userName: string, password: string) {
     const prepareUser = JSON.stringify({ userName, password });
 
-    const response = await fetch(`${apiOrigin}/auth/log-in`, {
+    const response = await fetch(`${apiOrigin}/auth/login`, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
         credentials: 'include',
         body: prepareUser,
     });

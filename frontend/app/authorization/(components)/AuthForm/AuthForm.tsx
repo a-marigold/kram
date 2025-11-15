@@ -15,6 +15,8 @@ interface AuthFormProps {
     onSubmit: FormHTMLAttributes<HTMLFormElement>['onSubmit'];
     noValidate?: boolean;
 
+    isLoading: boolean;
+
     children: ReactNode;
 }
 export default function AuthForm({
@@ -23,6 +25,8 @@ export default function AuthForm({
 
     onSubmit,
     noValidate = false,
+
+    isLoading,
 
     children,
 }: AuthFormProps) {
@@ -44,6 +48,7 @@ export default function AuthForm({
                     title='Continue'
                     type='submit'
                     aria-label='Proceed to the next authorization step'
+                    disabled={isLoading}
                 />
             </form>
         </div>

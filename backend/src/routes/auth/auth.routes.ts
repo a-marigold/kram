@@ -62,7 +62,7 @@ export async function authRoutes(app: FastifyInstance) {
 
     app.route({
         method: 'POST',
-        url: '/auth/log-in',
+        url: '/auth/login',
         schema: {
             body: LoginDataSchema,
             response: {

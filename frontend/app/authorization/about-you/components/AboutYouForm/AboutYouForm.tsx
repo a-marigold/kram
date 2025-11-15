@@ -21,7 +21,12 @@ import PrimaryInput from '@/UI/PrimaryInput';
 export default function LoginForm() {
     type LoginFormData = Pick<RegisterData, 'fullName'>;
 
-    const { control, handleSubmit, setError } = useForm<LoginFormData>({
+    const {
+        control,
+        handleSubmit,
+        setError,
+        formState: { isSubmitting },
+    } = useForm<LoginFormData>({
         resolver: zodResolver(pick(RegisterDataSchema, { fullName: true })),
         defaultValues: {
             fullName: '',
@@ -61,7 +66,11 @@ export default function LoginForm() {
     }
 
     return (
-        <AuthForm title='Tell about yourself' onSubmit={handleSubmit(submit)}>
+        <AuthForm
+            title='Tell about yourself'
+            isLoading={isSubmitting}
+            onSubmit={handleSubmit(submit)}
+        >
             {aboutYouInputs.map((input) => (
                 <Controller
                     key={input.name}
