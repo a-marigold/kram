@@ -12,16 +12,35 @@ import navStyles from './Navbar.module.scss';
 export default function Navbar() {
     const [showFullNavbar, setShowFullNavbar] = useState(true);
 
+    const [maxWidthMathes, setMaxWidthMathes] = useState(false);
+
+    useEffect(() => {
+        const maxWidthQuery = window.matchMedia('(max-width: 530px)');
+
+        function checkMediaQuery(event: MediaQueryListEvent) {
+            if (event.matches) {
+                setMaxWidthMathes(true);
+            } else {
+                setMaxWidthMathes(false);
+            }
+        }
+
+        maxWidthQuery.addEventListener('change', checkMediaQuery);
+
+        return () => {
+            maxWidthQuery.removeEventListener('change', checkMediaQuery);
+        };
+    }, []);
     useEffect(() => {
         document.documentElement.classList.toggle(
             'navbar-opened',
-            showFullNavbar
+            showFullNavbar && maxWidthMathes
         );
 
         return () => {
             document.documentElement.classList.remove('navbar-opened');
         };
-    }, [showFullNavbar]);
+    }, [showFullNavbar, maxWidthMathes]);
 
     return (
         <div
