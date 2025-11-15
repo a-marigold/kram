@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Inter } from 'next/font/google';
 
 import { cookies } from 'next/headers';
@@ -55,6 +55,11 @@ export const metadata: Metadata = {
         locale: 'en_US',
         type: 'website',
     },
+};
+export const viewport: Viewport = {
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
 };
 
 export default async function RootLayout({
