@@ -1,11 +1,11 @@
 import type { PrismaClient } from '@prisma/client';
 
 import type { FastifyJWT, JWT } from '@fastify/jwt';
-
 import type { CookieSerializeOptions } from '@fastify/cookie';
 
-import type { Cookie } from '@/types/Cookies';
+import { ApiError } from '@none/shared';
 
+import type { Cookie } from '@/types/Cookies';
 import type { RegisterData } from '@none/shared';
 
 async function findByUserName(prisma: PrismaClient, userName: string) {
@@ -23,8 +23,9 @@ export async function checkUserNameTaken(
     const userExist = await findByUserName(prisma, userName);
 
     if (userExist) {
-        throw new Error(
-            `User name "${userExist.userName}" has already been taken.`
+        throw new ApiError(
+            `User name "${userExist.userName}" has already been taken.`,
+            409
         );
     }
 
@@ -61,7 +62,7 @@ export async function checkUserExistence(
     const user = await findByUserName(prisma, userName);
 
     if (!user) {
-        throw new Error('User with this user name not found');
+        throw new ApiError('User with this user name not found', 404);
     }
 
     return user;

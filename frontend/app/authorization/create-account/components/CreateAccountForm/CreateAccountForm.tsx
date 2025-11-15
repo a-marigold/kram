@@ -12,7 +12,7 @@ import type { RegisterData } from '@none/shared';
 
 import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 
-import { ApiError } from '@/utils/errors/ApiError';
+import { ApiError } from '@none/shared';
 import { checkUser } from '@/lib/api/AuthApiClient';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';

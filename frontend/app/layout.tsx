@@ -3,6 +3,7 @@ import { Geist, Inter } from 'next/font/google';
 
 import { cookies } from 'next/headers';
 
+import { ApiError } from '@none/shared';
 import { serverGetUserData } from '@/lib/api/AuthApiClient';
 import type { User } from '@none/shared';
 
@@ -46,7 +47,7 @@ export default async function RootLayout({
 
     try {
         if (!accessToken || !refreshToken) {
-            throw new Error('Access or refresh token absent');
+            throw new ApiError('Access or refresh token absent', 401);
         }
 
         const response = await serverGetUserData(

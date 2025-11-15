@@ -1,4 +1,4 @@
-import { ApiError } from '@/utils/errors/ApiError';
+import { ApiError } from '@none/shared';
 import type { ApiResponse } from '@none/shared';
 
 export async function handleApiError(response: Response) {

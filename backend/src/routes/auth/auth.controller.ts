@@ -7,6 +7,7 @@ import type {
     LoginData,
 } from '@none/shared';
 import type { ApiResponse } from '@none/shared';
+import { ApiError } from '@none/shared';
 
 import {
     checkUserNameTaken,
@@ -37,8 +38,10 @@ export async function checkUser(
 
         return reply.code(200).send();
     } catch (error) {
-        if (error instanceof Error) {
-            return reply.code(409).send({ code: 409, message: error.message });
+        if (error instanceof ApiError) {
+            return reply
+                .code(error.code)
+                .send({ code: error.code, message: error.message });
         }
     }
 }
@@ -50,8 +53,10 @@ export async function register(
     try {
         await checkUserNameTaken(request.server.prisma, request.body.userName);
     } catch (error) {
-        if (error instanceof Error) {
-            return reply.code(409).send({ code: 409, message: error.message });
+        if (error instanceof ApiError) {
+            return reply
+                .code(error.code)
+                .send({ code: error.code, message: error.message });
         }
     }
 
@@ -118,8 +123,10 @@ export async function me(
 
         return reply.code(200).send(prepareUser);
     } catch (error) {
-        if (error instanceof Error) {
-            return reply.code(404).send({ code: 404, message: error.message });
+        if (error instanceof ApiError) {
+            return reply
+                .code(error.code)
+                .send({ code: error.code, message: error.message });
         }
     }
 }
@@ -173,11 +180,13 @@ export async function login(
         );
 
         if (password !== thruthyPassword) {
-            throw new Error('Password is incorrect');
+            throw new ApiError('Password is incorrect', 404);
         }
     } catch (error) {
-        if (error instanceof Error) {
-            return reply.code(404).send({ code: 404, message: error.message });
+        if (error instanceof ApiError) {
+            return reply
+                .code(error.code)
+                .send({ code: error.code, message: error.message });
         }
     }
 

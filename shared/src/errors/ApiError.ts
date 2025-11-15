@@ -1,7 +1,7 @@
 export class ApiError extends Error {
-    code: number | undefined;
+    code: number;
 
-    constructor(message: string, code?: number) {
+    constructor(message: string, code: number) {
         super(message);
         this.code = code;
     }

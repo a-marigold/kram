@@ -8,7 +8,7 @@ import { pick } from 'zod/v4-mini';
 import { RegisterDataSchema } from '@none/shared';
 import type { RegisterData } from '@none/shared';
 
-import { ApiError } from '@/utils/errors/ApiError';
+import { ApiError } from '@none/shared';
 import { register } from '@/lib/api/AuthApiClient';
 
 import { useAuthStore } from '@/store/AuthStore/useAuthStore';
