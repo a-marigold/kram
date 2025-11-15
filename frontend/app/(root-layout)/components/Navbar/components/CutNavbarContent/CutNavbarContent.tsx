@@ -33,7 +33,7 @@ export default function CutNavbarContent({
                         position='right'
                     >
                         <button
-                            className={navStyles['sidebar-button']}
+                            className={`${navStyles['sidebar-button']} ${cutnavStyles['sidebar-button']}`}
                             onClick={() => setShowFullNavbar(true)}
                             aria-label='Open navigation panel Ctrl + N + P'
                         >
@@ -41,8 +41,18 @@ export default function CutNavbarContent({
                                 width={20}
                                 height={20}
                                 color='var(--font-color)'
+                                className={cutnavStyles['sidebar-toggle-icon']}
                             >
                                 <use href='#sidebar-toggle-icon' />
+                            </svg>
+
+                            <svg
+                                width={17}
+                                height={16}
+                                color='var(--font-color)'
+                                className={cutnavStyles['none-letter-icon']}
+                            >
+                                <use href='#none-letter-icon' />
                             </svg>
                         </button>
                     </LabelledElement>

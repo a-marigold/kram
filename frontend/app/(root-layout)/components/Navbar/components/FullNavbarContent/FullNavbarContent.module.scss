@@ -15,7 +15,22 @@
 
     padding-bottom: 0.25em;
 }
+
 .brand-block {
     display: flex;
     justify-content: space-between;
+}
+.home-link {
+    @include flex-center;
+
+    width: 36px;
+    height: 36px;
+
+    background-color: transparent;
+
+    border-radius: 8px;
+
+    &:hover {
+        background-color: var(--dim-hover-bg-color);
+    }
 }

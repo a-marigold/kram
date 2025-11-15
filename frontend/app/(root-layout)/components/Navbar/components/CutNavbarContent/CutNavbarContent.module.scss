@@ -5,7 +5,23 @@
     gap: 0.75em;
 
     padding-top: 0.5em;
+
     padding-bottom: 0.25em;
+}
+.sidebar-button:hover {
+    .sidebar-toggle-icon {
+        display: block;
+    }
+
+    .none-letter-icon {
+        display: none;
+    }
+}
+.sidebar-toggle-icon {
+    display: none;
+}
+.none-letter-icon {
+    display: block;
 }
 
 .nav-buttons-block {

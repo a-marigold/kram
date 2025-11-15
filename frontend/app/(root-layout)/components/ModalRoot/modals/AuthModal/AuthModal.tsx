@@ -58,6 +58,14 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                         <div className={authStyles['divider']} />
                     </div>
 
+                    <SecondaryButton
+                        title='Log in'
+                        onClick={() => {
+                            router.push('/authorization/log-in');
+                        }}
+                        aria-label='Log in with user name and password'
+                    />
+
                     <AccessButton
                         title='Register'
                         aria-label='Sign in with user name and password'

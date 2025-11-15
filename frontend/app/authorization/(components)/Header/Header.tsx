@@ -6,8 +6,8 @@ export default function Header() {
     return (
         <header className={headerStyles['header']}>
             <Link href='/' className={headerStyles['home-link']}>
-                <svg width={70}>
-                    <use href='#none-logo' />
+                <svg width={70} color='var(--font-color)'>
+                    <use href='#none-logo-icon' />
                 </svg>
             </Link>
         </header>

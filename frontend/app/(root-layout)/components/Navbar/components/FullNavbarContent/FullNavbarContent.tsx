@@ -1,5 +1,7 @@
 import type { Dispatch } from 'react';
 
+import Link from 'next/link';
+
 import { AnimatePresence, motion } from 'framer-motion';
 
 import NavButtons from './components/NavButtons';
@@ -28,7 +30,15 @@ export default function FullNavbarContent({
             >
                 <div className={fullnavStyles['head']}>
                     <div className={fullnavStyles['brand-block']}>
-                        <div>{/* __TEMPORARY__*/}</div>
+                        <Link href='/' className={fullnavStyles['home-link']}>
+                            <svg
+                                width={17}
+                                height={16}
+                                color='var(--font-color)'
+                            >
+                                <use href='#none-letter-icon' />
+                            </svg>
+                        </Link>
 
                         <LabelledElement
                             title='Close navigation panel'
