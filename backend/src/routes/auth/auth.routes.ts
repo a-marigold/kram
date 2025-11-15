@@ -4,10 +4,11 @@ import {
     CheckUserDataSchema,
     ApiResponseSchema,
     UserSchema,
+    LoginDataSchema,
 } from '@none/shared';
 import { RegisterDataSchema } from '@none/shared';
 
-import { checkUser, register, me, refresh } from './auth.controller';
+import { checkUser, register, me, refresh, login } from './auth.controller';
 
 export async function authRoutes(app: FastifyInstance) {
     app.route({
@@ -57,5 +58,17 @@ export async function authRoutes(app: FastifyInstance) {
             },
         },
         handler: refresh as RouteHandlerMethod,
+    });
+
+    app.route({
+        method: 'POST',
+        url: '/auth/log-in',
+        schema: {
+            body: LoginDataSchema,
+            response: {
+                404: ApiResponseSchema,
+            },
+        },
+        handler: login as RouteHandlerMethod,
     });
 }

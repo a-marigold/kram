@@ -1,6 +1,11 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 
-import type { CheckUserData, RegisterData, User } from '@none/shared';
+import type {
+    CheckUserData,
+    RegisterData,
+    User,
+    LoginData,
+} from '@none/shared';
 import type { ApiResponse } from '@none/shared';
 
 import {
@@ -13,6 +18,11 @@ import {
 
 import { Cookie } from '@/types/Cookies';
 import type { Cookies } from '@/types/Cookies';
+
+import {
+    ACCESS_TOKEN_MAX_AGE,
+    REFRESH_TOKEN_MAX_AGE,
+} from '@/constants/authCookieMaxAge';
 
 export async function checkUser(
     request: FastifyRequest<{ Params: CheckUserData }>,
@@ -61,21 +71,29 @@ export async function register(
         name: accessName,
         value: accessValue,
         options: accessOptions,
-    } = generateAuthCookie(Cookie.AccessToken, accessToken, 12 * 60);
+    } = generateAuthCookie(
+        Cookie.AccessToken,
+        accessToken,
+        ACCESS_TOKEN_MAX_AGE
+    );
     reply.setCookie(accessName, accessValue, accessOptions);
 
     const {
         name: refreshName,
         value: refreshValue,
         options: refreshOptions,
-    } = generateAuthCookie(Cookie.RefreshToken, refreshToken, 12 * 3600);
+    } = generateAuthCookie(
+        Cookie.RefreshToken,
+        refreshToken,
+        REFRESH_TOKEN_MAX_AGE
+    );
     reply.setCookie(refreshName, refreshValue, refreshOptions);
 
     await request.server.redis.set(
         `refresh:${refreshToken}`,
         userName,
         'EX',
-        12 * 3600
+        REFRESH_TOKEN_MAX_AGE
     );
 
     return reply.code(204).send();
@@ -129,10 +147,67 @@ export async function refresh(
     const {
         name: accessName,
         value: accessValue,
+
         options: accessOptions,
-    } = generateAuthCookie(Cookie.AccessToken, newAccessToken, 12 * 60);
+    } = generateAuthCookie(
+        Cookie.AccessToken,
+        newAccessToken,
+        ACCESS_TOKEN_MAX_AGE
+    );
 
     reply.setCookie(accessName, accessValue, accessOptions);
+
+    return reply.code(204).send();
+}
+
+export async function login(
+    request: FastifyRequest<{ Body: LoginData }>,
+    reply: FastifyReply<{ Reply: ApiResponse }>
+) {
+    const { userName, password } = request.body;
+
+    try {
+        const { password: thruthyPassword } = await checkUserExistence(
+            request.server.prisma,
+            userName
+        );
+
+        if (password !== thruthyPassword) {
+            throw new Error('Password is incorrect');
+        }
+    } catch (error) {
+        if (error instanceof Error) {
+            return reply.code(404).send({ code: 404, message: error.message });
+        }
+    }
+
+    const { accessToken, refreshToken } = generateAuthTokens(
+        request.server.jwt,
+        { userName }
+    );
+
+    const {
+        name: accessName,
+        value: accessValue,
+        options: accessOptions,
+    } = generateAuthCookie(
+        Cookie.AccessToken,
+        accessToken,
+        ACCESS_TOKEN_MAX_AGE
+    );
+
+    const {
+        name: refreshName,
+        value: refreshValue,
+        options: refreshOptions,
+    } = generateAuthCookie(
+        Cookie.RefreshToken,
+        refreshToken,
+        REFRESH_TOKEN_MAX_AGE
+    );
+
+    reply.setCookie(accessName, accessValue, accessOptions);
+    reply.setCookie(refreshName, refreshValue, refreshOptions);
 
     return reply.code(204).send();
 }

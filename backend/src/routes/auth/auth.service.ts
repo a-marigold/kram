@@ -61,7 +61,7 @@ export async function checkUserExistence(
     const user = await findByUserName(prisma, userName);
 
     if (!user) {
-        throw new Error('User not found');
+        throw new Error('User with this user name not found');
     }
 
     return user;
