@@ -6,9 +6,9 @@ COPY . .
 
 WORKDIR /app/backend
 
+RUN bun install
 RUN bunx prisma migrate deploy
 RUN bunx prisma generate
-RUN bun install
 
 EXPOSE 1000
 
