@@ -72,3 +72,13 @@
     @include text-wo-margin(1.125rem);
     line-height: 1.5rem;
 }
+
+@media (max-width: 460px) {
+    .settings-modal {
+        max-width: initial;
+
+        max-height: initial;
+
+        border-radius: 0;
+    }
+}

@@ -48,6 +48,10 @@
     }
 }
 
+.main-content {
+    @include flex-column;
+    gap: 1.25em;
+}
 .title {
     width: 100%;
 
@@ -78,4 +82,17 @@
 .divider-text {
     color: var(--secondary-font-color);
     font-size: var(--m-font-size);
+}
+
+@media (max-width: 460px) {
+    .auth-modal {
+        max-width: initial;
+        max-height: initial;
+
+        border-radius: 0;
+    }
+    .main-content {
+        justify-content: center;
+        height: 100%;
+    }
 }

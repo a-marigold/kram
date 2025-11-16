@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 
+import { useHotkeyStore } from '@/store/HotkeyStore';
+
 import type { BasicModalProps } from '@/types/ModalProps';
 
 import type { SettingTab } from './SettingsTypes';
@@ -46,6 +48,12 @@ const settingButtonList: {
 export default function SettingsModal({ closeModal }: BasicModalProps) {
     const [currentTab, setCurrentTab] = useState<SettingTab>('General');
 
+    const hotkeys = useHotkeyStore((state) => state.hotkeys);
+
+    const closeModalHotkey = hotkeys.find(
+        (hotkey) => hotkey.name === 'closeModal'
+    );
+
     return (
         <ModalBackdrop onClose={closeModal} backdropType='blur'>
             <div
@@ -57,11 +65,12 @@ export default function SettingsModal({ closeModal }: BasicModalProps) {
                 <div className={settingStyles['navbar']}>
                     <LabelledElement
                         title='Close the settings window'
-                        subtitle='Esc'
+                        position='right'
+                        subtitle={closeModalHotkey?.key}
                     >
                         <button
                             className={settingStyles['close-button']}
-                            aria-label='Close the settings window'
+                            aria-label={`Close the settings window ${closeModalHotkey?.key}`}
                             onClick={closeModal}
                         >
                             <svg

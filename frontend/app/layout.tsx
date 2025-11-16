@@ -29,6 +29,8 @@ export const metadata: Metadata = {
     title: 'None',
     description: 'None messenger',
 
+    metadataBase: new URL('https://none-m.vercel.app'),
+
     icons: {
         icon: [
             { url: '/favicon.ico', sizes: 'any' },

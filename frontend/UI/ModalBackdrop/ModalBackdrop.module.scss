@@ -3,17 +3,28 @@
 .modal-backdrop {
     position: fixed;
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     @include flex-center;
+
+    padding: 1.5em;
+    box-sizing: border-box;
 
     z-index: 100;
 
     &.type-blur {
         background-color: var(--modal-backdrop-bg);
         backdrop-filter: blur(1px);
+    }
+}
+
+@media (max-width: 460px) {
+    .modal-backdrop {
+        padding: 0;
     }
 }

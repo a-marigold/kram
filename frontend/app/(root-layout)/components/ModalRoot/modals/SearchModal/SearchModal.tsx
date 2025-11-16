@@ -1,3 +1,7 @@
+'use clinet';
+
+import { useHotkeyStore } from '@/store/HotkeyStore';
+
 import type { BasicModalProps } from '@/types/ModalProps';
 
 import ModalBackdrop from '@/UI/ModalBackdrop';
@@ -8,6 +12,11 @@ import LabelledElement from '@/UI/LabelledElement';
 import searchStyles from './SearchModal.module.scss';
 
 export default function SearchModal({ closeModal }: BasicModalProps) {
+    const hotkeys = useHotkeyStore((state) => state.hotkeys);
+    const closeModalHotkey = hotkeys.find(
+        (hotkey) => hotkey.name === 'closeModal'
+    )?.key;
+
     return (
         <ModalBackdrop onClose={closeModal} backdropType='empty'>
             <div
@@ -25,13 +34,13 @@ export default function SearchModal({ closeModal }: BasicModalProps) {
 
                     <LabelledElement
                         title='Close the search window'
-                        subtitle='Esc'
-                        position='right'
+                        subtitle={closeModalHotkey}
+                        position='left'
                     >
                         <button
                             className={searchStyles['close-button']}
                             onClick={closeModal}
-                            aria-label='Close the search window'
+                            aria-label={`Close the search window ${closeModalHotkey}`}
                         >
                             <svg
                                 className={searchStyles['cross-icon']}

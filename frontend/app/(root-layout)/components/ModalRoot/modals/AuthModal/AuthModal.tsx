@@ -15,7 +15,6 @@ import authStyles from './AuthModal.module.scss';
 
 export default function AuthModal({ closeModal }: BasicModalProps) {
     const router = useRouter();
-
     return (
         <ModalBackdrop>
             <div
@@ -35,44 +34,44 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                     </button>
                 </div>
 
-                <h1 className={authStyles['title']}>Login or register</h1>
-
-                <div className={authStyles['auth-content']}>
-                    <div className={authStyles['oauth-list']}>
-                        {authVariantList.map((variant) => (
-                            <SecondaryButton
-                                key={variant.type}
-                                title={variant.title}
-                                icon={variant.icon}
-                                aria-label={variant.title}
-                                onClick={() => {
-                                    authVariantHandler(variant.type);
-                                }}
-                            />
-                        ))}
+                <div className={authStyles['main-content']}>
+                    <h1 className={authStyles['title']}>Login or register</h1>
+                    <div className={authStyles['auth-content']}>
+                        <div className={authStyles['oauth-list']}>
+                            {authVariantList.map((variant) => (
+                                <SecondaryButton
+                                    key={variant.type}
+                                    title={variant.title}
+                                    icon={variant.icon}
+                                    aria-label={variant.title}
+                                    onClick={() => {
+                                        authVariantHandler(variant.type);
+                                    }}
+                                />
+                            ))}
+                        </div>
+                        <div className={authStyles['divider-block']}>
+                            <div className={authStyles['divider']} />
+                            <span className={authStyles['divider-text']}>
+                                OR
+                            </span>
+                            <div className={authStyles['divider']} />
+                        </div>
+                        <SecondaryButton
+                            title='Log in'
+                            onClick={() => {
+                                router.push('/authorization/log-in');
+                            }}
+                            aria-label='Log in with user name and password'
+                        />
+                        <AccessButton
+                            title='Register'
+                            aria-label='Sign in with user name and password'
+                            onClick={() => {
+                                router.push('/authorization/create-account');
+                            }}
+                        />
                     </div>
-
-                    <div className={authStyles['divider-block']}>
-                        <div className={authStyles['divider']} />
-                        <span className={authStyles['divider-text']}>OR</span>
-                        <div className={authStyles['divider']} />
-                    </div>
-
-                    <SecondaryButton
-                        title='Log in'
-                        onClick={() => {
-                            router.push('/authorization/log-in');
-                        }}
-                        aria-label='Log in with user name and password'
-                    />
-
-                    <AccessButton
-                        title='Register'
-                        aria-label='Sign in with user name and password'
-                        onClick={() => {
-                            router.push('/authorization/create-account');
-                        }}
-                    />
                 </div>
             </div>
         </ModalBackdrop>
