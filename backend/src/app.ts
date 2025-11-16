@@ -13,6 +13,8 @@ import redisPlugin from './plugins/redis';
 import prismaPlugin from './plugins/prisma';
 import authPlugin from './plugins/auth/auth';
 
+import { Cookie } from './types/Cookies';
+
 import { routes } from './routes';
 
 export function buildApp() {
@@ -23,13 +25,17 @@ export function buildApp() {
     app.setSerializerCompiler(serializerCompiler);
 
     app.register(fastifyCors, {
-        origin: ['https://none.vercel.app', 'http://localhost:3000'],
+        origin: ['https://none-m.vercel.app', 'http://localhost:3000'],
         methods: ['GET', 'POST', 'PATCH'],
         credentials: true,
     });
     app.register(fastifyCookie);
     app.register(fastifyJwt, {
         secret: process.env.JWT_SECRET || '',
+        cookie: {
+            cookieName: Cookie.AccessToken,
+            signed: false,
+        },
     });
 
     app.register(prismaPlugin);

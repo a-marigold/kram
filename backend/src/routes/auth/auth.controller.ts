@@ -41,6 +41,7 @@ export async function checkUser(
         if (error instanceof ApiError) {
             return reply
                 .code(error.code)
+
                 .send({ code: error.code, message: error.message });
         }
     }
@@ -111,6 +112,7 @@ export async function me(
     try {
         const { userName, fullName, email, avatar } = await checkUserExistence(
             request.server.prisma,
+
             request.user.userName
         );
 
