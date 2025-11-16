@@ -9,15 +9,12 @@ WORKDIR /app/backend
 RUN bun install
 RUN apt-get update -y && apt-get install -y openssl
 
-
 EXPOSE 1000
 
 
 
+
+
+
+
 CMD bunx prisma migrate deploy && bunx prisma generate && bun run dev
-
-
-
-
-
-
