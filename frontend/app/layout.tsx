@@ -48,7 +48,7 @@ export const metadata: Metadata = {
         url: 'https://none-m.vercel.app',
         images: [
             {
-                url: '/opengraph-image.png',
+                url: 'https://none-m.vercel.app/opengraph-image.png',
                 width: 251,
                 height: 100,
                 alt: 'None messenger',
