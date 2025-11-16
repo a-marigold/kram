@@ -44,6 +44,7 @@
         }
         &:disabled {
             opacity: 0.5;
+            cursor: default;
         }
     }
     &.variant-empty-filled {
@@ -60,6 +61,7 @@
         }
         &:disabled {
             opacity: 0.3;
+            cursor: default;
         }
     }
 }

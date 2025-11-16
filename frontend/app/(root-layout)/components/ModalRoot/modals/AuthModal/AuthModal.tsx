@@ -1,5 +1,7 @@
 'use client';
 
+import { useTransition } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import type { BasicModalProps } from '@/types/ModalProps';
@@ -15,6 +17,9 @@ import authStyles from './AuthModal.module.scss';
 
 export default function AuthModal({ closeModal }: BasicModalProps) {
     const router = useRouter();
+
+    const [isPending, startTransition] = useTransition();
+
     return (
         <ModalBackdrop>
             <div
@@ -59,10 +64,14 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                             </span>
                             <div className={authStyles['divider']} />
                         </div>
+
                         <SecondaryButton
                             title='Log in'
+                            disabled={isPending}
                             onClick={() => {
-                                router.push('/authorization/log-in');
+                                startTransition(() => {
+                                    router.push('/authorization/log-in');
+                                });
                             }}
                             aria-label='Log in with user name and password'
                         />
@@ -70,8 +79,13 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                         <AccessButton
                             title='Register'
                             aria-label='Sign in with user name and password'
+                            disabled={isPending}
                             onClick={() => {
-                                router.push('/authorization/create-account');
+                                startTransition(() => {
+                                    router.push(
+                                        '/authorization/create-account'
+                                    );
+                                });
                             }}
                         />
                     </div>
