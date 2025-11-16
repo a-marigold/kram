@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -29,9 +31,12 @@ export default function LoginForm() {
         },
     });
 
+    const router = useRouter();
+
     async function submit(userData: LoginData) {
         try {
             await loginWithUserName(userData.userName, userData.password);
+            router.push('/');
         } catch (error) {
             if (error instanceof ApiError) {
                 if (error.code === 404) {
