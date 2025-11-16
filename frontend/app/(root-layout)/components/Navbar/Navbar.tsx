@@ -12,12 +12,14 @@ import navStyles from './Navbar.module.scss';
 export default function Navbar() {
     const [showFullNavbar, setShowFullNavbar] = useState(true);
 
-    const [maxWidthMathes, setMaxWidthMathes] = useState(false);
+    const [maxWidthMathes, setMaxWidthMathes] = useState(() =>
+        typeof window !== 'undefined'
+            ? window.matchMedia('(max-width: 530px)').matches
+            : false
+    );
 
     useEffect(() => {
         const maxWidthQuery = window.matchMedia('(max-width: 530px)');
-
-        setMaxWidthMathes(maxWidthQuery.matches);
 
         function checkMediaQuery(event: MediaQueryListEvent) {
             if (event.matches) {
