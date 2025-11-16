@@ -3,10 +3,6 @@ import { Geist, Inter } from 'next/font/google';
 
 import { cookies } from 'next/headers';
 
-import { ApiError } from '@none/shared';
-import { serverGetUserData } from '@/lib/api/AuthApiClient';
-import type { SafeUser } from '@none/shared';
-
 import AuthProvider from './(root-layout)/components/AuthProvider';
 
 import HotkeyRunner from '@root-components/HotkeyRunner';
@@ -69,43 +65,21 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    let user: SafeUser | null = null;
-
-    const cookieStore = cookies();
-
-    const accessToken = (await cookieStore).get('accesToken')?.value;
-
-    const refreshToken = (await cookieStore).get('refreshToken')?.value;
-
-    try {
-        if (!accessToken || !refreshToken) {
-            throw new ApiError('Access or refresh token absent', 401);
-        }
-
-        const response = await serverGetUserData(
-            `accessToken=${accessToken}; refreshToken=${refreshToken}`
-        );
-
-        user = response;
-    } catch {
-        user = null;
-    }
-
     return (
         <html
             lang='en'
             className={`${geistSans.variable} ${interVariable.variable}`}
         >
             <body>
-                <AuthProvider user={user}>
-                    <HotkeyRunner />
+                <AuthProvider />
 
-                    <SvgSprites />
+                <HotkeyRunner />
 
-                    {/* <Navbar />  */}
+                <SvgSprites />
 
-                    {children}
-                </AuthProvider>
+                {/* <Navbar />  */}
+
+                {children}
             </body>
         </html>
     );

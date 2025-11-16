@@ -22,6 +22,7 @@ export async function register(userData: RegisterData) {
 
     const response = await fetch(`${apiOrigin}/auth/register`, {
         method: 'POST',
+
         headers: { 'Content-Type': 'application/json' },
 
         credentials: 'include',
@@ -35,10 +36,10 @@ export async function register(userData: RegisterData) {
     return data;
 }
 
-export async function serverGetUserData(cookieString: string) {
+export async function getUserData() {
     const response = await fetch(`${apiOrigin}/auth/me`, {
         method: 'GET',
-        headers: { Cookie: cookieString },
+        credentials: 'include',
     });
 
     await handleApiError(response);

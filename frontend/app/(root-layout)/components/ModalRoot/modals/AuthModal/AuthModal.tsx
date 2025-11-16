@@ -36,6 +36,7 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
 
                 <div className={authStyles['main-content']}>
                     <h1 className={authStyles['title']}>Login or register</h1>
+
                     <div className={authStyles['auth-content']}>
                         <div className={authStyles['oauth-list']}>
                             {authVariantList.map((variant) => (
@@ -50,6 +51,7 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                                 />
                             ))}
                         </div>
+
                         <div className={authStyles['divider-block']}>
                             <div className={authStyles['divider']} />
                             <span className={authStyles['divider-text']}>
@@ -64,6 +66,7 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                             }}
                             aria-label='Log in with user name and password'
                         />
+
                         <AccessButton
                             title='Register'
                             aria-label='Sign in with user name and password'

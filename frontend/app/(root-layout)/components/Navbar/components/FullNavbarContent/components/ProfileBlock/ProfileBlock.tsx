@@ -31,6 +31,7 @@ export default function ProfileBlock() {
                 }}
             >
                 <Image src='/globe.svg' alt='' width={24} height={24} />
+
                 <div className={navStyles['name-block']}>
                     <span className={navStyles['name']}> {userName} </span>
                 </div>
