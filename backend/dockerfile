@@ -7,14 +7,13 @@ COPY . .
 WORKDIR /app/backend
 
 RUN bun install
-RUN bunx prisma migrate deploy
-RUN bunx prisma generate
+
 
 EXPOSE 1000
 
 
 
-CMD [ "bun", "run", "dev" ]
+CMD [ "bunx", "prisma", "migrate", "deploy", "&&", "bunx", "prisma", "generate", "&&", "bun", "run", "dev" ]
 
 
 
