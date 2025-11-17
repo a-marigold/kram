@@ -54,3 +54,8 @@
     margin-top: auto;
     padding-bottom: 0.5em;
 }
+.profile-button {
+    &:focus {
+        background-color: var(--active-btn-bg);
+    }
+}

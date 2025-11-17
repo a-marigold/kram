@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 /**
  * Hook to manage a temporary "copy" flag state.
  *
- * @param {number} duration - The time in seconds after which `copyFlag` will be automatically reset to `false`.
+ * @param {number} duration - The time in **seconds** after which `copyFlag` will be automatically reset to `false`.
  *
  * @returns {{
  * - copyFlag: boolean;
@@ -36,7 +36,7 @@ export function useCopyFlag(duration: number) {
         if (copyFlag) {
             timeoutRef.current = setTimeout(() => {
                 setCopyFlag(false);
-            }, duration * 100);
+            }, duration * 1000);
         } else {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current);

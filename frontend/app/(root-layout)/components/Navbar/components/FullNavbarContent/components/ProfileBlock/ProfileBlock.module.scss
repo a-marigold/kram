@@ -35,6 +35,12 @@
     &:hover {
         background-color: var(--hover-bg-color);
     }
+    &:active {
+        background-color: var(--active-btn-bg);
+    }
+    &:focus {
+        background-color: var(--active-btn-bg);
+    }
 }
 .name {
     color: var(--font-color);

@@ -16,7 +16,7 @@ export default function AuthRoot() {
             try {
                 const userData = await getUserData();
                 setUser(userData);
-            } catch (error) {
+            } catch {
                 setUser({});
             }
         }

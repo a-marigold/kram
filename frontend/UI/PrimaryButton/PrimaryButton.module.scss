@@ -31,6 +31,12 @@
     &:active {
         background-color: var(--active-btn-bg);
     }
+    &:disabled {
+        opacity: 0.8;
+        &:hover {
+            background-color: transparent;
+        }
+    }
 }
 .title-block {
     @include flex-y-center;

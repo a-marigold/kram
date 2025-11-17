@@ -19,7 +19,7 @@ export default function CutProfileBlock() {
         <div className={cutnavStyles['profile-block']}>
             <LabelledElement title='Open profile' position='right'>
                 <button
-                    className={cutnavStyles['nav-button']}
+                    className={`${cutnavStyles['nav-button']} ${cutnavStyles['profile-button']}`}
                     aria-label='Open profile'
                     onClick={(event) =>
                         openModal(

@@ -26,7 +26,6 @@ export default function FullNavbarContent({
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
                 transition={{ duration: 0.59 }}
                 className={navStyles['navbar-content']}
             >

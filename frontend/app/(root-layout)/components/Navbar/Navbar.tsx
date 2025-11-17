@@ -10,7 +10,7 @@ import clsx from 'clsx';
 import navStyles from './Navbar.module.scss';
 
 export default function Navbar() {
-    const [showFullNavbar, setShowFullNavbar] = useState(true);
+    const [showFullNavbar, setShowFullNavbar] = useState(false);
 
     const [maxWidthMathes, setMaxWidthMathes] = useState(() =>
         typeof window !== 'undefined'
