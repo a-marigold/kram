@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Inter } from 'next/font/google';
 
-import { cookies } from 'next/headers';
-
 import AuthRoot from './(root-layout)/components/AuthRoot';
 
 import HotkeyRunner from '@root-components/HotkeyRunner';

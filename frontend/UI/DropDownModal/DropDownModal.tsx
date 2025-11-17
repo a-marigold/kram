@@ -37,21 +37,18 @@ export default function DropDownModal({
 }: DropDownModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
-    const handleCalculateModalPosition =
-        // useCallback(
-        () => {
-            if (modalRef.current) {
-                calculateModalPosition(
-                    relativeElement,
-                    modalRef.current,
+    const handleCalculateModalPosition = () => {
+        if (modalRef.current) {
+            calculateModalPosition(
+                relativeElement,
+                modalRef.current,
 
-                    position,
-                    shiftX,
-                    shiftY
-                );
-            }
-        };
-    // [position]);
+                position,
+                shiftX,
+                shiftY
+            );
+        }
+    };
 
     useEffect(() => {
         handleCalculateModalPosition();
@@ -78,7 +75,7 @@ export default function DropDownModal({
                     event.stopPropagation();
                 }}
             >
-                <div className={modalStyles['top-list']}>{topList}</div>
+                {topList}
 
                 {bottomList && (
                     <>
@@ -86,9 +83,7 @@ export default function DropDownModal({
                             <div className={modalStyles['divider']} />
                         </div>
 
-                        <div className={modalStyles['bottom-list']}>
-                            {bottomList}
-                        </div>
+                        {bottomList}
                     </>
                 )}
             </div>

@@ -17,7 +17,7 @@
 }
 
 .full-navbar {
-    max-width: 230px;
+    max-width: 260px;
     background-color: var(--foreground-color);
 
     @include scrollableY();
@@ -55,5 +55,16 @@
     }
     &:active {
         background-color: var(--active-btn-dim-bg);
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        position: fixed;
+
+        z-index: 100;
+    }
+    .cut-navbar {
+        display: none;
     }
 }

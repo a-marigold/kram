@@ -49,6 +49,7 @@ export default function ProfileModal({
                         <PrimaryButton
                             title={userName || ''}
                             aria-label='Copy your profile ID'
+                            role='menuitem'
                             onClick={() => {
                                 navigator.clipboard.writeText(userName || '');
                                 if (!nameCopyFlag) {
@@ -70,6 +71,7 @@ export default function ProfileModal({
                     <PrimaryButton
                         title='Settings'
                         aria-label='Open settings window'
+                        role='menuitem'
                         onClick={() => {
                             openModal(
                                 <SettingsModal closeModal={closeModal} />
@@ -92,6 +94,7 @@ export default function ProfileModal({
                     <PrimaryButton
                         title='Log Out'
                         aria-label='Log out from your profile'
+                        role='menuitem'
                         icon={
                             <svg
                                 width={20}

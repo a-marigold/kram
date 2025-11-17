@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect, useRef } from 'react';
 
 /**
@@ -10,10 +12,12 @@ import { useState, useEffect, useRef } from 'react';
  * - setCopyFlag: Dispatch<SetStateAction<boolean>>;
  * 	}} An object containing:
  * - `copyFlag`: current state of the flag (`true` or `false`),
+ *
  * - `setCopyFlag`: function to set the flag manually.
  *
  *
  * @example
+ * ```tsx
  * const { copyFlag, setCopyFlag } = useCopyFlag(2000);
  *
  * // Show "Copied!" message for 2 seconds
@@ -27,11 +31,11 @@ import { useState, useEffect, useRef } from 'react';
  *     {copyFlag && <span> Copied! </span>}
  *   </div>
  * );
+ * ```
  */
 export function useCopyFlag(duration: number) {
     const [copyFlag, setCopyFlag] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout>(null);
-
     useEffect(() => {
         if (copyFlag) {
             timeoutRef.current = setTimeout(() => {

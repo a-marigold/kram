@@ -2,39 +2,18 @@
 
 import { useState, useEffect } from 'react';
 
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+
 import FullNavbarContent from './components/FullNavbarContent';
 
 import CutNavbarContent from './components/CutNavbarContent';
 
-import clsx from 'clsx';
 import navStyles from './Navbar.module.scss';
 
 export default function Navbar() {
     const [showFullNavbar, setShowFullNavbar] = useState(false);
 
-    const [maxWidthMathes, setMaxWidthMathes] = useState(() =>
-        typeof window !== 'undefined'
-            ? window.matchMedia('(max-width: 530px)').matches
-            : false
-    );
-
-    useEffect(() => {
-        const maxWidthQuery = window.matchMedia('(max-width: 530px)');
-
-        function checkMediaQuery(event: MediaQueryListEvent) {
-            if (event.matches) {
-                setMaxWidthMathes(true);
-            } else {
-                setMaxWidthMathes(false);
-            }
-        }
-
-        maxWidthQuery.addEventListener('change', checkMediaQuery);
-
-        return () => {
-            maxWidthQuery.removeEventListener('change', checkMediaQuery);
-        };
-    }, []);
+    const maxWidthMathes = useMediaQuery('max-width: 600px');
 
     useEffect(() => {
         document.documentElement.classList.toggle(
@@ -49,12 +28,13 @@ export default function Navbar() {
 
     return (
         <div
-            className={clsx(
-                navStyles['navbar'],
-                showFullNavbar
-                    ? navStyles['full-navbar']
-                    : navStyles['cut-navbar']
-            )}
+            className={`${navStyles['navbar']}
+             ${
+                 showFullNavbar
+                     ? navStyles['full-navbar']
+                     : navStyles['cut-navbar']
+             }
+            `}
         >
             {showFullNavbar ? (
                 <FullNavbarContent setShowFullNavbar={setShowFullNavbar} />
