@@ -32,7 +32,11 @@ export default function Navbar() {
         <>
             <div
                 className={`${navStyles['navbar']}
-             ${showNavbar ? navStyles['full-navbar'] : navStyles['cut-navbar']}
+             ${
+                 showNavbar
+                     ? `${navStyles['full-navbar']}`
+                     : navStyles['cut-navbar']
+             }
             `}
             >
                 {showNavbar ? <FullNavbarContent /> : <CutNavbarContent />}

@@ -27,6 +27,8 @@
 
     background-color: var(--modal-backdrop-bg);
 
+    transition: opacity 1s ease;
+
     &.opened {
         opacity: 1;
 
@@ -76,14 +78,39 @@
     }
 }
 
+@keyframes navbar-open {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes navbar-close {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+        display: none;
+    }
+}
+
 @media (max-width: 600px) {
     .navbar {
         position: fixed;
 
         z-index: 100;
-    }
-    .cut-navbar {
-        display: none;
+
+        // transform: translateX(-100%);
+
+        &.opened {
+            animation: navbar-open 0.3s ease;
+        }
+
+        &:not(.opened) {
+            animation: navbar-close 0.3s ease;
+        }
     }
 
     .navbar-backdrop {
