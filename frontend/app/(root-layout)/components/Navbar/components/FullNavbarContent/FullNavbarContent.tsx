@@ -1,5 +1,7 @@
 'use client';
 
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+
 import { useSettingsStore } from '@/store/SettingsStore';
 
 import Link from 'next/link';
@@ -17,6 +19,8 @@ import fullnavStyles from './FullNavbarContent.module.scss';
 
 export default function FullNavbarContent() {
     const setShowNavbar = useSettingsStore((state) => state.setShowNavbar);
+
+    const maxWidthMatches = useMediaQuery('max-width: 600px');
 
     return (
         <AnimatePresence>
@@ -51,13 +55,23 @@ export default function FullNavbarContent() {
                                 onClick={() => setShowNavbar(false)}
                                 aria-label='Close navigation panel'
                             >
-                                <svg
-                                    width={20}
-                                    height={20}
-                                    color='var(--secondary-font-color)'
-                                >
-                                    <use href='#sidebar-toggle-icon' />
-                                </svg>
+                                {maxWidthMatches ? (
+                                    <svg
+                                        width={20}
+                                        height={20}
+                                        color='var(--secondary-font-color)'
+                                    >
+                                        <use href='#cross-icon' />
+                                    </svg>
+                                ) : (
+                                    <svg
+                                        width={20}
+                                        height={20}
+                                        color='var(--secondary-font-color)'
+                                    >
+                                        <use href='#sidebar-toggle-icon' />
+                                    </svg>
+                                )}
                             </button>
                         </LabelledElement>
                     </div>

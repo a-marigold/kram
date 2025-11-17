@@ -92,7 +92,6 @@
     }
     to {
         transform: translateX(-100%);
-        display: none;
     }
 }
 
@@ -101,8 +100,6 @@
         position: fixed;
 
         z-index: 100;
-
-        // transform: translateX(-100%);
 
         &.opened {
             animation: navbar-open 0.3s ease;
