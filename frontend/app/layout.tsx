@@ -3,7 +3,7 @@ import { Geist, Inter } from 'next/font/google';
 
 import { cookies } from 'next/headers';
 
-import AuthProvider from './(root-layout)/components/AuthProvider';
+import AuthRoot from './(root-layout)/components/AuthRoot';
 
 import HotkeyRunner from '@root-components/HotkeyRunner';
 
@@ -71,7 +71,7 @@ export default async function RootLayout({
             className={`${geistSans.variable} ${interVariable.variable}`}
         >
             <body>
-                <AuthProvider />
+                <AuthRoot />
 
                 <HotkeyRunner />
 
