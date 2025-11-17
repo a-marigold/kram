@@ -13,7 +13,7 @@ import redisPlugin from './plugins/redis';
 import prismaPlugin from './plugins/prisma';
 import authPlugin from './plugins/auth/auth';
 
-import { Cookie } from './types/Cookies';
+import { Cookie } from '@none/shared';
 
 import { routes } from './routes';
 

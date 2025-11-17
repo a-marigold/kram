@@ -17,8 +17,8 @@ import {
     generateAuthCookie,
 } from './auth.service';
 
-import { Cookie } from '@/types/Cookies';
-import type { Cookies } from '@/types/Cookies';
+import { Cookie } from '@none/shared';
+import type { Cookies } from '@none/shared';
 
 import {
     ACCESS_TOKEN_MAX_AGE,

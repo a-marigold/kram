@@ -1,5 +1,6 @@
 export * from './types/ApiResponse';
 export * from './types/AuthorizationData';
 export * from './types/User';
+export * from './types/Cookies';
+
 export * from './errors';
-// export * from './api/responses';

@@ -5,8 +5,7 @@ import type { CookieSerializeOptions } from '@fastify/cookie';
 
 import { ApiError } from '@none/shared';
 
-import type { Cookie } from '@/types/Cookies';
-import type { RegisterData } from '@none/shared';
+import type { RegisterData, CookieName } from '@none/shared';
 
 async function findByUserName(prisma: PrismaClient, userName: string) {
     const user = await prisma.user.findUnique({
@@ -69,10 +68,14 @@ export async function checkUserExistence(
 }
 
 export function generateAuthCookie(
-    name: Cookie,
+    name: CookieName,
     value: string,
     maxAge: number
-): { name: Cookie; value: string; options: CookieSerializeOptions } {
+): {
+    name: CookieName;
+    value: string;
+    options: CookieSerializeOptions;
+} {
     return {
         name,
         value,
