@@ -16,8 +16,10 @@ interface LabelledButtonProps {
     title: string;
     subtitle?: string;
 
-    children: ReactNode;
     position?: LabelPositionType;
+    width?: 'full' | 'content';
+
+    children: ReactNode;
 }
 
 export default function LabelledElement({
@@ -25,6 +27,7 @@ export default function LabelledElement({
     subtitle,
 
     position = 'bottom',
+    width = 'content',
 
     children,
 }: LabelledButtonProps) {
@@ -37,13 +40,13 @@ export default function LabelledElement({
         if (!labelRef.current || !wrapperRef.current || !showLabel) return;
 
         calculateLabelPosition(labelRef.current, wrapperRef.current, position);
-    }, [showLabel, position]);
+    }, [showLabel, position, title, subtitle]);
 
     return (
         <>
             <div
                 ref={wrapperRef}
-                className={elementStyles['labelled-wrapper']}
+                className={`${elementStyles['labelled-wrapper']} ${elementStyles[width]}`}
                 onPointerEnter={() => {
                     setShowLabel(true);
                 }}

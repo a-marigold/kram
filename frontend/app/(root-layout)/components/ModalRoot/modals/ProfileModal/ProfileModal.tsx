@@ -1,5 +1,7 @@
 'use client';
 
+import { useCopyFlag } from '@/hooks/useCopyFlag/useCopyFlag';
+
 import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
@@ -7,8 +9,11 @@ import type { BasicModalProps } from '@/types/ModalProps';
 
 import SettingsModal from '@modals/SettingsModal';
 
-import DropDownModal from '@/UI/DropDownModal';
 import type { DropDownModalProps } from '@/UI/DropDownModal';
+
+import DropDownModal from '@/UI/DropDownModal';
+
+import LabelledElement from '@/UI/LabelledElement';
 
 import PrimaryButton from '@/UI/PrimaryButton';
 
@@ -27,28 +32,40 @@ export default function ProfileModal({
 
     const userName = useAuthStore((state) => state.user?.userName);
 
+    const { copyFlag: nameCopyFlag, setCopyFlag: setNameCopyFlag } =
+        useCopyFlag(2);
+
     return (
         <DropDownModal
             {...dropDownProps}
             onClose={closeModal}
             topList={
                 <>
-                    <PrimaryButton
-                        title={userName || ''}
-                        aria-label='Copy your profile ID'
-                        onClick={() => {
-                            navigator.clipboard.writeText(userName || '');
-                        }}
-                        icon={
-                            <svg
-                                width={20}
-                                height={20}
-                                color='var(--secondary-font-color)'
-                            >
-                                <use href='#profile-icon' />
-                            </svg>
-                        }
-                    />
+                    <LabelledElement
+                        title={nameCopyFlag ? 'Copied!' : 'Copy your user name'}
+                        width='full'
+                        position='top'
+                    >
+                        <PrimaryButton
+                            title={userName || ''}
+                            aria-label='Copy your profile ID'
+                            onClick={() => {
+                                navigator.clipboard.writeText(userName || '');
+                                if (!nameCopyFlag) {
+                                    setNameCopyFlag(true);
+                                }
+                            }}
+                            icon={
+                                <svg
+                                    width={20}
+                                    height={20}
+                                    color='var(--secondary-font-color)'
+                                >
+                                    <use href='#profile-icon' />
+                                </svg>
+                            }
+                        />
+                    </LabelledElement>
 
                     <PrimaryButton
                         title='Settings'
