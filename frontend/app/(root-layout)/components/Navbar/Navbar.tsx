@@ -29,12 +29,20 @@ export default function Navbar() {
     }, [showNavbar, maxWidthMathes]);
 
     return (
-        <div
-            className={`${navStyles['navbar']}
+        <>
+            <div
+                className={`${navStyles['navbar']}
              ${showNavbar ? navStyles['full-navbar'] : navStyles['cut-navbar']}
             `}
-        >
-            {showNavbar ? <FullNavbarContent /> : <CutNavbarContent />}
-        </div>
+            >
+                {showNavbar ? <FullNavbarContent /> : <CutNavbarContent />}
+            </div>
+
+            <div
+                className={`${navStyles['navbar-backdrop']} ${
+                    showNavbar ? navStyles['opened'] : ''
+                }`}
+            />
+        </>
     );
 }
