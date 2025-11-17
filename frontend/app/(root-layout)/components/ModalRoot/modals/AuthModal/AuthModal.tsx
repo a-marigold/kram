@@ -25,7 +25,9 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
             <div
                 role='dialog'
                 aria-modal='true'
-                className={authStyles['auth-modal']}
+                className={`${authStyles['auth-modal']} ${
+                    isPending ? authStyles['pending'] : ''
+                }`}
                 onClick={(event) => event.stopPropagation()}
             >
                 <div className={authStyles['head']}>
@@ -38,7 +40,6 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                         </svg>
                     </button>
                 </div>
-
                 <div className={authStyles['main-content']}>
                     <h1 className={authStyles['title']}>Login or register</h1>
 
@@ -67,7 +68,6 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
 
                         <SecondaryButton
                             title='Log in'
-                            disabled={isPending}
                             onClick={() => {
                                 startTransition(() => {
                                     router.push('/authorization/log-in');
@@ -79,7 +79,6 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
                         <AccessButton
                             title='Register'
                             aria-label='Sign in with user name and password'
-                            disabled={isPending}
                             onClick={() => {
                                 startTransition(() => {
                                     router.push(
