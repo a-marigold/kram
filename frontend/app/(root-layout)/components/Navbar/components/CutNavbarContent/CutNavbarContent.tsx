@@ -1,4 +1,6 @@
-import type { Dispatch } from 'react';
+'use client';
+
+import { useSettingsStore } from '@/store/SettingsStore';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -10,12 +12,9 @@ import LabelledElement from '@/UI/LabelledElement';
 import navStyles from '../../Navbar.module.scss';
 import cutnavStyles from './CutNavbarContent.module.scss';
 
-interface CutNavbarContentProps {
-    setShowFullNavbar: Dispatch<boolean>;
-}
-export default function CutNavbarContent({
-    setShowFullNavbar,
-}: CutNavbarContentProps) {
+export default function CutNavbarContent() {
+    const setShowNavbar = useSettingsStore((state) => state.setShowNavbar);
+
     return (
         <AnimatePresence>
             <motion.div
@@ -32,7 +31,7 @@ export default function CutNavbarContent({
                     >
                         <button
                             className={`${navStyles['sidebar-button']} ${cutnavStyles['sidebar-button']}`}
-                            onClick={() => setShowFullNavbar(true)}
+                            onClick={() => setShowNavbar(true)}
                             aria-label='Open navigation panel'
                         >
                             <svg

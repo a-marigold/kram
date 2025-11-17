@@ -1,6 +1,6 @@
 'use client';
 
-import type { Dispatch } from 'react';
+import { useSettingsStore } from '@/store/SettingsStore';
 
 import Link from 'next/link';
 
@@ -15,12 +15,9 @@ import LabelledElement from '@/UI/LabelledElement';
 import navStyles from '../../Navbar.module.scss';
 import fullnavStyles from './FullNavbarContent.module.scss';
 
-interface FullNavbarContentProps {
-    setShowFullNavbar: Dispatch<boolean>;
-}
-export default function FullNavbarContent({
-    setShowFullNavbar,
-}: FullNavbarContentProps) {
+export default function FullNavbarContent() {
+    const setShowNavbar = useSettingsStore((state) => state.setShowNavbar);
+
     return (
         <AnimatePresence>
             <motion.div
@@ -51,7 +48,7 @@ export default function FullNavbarContent({
                         >
                             <button
                                 className={navStyles['sidebar-button']}
-                                onClick={() => setShowFullNavbar(false)}
+                                onClick={() => setShowNavbar(false)}
                                 aria-label='Close navigation panel'
                             >
                                 <svg
@@ -67,7 +64,6 @@ export default function FullNavbarContent({
 
                     <NavButtons />
                 </div>
-
                 <ChatList />
 
                 <ProfileBlock />
