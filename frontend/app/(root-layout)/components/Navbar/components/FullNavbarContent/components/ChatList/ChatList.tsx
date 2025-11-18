@@ -150,7 +150,7 @@ export default function ChatList() {
                             <PrimaryLink
                                 replace
                                 shallow
-                                prefetch
+                                prefetch={false}
                                 title={chat.name}
                                 href={`/chat/${chat.id}`}
                                 isActive={currentChatId === chat.id}

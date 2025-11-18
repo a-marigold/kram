@@ -47,28 +47,9 @@ export default function Navbar() {
                             transition={{
                                 type: 'tween',
                             }}
-                            className={`${navStyles['navbar']} ${
-                                !maxWidthMatches
-                                    ? showNavbar
-                                        ? navStyles['full-navbar']
-                                        : navStyles['cut-navbar']
-                                    : ''
-                            } ${
-                                maxWidthMatches && showNavbar
-                                    ? navStyles['full-navbar']
-                                    : ''
-                            }`}
+                            className={`${navStyles['navbar']} ${navStyles['full-navbar']}`}
                         >
-                            {
-                                // maxWidthMatches ? (
-                                //     showNavbar && <FullNavbarContent />
-                                // ) :
-                                showNavbar ? (
-                                    <FullNavbarContent />
-                                ) : (
-                                    <CutNavbarContent />
-                                )
-                            }
+                            <FullNavbarContent />
                         </motion.div>
                     )}
                 </AnimatePresence>

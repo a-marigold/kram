@@ -17,6 +17,8 @@ import authStyles from './AuthModal.module.scss';
 
 export default function AuthModal({ closeModal }: BasicModalProps) {
     const router = useRouter();
+    router.prefetch('/authorization/log-in');
+    router.prefetch('/authorization/create-account');
 
     const [isPending, startTransition] = useTransition();
 

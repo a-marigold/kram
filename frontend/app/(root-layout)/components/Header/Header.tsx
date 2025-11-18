@@ -17,6 +17,7 @@ export default function Header() {
         <header className={headerStyles['header']}>
             <button
                 className={headerStyles['open-sidebar-button']}
+                aria-label='Open navigation panel'
                 onClick={() => setShowNavbar(true)}
             >
                 <svg width={20} height={20} color='var(--icon-color)'>
