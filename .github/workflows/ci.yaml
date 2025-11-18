@@ -20,7 +20,7 @@ jobs:
     - name: Build shared
       working-directory: ./shared
 
-      run: npm install && npm run build
+      run: npm install && tsc && npm pack
 
     - name: Install dependencies
       working-directory: ./frontend
