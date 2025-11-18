@@ -46,7 +46,10 @@ export default function CreateAccountForm() {
     const setUser = useAuthStore((state) => state.setUser);
 
     const router = useRouter();
-    router.prefetch('/authorization/about-you');
+
+    useEffect(() => {
+        router.prefetch('/authorization/about-you');
+    }, []);
 
     async function submit(userData: CreateAccountFormData) {
         try {

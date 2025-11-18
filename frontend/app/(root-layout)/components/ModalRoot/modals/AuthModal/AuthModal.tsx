@@ -1,6 +1,6 @@
 'use client';
 
-import { useTransition } from 'react';
+import { useEffect, useTransition } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -17,9 +17,11 @@ import authStyles from './AuthModal.module.scss';
 
 export default function AuthModal({ closeModal }: BasicModalProps) {
     const router = useRouter();
-    router.prefetch('/authorization/log-in');
-    router.prefetch('/authorization/create-account');
+    useEffect(() => {
+        router.prefetch('/authorization/log-in');
 
+        router.prefetch('/authorization/create-account');
+    }, []);
     const [isPending, startTransition] = useTransition();
 
     return (
