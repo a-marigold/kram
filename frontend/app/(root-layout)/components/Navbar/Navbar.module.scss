@@ -16,8 +16,6 @@
     z-index: 100;
 }
 .navbar-backdrop {
-    display: none;
-
     position: fixed;
     top: 0;
     left: 0;
@@ -27,13 +25,7 @@
 
     background-color: var(--modal-backdrop-bg);
 
-    transition: opacity 1s ease;
-
-    &.opened {
-        opacity: 1;
-
-        z-index: 60;
-    }
+    z-index: 60;
 }
 
 .full-navbar {
@@ -41,8 +33,6 @@
     background-color: var(--foreground-color);
 
     @include scrollableY();
-
-    overflow: visible;
 }
 
 .cut-navbar {
@@ -78,40 +68,8 @@
     }
 }
 
-@keyframes navbar-open {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-@keyframes navbar-close {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
-
 @media (max-width: 600px) {
     .navbar {
         position: fixed;
-
-        z-index: 100;
-
-        &.opened {
-            animation: navbar-open 0.3s ease;
-        }
-
-        &:not(.opened) {
-            animation: navbar-close 0.3s ease;
-        }
-    }
-
-    .navbar-backdrop {
-        display: block;
-        opacity: 0;
     }
 }

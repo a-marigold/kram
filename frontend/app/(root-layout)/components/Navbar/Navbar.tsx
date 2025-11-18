@@ -2,51 +2,102 @@
 
 import { useEffect } from 'react';
 
-import { useSettingsStore } from '@/store/SettingsStore';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
-import FullNavbarContent from './components/FullNavbarContent';
+import { useSettingsStore } from '@/store/SettingsStore';
 
+import FullNavbarContent from './components/FullNavbarContent';
 import CutNavbarContent from './components/CutNavbarContent';
 
 import navStyles from './Navbar.module.scss';
 
 export default function Navbar() {
     const showNavbar = useSettingsStore((state) => state.showNavbar);
-
-    const maxWidthMathes = useMediaQuery('max-width: 600px');
+    const setShowNavbar = useSettingsStore((state) => state.setShowNavbar);
+    const maxWidthMatches = useMediaQuery('max-width: 600px');
 
     useEffect(() => {
         document.documentElement.classList.toggle(
             'navbar-opened',
-            showNavbar && maxWidthMathes
+            showNavbar && maxWidthMatches
         );
 
         return () => {
             document.documentElement.classList.remove('navbar-opened');
         };
-    }, [showNavbar, maxWidthMathes]);
+    }, [showNavbar, maxWidthMatches]);
+
+    if (maxWidthMatches) {
+        return (
+            <>
+                <AnimatePresence>
+                    {showNavbar && (
+                        <motion.div
+                            initial={{
+                                x: '-100%',
+                                transition: { duration: 0.12 },
+                            }}
+                            animate={{ x: '0' }}
+                            exit={{
+                                x: '-100%',
+                                transition: { duration: 0.1 },
+                            }}
+                            transition={{
+                                type: 'tween',
+                            }}
+                            className={`${navStyles['navbar']} ${
+                                !maxWidthMatches
+                                    ? showNavbar
+                                        ? navStyles['full-navbar']
+                                        : navStyles['cut-navbar']
+                                    : ''
+                            } ${
+                                maxWidthMatches && showNavbar
+                                    ? navStyles['full-navbar']
+                                    : ''
+                            }`}
+                        >
+                            {
+                                // maxWidthMatches ? (
+                                //     showNavbar && <FullNavbarContent />
+                                // ) :
+                                showNavbar ? (
+                                    <FullNavbarContent />
+                                ) : (
+                                    <CutNavbarContent />
+                                )
+                            }
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                    {showNavbar && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.16 }}
+                            className={navStyles['navbar-backdrop']}
+                            onClick={() => {
+                                setShowNavbar(false);
+                            }}
+                        />
+                    )}
+                </AnimatePresence>
+            </>
+        );
+    }
 
     return (
-        <>
-            <div
-                className={`${navStyles['navbar']}
-             ${
-                 showNavbar
-                     ? `${navStyles['full-navbar']}`
-                     : navStyles['cut-navbar']
-             }
-            `}
-            >
-                {showNavbar ? <FullNavbarContent /> : <CutNavbarContent />}
-            </div>
-
-            <div
-                className={`${navStyles['navbar-backdrop']} ${
-                    showNavbar ? navStyles['opened'] : ''
-                }`}
-            />
-        </>
+        <div
+            className={`${navStyles['navbar']} ${
+                showNavbar ? navStyles['full-navbar'] : navStyles['cut-navbar']
+            }`}
+        >
+            {showNavbar ? <FullNavbarContent /> : <CutNavbarContent />}
+        </div>
     );
 }
