@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
 
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -38,6 +39,8 @@ export default function LoginForm() {
 
     const router = useRouter();
 
+    const queryClient = useQueryClient();
+
     async function submit(userData: LoginFormData) {
         if (!user?.userName || !user.password) {
             return setError('fullName', {
@@ -56,6 +59,9 @@ export default function LoginForm() {
         try {
             await register(prepareUser);
             setUser({});
+
+            queryClient.invalidateQueries({ queryKey: ['auth'] });
+
             router.push('/');
         } catch (error) {
             if (error instanceof ApiError) {

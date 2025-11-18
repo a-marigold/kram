@@ -47,10 +47,6 @@ export default function CreateAccountForm() {
 
     const router = useRouter();
 
-    useEffect(() => {
-        router.prefetch('/authorization/about-you');
-    }, []);
-
     async function submit(userData: CreateAccountFormData) {
         try {
             await checkUser(userData.userName);
@@ -76,6 +72,8 @@ export default function CreateAccountForm() {
 
     const closeModal = useModalStore((state) => state.closeModal);
     useEffect(() => {
+        router.prefetch('/authorization/about-you');
+
         closeModal(); // Needed for close AuthModal that is already opened
     }, []);
 

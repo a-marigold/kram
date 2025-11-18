@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Inter } from 'next/font/google';
 
+import Provider from './provider';
+
 import AuthRoot from './(root-layout)/components/AuthRoot';
 
 import HotkeyRunner from '@root-components/HotkeyRunner';
@@ -69,15 +71,13 @@ export default async function RootLayout({
             className={`${geistSans.variable} ${interVariable.variable}`}
         >
             <body>
-                <AuthRoot />
-
-                <HotkeyRunner />
-
-                <SvgSprites />
-
-                {/* <Navbar />  */}
-
-                {children}
+                <Provider>
+                    <AuthRoot />
+                    <HotkeyRunner />
+                    <SvgSprites />
+                    {/* <Navbar />  */}
+                    {children}
+                </Provider>
             </body>
         </html>
     );

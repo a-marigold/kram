@@ -11,17 +11,21 @@ import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 export default function AuthRoot() {
     const setUser = useAuthStore((state) => state.setUser);
 
+    const { data: userData, isError } = useQuery({
+        queryKey: ['auth'],
+        queryFn: getUserData,
+        retry: false,
+        refetchOnWindowFocus: true,
+        refetchInterval: 12 * 60 * 1000,
+    });
+
     useEffect(() => {
-        async function authorize() {
-            try {
-                const userData = await getUserData();
-                setUser(userData);
-            } catch {
-                setUser({});
-            }
+        if (userData) {
+            setUser(userData);
+        } else if (isError) {
+            setUser({});
         }
-        authorize();
-    }, []);
+    }, [userData, isError]);
 
     return null;
 }
