@@ -33,11 +33,9 @@ export default function PrimaryLink({
     return (
         <Link
             {...attributes}
-            className={clsx(
-                linkStyles['primary-link'],
-                isActive && linkStyles['active'],
-                className
-            )}
+            className={`${linkStyles['primary-link']} ${
+                isActive ? linkStyles['active'] : ''
+            } ${className ?? ''}`}
         >
             {icon}
 

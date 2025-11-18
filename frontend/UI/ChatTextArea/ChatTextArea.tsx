@@ -7,7 +7,6 @@ import { resizeTextarea } from '@/utils/ResizeTextarea';
 
 import LabelledElement from '@/UI/LabelledElement';
 
-import clsx from 'clsx';
 import textStyles from './ChatTextArea.module.scss';
 
 interface ChatTextAreaProps
@@ -39,7 +38,7 @@ export default function ChatTextArea({
 
     return (
         <div
-            className={clsx(textStyles['chat-input-block'], className)}
+            className={`${textStyles['chat-input-block']} ${className ?? ''}`}
             aria-label={ariaLabel}
             onClick={() => {
                 textAreaRef.current?.focus();
@@ -50,10 +49,8 @@ export default function ChatTextArea({
                 rows={1}
                 placeholder='Message'
                 {...attributes}
-                className={clsx(
-                    textStyles['chat-input'],
-                    isBounded && textStyles['bounded']
-                )}
+                className={`${textStyles['chat-input']}
+                    ${isBounded ? textStyles['bounded'] : ''}`}
                 value={state}
                 onChange={(event) => {
                     resizeTextarea(event.target);

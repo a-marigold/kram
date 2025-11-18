@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 
 import PrimaryLink from '@/UI/PrimaryLink';
 
-import clsx from 'clsx';
 import navStyles from './ChatList.module.scss';
 
 const chatList = [
@@ -120,7 +119,7 @@ export default function ChatList() {
 
     return (
         <div
-            className={clsx(navStyles['chats-box'])}
+            className={navStyles['chats-box']}
             onClick={() => {
                 setShowChatList((prev) => !prev);
             }}
@@ -131,11 +130,9 @@ export default function ChatList() {
                 <svg
                     width={12}
                     height={12}
-                    className={clsx(
-                        navStyles['arrow-icon'],
-
+                    className={`${navStyles['arrow-icon']} ${
                         !showChatList && navStyles['active']
-                    )}
+                    }`}
                 >
                     <use href='#arrow-icon' />
                 </svg>

@@ -6,6 +6,6 @@ interface SettingsStore {
 }
 
 export const useSettingsStore = create<SettingsStore>()((set) => ({
-    showNavbar: true,
+    showNavbar: false,
     setShowNavbar: (value) => set({ showNavbar: value }),
 }));

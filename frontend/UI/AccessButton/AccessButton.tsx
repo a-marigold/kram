@@ -27,9 +27,7 @@ export default function AccessButton({
             {...attributes}
             className={`${buttonStyles['access-button']} ${className} ${
                 buttonStyles[`size-${size}`]
-            }
-            ${buttonStyles[`variant-${variant}`]}
-            `}
+            } ${buttonStyles[`variant-${variant}`]}`}
         >
             {title}
         </button>
