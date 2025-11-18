@@ -29,6 +29,9 @@ export function useMediaQuery(query: string) {
     useEffect(() => {
         const mediaQuery =
             typeof window !== 'undefined' && window.matchMedia(`(${query})`);
+        if (!mediaQuery) {
+            return;
+        }
 
         function checkMediaQuery(event: MediaQueryListEvent) {
             if (event.matches) {
@@ -36,11 +39,6 @@ export function useMediaQuery(query: string) {
             } else {
                 setMatches(false);
             }
-        }
-
-        if (!mediaQuery) {
-            setMatches(false);
-            return;
         }
 
         mediaQuery.addEventListener('change', checkMediaQuery);

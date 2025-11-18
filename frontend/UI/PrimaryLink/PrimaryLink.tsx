@@ -3,7 +3,6 @@ import type { LinkProps } from 'next/link';
 
 import Link from 'next/link';
 
-import clsx from 'clsx';
 import linkStyles from './PrimaryLink.module.scss';
 
 interface PrimaryLinkProps extends LinkProps {
