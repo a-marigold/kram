@@ -19,7 +19,8 @@ jobs:
 
     - name: Build shared
       working-directory: ./shared
-      run: npm pack
+
+      run: npm run build
 
     - name: Install dependencies
       working-directory: ./frontend
