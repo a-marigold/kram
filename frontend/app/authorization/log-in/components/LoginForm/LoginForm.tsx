@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-
+import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
 import { Controller, useForm } from 'react-hook-form';
@@ -36,11 +36,14 @@ export default function LoginForm() {
     });
 
     const router = useRouter();
+    const queryClient = useQueryClient();
 
     async function submit(userData: LoginData) {
         try {
             await loginWithUserName(userData.userName, userData.password);
-            closeModal(); // Needed for close AuthModal that is already opened
+
+            queryClient.invalidateQueries({ queryKey: ['auth'] });
+
             router.push('/');
         } catch (error) {
             if (error instanceof ApiError) {
