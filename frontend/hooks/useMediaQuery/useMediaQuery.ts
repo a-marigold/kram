@@ -48,7 +48,7 @@ export function useMediaQuery(query: string) {
         return () => {
             mediaQuery.removeEventListener('change', checkMediaQuery);
         };
-    }, []);
+    }, [query]);
 
     return matches;
 }
