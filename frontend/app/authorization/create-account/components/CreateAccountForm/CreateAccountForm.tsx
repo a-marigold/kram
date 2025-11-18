@@ -1,12 +1,14 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { useRouter } from 'next/navigation';
 
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useModalStore } from '@/store/ModalStore';
 
-import { pick } from 'zod/v4-mini';
 import { RegisterDataSchema } from '@none/shared';
 import type { RegisterData } from '@none/shared';
 
@@ -31,16 +33,21 @@ export default function CreateAccountForm() {
         formState: { isSubmitting },
     } = useForm<CreateAccountFormData>({
         resolver: zodResolver(
-            pick(RegisterDataSchema, { userName: true, password: true })
+            RegisterDataSchema.pick({ userName: true, password: true })
         ),
+
         defaultValues: {
             userName: '',
+
             password: '',
         },
     });
 
     const setUser = useAuthStore((state) => state.setUser);
+
     const router = useRouter();
+    router.prefetch('/authorization/about-you');
+
     async function submit(userData: CreateAccountFormData) {
         try {
             await checkUser(userData.userName);
@@ -63,6 +70,11 @@ export default function CreateAccountForm() {
             }
         }
     }
+
+    const closeModal = useModalStore((state) => state.closeModal);
+    useEffect(() => {
+        closeModal(); // Needed for close AuthModal that is already opened
+    }, []);
 
     return (
         <AuthForm

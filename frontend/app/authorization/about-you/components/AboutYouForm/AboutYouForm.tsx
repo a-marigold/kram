@@ -3,10 +3,8 @@
 import { useRouter } from 'next/navigation';
 
 import { Controller, useForm } from 'react-hook-form';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { pick } from 'zod/v4-mini';
 import { RegisterDataSchema } from '@none/shared';
 import type { RegisterData } from '@none/shared';
 
@@ -29,7 +27,7 @@ export default function LoginForm() {
         setError,
         formState: { isSubmitting },
     } = useForm<LoginFormData>({
-        resolver: zodResolver(pick(RegisterDataSchema, { fullName: true })),
+        resolver: zodResolver(RegisterDataSchema.pick({ fullName: true })),
         defaultValues: {
             fullName: '',
         },

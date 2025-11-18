@@ -30,10 +30,6 @@ export async function register(userData: RegisterData) {
     });
 
     await handleApiError(response);
-
-    const data: ApiResponse = await response.json();
-
-    return data;
 }
 
 export async function getUserData() {

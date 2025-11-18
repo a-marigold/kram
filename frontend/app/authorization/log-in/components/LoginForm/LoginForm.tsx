@@ -1,9 +1,13 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+
+import { useModalStore } from '@/store/ModalStore';
 
 import { ApiError } from '@none/shared';
 import { loginWithUserName } from '@/lib/api/AuthApiClient';
@@ -36,6 +40,7 @@ export default function LoginForm() {
     async function submit(userData: LoginData) {
         try {
             await loginWithUserName(userData.userName, userData.password);
+            closeModal(); // Needed for close AuthModal that is already opened
             router.push('/');
         } catch (error) {
             if (error instanceof ApiError) {
@@ -47,6 +52,11 @@ export default function LoginForm() {
             }
         }
     }
+
+    const closeModal = useModalStore((state) => state.closeModal);
+    useEffect(() => {
+        closeModal(); // Needed for close AuthModal that is already opened
+    }, []);
 
     return (
         <AuthForm
