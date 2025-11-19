@@ -2,14 +2,14 @@
 
 .message-list {
     @include flex-column;
-    // justify-content: flex-end;
+
     gap: 1em;
 
     width: 100%;
-    max-width: var(--chat-max-width);
-    // height: 100%;
 
-    padding-top: 1.25em;
+    max-width: var(--chat-max-width);
+
+    padding-top: 5em;
 
     padding-bottom: 3em;
 

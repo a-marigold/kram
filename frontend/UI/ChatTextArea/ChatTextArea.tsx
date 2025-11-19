@@ -103,6 +103,9 @@ export default function ChatTextArea({
                             color='var(--dark-foreground-color)'
                             disabled={!state?.length}
                             aria-label='Send message'
+                            onClick={() => {
+                                alert('message');
+                            }}
                         >
                             <svg width={20} height={20}>
                                 <use href='#send-arrow-icon' />

@@ -26,6 +26,8 @@
 
     overflow: auto;
     @include scrollableY;
+
+    scrollbar-gutter: stable both-edges;
 }
 
 .message-input {
