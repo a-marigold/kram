@@ -2,7 +2,7 @@ import { apiOrigin } from '@/utils/GetApiOrigin';
 
 import { handleApiError } from '@/utils/HandleApiError';
 
-import type { ApiResponse, RegisterData } from '@none/shared';
+import type { RegisterData } from '@none/shared';
 import type { SafeUser } from '@none/shared';
 
 export async function checkUser(userName: string) {

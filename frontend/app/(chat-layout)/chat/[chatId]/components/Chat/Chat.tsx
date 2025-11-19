@@ -1,6 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
+import { usePathname } from 'next/navigation';
+
+import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+import { useChatStore } from '@/store/ChatStore';
 
 import { getElementScrollbarWidth } from '@/utils/GetElementScrollbarWidth';
 
@@ -15,7 +19,8 @@ export default function Chat() {
 
     function changeElementPaddingLeft(element: HTMLElement | null) {
         if (!element) return;
-        element.style.paddingLeft = `${getElementScrollbarWidth(element)}px`;
+
+        element.style.paddingLeft = `${getElementScrollbarWidth(element)}px`; // Come up with something better than this
     }
 
     useLayoutEffect(() => {
@@ -34,15 +39,17 @@ export default function Chat() {
 
     const [message, setMessage] = useState('');
 
-    const [messages, setMessages] = useState<string[]>([]);
+    const userName = useAuthStore((state) => state.user?.userName);
 
-    useEffect(() => {
-        const stream = new WebSocket('http://localhost:1000/stream');
+    const addMessage = useChatStore((state) => state.addMessage);
 
-        stream.addEventListener('message', (event) => {
-            setMessages(event.data);
-        });
-    }, []);
+    const chatId = usePathname().split('/').filter(Boolean).at(-1);
+
+    function handleAddMessage() {
+        if (userName && chatId) {
+            addMessage(chatId, { chatId, sender: userName, data: message });
+        }
+    }
 
     return (
         <>

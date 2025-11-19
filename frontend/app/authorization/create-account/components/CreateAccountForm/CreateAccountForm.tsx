@@ -75,7 +75,7 @@ export default function CreateAccountForm() {
         router.prefetch('/authorization/about-you');
 
         closeModal(); // Needed for close AuthModal that is already opened
-    }, []);
+    }, [router]);
 
     return (
         <AuthForm

@@ -1,8 +1,10 @@
 import type { ZodType } from 'zod';
 
 import { StreamMessageSchema } from '@none/shared';
-
 import type { StreamMessage } from '@none/shared';
+
+import { MessageSchema } from '@none/shared';
+import type { Message } from '@none/shared';
 
 export function validateStreamMessage(
     message: unknown
@@ -24,4 +26,8 @@ export function validateStreamData<T extends ZodType>(
     if (!parseData.success) return false;
 
     return true;
+}
+
+export function validateChatMessage(data: unknown): data is Message {
+    return validateStreamData(data, MessageSchema);
 }

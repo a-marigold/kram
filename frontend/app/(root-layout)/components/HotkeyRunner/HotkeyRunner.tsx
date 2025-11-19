@@ -16,6 +16,7 @@ export default function HotkeyRunner() {
     useHotkeys();
 
     const config = useHotkeyConfig();
+
     useEffect(() => {
         config.forEach(({ name, key, callback }) => {
             registerHotkey(name, key, callback);
@@ -26,7 +27,7 @@ export default function HotkeyRunner() {
                 unregisterHotkey(name);
             });
         };
-    }, []);
+    }, [config]);
 
     return null;
 }

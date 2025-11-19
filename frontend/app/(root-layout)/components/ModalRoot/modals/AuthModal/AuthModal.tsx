@@ -21,7 +21,7 @@ export default function AuthModal({ closeModal }: BasicModalProps) {
         router.prefetch('/authorization/log-in');
 
         router.prefetch('/authorization/create-account');
-    }, []);
+    }, [router]);
     const [isPending, startTransition] = useTransition();
 
     return (
