@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import type { TextareaHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 import { resizeTextarea } from '@/utils/ResizeTextarea';
 
@@ -20,6 +21,8 @@ interface ChatTextAreaProps
         bgColor: string;
         fontColor: string;
     };
+
+    sendFunction?: ButtonHTMLAttributes<HTMLButtonElement>['onClick']; //! TODO: that is partial temporary
 }
 export default function ChatTextArea({
     state,
@@ -29,6 +32,8 @@ export default function ChatTextArea({
     badge,
 
     className,
+
+    sendFunction,
 
     ...attributes
 }: ChatTextAreaProps) {
@@ -103,9 +108,7 @@ export default function ChatTextArea({
                             color='var(--dark-foreground-color)'
                             disabled={!state?.length}
                             aria-label='Send message'
-                            onClick={() => {
-                                alert('message');
-                            }}
+                            onClick={sendFunction}
                         >
                             <svg width={20} height={20}>
                                 <use href='#send-arrow-icon' />
