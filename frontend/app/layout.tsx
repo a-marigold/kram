@@ -3,10 +3,9 @@ import { Geist, Inter } from 'next/font/google';
 
 import Provider from './provider';
 
+import StreamRoot from './(root-layout)/components/StreamRoot';
 import AuthRoot from './(root-layout)/components/AuthRoot';
-
 import HotkeyRunner from '@root-components/HotkeyRunner';
-
 import SvgSprites from '@/UI/SvgSprites';
 
 import './globals.scss';
@@ -73,9 +72,12 @@ export default async function RootLayout({
             <body>
                 <Provider>
                     <AuthRoot />
+
+                    <StreamRoot />
+
                     <HotkeyRunner />
+
                     <SvgSprites />
-                    {/* <Navbar />  */}
                     {children}
                 </Provider>
             </body>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useLayoutEffect } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 
 import { getElementScrollbarWidth } from '@/utils/GetElementScrollbarWidth';
 
@@ -33,6 +33,16 @@ export default function Chat() {
     }, []);
 
     const [message, setMessage] = useState('');
+
+    const [messages, setMessages] = useState<string[]>([]);
+
+    useEffect(() => {
+        const stream = new WebSocket('http://localhost:1000/stream');
+
+        stream.addEventListener('message', (event) => {
+            setMessages(event.data);
+        });
+    }, []);
 
     return (
         <>

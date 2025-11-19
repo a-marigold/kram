@@ -1,6 +1,7 @@
 import Fastify from 'fastify';
 
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
+
 import {
     validatorCompiler,
     serializerCompiler,
@@ -9,6 +10,7 @@ import {
 import fastifyJwt from '@fastify/jwt';
 import fastifyCors from '@fastify/cors';
 import fastifyCookie from '@fastify/cookie';
+import fastifyWebsocket from '@fastify/websocket';
 import redisPlugin from './plugins/redis';
 import prismaPlugin from './plugins/prisma';
 import authPlugin from './plugins/auth/auth';
@@ -37,6 +39,7 @@ export function buildApp() {
             signed: false,
         },
     });
+    app.register(fastifyWebsocket);
 
     app.register(prismaPlugin);
     app.register(redisPlugin);
