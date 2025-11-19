@@ -25,7 +25,7 @@ export async function stream(connection: WebSocket, request: FastifyRequest) {
             try {
                 const chatMessage = checkChatMessage(message);
 
-                return connection.send(JSON.stringify(chatMessage)); //! temporary
+                return connection.send(JSON.stringify(chatMessage)); //! temporary echo
             } catch {
                 const errorMessage: StreamMessage = {
                     type: 'error',

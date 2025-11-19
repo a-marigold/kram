@@ -6,10 +6,11 @@ import { usePathname } from 'next/navigation';
 import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 import { useChatStore } from '@/store/ChatStore';
 
+import { stream } from '@/lib/stream';
+import type { Message } from '@none/shared';
+
 import MessageList from '../MessageList';
-
 import ChatTextArea from '@/UI/ChatTextArea';
-
 import chatStyles from '../../Chat.module.scss';
 
 export default function Chat() {
@@ -23,7 +24,15 @@ export default function Chat() {
 
     function handleAddMessage() {
         if (userName && chatId) {
+            const newMessage: Message = {
+                chatId,
+                sender: userName,
+                data: message,
+            };
+
             addMessage(chatId, { chatId, sender: userName, data: message });
+
+            stream.send('newChatMessage', newMessage);
         }
     }
 

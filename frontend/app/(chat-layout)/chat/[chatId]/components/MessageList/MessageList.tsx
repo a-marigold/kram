@@ -7,78 +7,17 @@ import { MessageMine, MessageOther } from './components';
 
 import messageStyles from './MessageList.module.scss';
 
-const messages = [
-    {
-        sender: 's',
-
-        chatId: 'CHAT-ID12123316',
-
-        data: 'ke',
-    },
-
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-    {
-        sender: 's',
-        chatId: 'CHAT-ID12123316',
-        data: 'ke',
-    },
-];
-
 export default function MessageList() {
     const userName = useAuthStore((state) => state.user?.userName);
     const chatMessages = useChatStore((state) => state.chats[1]?.messageList);
 
     return (
         <div className={messageStyles['message-list']}>
-            {messages.map((message, __INDEX__) =>
-                message.sender === userName ? (
-                    <MessageMine key={__INDEX__}>{message.data}</MessageMine>
+            {chatMessages?.map((message) =>
+                message.sender === userName || message.sender === 'k' ? (
+                    <MessageMine key={message.id}>{message.data}</MessageMine>
                 ) : (
-                    <MessageOther key={__INDEX__}>{message.data}</MessageOther>
+                    <MessageOther key={message.id}>{message.data}</MessageOther>
                 )
             )}
         </div>
