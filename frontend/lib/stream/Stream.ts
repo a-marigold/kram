@@ -13,9 +13,12 @@ class Stream {
         this.#socket.close();
     }
 
-    send(data: string) {
+    send(type: StreamMessage['type'], data: object) {
         if (!this.#socket) return;
-        this.#socket.send(data);
+
+        const prepareData: StreamMessage = { type, data };
+
+        this.#socket.send(JSON.stringify(prepareData));
     }
 
     onmessage(callback: (message: StreamMessage) => void) {
