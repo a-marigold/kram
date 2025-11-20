@@ -42,9 +42,6 @@ export default function BadgeModal({
 
     const closeModal = useModalStore((state) => state.closeModal);
 
-    console.log(filteredChatNames);
-    console.log(searchQuery);
-
     return (
         <DropDownModal
             {...dropDownProps}

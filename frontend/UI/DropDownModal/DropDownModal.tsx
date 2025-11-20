@@ -56,9 +56,17 @@ export default function DropDownModal({
         window.addEventListener('scroll', handleCalculateModalPosition);
         window.addEventListener('resize', handleCalculateModalPosition);
 
+        const elementObserver = new ResizeObserver(
+            handleCalculateModalPosition
+        );
+
+        elementObserver.observe(relativeElement);
+
         return () => {
             window.removeEventListener('scroll', handleCalculateModalPosition);
             window.removeEventListener('resize', handleCalculateModalPosition);
+
+            elementObserver.disconnect();
         };
     }, [relativeElement]);
 
