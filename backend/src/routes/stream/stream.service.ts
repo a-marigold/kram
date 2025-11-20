@@ -1,10 +1,10 @@
-import type { RawData } from 'ws';
-
 import { StreamMessageSchema } from '@none/shared';
 import type { StreamMessage } from '@none/shared';
 
 import { MessageSchema } from '@none/shared';
 import type { Message } from '@none/shared';
+
+import type { StreamError } from '@none/shared';
 
 export function checkStreamMessage(data: object): data is StreamMessage {
     return StreamMessageSchema.safeParse(data).success;
@@ -26,7 +26,7 @@ export function checkChatMessage(data: StreamMessage['data']): data is Message {
  * ```
  */
 export function createBaseError(message?: string) {
-    const errorMessage: StreamMessage = {
+    const errorMessage: StreamError = {
         type: 'error',
         data: {
             message: message || 'You have sent invalid message.',

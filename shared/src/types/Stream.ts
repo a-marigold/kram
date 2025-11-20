@@ -4,6 +4,7 @@ import {
     string,
     any,
     enum as zenum,
+    literal,
     infer as zinfer,
 } from 'zod';
 
@@ -25,3 +26,11 @@ export const StreamMessageSchema = object({
 });
 
 export type StreamMessage = zinfer<typeof StreamMessageSchema>;
+
+export const StreamErrorSchema = object({
+    type: literal(StreamTypeSchema.enum.error),
+
+    data: object({ message: string() }),
+});
+
+export type StreamError = zinfer<typeof StreamErrorSchema>;

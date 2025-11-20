@@ -10,10 +10,8 @@ export default function StreamRoot() {
     useEffect(() => {
         stream.open(`${apiOrigin}/stream`);
 
-        stream.onmessage((message) => {
-            if (message.type === 'error') {
-                alert(message.data.message);
-            }
+        stream.onerror((error) => {
+            alert(error.data.message);
         });
 
         return () => {
