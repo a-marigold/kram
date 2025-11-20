@@ -22,7 +22,7 @@ interface ChatTextAreaProps
         fontColor: string;
     };
 
-    sendFunction?: ButtonHTMLAttributes<HTMLButtonElement>['onClick']; //! TODO: that is partial temporary
+    sendFunction?: ButtonHTMLAttributes<HTMLButtonElement>['onClick']; // TODO: that is optional temporarily
 }
 export default function ChatTextArea({
     state,

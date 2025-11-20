@@ -16,7 +16,8 @@ import chatStyles from '../../Chat.module.scss';
 export default function Chat() {
     const [message, setMessage] = useState('');
 
-    const userName = useAuthStore((state) => state.user?.userName);
+    // const userName = useAuthStore((state) => state.user?.userName);
+    const userName = 'hello'; // ! ! !
 
     const addMessage = useChatStore((state) => state.addMessage);
 
@@ -47,6 +48,7 @@ export default function Chat() {
                 ariaLabel='Input a message'
                 state={message}
                 onChange={(event) => setMessage(event.target.value)}
+                sendFunction={handleAddMessage}
             />
         </>
     );

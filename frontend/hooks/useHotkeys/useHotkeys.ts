@@ -11,6 +11,7 @@ function hotkeyMatches(key: string, event: KeyboardEvent) {
         .toLocaleLowerCase()
 
         .split('+')
+
         .map((part) => part.trim());
 
     const hasCtrl = parts.includes('ctrl');

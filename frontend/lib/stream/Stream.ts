@@ -15,7 +15,6 @@ class Stream {
 
     send(type: StreamMessage['type'], data: object) {
         if (!this.#socket) return;
-
         const prepareData: StreamMessage = { type, data };
 
         this.#socket.send(JSON.stringify(prepareData));
@@ -24,8 +23,14 @@ class Stream {
     onmessage(callback: (message: StreamMessage) => void) {
         if (!this.#socket) return;
         this.#socket.addEventListener('message', (event) => {
-            if (validateStreamMessage(event.data)) {
-                callback(event.data);
+            try {
+                const data = JSON.parse(event.data);
+
+                if (validateStreamMessage(data)) {
+                    callback(data);
+                }
+            } catch {
+                alert('Server has sent invalid data.'); // TODO: temporarily
             }
         });
     }
