@@ -428,7 +428,7 @@ packages:
     engines: {node: '>=12.4.0'}
 
   '@none/shared@file:../shared/none-shared-2.3.0.tgz':
-    resolution: {integrity: sha512-olJQZpwirXHUs83TVq2BtRUmLpglhwSTSKvWCAsVpSSx4r2uOO54U+7qmLj9oHCsCEF/YuwV3UwshQuUT1++SQ==, tarball: file:../shared/none-shared-2.3.0.tgz}
+    resolution: {integrity: sha512-MqIScK7sC2R7Lj9llk/xr78/SKq1PdyMl7AbfaqgmYNsNs545TOrjCV8xkaxXotftzp2lstllWhrz8U/BOY19A==, tarball: file:../shared/none-shared-2.3.0.tgz}
     version: 2.3.0
 
   '@parcel/watcher-android-arm64@2.5.1':

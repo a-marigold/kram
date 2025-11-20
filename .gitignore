@@ -57,5 +57,5 @@ next-env.d.ts
 # prisma
 /generated/prisma
 
-# registry
-verdaccio
+
+update-shared.txt

@@ -11,7 +11,9 @@ export const MessageSchema = object({
 });
 
 export const ChatSchema = object({
-    id: uuid(),
+    id: number(),
+
+    publicId: uuid(),
 
     name: string(),
 

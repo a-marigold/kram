@@ -30,5 +30,38 @@ model User {
   email String? @unique
   password String
 
+  chatList Chat[] @relation("ChatList")
+
   avatar String? 
+}
+
+model Chat {
+  id Int @id @default(autoincrement())
+  publicId String @unique
+
+  name String
+
+  members User[] @relation("ChatList")
+
+  messageList Message[]
+}
+
+
+
+
+
+
+
+
+model Message {
+  id Int @id @default(autoincrement())
+  
+  senderId String
+  
+  data String
+
+  chatId String 
+  chat Chat @relation(fields: [chatId], references: [publicId])
+
+  createdAt DateTime
 }
