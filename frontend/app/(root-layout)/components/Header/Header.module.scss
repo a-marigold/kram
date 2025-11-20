@@ -1,11 +1,9 @@
 @use '@/styles/mixins.scss' as *;
 
 .header {
-    position: absolute;
-    top: 0;
-
     display: flex;
     width: 100%;
+    height: 52px;
 
     background-color: var(--background-color);
 

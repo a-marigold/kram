@@ -25,7 +25,7 @@ export default function ChatLayout({
             <ModalRoot />
 
             <div className='main-content'>
-                {!userName && <Header />}
+                <Header />
 
                 {children}
             </div>

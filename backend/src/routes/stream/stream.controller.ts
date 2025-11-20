@@ -8,7 +8,7 @@ import { checkData, checkChatMessage } from './stream.service';
 export async function stream(connection: WebSocket, request: FastifyRequest) {
     connection.on('message', (data) => {
         let message: StreamMessage;
-
+        console.log(data);
         try {
             message = checkData(data);
         } catch {
@@ -24,12 +24,12 @@ export async function stream(connection: WebSocket, request: FastifyRequest) {
             try {
                 const chatMessage = checkChatMessage(message);
 
-                console.log(chatMessage);
-
                 const newMessage: StreamMessage = {
                     type: 'newChatMessage',
                     data: chatMessage,
                 };
+
+                console.log(chatMessage);
 
                 return connection.send(JSON.stringify(newMessage)); // TODO: temporary echo
             } catch {

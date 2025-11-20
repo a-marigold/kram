@@ -1,19 +1,18 @@
 @use '@/styles/mixins.scss' as *;
 
+//
+
 .message-list {
     @include flex-column;
-    justify-content: flex-end;
 
     gap: 1em;
 
     width: 100%;
+
     min-height: 100%;
 
     max-width: var(--chat-max-width);
 
-    padding-top: 5em;
-
-    padding-bottom: 3em;
-
-    box-sizing: border-box;
+    padding-top: 2em;
+    padding-bottom: 10em;
 }

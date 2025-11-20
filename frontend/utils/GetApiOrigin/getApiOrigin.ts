@@ -13,5 +13,5 @@ export function getApiOrigin(
 export const apiOrigin = getApiOrigin(
     process.env.NEXT_PUBLIC_API_ORIGIN,
 
-    'http://[::1]:1000'
+    'http://127.0.0.1:1000'
 );
