@@ -3,6 +3,9 @@
 //
 
 .message-list {
+    margin-top: 1em;
+    margin-bottom: 2em;
+
     @include flex-column;
 
     gap: 1em;
@@ -10,8 +13,7 @@
     width: 100%;
 
     max-width: var(--chat-max-width);
-
-    padding-top: 2em;
-
-    padding-bottom: 2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    box-sizing: border-box;
 }

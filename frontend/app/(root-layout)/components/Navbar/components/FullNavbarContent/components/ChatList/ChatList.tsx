@@ -9,102 +9,12 @@ import navStyles from './ChatList.module.scss';
 
 const chatList = [
     {
-        id: 'CHAT-ID10',
+        id: '6d436c8c-5e65-45a3-90e4-d066b4b0f5a2',
 
         name: 'example',
     },
     {
-        id: 'CHAT-ID16',
-
-        name: 'example2',
-    },
-    {
-        id: 'CHAT-ID11',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-ID126',
-
-        name: 'example2',
-    },
-    {
-        id: 'CHAT-ID11123230',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-ID12123316',
-
-        name: 'example2',
-    },
-    {
-        id: 'CHAT-ID12310',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-ID11236',
-
-        name: 'example2',
-    },
-    {
-        id: 'CHAT-I123D10',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-I123D16',
-
-        name: 'example2',
-    },
-    {
-        id: 'CHAT-I123D10',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-IDsdfsdfsdf16',
-
-        name: 'example2',
-    },
-    {
-        id: 'CHAT-I123123D10',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-ID160',
-
-        name: 'examdfgdfhsaasdple2',
-    },
-    {
-        id: 'CHAT-ID123123adasdasd21310',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-ID1adadasd6',
-
-        name: 'example2',
-    },
-    {
-        id: 'CHAT-ID11231230',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-I213123123adasD16',
-
-        name: 'exampl123123e2',
-    },
-    {
-        id: 'CHAT-IDasdasd10',
-
-        name: 'example',
-    },
-    {
-        id: 'CHAT-ID1asdsaasd6',
+        id: 'bb8d83bd-5cd6-4ce0-abf1-035b7c904cee',
 
         name: 'example2',
     },

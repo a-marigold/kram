@@ -6,10 +6,9 @@ import type { StreamMessage } from '@none/shared';
 import { MessageSchema } from '@none/shared';
 import type { Message } from '@none/shared';
 
-export function checkStreamMessage(data: unknown): data is StreamMessage {
+export function checkStreamMessage(data: object): data is StreamMessage {
     return StreamMessageSchema.safeParse(data).success;
 }
-
 export function checkChatMessage(data: StreamMessage['data']): data is Message {
     return MessageSchema.safeParse(data).success;
 }
@@ -58,3 +57,5 @@ export function createStreamMessage<T extends StreamMessage['data']>(
 
     return JSON.stringify(streamMessage);
 }
+
+export const baseError = createBaseError();

@@ -24,7 +24,6 @@ export default function MessageList() {
 
     useEffect(() => {
         stream.onmessage((message) => {
-            console.log(message);
             if (
                 message.type === 'newChatMessage' &&
                 validateChatMessage(message.data) &&

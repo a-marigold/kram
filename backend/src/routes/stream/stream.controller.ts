@@ -7,36 +7,33 @@ import {
     checkStreamMessage,
     createBaseError,
     createStreamMessage,
+    baseError,
 } from './stream.service';
 
 export async function stream(connection: WebSocket, request: FastifyRequest) {
     connection.on('message', (data) => {
-        const parseData = JSON.parse(data.toString());
+        try {
+            const parseData = JSON.parse(data.toString());
 
-        if (!checkStreamMessage(parseData)) {
-            const baseError = createBaseError();
+            if (!checkStreamMessage(parseData)) {
+                return connection.send(baseError + 'error__stream_message');
+            }
 
-            return connection.send(baseError);
-        }
+            if (
+                parseData.type === 'newChatMessage' &&
+                checkChatMessage(parseData.data)
+            ) {
+                const chatMessage = parseData.data;
 
-        if (parseData.type === 'error') {
-            const baseError = createBaseError();
+                const streamMessage = createStreamMessage('newChatMessage', {
+                    ...chatMessage,
+                    sender: chatMessage.sender + 1,
+                });
 
-            return connection.send(baseError);
-        }
-
-        if (
-            parseData.type === 'newChatMessage' &&
-            checkChatMessage(parseData.data)
-        ) {
-            const chatMessage = parseData.data;
-
-            const streamMessage = createStreamMessage(
-                'newChatMessage',
-                chatMessage
-            );
-
-            return connection.send(streamMessage); // TODO: temporary echo
+                return connection.send(streamMessage); // TODO: temporary echo
+            }
+        } catch {
+            return connection.send(baseError + 'error__json');
         }
     });
 }

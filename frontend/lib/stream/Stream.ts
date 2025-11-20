@@ -19,11 +19,13 @@ class Stream {
 
     close() {
         if (!this.#socket) return;
+
         this.#socket.close();
     }
 
     send(type: StreamMessage['type'], data: object) {
         if (!this.#socket) return;
+
         const prepareData: StreamMessage = { type, data };
 
         this.#socket.send(JSON.stringify(prepareData));
@@ -39,7 +41,7 @@ class Stream {
                     callback(data);
                 }
             } catch {
-                alert('Server has sent invalid data.'); // TODO: temporarily
+                alert('Server has sent an invalid message.');
             }
         });
     }
