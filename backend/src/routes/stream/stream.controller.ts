@@ -1,45 +1,42 @@
 import type { FastifyRequest } from 'fastify';
-import type { WebSocket } from '@fastify/websocket';
 
-import type { StreamMessage } from '@none/shared';
+import type { WebSocket } from 'ws';
 
-import { checkData, checkChatMessage } from './stream.service';
+import {
+    checkChatMessage,
+    checkStreamMessage,
+    createBaseError,
+    createStreamMessage,
+} from './stream.service';
 
 export async function stream(connection: WebSocket, request: FastifyRequest) {
     connection.on('message', (data) => {
-        let message: StreamMessage;
-        console.log(data);
-        try {
-            message = checkData(data);
-        } catch {
-            const errorMessage: StreamMessage = {
-                type: 'error',
-                data: { message: 'You have sent invalid message.' },
-            };
+        const parseData = JSON.parse(data.toString());
 
-            return connection.send(JSON.stringify(errorMessage));
+        if (!checkStreamMessage(parseData)) {
+            const baseError = createBaseError();
+
+            return connection.send(baseError);
         }
 
-        if (message.type === 'newChatMessage') {
-            try {
-                const chatMessage = checkChatMessage(message);
+        if (parseData.type === 'error') {
+            const baseError = createBaseError();
 
-                const newMessage: StreamMessage = {
-                    type: 'newChatMessage',
-                    data: chatMessage,
-                };
+            return connection.send(baseError);
+        }
 
-                console.log(chatMessage);
+        if (
+            parseData.type === 'newChatMessage' &&
+            checkChatMessage(parseData.data)
+        ) {
+            const chatMessage = parseData.data;
 
-                return connection.send(JSON.stringify(newMessage)); // TODO: temporary echo
-            } catch {
-                const errorMessage: StreamMessage = {
-                    type: 'error',
-                    data: { message: 'You have send invalid message.' },
-                };
+            const streamMessage = createStreamMessage(
+                'newChatMessage',
+                chatMessage
+            );
 
-                return connection.send(JSON.stringify(errorMessage));
-            }
+            return connection.send(streamMessage); // TODO: temporary echo
         }
     });
 }
