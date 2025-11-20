@@ -1,0 +1,54 @@
+'use client';
+
+import { useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
+
+import { useModalStore } from '@/store/ModalStore';
+import { useChatStore } from '@/store/ChatStore';
+
+import DropDownModal from '@/UI/DropDownModal';
+import type { DropDownModalProps } from '@/UI/DropDownModal';
+
+import MemoPrimaryButton from '@/UI/PrimaryButton/memo';
+
+interface BadgeModalProps
+    extends Pick<DropDownModalProps, 'relativeElement' | 'shiftX' | 'shiftY'> {
+    searchQuery: string;
+}
+
+export default function BadgeModal({
+    searchQuery,
+
+    ...dropDownProps
+}: BadgeModalProps) {
+    const chats = useChatStore(useShallow((state) => state.chats));
+
+    const filteredChatNames = useMemo(
+        () =>
+            Object.values(chats)
+                .map(({ name, id }) => ({
+                    name,
+                    id,
+                }))
+                .filter((chat) => chat.name.includes(searchQuery)),
+        [chats, searchQuery]
+    );
+
+    const closeModal = useModalStore((state) => state.closeModal);
+
+    return (
+        <DropDownModal
+            {...dropDownProps}
+            topList={filteredChatNames.map((chat) => (
+                <MemoPrimaryButton
+                    key={chat.id}
+                    title={chat.name}
+                    aria-label=''
+                    role='option'
+                />
+            ))}
+            position='bottom'
+            onClose={closeModal}
+        />
+    );
+}
