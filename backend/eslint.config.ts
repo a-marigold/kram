@@ -4,21 +4,18 @@ import tseslint from 'typescript-eslint';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
+    tseslint.configs.recommended,
+    js.configs.recommended,
+
     {
         files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
-        plugins: { js },
-
-        extends: ['js/recommended'],
-
         languageOptions: { globals: globals.node },
 
         rules: {
-            '@typescript-eslint/no-unused-vars': 'warn',
-            '@typescript-eslint/explicit-function-return-type': ['off'],
+            '@typescript-eslint/no-unused-vars': 'off',
             '@typescript-eslint/no-explicit-any': ['warn'],
+            '@typescript-eslint/explicit-function-return-type': 'off',
+            'no-unused-vars': 'warn',
         },
     },
-
-    js.configs.recommended,
-    tseslint.configs.recommended,
 ]);

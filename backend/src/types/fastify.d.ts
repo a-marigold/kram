@@ -1,3 +1,5 @@
+import type { FastifyRequest, FastifyReply } from 'fastify';
+
 import type { PrismaClient } from '@prisma/client';
 
 import type Redis from 'ioredis';
@@ -11,7 +13,6 @@ declare module 'fastify' {
         auth(request: FastifyRequest, reply: FastifyReply): Promise<void>;
     }
 }
-
 declare module '@fastify/jwt' {
     interface FastifyJWT {
         payload: { userName: string };

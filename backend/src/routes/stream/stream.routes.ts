@@ -2,6 +2,8 @@ import type { FastifyInstance } from 'fastify';
 
 import { stream } from './stream.controller';
 
+//
+
 export async function streamRoutes(app: FastifyInstance) {
     app.route({
         method: 'GET',
@@ -11,7 +13,6 @@ export async function streamRoutes(app: FastifyInstance) {
         websocket: true,
 
         handler: () => {},
-
         wsHandler: stream,
     });
 }
