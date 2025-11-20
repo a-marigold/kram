@@ -12,14 +12,14 @@ interface ChatStore {
 
 export const useChatStore = create<ChatStore>()((set) => ({
     chats: {
-        'General Discussion': {
+        pub_8f3a1b9e: {
             id: 42,
             publicId: 'pub_8f3a1b9e',
             name: 'General Discussion',
             messageList: [
                 {
                     id: 1,
-                    sender: 'Alice',
+                    sender: 'hello',
                     chatId: 'pub_8f3a1b9e',
                     data: 'Привет! Кто-нибудь уже смотрел новую версию React?',
                 },
@@ -31,7 +31,7 @@ export const useChatStore = create<ChatStore>()((set) => ({
                 },
                 {
                     id: 3,
-                    sender: 'Charlie',
+                    sender: 'hello',
                     chatId: 'pub_8f3a1b9e',
                     data: 'У кого-нибудь есть пример с useOptimistic?',
                 },
@@ -43,7 +43,7 @@ export const useChatStore = create<ChatStore>()((set) => ({
                 },
             ],
         },
-        'Frontend Team': {
+        pub_f12a47cc: {
             id: 88,
             publicId: 'pub_f12a47cc',
             name: 'Frontend Team',
@@ -74,7 +74,7 @@ export const useChatStore = create<ChatStore>()((set) => ({
                 },
             ],
         },
-        'Random Chat': {
+        pub_45df9c10: {
             id: 157,
             publicId: 'pub_45df9c10',
             name: 'Random Chat',

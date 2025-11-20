@@ -60,7 +60,7 @@ export default function DropDownModal({
             window.removeEventListener('scroll', handleCalculateModalPosition);
             window.removeEventListener('resize', handleCalculateModalPosition);
         };
-    }, []);
+    }, [relativeElement]);
 
     return (
         <div

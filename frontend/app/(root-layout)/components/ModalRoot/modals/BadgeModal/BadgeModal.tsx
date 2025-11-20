@@ -26,27 +26,40 @@ export default function BadgeModal({
     const filteredChatNames = useMemo(
         () =>
             Object.values(chats)
-                .map(({ name, id }) => ({
+                .map(({ name, publicId }) => ({
                     name,
-                    id,
+                    publicId,
                 }))
-                .filter((chat) => chat.name.includes(searchQuery)),
+                .filter((chat) =>
+                    chat.name
+                        .split(' ')
+                        .join('')
+                        .toLocaleLowerCase()
+                        .includes(searchQuery.toLowerCase())
+                ),
         [chats, searchQuery]
     );
 
     const closeModal = useModalStore((state) => state.closeModal);
 
+    console.log(filteredChatNames);
+    console.log(searchQuery);
+
     return (
         <DropDownModal
             {...dropDownProps}
-            topList={filteredChatNames.map((chat) => (
-                <MemoPrimaryButton
-                    key={chat.id}
-                    title={chat.name}
-                    aria-label=''
-                    role='option'
-                />
-            ))}
+            topList={
+                <>
+                    {filteredChatNames.map((chat) => (
+                        <MemoPrimaryButton
+                            key={chat.publicId}
+                            title={chat.name}
+                            aria-label=''
+                            role='option'
+                        />
+                    ))}
+                </>
+            }
             position='bottom'
             onClose={closeModal}
         />

@@ -1,24 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
+import { useShallow } from 'zustand/shallow';
+
+import { useChatStore } from '@/store/ChatStore';
 
 import PrimaryLink from '@/UI/PrimaryLink';
 
 import navStyles from './ChatList.module.scss';
-
-const chatList = [
-    {
-        id: '6d436c8c-5e65-45a3-90e4-d066b4b0f5a2',
-
-        name: 'example',
-    },
-    {
-        id: 'bb8d83bd-5cd6-4ce0-abf1-035b7c904cee',
-
-        name: 'example2',
-    },
-];
 
 export default function ChatList() {
     const pathname = usePathname();
@@ -26,6 +16,17 @@ export default function ChatList() {
     const currentChatId = pathname.split('/').filter(Boolean).at(-1);
 
     const [showChatList, setShowChatList] = useState(true);
+
+    const chats = useChatStore(useShallow((state) => state.chats));
+
+    const chatNames = useMemo(
+        () =>
+            Object.values(chats).map(({ name, publicId }) => ({
+                name,
+                publicId,
+            })),
+        [chats]
+    );
 
     return (
         <div
@@ -52,15 +53,18 @@ export default function ChatList() {
                     className={navStyles['chat-list']}
                     onClick={(event) => event.stopPropagation()}
                 >
-                    {chatList.map((chat, index) => (
-                        <li key={index} className={navStyles['chat-link']}>
+                    {chatNames.map((chat) => (
+                        <li
+                            key={chat.publicId}
+                            className={navStyles['chat-link']}
+                        >
                             <PrimaryLink
                                 replace
                                 shallow
                                 prefetch={false}
                                 title={chat.name}
-                                href={`/chat/${chat.id}`}
-                                isActive={currentChatId === chat.id}
+                                href={`/chat/${chat.publicId}`}
+                                isActive={currentChatId === chat.publicId}
                                 aria-label={`Open ${chat.name} chat`}
                             />
                         </li>

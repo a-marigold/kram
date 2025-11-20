@@ -58,13 +58,13 @@ export default function ChatTextArea({
                     ${isBounded ? textStyles['bounded'] : ''}`}
                 value={state}
                 onChange={(event) => {
+                    attributes.onChange?.(event);
+
                     resizeTextarea(event.target);
 
                     if (event.target.scrollHeight >= 319) {
                         setIsBounded(true);
                     }
-
-                    attributes.onChange?.(event);
                 }}
             />
 

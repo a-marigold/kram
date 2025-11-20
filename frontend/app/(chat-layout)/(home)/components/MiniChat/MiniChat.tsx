@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
@@ -20,7 +20,7 @@ export default function Chat() {
 
     const openModal = useModalStore((state) => state.openModal);
 
-    const badgeText = findBySymbol(message, '@');
+    const closeModal = useModalStore((state) => state.closeModal);
 
     return (
         <>
@@ -28,6 +28,13 @@ export default function Chat() {
                 ariaLabel='Input a message'
                 state={message}
                 onChange={(event) => {
+                    setMessage(event.target.value);
+
+                    const badgeText = findBySymbol(
+                        event.target.value,
+                        '@'
+                    )?.split('@')[1];
+
                     if (badgeText) {
                         openModal(
                             <BadgeModal
@@ -35,11 +42,12 @@ export default function Chat() {
                                 relativeElement={event.target}
                             />
                         );
+                    } else {
+                        closeModal();
                     }
-                    setMessage(event.target.value);
                 }}
                 badge={{
-                    text: badgeText ?? '',
+                    text: findBySymbol(message, '@') ?? '',
                     bgColor: currentBadgeColors.bgColor,
                     fontColor: currentBadgeColors.fontColor,
                 }}

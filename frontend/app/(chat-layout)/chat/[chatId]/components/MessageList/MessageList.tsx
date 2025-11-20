@@ -17,6 +17,7 @@ export default function MessageList() {
     const chatId = usePathname().split('/').filter(Boolean).at(-1);
 
     const userName = useAuthStore((state) => state.user?.userName);
+
     const chatMessages = useChatStore(
         (state) => state.chats[chatId || '']?.messageList
     );
