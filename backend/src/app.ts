@@ -13,7 +13,7 @@ import fastifyCookie from '@fastify/cookie';
 import fastifyWebsocket from '@fastify/websocket';
 import redisPlugin from './plugins/redis';
 import prismaPlugin from './plugins/prisma';
-import authPlugin from './plugins/auth/auth';
+import authPlugin from './plugins/auth';
 
 import { Cookie } from '@none/shared';
 
