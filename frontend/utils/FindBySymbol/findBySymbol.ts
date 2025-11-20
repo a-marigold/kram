@@ -1,7 +1,7 @@
 /**
  * @param {string} string - text for search
  * @param {string} symbol - symbol, words with which they will be found
- * @returns First or last word with symbol found in string. Finds word that starts with
+ * @returns First or last word with symbol found in string. Finds word that starts with symbol.
  *
  * @example
  * ```typescript
