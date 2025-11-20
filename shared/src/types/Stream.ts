@@ -14,6 +14,8 @@ const StreamTypeSchema = zenum([
     'deleteMessage',
 
     'error',
+
+    'initial',
 ]);
 
 export const StreamMessageSchema = object({

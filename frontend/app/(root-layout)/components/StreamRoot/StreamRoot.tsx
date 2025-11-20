@@ -12,7 +12,7 @@ export default function StreamRoot() {
 
         stream.onmessage((message) => {
             if (message.type === 'error') {
-                alert(message);
+                alert(message.data.message);
             }
         });
 

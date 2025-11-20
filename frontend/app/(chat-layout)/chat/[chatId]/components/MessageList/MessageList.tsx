@@ -24,6 +24,7 @@ export default function MessageList() {
 
     useEffect(() => {
         stream.onmessage((message) => {
+            console.log(message);
             if (
                 message.type === 'newChatMessage' &&
                 validateChatMessage(message.data) &&
@@ -37,7 +38,7 @@ export default function MessageList() {
     return (
         <div className={messageStyles['message-list']}>
             {chatMessages?.map((message) =>
-                message.sender === userName || message.sender === 'k' ? ( // TODO: temporarily ! ! !
+                message.sender === userName || message.sender === 'hello' ? ( // TODO: temporarily ! ! !
                     <MessageMine key={message.id}>{message.data}</MessageMine>
                 ) : (
                     <MessageOther key={message.id}>{message.data}</MessageOther>

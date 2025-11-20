@@ -6,6 +6,15 @@ class Stream {
 
     open(url: string) {
         this.#socket = new WebSocket(url);
+
+        this.#socket.onopen = () => {
+            const initialMessage: StreamMessage = {
+                type: 'initial',
+                data: { message: 'initial' },
+            };
+
+            this.#socket?.send(JSON.stringify(initialMessage));
+        };
     }
 
     close() {
