@@ -39,7 +39,8 @@ export default function Chat() {
                             <BadgeModal
                                 searchQuery={badgeText.split('@')[1].trim()}
                                 relativeElement={textareaRef.current}
-                                shiftX={100}
+                                posY='bottom'
+                                posX='left'
                             />
                         );
                     } else {

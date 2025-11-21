@@ -25,8 +25,7 @@ export default function CutProfileBlock() {
                         openModal(
                             <ProfileModal
                                 relativeElement={event.currentTarget}
-                                shiftX={80}
-                                position='top'
+                                posX='left'
                                 closeModal={closeModal}
                             />
                         )

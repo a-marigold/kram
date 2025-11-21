@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 
 import { calculateModalPosition } from './calculateModalPosition';
 
-import type { ModalPosition } from './calculateModalPosition';
+import type { ModalPosY, ModalPosX } from './calculateModalPosition';
 
 import modalStyles from './DropDownModal.module.scss';
 
@@ -17,7 +17,9 @@ export interface DropDownModalProps {
 
     bottomChildren?: ReactNode;
 
-    position?: ModalPosition;
+    posY?: ModalPosY;
+    posX?: ModalPosX;
+
     shiftX?: number;
     shiftY?: number;
 
@@ -31,7 +33,9 @@ export default function DropDownModal({
 
     bottomChildren,
 
-    position = 'bottom',
+    posY = 'top',
+    posX = 'center',
+
     shiftX,
     shiftY,
 
@@ -44,8 +48,9 @@ export default function DropDownModal({
             calculateModalPosition(
                 relativeElement,
                 modalRef.current,
+                posY,
+                posX,
 
-                position,
                 shiftX,
                 shiftY
             );

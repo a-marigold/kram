@@ -12,7 +12,7 @@ import type { DropDownModalProps } from '@/UI/DropDownModal';
 import MemoPrimaryButton from '@/UI/PrimaryButton/memo';
 
 interface BadgeModalProps
-    extends Pick<DropDownModalProps, 'relativeElement' | 'shiftX' | 'shiftY'> {
+    extends Pick<DropDownModalProps, 'relativeElement' | 'posY' | 'posX'> {
     searchQuery: string;
 }
 
@@ -59,7 +59,6 @@ export default function BadgeModal({
                     ))}
                 </>
             }
-            position='bottom'
             onClose={closeModal}
         />
     );

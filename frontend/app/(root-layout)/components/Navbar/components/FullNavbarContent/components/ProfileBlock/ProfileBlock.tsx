@@ -24,7 +24,6 @@ export default function ProfileBlock() {
                     openModal(
                         <ProfileModal
                             relativeElement={event.currentTarget}
-                            position='top'
                             closeModal={closeModal}
                         />
                     );

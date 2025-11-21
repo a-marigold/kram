@@ -19,7 +19,7 @@ import PrimaryButton from '@/UI/PrimaryButton';
 
 export type ProfileModalProps = Pick<
     DropDownModalProps,
-    'relativeElement' | 'position' | 'shiftX' | 'shiftY'
+    'relativeElement' | 'posY' | 'posX' | 'shiftX' | 'shiftY'
 > &
     BasicModalProps;
 
@@ -89,7 +89,7 @@ export default function ProfileModal({
                     />
                 </>
             }
-            bottomList={
+            bottomChildren={
                 <>
                     <PrimaryButton
                         title='Log Out'
