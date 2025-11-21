@@ -1,4 +1,4 @@
-import type { PrismaClient } from '@prisma/client';
+import type { PrismaClient } from '@/generated/prisma/client/client';
 
 import type { FastifyJWT, JWT } from '@fastify/jwt';
 import type { CookieSerializeOptions } from '@fastify/cookie';

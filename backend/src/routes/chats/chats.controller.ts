@@ -13,6 +13,8 @@ export async function getUserChats(
     const userName = request.user.userName;
 
     try {
+        console.log('_______CHAAT' + userName);
+
         const chats = await getChatsByUserName(request.server.prisma, userName);
 
         if (!chats) {

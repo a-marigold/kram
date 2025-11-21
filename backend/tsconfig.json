@@ -27,7 +27,8 @@
         "typeRoots": ["./src/types"],
 
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@prismaOrm/client/*": ["./src/generated/prisma/client/*"]
         }
     },
     "include": ["./src", "src/types", "fastify.d.ts", "./src/generated/prisma"],

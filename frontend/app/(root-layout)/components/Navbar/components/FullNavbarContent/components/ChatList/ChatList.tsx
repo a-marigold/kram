@@ -1,21 +1,32 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { useShallow } from 'zustand/shallow';
 
 import { useChatStore } from '@/store/ChatStore';
+
+import { ApiError } from '@none/shared';
+import { getChats } from '@/lib/api/ChatApiClient';
 
 import PrimaryLink from '@/UI/PrimaryLink';
 
 import navStyles from './ChatList.module.scss';
 
 export default function ChatList() {
-    const pathname = usePathname();
+    const setChats = useChatStore((state) => state.setChats);
 
-    const currentChatId = pathname.split('/').filter(Boolean).at(-1);
-
-    const [showChatList, setShowChatList] = useState(true);
+    useEffect(() => {
+        async function handleGetChats() {
+            try {
+                const chats = await getChats();
+                setChats(chats);
+            } catch {
+                setChats([]);
+            }
+        }
+        handleGetChats();
+    }, []);
 
     const chats = useChatStore(useShallow((state) => state.chats));
 
@@ -27,6 +38,11 @@ export default function ChatList() {
             })),
         [chats]
     );
+
+    const [showChatList, setShowChatList] = useState(true);
+
+    const pathname = usePathname();
+    const currentChatId = pathname.split('/').filter(Boolean).at(-1);
 
     return (
         <div

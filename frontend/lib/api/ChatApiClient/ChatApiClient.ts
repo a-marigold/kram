@@ -13,7 +13,7 @@ export async function getChats() {
 
     await handleApiError(response);
 
-    const data = await response.json();
+    const data: Chat[] = await response.json();
 
     return data;
 }
@@ -21,7 +21,7 @@ export async function getChats() {
 export async function createChat(chat: Chat) {
     const prepareChat = JSON.stringify(chat);
 
-    const response = await fetch(`${apiOrigin}/chats/${chat.publicId}`, {
+    const response = await fetch(`${apiOrigin}/chat`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
