@@ -1,0 +1,11 @@
+@use '@/styles/mixins.scss' as *;
+
+.empty-list {
+    @include flex-center;
+
+    height: 100px;
+}
+.empty-text {
+    width: auto;
+    color: var(--secondary-font-color);
+}

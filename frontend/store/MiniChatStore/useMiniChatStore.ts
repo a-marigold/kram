@@ -5,7 +5,7 @@ interface MiniChatStore {
     setMessage: (newMessage: string) => void;
 
     receiver: string;
-    setReciever: (newReciever: string) => void;
+    setReceiver: (newReceiver: string) => void;
 }
 
 export const useMiniChatStore = create<MiniChatStore>()((set) => ({
@@ -14,5 +14,5 @@ export const useMiniChatStore = create<MiniChatStore>()((set) => ({
 
     setMessage: (newMessage) => set({ message: newMessage }),
 
-    setReciever: (newReciever) => set({ receiver: newReciever }),
+    setReceiver: (newReceiver) => set({ receiver: newReceiver }),
 }));

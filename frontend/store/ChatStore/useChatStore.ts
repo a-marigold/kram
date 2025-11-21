@@ -2,12 +2,18 @@ import { create } from 'zustand';
 
 import type { Chat, Message } from '@none/shared';
 
+type ChatNames = Pick<Chat, 'publicId' | 'name'>[];
+
 interface ChatStore {
     chats: Record<string, Chat>;
 
     setChats: (newChats: Chat[]) => void;
 
     addMessage: (chatId: string, message: Message) => void;
+
+    chatNames: ChatNames;
+
+    setChatNames: (newNames: ChatNames) => void;
 }
 
 export const useChatStore = create<ChatStore>()((set) => ({
@@ -107,6 +113,8 @@ export const useChatStore = create<ChatStore>()((set) => ({
         },
     },
 
+    chatNames: [],
+
     setChats: (newChats) =>
         set({
             chats: Object.fromEntries(newChats.map((chat) => [chat.id, chat])),
@@ -126,4 +134,6 @@ export const useChatStore = create<ChatStore>()((set) => ({
                 },
             },
         })),
+
+    setChatNames: (newNames) => set({ chatNames: newNames }),
 }));

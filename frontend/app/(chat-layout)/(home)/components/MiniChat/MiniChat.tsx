@@ -19,7 +19,8 @@ export default function Chat() {
     const setMessage = useMiniChatStore((state) => state.setMessage);
 
     const receiver = useMiniChatStore((state) => state.receiver);
-    const setReciever = useMiniChatStore((state) => state.setReciever);
+
+    const setReceiver = useMiniChatStore((state) => state.setReceiver);
 
     const currentBadgeColors = getRandomArrayElement(badgeColorList);
 
@@ -28,8 +29,7 @@ export default function Chat() {
 
     const textareaRef = useRef<HTMLDivElement>(null);
 
-    function sendFunction() {}
-
+    function sendFunction() {} // TODO: here
     return (
         <>
             <ChatTextArea
@@ -42,7 +42,7 @@ export default function Chat() {
                     const badgeText = findBySymbol(event.target.value, '@');
 
                     if (badgeText && textareaRef.current) {
-                        setReciever(badgeText.split('@')[1].trim());
+                        setReceiver(badgeText.split('@')[1].trim());
 
                         openModal(
                             <BadgeModal
@@ -57,7 +57,7 @@ export default function Chat() {
                     }
                 }}
                 badge={{
-                    text: findBySymbol(message, '@') ?? '',
+                    text: receiver ? `@${receiver}` : '',
                     bgColor: currentBadgeColors.bgColor,
                     fontColor: currentBadgeColors.fontColor,
                 }}

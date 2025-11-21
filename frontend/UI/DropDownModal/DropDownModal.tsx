@@ -17,6 +17,8 @@ export interface DropDownModalProps {
 
     bottomChildren?: ReactNode;
 
+    zIndex?: number;
+
     posY?: ModalPosY;
     posX?: ModalPosX;
 
@@ -32,6 +34,8 @@ export default function DropDownModal({
     topChildren,
 
     bottomChildren,
+
+    zIndex = 1000,
 
     posY = 'top',
     posX = 'center',
@@ -79,11 +83,12 @@ export default function DropDownModal({
 
     return (
         <div
-            role='menu'
             className={modalStyles['modal-backdrop']}
             onClick={onClose}
+            style={{ zIndex }}
         >
             <div
+                role='menu'
                 ref={modalRef}
                 className={modalStyles['drop-down-modal']}
                 onClick={(event) => {
