@@ -19,7 +19,9 @@
         "noImplicitOverride": true,
 
         "noUnusedLocals": false,
+
         "noUnusedParameters": true,
+
         "noPropertyAccessFromIndexSignature": false,
 
         "typeRoots": ["./src/types"],
