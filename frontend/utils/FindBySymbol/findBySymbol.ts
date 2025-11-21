@@ -1,6 +1,8 @@
 /**
  * @param {string} string - text for search
- * @param {string} symbol - symbol, words with which they will be found
+ * @param {string} symbol - symbol as a string, word with which it will be found
+ * @param {number} minWordLength - min length for found word
+ *
  * @returns First or last word with symbol found in string. Finds word that starts with symbol.
  *
  * @example
@@ -10,14 +12,21 @@
  * ```
  */
 
-export function findBySymbol(string: string, symbol: string) {
+export function findBySymbol(
+    string: string,
+    symbol: string,
+    minWordLength: number = 0
+) {
     const firstWord = string.split(' ').filter(Boolean)[0];
 
     const lastWord = string.split(' ').filter(Boolean).at(-1);
 
-    if (firstWord?.startsWith(symbol) && firstWord.length > 1) {
+    if (firstWord?.startsWith(symbol) && firstWord.length > minWordLength) {
         return firstWord;
-    } else if (lastWord?.startsWith(symbol) && lastWord.length > 1) {
+    } else if (
+        lastWord?.startsWith(symbol) &&
+        lastWord.length > minWordLength
+    ) {
         return lastWord;
     }
 }

@@ -5,6 +5,7 @@ import { useShallow } from 'zustand/shallow';
 
 import { useModalStore } from '@/store/ModalStore';
 import { useChatStore } from '@/store/ChatStore';
+import { useMiniChatStore } from '@/store/MiniChatStore/useMiniChatStore';
 
 import DropDownModal from '@/UI/DropDownModal';
 import type { DropDownModalProps } from '@/UI/DropDownModal';
@@ -12,16 +13,15 @@ import type { DropDownModalProps } from '@/UI/DropDownModal';
 import MemoPrimaryButton from '@/UI/PrimaryButton/memo';
 
 interface BadgeModalProps
-    extends Pick<DropDownModalProps, 'relativeElement' | 'posY' | 'posX'> {
-    searchQuery: string;
-}
+    extends Pick<
+        DropDownModalProps,
+        'relativeElement' | 'posY' | 'posX' | 'shiftX' | 'shiftY'
+    > {}
 
-export default function BadgeModal({
-    searchQuery,
-
-    ...dropDownProps
-}: BadgeModalProps) {
+export default function BadgeModal({ ...dropDownProps }: BadgeModalProps) {
     const chats = useChatStore(useShallow((state) => state.chats));
+
+    const receiver = useMiniChatStore((state) => state.receiver);
 
     const filteredChatNames = useMemo(
         () =>
@@ -31,15 +31,15 @@ export default function BadgeModal({
                     publicId,
                 }))
                 .filter((chat) =>
-                    !searchQuery
+                    !receiver
                         ? true
                         : chat.name
                               .split(' ')
                               .join('')
                               .toLocaleLowerCase()
-                              .includes(searchQuery.toLowerCase())
+                              .includes(receiver.toLowerCase())
                 ),
-        [chats, searchQuery]
+        [chats, receiver]
     );
 
     const closeModal = useModalStore((state) => state.closeModal);
