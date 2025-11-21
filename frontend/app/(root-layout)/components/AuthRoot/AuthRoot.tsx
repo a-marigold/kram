@@ -4,28 +4,36 @@ import { useEffect } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { getUserData } from '@/lib/api/AuthApiClient';
+import { getUserData, refreshAccessToken } from '@/lib/api/AuthApiClient';
 
 import { useAuthStore } from '@/store/AuthStore/useAuthStore';
 
 export default function AuthRoot() {
     const setUser = useAuthStore((state) => state.setUser);
 
-    const { data: userData, isError } = useQuery({
+    const { data: userData, isError: isUserError } = useQuery({
         queryKey: ['auth'],
         queryFn: getUserData,
         retry: false,
         refetchOnWindowFocus: true,
-        refetchInterval: 12 * 60 * 1000,
+        refetchInterval: 20 * 60 * 1000,
+    });
+
+    const { isError: isRefreshError } = useQuery({
+        queryKey: ['refresh'],
+        queryFn: refreshAccessToken,
+        retry: false,
+        refetchOnWindowFocus: true,
+        refetchInterval: 11 * 60 * 1000,
     });
 
     useEffect(() => {
         if (userData) {
             setUser(userData);
-        } else if (isError) {
+        } else if (isUserError) {
             setUser({});
         }
-    }, [userData, isError]);
+    }, [userData, isUserError]);
 
     return null;
 }
