@@ -1,11 +1,15 @@
 import type { PrismaClient } from '@/generated/prisma/client/client';
+import type Redis from 'ioredis';
 
 import type { FastifyJWT, JWT } from '@fastify/jwt';
+
 import type { CookieSerializeOptions } from '@fastify/cookie';
 
 import { ApiError } from '@none/shared';
 
 import type { RegisterData, CookieName } from '@none/shared';
+
+import { REFRESH_TOKEN_MAX_AGE } from '@/constants/authCookieMaxAge';
 
 async function findByUserName(prisma: PrismaClient, userName: string) {
     const user = await prisma.user.findUnique({
@@ -87,4 +91,16 @@ export function generateAuthCookie(
             maxAge,
         },
     };
+}
+
+export async function setRefreshTokenInCache(
+    redis: Redis,
+    key: string,
+    value: string
+) {
+    await redis.set(`refresh:${key}`, value, 'EX', REFRESH_TOKEN_MAX_AGE);
+}
+
+export async function getRefreshTokenFromCache(redis: Redis, key: string) {
+    return await redis.get(`refresh:${key}`);
 }

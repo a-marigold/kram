@@ -15,6 +15,8 @@ import {
     generateAuthTokens,
     checkUserExistence,
     generateAuthCookie,
+    setRefreshTokenInCache,
+    getRefreshTokenFromCache,
 } from './auth.service';
 
 import { Cookie } from '@none/shared';
@@ -95,11 +97,10 @@ export async function register(
     );
     reply.setCookie(refreshName, refreshValue, refreshOptions);
 
-    await request.server.redis.set(
+    await setRefreshTokenInCache(
+        request.server.redis,
         `refresh:${refreshToken}`,
-        userName,
-        'EX',
-        REFRESH_TOKEN_MAX_AGE
+        userName
     );
 
     return reply.code(204).send();
@@ -143,7 +144,11 @@ export async function refresh(
         return reply.code(401).send({ code: 401, message: 'Unauthorized' });
     }
 
-    const userName = await request.server.redis.get(refreshToken);
+    const userName = await getRefreshTokenFromCache(
+        request.server.redis,
+
+        refreshToken
+    );
 
     if (!userName) {
         return reply
@@ -151,20 +156,36 @@ export async function refresh(
             .send({ code: 401, message: 'Refresh token not found' });
     }
 
-    const newAccessToken = request.server.jwt.sign({ userName });
+    const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
+        generateAuthTokens(request.server.jwt, { userName });
 
-    const {
-        name: accessName,
-        value: accessValue,
+    await setRefreshTokenInCache(
+        request.server.redis,
+        newRefreshToken,
+        userName
+    );
 
-        options: accessOptions,
-    } = generateAuthCookie(
+    const accessCookie = generateAuthCookie(
         Cookie.AccessToken,
         newAccessToken,
         ACCESS_TOKEN_MAX_AGE
     );
+    const refreshCookie = generateAuthCookie(
+        Cookie.RefreshToken,
+        newRefreshToken,
+        REFRESH_TOKEN_MAX_AGE
+    );
 
-    reply.setCookie(accessName, accessValue, accessOptions);
+    reply.setCookie(
+        accessCookie.name,
+        accessCookie.value,
+        accessCookie.options
+    );
+    reply.setCookie(
+        refreshCookie.name,
+        refreshCookie.value,
+        refreshCookie.options
+    );
 
     return reply.code(204).send();
 }
