@@ -1,7 +1,9 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 
+import { ApiError } from '@none/shared';
 import type { ApiResponse, Chat } from '@none/shared';
 
+import { checkUserExistence } from '../auth';
 import { getChatsByUserName, createChatWithMembers } from './chats.service';
 
 export async function getUserChats(
@@ -29,9 +31,36 @@ export async function getUserChats(
 }
 
 export async function createChat(
-    request: FastifyRequest,
+    request: FastifyRequest<{ Body: Chat }>,
 
     reply: FastifyReply<{ Reply: ApiResponse }>
 ) {
     const userName = request.user.userName;
+
+    const chat = request.body;
+
+    try {
+        for await (const member of chat.members) {
+            await checkUserExistence(request.server.prisma, member.userName);
+        }
+
+        const findInitiatorUser = chat.members.find(
+            (member) => member.userName === userName
+        );
+
+        if (!findInitiatorUser) {
+            throw new ApiError('Initiator not found in members', 404);
+        }
+
+        await createChatWithMembers(request.server.prisma, chat);
+    } catch (error) {
+        if (error instanceof ApiError) {
+            return reply
+                .code(error.code)
+                .send({ code: error.code, message: error.message });
+        }
+        return reply
+            .code(500)
+            .send({ code: 500, message: 'Internal server error' });
+    }
 }

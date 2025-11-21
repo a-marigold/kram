@@ -20,7 +20,11 @@ export const ChatSchema = object({
     name: string(),
 
     members: array(
-        UserSchema.pick({ userName: true, fullName: true, avatar: true })
+        UserSchema.pick({
+            userName: true,
+            fullName: true,
+            avatar: true,
+        }).partial({ fullName: true })
     ),
 
     messageList: array(MessageSchema),

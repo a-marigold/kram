@@ -42,15 +42,14 @@ export async function getChatsByUserName(
 export async function createChatWithMembers(
     prisma: PrismaClient,
 
-    chat: Chat,
-    members: Chat['members']
+    chat: Chat
 ) {
     return await prisma.chat.create({
         data: {
             publicId: crypto.randomUUID(),
             name: chat.name,
             members: {
-                connect: members.map((member) => ({
+                connect: chat.members.map((member) => ({
                     userName: member.userName,
                 })),
             },

@@ -13,7 +13,8 @@ export async function chatRoutes(app: FastifyInstance) {
         schema: {
             response: {
                 200: ChatListSchema,
-                403: ApiResponseSchema,
+                404: ApiResponseSchema,
+                500: ApiResponseSchema,
             },
         },
 
@@ -22,12 +23,13 @@ export async function chatRoutes(app: FastifyInstance) {
 
     app.route({
         method: 'POST',
-        url: '/chats/:chatId',
+        url: '/chats',
         schema: {
             body: ChatSchema,
             response: {
                 201: ApiResponseSchema,
-                403: ApiResponseSchema,
+                404: ApiResponseSchema,
+                500: ApiResponseSchema,
             },
         },
         handler: createChat as RouteHandlerMethod,
