@@ -1,24 +1,32 @@
 import { object, string, uuid, array, number, infer as zinfer } from 'zod';
 
+import { UserSchema } from './User';
+
 export const MessageSchema = object({
     id: number().optional(),
-
     sender: string(),
-
     chatId: uuid(),
 
     data: string(),
+
+    createdAt: number(),
 });
 
 export const ChatSchema = object({
-    id: number(),
+    id: number().optional(),
 
-    publicId: uuid(),
+    publicId: uuid().optional(),
 
     name: string(),
 
+    members: array(
+        UserSchema.pick({ userName: true, fullName: true, avatar: true })
+    ),
+
     messageList: array(MessageSchema),
 });
+
+export const ChatListSchema = array(ChatSchema);
 
 export type Chat = zinfer<typeof ChatSchema>;
 

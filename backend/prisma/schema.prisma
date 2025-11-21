@@ -7,10 +7,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../node_modules/.prisma/client"
+  provider = "prisma-client-js"
 }
-
 
 
 
@@ -30,7 +28,7 @@ model User {
   email String? @unique
   password String
 
-  chatList Chat[] @relation("ChatList")
+  chats Chat[] @relation("ChatList")
 
   avatar String? 
 }
@@ -56,7 +54,7 @@ model Chat {
 model Message {
   id Int @id @default(autoincrement())
   
-  senderId String
+  sender String
   
   data String
 
