@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useRef, useMemo } from 'react';
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
@@ -19,27 +19,27 @@ export default function Chat() {
     const currentBadgeColors = getRandomArrayElement(badgeColorList);
 
     const openModal = useModalStore((state) => state.openModal);
-
     const closeModal = useModalStore((state) => state.closeModal);
+
+    const textareaRef = useRef<HTMLDivElement>(null);
 
     return (
         <>
             <ChatTextArea
                 ariaLabel='Input a message'
                 state={message}
+                containerRef={textareaRef}
                 onChange={(event) => {
                     setMessage(event.target.value);
 
-                    const badgeText = findBySymbol(
-                        event.target.value,
-                        '@'
-                    )?.split('@')[1];
+                    const badgeText = findBySymbol(event.target.value, '@');
 
-                    if (badgeText) {
+                    if (badgeText && textareaRef.current) {
                         openModal(
                             <BadgeModal
-                                searchQuery={badgeText}
-                                relativeElement={event.target}
+                                searchQuery={badgeText.split('@')[1].trim()}
+                                relativeElement={textareaRef.current}
+                                shiftX={100}
                             />
                         );
                     } else {

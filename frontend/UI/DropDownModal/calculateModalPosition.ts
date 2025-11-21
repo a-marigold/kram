@@ -34,7 +34,13 @@ export function calculateModalPosition(
         modalLeft = elemLeft - modalWidth;
     }
 
-    modalElement.style.transform = `translate(${modalLeft + (shiftX ?? 0)}px, ${
-        modalTop + (shiftY ?? 0)
+    if (modalLeft < 0) {
+        modalLeft = 16;
+    } else if (modalLeft + (shiftX || 0) + modalWidth > window.innerWidth) {
+        modalLeft = window.innerWidth - modalWidth - (shiftX || 0) - 16;
+    }
+
+    modalElement.style.transform = `translate(${modalLeft + (shiftX || 0)}px, ${
+        modalTop + (shiftY || 0)
     }px)`;
 }

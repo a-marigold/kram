@@ -14,6 +14,7 @@ export function findBySymbol(string: string, symbol: string) {
     const firstWord = string.split(' ').filter(Boolean)[0];
 
     const lastWord = string.split(' ').filter(Boolean).at(-1);
+
     if (firstWord?.startsWith(symbol) && firstWord.length > 1) {
         return firstWord;
     } else if (lastWord?.startsWith(symbol) && lastWord.length > 1) {

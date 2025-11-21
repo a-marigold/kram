@@ -1,8 +1,11 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import type { TextareaHTMLAttributes } from 'react';
-import type { ButtonHTMLAttributes } from 'react';
+import type {
+    TextareaHTMLAttributes,
+    ButtonHTMLAttributes,
+    RefObject,
+} from 'react';
 
 import { resizeTextarea } from '@/utils/ResizeTextarea';
 
@@ -12,6 +15,8 @@ import textStyles from './ChatTextArea.module.scss';
 
 interface ChatTextAreaProps
     extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+    containerRef?: RefObject<HTMLDivElement | null>;
+
     state?: string;
     ariaLabel: string;
 
@@ -25,6 +30,8 @@ interface ChatTextAreaProps
     sendFunction?: ButtonHTMLAttributes<HTMLButtonElement>['onClick']; // TODO: that is optional temporarily
 }
 export default function ChatTextArea({
+    containerRef,
+
     state,
 
     ariaLabel,
@@ -43,6 +50,7 @@ export default function ChatTextArea({
 
     return (
         <div
+            ref={containerRef}
             className={`${textStyles['chat-input-block']} ${className ?? ''}`}
             aria-label={ariaLabel}
             onClick={() => {

@@ -39,7 +39,7 @@ export default function ProfileModal({
         <DropDownModal
             {...dropDownProps}
             onClose={closeModal}
-            topList={
+            topChildren={
                 <>
                     <LabelledElement
                         title={nameCopyFlag ? 'Copied!' : 'Copy your user name'}

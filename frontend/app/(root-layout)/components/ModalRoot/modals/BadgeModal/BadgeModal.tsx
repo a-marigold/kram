@@ -31,11 +31,13 @@ export default function BadgeModal({
                     publicId,
                 }))
                 .filter((chat) =>
-                    chat.name
-                        .split(' ')
-                        .join('')
-                        .toLocaleLowerCase()
-                        .includes(searchQuery.toLowerCase())
+                    !searchQuery
+                        ? true
+                        : chat.name
+                              .split(' ')
+                              .join('')
+                              .toLocaleLowerCase()
+                              .includes(searchQuery.toLowerCase())
                 ),
         [chats, searchQuery]
     );
@@ -45,7 +47,7 @@ export default function BadgeModal({
     return (
         <DropDownModal
             {...dropDownProps}
-            topList={
+            topChildren={
                 <>
                     {filteredChatNames.map((chat) => (
                         <MemoPrimaryButton

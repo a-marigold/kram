@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 
 import { calculateModalPosition } from './calculateModalPosition';
+
 import type { ModalPosition } from './calculateModalPosition';
 
 import modalStyles from './DropDownModal.module.scss';
@@ -12,9 +13,9 @@ import modalStyles from './DropDownModal.module.scss';
 export interface DropDownModalProps {
     relativeElement: HTMLElement;
 
-    topList: ReactNode;
+    topChildren: ReactNode;
 
-    bottomList?: ReactNode;
+    bottomChildren?: ReactNode;
 
     position?: ModalPosition;
     shiftX?: number;
@@ -26,8 +27,9 @@ export interface DropDownModalProps {
 export default function DropDownModal({
     relativeElement,
 
-    topList,
-    bottomList,
+    topChildren,
+
+    bottomChildren,
 
     position = 'bottom',
     shiftX,
@@ -83,15 +85,15 @@ export default function DropDownModal({
                     event.stopPropagation();
                 }}
             >
-                {topList}
+                {topChildren}
 
-                {bottomList && (
+                {bottomChildren && (
                     <>
                         <div className={modalStyles['divider-block']}>
                             <div className={modalStyles['divider']} />
                         </div>
 
-                        {bottomList}
+                        {bottomChildren}
                     </>
                 )}
             </div>
