@@ -17,8 +17,7 @@ export default function ChatLayout({
 
     return (
         <>
-            {/* {userName &&  */}
-            <Navbar />
+            {userName && <Navbar />}
 
             {/* } */}
 

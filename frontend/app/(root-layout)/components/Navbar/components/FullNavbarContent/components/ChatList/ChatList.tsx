@@ -6,7 +6,6 @@ import { useShallow } from 'zustand/shallow';
 
 import { useChatStore } from '@/store/ChatStore';
 
-import { ApiError } from '@none/shared';
 import { getChats } from '@/lib/api/ChatApiClient';
 
 import PrimaryLink from '@/UI/PrimaryLink';

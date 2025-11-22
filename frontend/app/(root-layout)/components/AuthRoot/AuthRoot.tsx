@@ -15,7 +15,7 @@ export default function AuthRoot() {
         queryKey: ['auth'],
         queryFn: getUserData,
         retry: false,
-        refetchOnWindowFocus: true,
+        refetchOnWindowFocus: false,
         refetchInterval: 20 * 60 * 1000,
     });
 

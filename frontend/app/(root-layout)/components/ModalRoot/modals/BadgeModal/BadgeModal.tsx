@@ -16,11 +16,10 @@ import MemoPrimaryButton from '@/UI/PrimaryButton/memo';
 
 import modalStyles from './BadgeModal.module.scss';
 
-interface BadgeModalProps
-    extends Pick<
-        DropDownModalProps,
-        'relativeElement' | 'posY' | 'posX' | 'shiftX' | 'shiftY'
-    > {}
+type BadgeModalProps = Pick<
+    DropDownModalProps,
+    'relativeElement' | 'posY' | 'posX' | 'shiftX' | 'shiftY'
+>;
 
 export default function BadgeModal({ ...dropDownProps }: BadgeModalProps) {
     const chats = useChatStore(useShallow((state) => state.chats));
@@ -51,13 +50,11 @@ export default function BadgeModal({ ...dropDownProps }: BadgeModalProps) {
 
     const closeModal = useModalStore((state) => state.closeModal);
 
-    function handleSetReceiver() {}
-
     const buttonHandler = useCallback(
         (event: MouseEvent<HTMLButtonElement>) => {
             setReceiver(event.currentTarget.dataset.chatName || '');
         },
-        []
+        [setReceiver]
     );
 
     return (
