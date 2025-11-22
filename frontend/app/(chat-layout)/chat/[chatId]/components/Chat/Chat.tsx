@@ -26,12 +26,13 @@ export default function Chat() {
     function handleAddMessage() {
         if (userName && chatId) {
             const newMessage: Message = {
+                createdAt: Date.now(),
                 chatId,
                 sender: userName,
                 data: message,
             };
 
-            addMessage(chatId, { chatId, sender: userName, data: message });
+            addMessage(chatId, newMessage);
 
             stream.send('newChatMessage', newMessage);
         }
