@@ -238,6 +238,8 @@ export async function login(
         REFRESH_TOKEN_MAX_AGE
     );
 
+    await setRefreshTokenInCache(request.server.redis, refreshToken, userName);
+
     reply.setCookie(accessName, accessValue, accessOptions);
     reply.setCookie(refreshName, refreshValue, refreshOptions);
 

@@ -35,6 +35,7 @@ export async function register(userData: RegisterData) {
 export async function getUserData() {
     const response = await fetch(`${apiOrigin}/auth/me`, {
         method: 'GET',
+
         credentials: 'include',
     });
 
