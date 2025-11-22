@@ -24,13 +24,9 @@ export default function MessageList() {
     const addMessage = useChatStore((state) => state.addMessage);
 
     useEffect(() => {
-        stream.onmessage((message) => {
-            if (
-                message.type === 'newChatMessage' &&
-                validateChatMessage(message.data) &&
-                chatId
-            ) {
-                addMessage(chatId, message.data);
+        stream.onmessage('newChatMessage', (data) => {
+            if (validateChatMessage(data) && chatId) {
+                addMessage(chatId, data);
             }
         });
     }, []);

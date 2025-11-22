@@ -2,7 +2,8 @@ import {
     validateStreamError,
     validateStreamMessage,
 } from '@/utils/StreamHelpers';
-import type { StreamMessage, StreamError } from '@none/shared';
+
+import type { StreamMessage, StreamErrorData } from '@none/shared';
 
 class Stream {
     #socket: WebSocket | null = null;
@@ -35,37 +36,45 @@ class Stream {
         this.#socket.send(JSON.stringify(prepareData));
     }
 
-    onmessage(callback: (message: StreamMessage) => void) {
+    onmessage(
+        type: StreamMessage['type'],
+
+        callback: (data: StreamMessage['data']) => void
+    ) {
         if (!this.#socket) return;
+
         this.#socket.addEventListener('message', (event) => {
             try {
                 const parseData = JSON.parse(event.data);
 
-                if (validateStreamMessage(parseData)) {
-                    callback(parseData);
+                if (!validateStreamMessage(parseData)) {
+                    throw new Error('Server has sent an invalid message.'); // TODO: add separated error constructor
                 }
-            } catch {
-                alert('Server has sent an invalid message.'); // TODO: Temporary
+
+                if (type === parseData.type) {
+                    callback(parseData.data);
+                }
+            } catch (error) {
+                if (error instanceof Error) {
+                    alert(error.message); // TODO: Temporarily
+                }
             }
         });
     }
 
-    onerror(callback: (error: StreamError) => void) {
+    onerror(callback: (data: StreamErrorData) => void) {
         if (!this.#socket) return;
 
-        this.#socket.addEventListener('message', (event) => {
+        this.onmessage('error', (data) => {
             try {
-                const parseData = JSON.parse(event.data);
-
-                if (
-                    validateStreamMessage(parseData) &&
-                    parseData.type === 'error' &&
-                    validateStreamError(parseData)
-                ) {
-                    callback(parseData);
+                if (!validateStreamError(data)) {
+                    throw new Error('Unexpceted server error');
                 }
+
+                callback(data);
             } catch (error) {
-                alert('Server has sent and invalid message.');
+                if (error instanceof Error) {
+                }
             }
         });
     }
