@@ -3,11 +3,10 @@
 import { useEffect, useRef } from 'react';
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
-import { useChatStore } from '@/store/ChatStore';
 import { useAuthStore } from '@/store/AuthStore';
 import { useMiniChatStore } from '@/store/MiniChatStore';
 
-import { createChat } from '@/lib/api/ChatApiClient';
+import { useSendFunction } from './useSendFunction';
 
 import { findBySymbol } from '@/utils/FindBySymbol';
 import { getRandomArrayElement } from '@/utils/GetRandomArrayElement';
@@ -44,19 +43,12 @@ export default function Chat() {
     }, [receiver]);
 
     const currentBadgeColors = getRandomArrayElement(badgeColorList);
+
     const textareaRef = useRef<HTMLDivElement>(null);
 
-    const chatNames = useChatStore((state) => state.chatNames);
+    const userName = useAuthStore((state) => state.user?.userName);
 
-    async function sendFunction() {
-        try {
-            const newChat = await createChat({
-                messageList: [],
-                name: 'f',
-                members: [],
-            });
-        } catch {}
-    } // TODO: here
+    const sendFunction = useSendFunction();
 
     return (
         <>
@@ -77,6 +69,17 @@ export default function Chat() {
                     text: receiver ? `@${receiver}` : '',
                     bgColor: currentBadgeColors.bgColor,
                     fontColor: currentBadgeColors.fontColor,
+                }}
+                sendFunction={() => {
+                    if (userName) {
+                        sendFunction({
+                            name: 'New Chat',
+
+                            members: [{ userName }, { userName: receiver }],
+
+                            messageList: [],
+                        });
+                    }
                 }}
             />
         </>

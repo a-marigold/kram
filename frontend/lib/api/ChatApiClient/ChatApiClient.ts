@@ -32,7 +32,7 @@ export async function createChat(chat: Chat) {
 
     await handleApiError(response);
 
-    const data: ApiResponse = await response.json();
+    const data: Chat = await response.json();
 
     return data;
 }
