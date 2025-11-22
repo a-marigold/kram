@@ -36,6 +36,8 @@ WORKDIR /app/backend
 RUN bun install
 RUN apt-get update -y && apt-get install -y openssl
 
+RUN chmod +x /app/backend/entrypoint.sh
+
 EXPOSE 1000
 
 CMD ["/app/backend/entrypoint.sh"]
