@@ -1,6 +1,6 @@
 import type WebSocket from 'ws';
 
-import { checkStreamMessage, baseError } from '@/routes/stream';
+import { validateStreamMessage, baseError } from '@/routes/stream';
 
 import type { StreamType, StreamMessage } from '@none/shared';
 
@@ -17,7 +17,7 @@ class StreamEmitter {
             try {
                 const parseData = JSON.parse(data.toString());
 
-                if (!checkStreamMessage(parseData)) {
+                if (!validateStreamMessage(parseData)) {
                     return connection.send(baseError);
                 }
 

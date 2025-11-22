@@ -5,8 +5,9 @@ import type { WebSocket } from 'ws';
 import { streamEmitter } from '@/lib/streamEmitter';
 
 import {
-    checkChatMessage,
-    checkStreamMessage,
+    validateStreamMessage,
+    validateChatMessage,
+    validateSearchQuery,
     createBaseError,
     createStreamMessage,
     baseError,
@@ -20,28 +21,14 @@ export async function stream(connection: WebSocket, request: FastifyRequest) {
     connection.on('message', (data) => {
         const parseData = JSON.parse(data.toString());
 
-        if (!checkStreamMessage(parseData)) {
+        if (!validateStreamMessage(parseData)) {
             return connection.send(baseError);
-        }
-
-        if (
-            parseData.type === 'newChatMessage' &&
-            checkChatMessage(parseData.data)
-        ) {
-            const chatMessage = parseData.data;
-
-            const streamMessage = createStreamMessage('newChatMessage', {
-                ...chatMessage,
-                sender: chatMessage.sender + '___TEMPORARY',
-            });
-
-            return connection.send(streamMessage); // TODO: temporary echo
         }
     });
 }
 
 streamEmitter.on('newChatMessage', (data, send) => {
-    if (!checkChatMessage(data)) {
+    if (!validateChatMessage(data)) {
         return send(createBaseError('Invalid chat message struct'));
     }
 

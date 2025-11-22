@@ -1,1 +1,1 @@
-export { streamEmitter } from './StreamEmitter';
+export { streamEmitter } from './streamEmitter';

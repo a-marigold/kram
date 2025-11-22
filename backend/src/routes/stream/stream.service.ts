@@ -1,16 +1,29 @@
-import { StreamMessageSchema } from '@none/shared';
-import type { StreamMessage } from '@none/shared';
+import type { ZodType } from 'zod';
 
-import { MessageSchema } from '@none/shared';
-import type { Message } from '@none/shared';
+import {
+    StreamMessageSchema,
+    SearchQuerySchema,
+    MessageSchema,
+} from '@none/shared';
+import type { StreamMessage, StreamErrorData } from '@none/shared';
 
-import type { StreamError } from '@none/shared';
-
-export function checkStreamMessage(data: object): data is StreamMessage {
+export function validateStreamMessage(data: object): data is StreamMessage {
     return StreamMessageSchema.safeParse(data).success;
 }
-export function checkChatMessage(data: StreamMessage['data']): data is Message {
-    return MessageSchema.safeParse(data).success;
+
+export function validateStreamData<T extends object>(
+    data: object,
+    schema: ZodType<T>
+): data is T {
+    return schema.safeParse(data).success;
+}
+
+export function validateChatMessage(data: object) {
+    return validateStreamData(data, MessageSchema);
+}
+
+export function validateSearchQuery(data: object) {
+    return validateStreamData(data, SearchQuerySchema);
 }
 
 /**
@@ -25,11 +38,11 @@ export function checkChatMessage(data: StreamMessage['data']): data is Message {
  * createBaseError('Hello World!'); // JSON string outpur: "{"type":"error","data":{"message":"Hello World!"}}"
  * ```
  */
-export function createBaseError(message?: string) {
-    const errorMessage: StreamError = {
+export function createBaseError(message: string) {
+    const errorMessage: StreamMessage<StreamErrorData> = {
         type: 'error',
         data: {
-            message: message || 'You have sent invalid message.',
+            message,
         },
     };
 
@@ -58,4 +71,4 @@ export function createStreamMessage<T extends StreamMessage['data']>(
     return JSON.stringify(streamMessage);
 }
 
-export const baseError = createBaseError();
+export const baseError = createBaseError('You have sent invalid message.');

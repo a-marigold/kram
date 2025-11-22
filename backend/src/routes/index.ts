@@ -2,7 +2,7 @@ import type { FastifyInstance } from 'fastify';
 
 import { authRoutes } from './auth';
 import { cronRoutes } from './cron';
-import { streamRoutes } from './stream/stream.routes';
+import { streamRoutes } from './stream';
 import { chatRoutes } from './chats';
 
 export async function routes(app: FastifyInstance) {
