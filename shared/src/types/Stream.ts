@@ -25,12 +25,15 @@ export const StreamMessageSchema = object({
     data: record(string(), any()),
 });
 
-export type StreamMessage = zinfer<typeof StreamMessageSchema>;
+export type StreamType = zinfer<typeof StreamTypeSchema>;
 
-export const StreamErrorSchema = object({
-    type: literal(StreamTypeSchema.enum.error),
+export type StreamMessage<T extends object> = Omit<
+    zinfer<typeof StreamMessageSchema>,
+    'data'
+> & { data: T };
 
+export const StreamErrorDataSchema = object({
     data: object({ message: string() }),
 });
 
-export type StreamError = zinfer<typeof StreamErrorSchema>;
+export type StreamErrorData = zinfer<typeof StreamErrorDataSchema>;
