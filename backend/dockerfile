@@ -1,3 +1,30 @@
+# FROM oven/bun:latest
+
+# WORKDIR /app
+
+# COPY . .
+
+# WORKDIR /app/backend
+
+# RUN mkdir -p /app/certs
+# RUN bun install
+# RUN apt-get update -y && apt-get install -y openssl
+
+# EXPOSE 1000
+
+
+
+
+
+
+
+# CMD sh -c "echo \"$AIVEN_CA_CERT\" > /app/certs/ca.pem && \
+# export NODE_EXTRA_CA_CERTS=/app/certs/ca.pem && \
+# bunx prisma migrate deploy && \
+# bunx prisma generate && \
+# bun run dev"
+
+
 FROM oven/bun:latest
 
 WORKDIR /app
@@ -6,21 +33,9 @@ COPY . .
 
 WORKDIR /app/backend
 
-RUN mkdir -p /app/certs
 RUN bun install
 RUN apt-get update -y && apt-get install -y openssl
 
 EXPOSE 1000
 
-
-
-
-
-
-
-CMD sh -c "echo \"$AIVEN_CA_CERT\" > /app/certs/ca.pem && \
-export NODE_EXTRA_CA_CERTS=/app/certs/ca.pem && \
-bunx prisma migrate deploy && \
-bunx prisma generate && \
-bun run dev"
-
+CMD ["/app/backend/entrypoint.sh"]
