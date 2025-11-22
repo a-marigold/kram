@@ -27,7 +27,7 @@ export async function chatRoutes(app: FastifyInstance) {
         schema: {
             body: ChatSchema,
             response: {
-                201: ApiResponseSchema,
+                201: ChatSchema,
                 404: ApiResponseSchema,
                 500: ApiResponseSchema,
             },

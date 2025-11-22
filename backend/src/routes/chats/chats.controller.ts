@@ -13,8 +13,6 @@ export async function getUserChats(
     const userName = request.user.userName;
 
     try {
-        console.log('_______CHAAT' + userName);
-
         const chats = await getChatsByUserName(request.server.prisma, userName);
 
         if (!chats) {
@@ -35,7 +33,7 @@ export async function getUserChats(
 export async function createChat(
     request: FastifyRequest<{ Body: Chat }>,
 
-    reply: FastifyReply<{ Reply: ApiResponse }>
+    reply: FastifyReply<{ Reply: ApiResponse | Chat }>
 ) {
     const userName = request.user.userName;
 
@@ -54,7 +52,12 @@ export async function createChat(
             throw new ApiError('Initiator not found in members', 404);
         }
 
-        await createChatWithMembers(request.server.prisma, chat);
+        const newChat = await createChatWithMembers(
+            request.server.prisma,
+            chat
+        );
+
+        return reply.code(201).send(newChat);
     } catch (error) {
         if (error instanceof ApiError) {
             return reply

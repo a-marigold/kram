@@ -56,7 +56,6 @@ class Stream {
         this.#socket.addEventListener('message', (event) => {
             try {
                 const parseData = JSON.parse(event.data);
-                console.log(parseData);
 
                 if (
                     validateStreamMessage(parseData) &&
@@ -66,7 +65,6 @@ class Stream {
                     callback(parseData);
                 }
             } catch (error) {
-                console.log(error);
                 alert('Server has sent and invalid message.');
             }
         });

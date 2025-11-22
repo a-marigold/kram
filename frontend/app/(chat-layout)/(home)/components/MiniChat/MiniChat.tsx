@@ -1,10 +1,12 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 import { useChatStore } from '@/store/ChatStore';
 import { useMiniChatStore } from '@/store/MiniChatStore';
+
+import { createChat } from '@/lib/api/ChatApiClient';
 
 import { findBySymbol } from '@/utils/FindBySymbol';
 import { getRandomArrayElement } from '@/utils/GetRandomArrayElement';
@@ -20,20 +22,39 @@ export default function Chat() {
     const setMessage = useMiniChatStore((state) => state.setMessage);
 
     const receiver = useMiniChatStore((state) => state.receiver);
-
     const setReceiver = useMiniChatStore((state) => state.setReceiver);
-
-    const currentBadgeColors = getRandomArrayElement(badgeColorList);
 
     const openModal = useModalStore((state) => state.openModal);
     const closeModal = useModalStore((state) => state.closeModal);
 
+    useEffect(() => {
+        if (receiver && textareaRef.current) {
+            openModal(
+                <BadgeModal
+                    relativeElement={textareaRef.current}
+                    posY='bottom'
+                    posX='left'
+                    shiftY={10}
+                />
+            );
+        } else {
+            closeModal();
+        }
+    }, [receiver]);
+
+    const currentBadgeColors = getRandomArrayElement(badgeColorList);
     const textareaRef = useRef<HTMLDivElement>(null);
 
     const chatNames = useChatStore((state) => state.chatNames);
 
-    function sendFunction() {
-        // if(chatNames.find((chat) => chat.members.includes))
+    async function sendFunction() {
+        try {
+            const newChat = await createChat({
+                messageList: [],
+                name: 'f',
+                members: [],
+            });
+        } catch {}
     } // TODO: here
 
     return (
@@ -47,19 +68,8 @@ export default function Chat() {
 
                     const badgeText = findBySymbol(event.target.value, '@');
 
-                    if (badgeText && textareaRef.current) {
+                    if (badgeText) {
                         setReceiver(badgeText.split('@')[1].trim());
-
-                        openModal(
-                            <BadgeModal
-                                relativeElement={textareaRef.current}
-                                posY='bottom'
-                                posX='left'
-                                shiftY={10}
-                            />
-                        );
-                    } else {
-                        closeModal();
                     }
                 }}
                 badge={{

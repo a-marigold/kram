@@ -9,7 +9,7 @@ export const MessageSchema = object({
 
     data: string(),
 
-    createdAt: number(),
+    createdAt: string(),
 });
 
 export const ChatSchema = object({

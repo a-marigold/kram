@@ -53,6 +53,7 @@ export default function BadgeModal({ ...dropDownProps }: BadgeModalProps) {
     const buttonHandler = useCallback(
         (event: MouseEvent<HTMLButtonElement>) => {
             setReceiver(event.currentTarget.dataset.chatName || '');
+            closeModal();
         },
         [setReceiver]
     );
@@ -61,6 +62,7 @@ export default function BadgeModal({ ...dropDownProps }: BadgeModalProps) {
         <DropDownModal
             {...dropDownProps}
             zIndex={60}
+            maxWidth={280}
             topChildren={
                 <>
                     {filteredChatNames.length ? (

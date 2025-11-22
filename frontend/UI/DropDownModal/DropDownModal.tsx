@@ -18,6 +18,7 @@ export interface DropDownModalProps {
     bottomChildren?: ReactNode;
 
     zIndex?: number;
+    maxWidth?: number;
 
     posY?: ModalPosY;
     posX?: ModalPosX;
@@ -36,6 +37,7 @@ export default function DropDownModal({
     bottomChildren,
 
     zIndex = 1000,
+    maxWidth = 200,
 
     posY = 'top',
     posX = 'center',
@@ -94,6 +96,7 @@ export default function DropDownModal({
                 onClick={(event) => {
                     event.stopPropagation();
                 }}
+                style={{ maxWidth }}
             >
                 {topChildren}
 
