@@ -55,7 +55,7 @@ export default function BadgeModal({ ...dropDownProps }: BadgeModalProps) {
             setReceiver(event.currentTarget.dataset.chatName || '');
             closeModal();
         },
-        [setReceiver]
+        [setReceiver, closeModal]
     );
 
     return (
