@@ -9,11 +9,13 @@ interface ChatStore {
 
     setChats: (newChats: Chat[]) => void;
 
+    addChat: (newChat: Chat) => void;
+
     addMessage: (chatId: string, message: Message) => void;
 
     chatNames: ChatNames;
 
-    setChatNames: (newChats: ChatNames) => void;
+    setChatNames: (newChat: ChatNames) => void;
 }
 
 export const useChatStore = create<ChatStore>()((set) => ({
@@ -25,6 +27,9 @@ export const useChatStore = create<ChatStore>()((set) => ({
         set({
             chats: Object.fromEntries(newChats.map((chat) => [chat.id, chat])),
         }),
+
+    addChat: (newChat) =>
+        set((state) => ({ chats: { ...state.chats, newChat } })),
 
     addMessage: (chatId, message) =>
         set((state) => ({

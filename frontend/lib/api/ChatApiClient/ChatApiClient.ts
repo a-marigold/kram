@@ -21,7 +21,7 @@ export async function getChats() {
 export async function createChat(chat: Chat) {
     const prepareChat = JSON.stringify(chat);
 
-    const response = await fetch(`${apiOrigin}/chat`, {
+    const response = await fetch(`${apiOrigin}/chats`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
