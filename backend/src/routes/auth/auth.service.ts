@@ -7,7 +7,9 @@ import type { CookieSerializeOptions } from '@fastify/cookie';
 
 import { ApiError } from '@none/shared';
 
-import type { RegisterData, CookieName } from '@none/shared';
+import type { RegisterData, CookieName, User } from '@none/shared';
+
+import { nullToUndefined } from '@/utils/NullToUndefined';
 
 import { REFRESH_TOKEN_MAX_AGE } from '@/constants/authCookieMaxAge';
 
@@ -61,14 +63,14 @@ export function generateAuthTokens(
 export async function checkUserExistence(
     prisma: PrismaClient,
     userName: string
-) {
+): Promise<User> {
     const user = await findByUserName(prisma, userName);
 
     if (!user) {
         throw new ApiError('User with this user name not found', 404);
     }
 
-    return user;
+    return nullToUndefined(user);
 }
 
 export function generateAuthCookie(

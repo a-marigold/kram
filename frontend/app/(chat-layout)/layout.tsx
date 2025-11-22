@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+import { useAuthStore } from '@/store/AuthStore';
 
 import Navbar from '@root-components/Navbar';
 

@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { getUserData, refreshAccessToken } from '@/lib/api/AuthApiClient';
 
-import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+import { useAuthStore } from '@/store/AuthStore';
 
 export default function AuthRoot() {
     const setUser = useAuthStore((state) => state.setUser);

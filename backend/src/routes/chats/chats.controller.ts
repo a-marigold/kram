@@ -26,6 +26,7 @@ export async function getUserChats(
     } catch {
         return reply
             .code(500)
+
             .send({ code: 500, message: 'Internal server error' });
     }
 }
@@ -40,11 +41,19 @@ export async function createChat(
     const chat = request.body;
 
     try {
-        for await (const member of chat.members) {
-            await checkUserExistence(request.server.prisma, member.userName);
-        }
+        const checkMembers: Chat['members'] = (
+            await Promise.all(
+                chat.members.map((member) =>
+                    checkUserExistence(request.server.prisma, member.userName)
+                )
+            )
+        ).map((member) => ({
+            userName: member.userName,
+            fullName: member.fullName,
+            avatar: member.avatar,
+        }));
 
-        const findInitiatorUser = chat.members.find(
+        const findInitiatorUser = checkMembers.find(
             (member) => member.userName === userName
         );
 

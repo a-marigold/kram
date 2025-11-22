@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 import { useChatStore } from '@/store/ChatStore';
+import { useAuthStore } from '@/store/AuthStore';
 import { useMiniChatStore } from '@/store/MiniChatStore';
 
 import { createChat } from '@/lib/api/ChatApiClient';

@@ -10,9 +10,10 @@ import { RegisterDataSchema } from '@none/shared';
 import type { RegisterData } from '@none/shared';
 
 import { ApiError } from '@none/shared';
+
 import { register } from '@/lib/api/AuthApiClient';
 
-import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+import { useAuthStore } from '@/store/AuthStore';
 
 import AuthForm from '@/app/authorization/(components)/AuthForm';
 import { aboutYouInputs } from './aboutYouInputs';

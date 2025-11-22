@@ -10,9 +10,10 @@ import { useRouter } from 'next/navigation';
 import { useModalStore } from '@/store/ModalStore';
 
 import { RegisterDataSchema } from '@none/shared';
+
 import type { RegisterData } from '@none/shared';
 
-import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+import { useAuthStore } from '@/store/AuthStore';
 
 import { ApiError } from '@none/shared';
 import { checkUser } from '@/lib/api/AuthApiClient';

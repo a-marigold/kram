@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+import { useAuthStore } from '@/store/AuthStore';
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
 import ProfileModal from '@modals/ProfileModal';

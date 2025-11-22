@@ -2,7 +2,7 @@
 
 import { useSettingsStore } from '@/store/SettingsStore';
 
-import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+import { useAuthStore } from '@/store/AuthStore';
 
 import AuthButtons from './components/AuthButtons';
 

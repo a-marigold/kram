@@ -2,7 +2,7 @@
 
 import { useCopyFlag } from '@/hooks/useCopyFlag/useCopyFlag';
 
-import { useAuthStore } from '@/store/AuthStore/useAuthStore';
+import { useAuthStore } from '@/store/AuthStore';
 import { useModalStore } from '@/store/ModalStore/useModalStore';
 
 import type { BasicModalProps } from '@/types/ModalProps';
