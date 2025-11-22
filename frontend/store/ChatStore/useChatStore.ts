@@ -13,7 +13,7 @@ interface ChatStore {
 
     chatNames: ChatNames;
 
-    setChatNames: (newNames: ChatNames) => void;
+    setChatNames: (newChats: ChatNames) => void;
 }
 
 export const useChatStore = create<ChatStore>()((set) => ({
@@ -41,5 +41,5 @@ export const useChatStore = create<ChatStore>()((set) => ({
             },
         })),
 
-    setChatNames: (newNames) => set({ chatNames: newNames }),
+    setChatNames: (newChats) => set({ chatNames: newChats }),
 }));

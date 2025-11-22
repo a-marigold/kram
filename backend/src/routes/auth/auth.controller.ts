@@ -187,7 +187,7 @@ export async function refresh(
         refreshCookie.options
     );
 
-    return reply.code(204).send();
+    return reply.code(204).send({ code: 204, message: newAccessToken });
 }
 
 export async function login(

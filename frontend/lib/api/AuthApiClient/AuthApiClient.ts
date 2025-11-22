@@ -26,6 +26,7 @@ export async function register(userData: RegisterData) {
         headers: { 'Content-Type': 'application/json' },
 
         credentials: 'include',
+
         body: prepareUser,
     });
 

@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { useShallow } from 'zustand/shallow';
 
 import { useChatStore } from '@/store/ChatStore';
 
@@ -14,12 +13,20 @@ import navStyles from './ChatList.module.scss';
 
 export default function ChatList() {
     const setChats = useChatStore((state) => state.setChats);
+    const setChatNames = useChatStore((state) => state.setChatNames);
 
     useEffect(() => {
         async function handleGetChats() {
             try {
                 const chats = await getChats();
                 setChats(chats);
+
+                setChatNames(
+                    Object.values(chats).map(({ name, publicId }) => ({
+                        name,
+                        publicId,
+                    }))
+                );
             } catch {
                 setChats([]);
             }
@@ -27,16 +34,7 @@ export default function ChatList() {
         handleGetChats();
     }, []);
 
-    const chats = useChatStore(useShallow((state) => state.chats));
-
-    const chatNames = useMemo(
-        () =>
-            Object.values(chats).map(({ name, publicId }) => ({
-                name,
-                publicId,
-            })),
-        [chats]
-    );
+    const chatNames = useChatStore((state) => state.chatNames);
 
     const [showChatList, setShowChatList] = useState(true);
 
@@ -63,6 +61,7 @@ export default function ChatList() {
                     <use href='#arrow-icon' />
                 </svg>
             </div>
+
             {showChatList && (
                 <ul
                     className={navStyles['chat-list']}
