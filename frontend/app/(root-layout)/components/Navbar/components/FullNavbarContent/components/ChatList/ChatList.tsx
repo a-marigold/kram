@@ -22,9 +22,10 @@ export default function ChatList() {
                 setChats(chats);
 
                 setChatNames(
-                    Object.values(chats).map(({ name, publicId }) => ({
+                    Object.values(chats).map(({ name, publicId, members }) => ({
                         name,
                         publicId,
+                        members,
                     }))
                 );
             } catch {

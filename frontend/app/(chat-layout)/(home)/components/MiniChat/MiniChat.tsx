@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 
 import { useModalStore } from '@/store/ModalStore/useModalStore';
+import { useChatStore } from '@/store/ChatStore';
 import { useMiniChatStore } from '@/store/MiniChatStore';
 
 import { findBySymbol } from '@/utils/FindBySymbol';
@@ -29,7 +30,12 @@ export default function Chat() {
 
     const textareaRef = useRef<HTMLDivElement>(null);
 
-    function sendFunction() {} // TODO: here
+    const chatNames = useChatStore((state) => state.chatNames);
+
+    function sendFunction() {
+        // if(chatNames.find((chat) => chat.members.includes))
+    } // TODO: here
+
     return (
         <>
             <ChatTextArea

@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 import type { Chat, Message } from '@none/shared';
 
-type ChatNames = Pick<Chat, 'publicId' | 'name'>[];
+type ChatNames = Pick<Chat, 'publicId' | 'name' | 'members'>[];
 
 interface ChatStore {
     chats: Record<string, Chat>;

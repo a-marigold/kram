@@ -1,0 +1,6 @@
+@use '@/styles/mixins.scss' as *;
+
+.title {
+    @include text-wo-margin(2rem, 400);
+    text-align: center;
+}
